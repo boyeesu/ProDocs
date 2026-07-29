@@ -1,0 +1,621 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-29T12:04:46.180Z",
+  "sourceHash": "1ddaf1379af0af771a5b2e3003e1e7fea1cb8e48b3c3ee6639dcd70dce2302e4",
+  "inputHash": "3c14be65db0ad5cc9f8be7ce530c1f73da0b614d9b0c65f3763b39dd8bfd0321",
+  "root": ".",
+  "stats": {
+    "files": 13,
+    "lines": 1432,
+    "symbols": 59,
+    "edges": 17,
+    "languages": {
+      "JavaScript": 13
+    }
+  },
+  "nodes": [
+    {
+      "id": "file:bin/prodocs.js",
+      "type": "file",
+      "path": "bin/prodocs.js",
+      "language": "JavaScript",
+      "contentHash": "e187e003355f6a5f9c70e9cd7c672957e1a2ee0871fff333917e8e6d446fa17b",
+      "lines": 10,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": []
+    },
+    {
+      "id": "file:src/cli.js",
+      "type": "file",
+      "path": "src/cli.js",
+      "language": "JavaScript",
+      "contentHash": "cb6a3bb525a742e98c7f41f543d2d4c74f91806439a3bd116524209eeef62ffc",
+      "lines": 219,
+      "owner": null,
+      "entrypoint": true,
+      "symbols": [
+        {
+          "name": "hasFlag",
+          "kind": "function",
+          "line": 9
+        },
+        {
+          "name": "valuesAfter",
+          "kind": "function",
+          "line": 13
+        },
+        {
+          "name": "help",
+          "kind": "function",
+          "line": 21
+        },
+        {
+          "name": "rootFrom",
+          "kind": "function",
+          "line": 40
+        },
+        {
+          "name": "readManifest",
+          "kind": "function",
+          "line": 45
+        },
+        {
+          "name": "init",
+          "kind": "function",
+          "line": 55
+        },
+        {
+          "name": "sync",
+          "kind": "function",
+          "line": 78
+        },
+        {
+          "name": "freshness",
+          "kind": "function",
+          "line": 99
+        },
+        {
+          "name": "check",
+          "kind": "function",
+          "line": 113
+        },
+        {
+          "name": "status",
+          "kind": "function",
+          "line": 141
+        },
+        {
+          "name": "context",
+          "kind": "function",
+          "line": 162
+        },
+        {
+          "name": "run",
+          "kind": "function",
+          "line": 196
+        }
+      ]
+    },
+    {
+      "id": "file:src/config.js",
+      "type": "file",
+      "path": "src/config.js",
+      "language": "JavaScript",
+      "contentHash": "ab1d2aa7590df3ff69314c3da8eb311147b5836da32554adefce855abfe32443",
+      "lines": 121,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": [
+        {
+          "name": "requireStringArray",
+          "kind": "function",
+          "line": 7
+        },
+        {
+          "name": "validateConfig",
+          "kind": "function",
+          "line": 19
+        },
+        {
+          "name": "loadConfig",
+          "kind": "function",
+          "line": 89
+        },
+        {
+          "name": "writeDefaultConfig",
+          "kind": "function",
+          "line": 111
+        }
+      ]
+    },
+    {
+      "id": "file:src/constants.js",
+      "type": "file",
+      "path": "src/constants.js",
+      "language": "JavaScript",
+      "contentHash": "f2e07817b72f39a9c2587a25feacbce95527af01911da40582dddbcbb3e87330",
+      "lines": 67,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": [
+        {
+          "name": "VERSION",
+          "kind": "value",
+          "line": 1
+        },
+        {
+          "name": "DEFAULT_CONFIG",
+          "kind": "value",
+          "line": 3
+        },
+        {
+          "name": "EXTENSION_LANGUAGE",
+          "kind": "value",
+          "line": 49
+        },
+        {
+          "name": "SUPPORTED_EXTENSIONS",
+          "kind": "value",
+          "line": 66
+        }
+      ]
+    },
+    {
+      "id": "file:src/integrations.js",
+      "type": "file",
+      "path": "src/integrations.js",
+      "language": "JavaScript",
+      "contentHash": "22933e3aa076b989f672822a164dcfac2aec7711baf3861947832035b87aeebf",
+      "lines": 51,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": [
+        {
+          "name": "writeIntegrations",
+          "kind": "function",
+          "line": 34
+        }
+      ]
+    },
+    {
+      "id": "file:src/paths.js",
+      "type": "file",
+      "path": "src/paths.js",
+      "language": "JavaScript",
+      "contentHash": "a33c9bd447a6e801f6e2bd4bf7558e87612b755ae26e22ff8c42f62c942e4c15",
+      "lines": 77,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": [
+        {
+          "name": "isInside",
+          "kind": "function",
+          "line": 4
+        },
+        {
+          "name": "requireRelativePath",
+          "kind": "function",
+          "line": 14
+        },
+        {
+          "name": "resolveSourcePath",
+          "kind": "function",
+          "line": 23
+        },
+        {
+          "name": "resolveOutputPath",
+          "kind": "function",
+          "line": 51
+        }
+      ]
+    },
+    {
+      "id": "file:src/render.js",
+      "type": "file",
+      "path": "src/render.js",
+      "language": "JavaScript",
+      "contentHash": "f2024e4417dcb13a5d00ea426c79f065c98c779437972a2e1fde4da6c7ff572d",
+      "lines": 166,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": [
+        {
+          "name": "escapeCell",
+          "kind": "function",
+          "line": 8
+        },
+        {
+          "name": "escapeHeading",
+          "kind": "function",
+          "line": 17
+        },
+        {
+          "name": "sourceLink",
+          "kind": "function",
+          "line": 24
+        },
+        {
+          "name": "languageSummary",
+          "kind": "function",
+          "line": 35
+        },
+        {
+          "name": "renderSystemOverview",
+          "kind": "function",
+          "line": 42
+        },
+        {
+          "name": "renderCodeMap",
+          "kind": "function",
+          "line": 110
+        },
+        {
+          "name": "writeArtifacts",
+          "kind": "function",
+          "line": 134
+        }
+      ]
+    },
+    {
+      "id": "file:src/scanner.js",
+      "type": "file",
+      "path": "src/scanner.js",
+      "language": "JavaScript",
+      "contentHash": "839749eefe8e7c427be470848c5703ac2167409805fc9530a9b8d00117dbf928",
+      "lines": 378,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": [
+        {
+          "name": "sha256",
+          "kind": "function",
+          "line": 10
+        },
+        {
+          "name": "stableJson",
+          "kind": "function",
+          "line": 14
+        },
+        {
+          "name": "toPosix",
+          "kind": "function",
+          "line": 25
+        },
+        {
+          "name": "isExcluded",
+          "kind": "function",
+          "line": 29
+        },
+        {
+          "name": "globToRegExp",
+          "kind": "function",
+          "line": 40
+        },
+        {
+          "name": "isIncluded",
+          "kind": "function",
+          "line": 64
+        },
+        {
+          "name": "walk",
+          "kind": "function",
+          "line": 69
+        },
+        {
+          "name": "discoverFiles",
+          "kind": "function",
+          "line": 91
+        },
+        {
+          "name": "lineNumberAt",
+          "kind": "function",
+          "line": 113
+        },
+        {
+          "name": "uniqueBy",
+          "kind": "function",
+          "line": 117
+        },
+        {
+          "name": "extractSymbols",
+          "kind": "function",
+          "line": 127
+        },
+        {
+          "name": "extractImportSpecifiers",
+          "kind": "function",
+          "line": 189
+        },
+        {
+          "name": "candidateImportPaths",
+          "kind": "function",
+          "line": 212
+        },
+        {
+          "name": "inferEntrypoint",
+          "kind": "function",
+          "line": 234
+        },
+        {
+          "name": "ownerFor",
+          "kind": "function",
+          "line": 254
+        },
+        {
+          "name": "scanProject",
+          "kind": "function",
+          "line": 262
+        },
+        {
+          "name": "selectContext",
+          "kind": "function",
+          "line": 347
+        }
+      ]
+    },
+    {
+      "id": "file:test/cli.test.js",
+      "type": "file",
+      "path": "test/cli.test.js",
+      "language": "JavaScript",
+      "contentHash": "aaf09883565b434ae36d01546d6c57c0e028ced4a1322255a8bc77ce7e8ac71c",
+      "lines": 60,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": [
+        {
+          "name": "execute",
+          "kind": "function",
+          "line": 10
+        },
+        {
+          "name": "main",
+          "kind": "function",
+          "line": 25
+        },
+        {
+          "name": "changed",
+          "kind": "value",
+          "line": 40
+        }
+      ]
+    },
+    {
+      "id": "file:test/config.test.js",
+      "type": "file",
+      "path": "test/config.test.js",
+      "language": "JavaScript",
+      "contentHash": "54f5012c317433c43cce682c5711426f246c4d0e6c47a5752fc103c7d6be5be0",
+      "lines": 56,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": []
+    },
+    {
+      "id": "file:test/paths.test.js",
+      "type": "file",
+      "path": "test/paths.test.js",
+      "language": "JavaScript",
+      "contentHash": "45da0b52f2a4ff9c22d4514debbcbc1baa52dfbbdbb761bb63d05cc45a443a08",
+      "lines": 44,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": []
+    },
+    {
+      "id": "file:test/render.test.js",
+      "type": "file",
+      "path": "test/render.test.js",
+      "language": "JavaScript",
+      "contentHash": "2a101220e6179792fd10aad6256aee372184d31400cda0cd68f93d8dfd6631f5",
+      "lines": 64,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": [
+        {
+          "name": "graph",
+          "kind": "function",
+          "line": 9
+        }
+      ]
+    },
+    {
+      "id": "file:test/scanner.test.js",
+      "type": "file",
+      "path": "test/scanner.test.js",
+      "language": "JavaScript",
+      "contentHash": "6fbfd3ff01601e8434c93dd965abf2540b1344a07435672fdcf2acee1832933f",
+      "lines": 119,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": [
+        {
+          "name": "fixture",
+          "kind": "function",
+          "line": 9
+        },
+        {
+          "name": "run",
+          "kind": "function",
+          "line": 14
+        },
+        {
+          "name": "greet",
+          "kind": "function",
+          "line": 18
+        },
+        {
+          "name": "version",
+          "kind": "value",
+          "line": 55
+        },
+        {
+          "name": "other",
+          "kind": "value",
+          "line": 95
+        },
+        {
+          "name": "ignored",
+          "kind": "value",
+          "line": 96
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "type": "imports",
+      "from": "file:bin/prodocs.js",
+      "to": "file:src/cli.js",
+      "evidence": {
+        "source": "bin/prodocs.js",
+        "specifier": "../src/cli.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/config.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./config.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/integrations.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./integrations.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/render.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./render.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./scanner.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./constants.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/config.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "src/config.js",
+        "specifier": "./constants.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/render.js",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "src/render.js",
+        "specifier": "./paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/scanner.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "src/scanner.js",
+        "specifier": "./constants.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/scanner.js",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "src/scanner.js",
+        "specifier": "./paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/config.test.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "test/config.test.js",
+        "specifier": "../src/constants.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/config.test.js",
+      "to": "file:src/config.js",
+      "evidence": {
+        "source": "test/config.test.js",
+        "specifier": "../src/config.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/paths.test.js",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "test/paths.test.js",
+        "specifier": "../src/paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/render.test.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "test/render.test.js",
+        "specifier": "../src/constants.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/render.test.js",
+      "to": "file:src/render.js",
+      "evidence": {
+        "source": "test/render.test.js",
+        "specifier": "../src/render.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/scanner.test.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "test/scanner.test.js",
+        "specifier": "../src/constants.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/scanner.test.js",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "test/scanner.test.js",
+        "specifier": "../src/scanner.js"
+      }
+    }
+  ]
+}

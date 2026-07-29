@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "sourceHash": "1ddaf1379af0af771a5b2e3003e1e7fea1cb8e48b3c3ee6639dcd70dce2302e4",
+  "inputHash": "3c14be65db0ad5cc9f8be7ce530c1f73da0b614d9b0c65f3763b39dd8bfd0321",
+  "generatedAt": "2026-07-29T12:04:46.180Z",
+  "stats": {
+    "files": 13,
+    "lines": 1432,
+    "symbols": 59,
+    "edges": 17,
+    "languages": {
+      "JavaScript": 13
+    }
+  }
+}

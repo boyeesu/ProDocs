@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="160" viewBox="0 0 720 160" role="img" aria-labelledby="title description">
+  <title id="title">ProDocs</title>
+  <desc id="description">ProDocs wordmark with an evidence graph symbol</desc>
+  <defs>
+    <linearGradient id="mark" x1="12" y1="18" x2="132" y2="142" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED"/>
+      <stop offset=".52" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="word" x1="176" y1="40" x2="690" y2="126" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111827"/>
+      <stop offset="1" stop-color="#475569"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#mark)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M38 42l42-24 42 24v48l-42 24-42-24z" stroke-width="9"/>
+    <path d="M80 18v48m42-24L80 66 38 42m42 24v48" stroke-width="7" opacity=".78"/>
+    <circle cx="80" cy="66" r="12" fill="#FFFFFF" stroke-width="7"/>
+  </g>
+  <text x="166" y="108" fill="url(#word)" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="82" font-weight="740" letter-spacing="-4">prodocs</text>
+</svg>

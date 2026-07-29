@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/boyeesu/prodocs/main/schemas/prodocs-config.schema.json",
+  "schemaVersion": 1,
+  "source": [
+    "."
+  ],
+  "output": "docs/prodocs",
+  "include": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.py",
+    "**/*.go",
+    "**/*.rs",
+    "**/*.java",
+    "**/*.rb",
+    "**/*.php",
+    "**/*.cs",
+    "**/*.swift",
+    "**/*.kt",
+    "**/*.kts"
+  ],
+  "exclude": [
+    ".git",
+    ".prodocs",
+    "node_modules",
+    "vendor",
+    "dist",
+    "build",
+    "coverage",
+    ".next",
+    ".turbo",
+    ".venv",
+    "venv",
+    "__pycache__",
+    "docs/prodocs"
+  ],
+  "entrypoints": [],
+  "ownership": {},
+  "documentation": {
+    "productName": "ProDocs",
+    "oneLineDescription": "Evidence-backed documentation and context infrastructure for codebases and coding agents.",
+    "audiences": [
+      "engineers",
+      "coding-agents"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "prodocs",
+  "version": "0.1.0",
+  "description": "Evidence-backed documentation and context infrastructure for codebases and coding agents.",
+  "type": "module",
+  "author": "ProDocs contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boyeesu/prodocs.git"
+  },
+  "homepage": "https://github.com/boyeesu/prodocs#readme",
+  "bugs": {
+    "url": "https://github.com/boyeesu/prodocs/issues"
+  },
+  "bin": {
+    "prodocs": "bin/prodocs.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "schemas",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node ./bin/prodocs.js",
+    "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage",
+    "lint": "node --check ./bin/prodocs.js && node --check ./src/*.js",
+    "docs:sync": "node ./bin/prodocs.js sync",
+    "docs:check": "node ./bin/prodocs.js check",
+    "verify": "npm run lint && npm test && npm run docs:check",
+    "prepack": "npm run lint && npm test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "codebase",
+    "agents",
+    "codex",
+    "claude-code",
+    "opencode",
+    "knowledge-graph"
+  ]
+}

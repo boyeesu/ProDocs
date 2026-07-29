@@ -1,0 +1,31 @@
+name: Feature request
+description: Propose a user outcome or evidence-model improvement
+title: "feat: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: user
+    attributes:
+      label: User and job
+      description: Who needs this, and what are they trying to accomplish?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or intent being modeled
+      description: What source, relationship, claim, or decision should ProDocs understand?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe the result without prescribing an implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

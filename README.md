@@ -1,0 +1,228 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/boyeesu/prodocs/main/assets/prodocs-logo-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/boyeesu/prodocs/main/assets/prodocs-logo-light.svg">
+    <img src="https://raw.githubusercontent.com/boyeesu/prodocs/main/assets/prodocs-logo-light.svg" width="520" alt="ProDocs">
+  </picture>
+</p>
+
+<p align="center">
+  <strong>Your codebase already knows how it works. ProDocs makes it explain itself—with receipts.</strong>
+</p>
+
+<p align="center">
+  <a href="https://github.com/boyeesu/prodocs/actions/workflows/ci.yml"><img src="https://github.com/boyeesu/prodocs/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/boyeesu/prodocs/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-7c3aed" alt="Apache 2.0 license"></a>
+  <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D20-3c873a" alt="Node.js 20 or newer"></a>
+  <a href="https://github.com/boyeesu/prodocs"><img src="https://img.shields.io/badge/status-public_alpha-f59e0b" alt="Public alpha"></a>
+</p>
+
+<p align="center">
+  <a href="#quickstart">Quickstart</a> ·
+  <a href="#why-prodocs">Why ProDocs</a> ·
+  <a href="#agent-native-by-default">Agents</a> ·
+  <a href="https://github.com/boyeesu/prodocs/blob/main/docs/PRODUCT_VISION.md">Vision</a> ·
+  <a href="https://github.com/boyeesu/prodocs/blob/main/docs/ROADMAP.md">Roadmap</a>
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/boyeesu/prodocs/main/assets/prodocs-hero.png" width="1200" alt="ProDocs turns source code into an evidence graph, verified documentation, and scoped agent context">
+</p>
+
+---
+
+> **Code is evidence. Documentation is a set of claims. ProDocs keeps the
+> link between them.**
+
+ProDocs is local-first documentation infrastructure for software teams and
+coding agents. It deterministically indexes a repository, builds a portable
+evidence graph, renders human-readable system documentation, and gives agents
+the smallest relevant context for a task.
+
+No hosted service. No model required. No repository data leaves your machine.
+
+## Why ProDocs
+
+Most documentation tools produce prose. ProDocs produces **traceable
+knowledge**.
+
+| Conventional documentation | ProDocs |
+| --- | --- |
+| Pages drift silently | CI detects source and configuration drift |
+| Generated prose sounds plausible | Generated facts retain file, symbol, line, and relationship evidence |
+| Every tool builds another index | Humans and agents read the same versioned graph |
+| Agents ingest an entire repository | Agents request a scoped dependency neighborhood |
+| AI can overwrite intent | Deterministic facts and human-authored intent stay separate |
+| Knowledge lives in a vendor cloud | Everything lives and reviews with the code |
+
+## Quickstart
+
+ProDocs requires Node.js 20 or newer.
+
+```bash
+# Install directly from GitHub during the public alpha
+npm install --global github:boyeesu/prodocs
+
+# Inside any repository
+prodocs init
+prodocs sync
+prodocs status
+```
+
+You now have:
+
+```text
+docs/prodocs/
+├── SYSTEM_OVERVIEW.md   human system orientation
+├── CODE_MAP.md          files, owners, symbols, and evidence lines
+├── knowledge.json       portable, agent-readable evidence graph
+└── manifest.json        freshness and configuration snapshot
+```
+
+Ask for scoped context:
+
+```bash
+prodocs context --path src/auth --json
+```
+
+Protect documentation freshness in CI:
+
+```bash
+prodocs check
+```
+
+`prodocs check` exits unsuccessfully when either indexed source or
+documentation configuration has changed since the last `prodocs sync`.
+
+## The core loop
+
+```mermaid
+flowchart LR
+  S["Source code<br/>tests · schemas · config"] --> I["Deterministic index"]
+  I --> G["Evidence graph"]
+  H["Human intent<br/>decisions · constraints"] --> G
+  G --> D["Human docs"]
+  G --> A["Agent context"]
+  G --> C["CI freshness"]
+```
+
+The current alpha indexes supported source files, top-level/exported symbols,
+local imports, inferred entrypoints, ownership, and content hashes. The
+architecture is designed for parser-backed collectors, claims, decisions,
+change impact, and MCP without replacing the core graph.
+
+## Agent-native by default
+
+Any agent that can run a command can use ProDocs. The integration surface is a
+CLI plus versioned JSON—not a dependency on one vendor.
+
+```bash
+# Minimal task context, including directly related files
+prodocs context --path src/billing/invoice.ts --json
+
+# Machine-readable repository health
+prodocs status --json
+
+# Required after code changes
+prodocs sync && prodocs check
+```
+
+`prodocs init` creates opt-in integration guidance under
+`.prodocs/integrations/` for:
+
+- Codex and other tools that follow `AGENTS.md`;
+- Claude Code;
+- OpenCode.
+
+Native MCP resources and task-shaped context budgets are on the
+[roadmap](https://github.com/boyeesu/prodocs/blob/main/docs/ROADMAP.md).
+
+## Commands
+
+| Command | Purpose |
+| --- | --- |
+| `prodocs init` | Create configuration and non-destructive agent integration guides |
+| `prodocs sync` | Scan source and refresh evidence-backed artifacts |
+| `prodocs context --path <path>` | Select a path and its dependency neighborhood |
+| `prodocs check` | Fail when generated documentation is stale |
+| `prodocs status` | Show freshness and index statistics |
+
+All data-producing commands support `--json`. Use `--root <directory>` to
+target another repository.
+
+## Configuration
+
+`prodocs init` creates `prodocs.config.json`:
+
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/boyeesu/prodocs/main/schemas/prodocs-config.schema.json",
+  "schemaVersion": 1,
+  "source": ["."],
+  "output": "docs/prodocs",
+  "include": ["**/*.js", "**/*.ts", "**/*.py", "**/*.go", "**/*.rs"],
+  "exclude": [".git", "node_modules", "vendor", "dist", "build"],
+  "entrypoints": ["src/server.ts", "src/cli.ts"],
+  "ownership": {
+    "src/billing/": "@payments",
+    "src/auth/": "@identity"
+  },
+  "documentation": {
+    "productName": "Acme",
+    "oneLineDescription": "What Acme does in one sentence.",
+    "audiences": ["engineers", "support", "coding-agents"]
+  }
+}
+```
+
+Configured sources and generated output are constrained to the selected project
+root. ProDocs never executes indexed source.
+
+## Supported languages
+
+The alpha recognizes:
+
+`JavaScript` · `TypeScript` · `Python` · `Go` · `Rust` · `Java` · `Ruby` ·
+`PHP` · `C#` · `Swift` · `Kotlin`
+
+Symbol extraction is intentionally lightweight in `0.1.x`. Parser-backed
+collectors and conformance fixtures are the next trust milestone.
+
+## Project status
+
+ProDocs is a **public alpha**. The deterministic core and file formats are
+usable today, but the public APIs and schemas may evolve before `1.0`.
+
+The next major milestone is change intelligence:
+
+```text
+prodocs impact --base main
+```
+
+It will connect a diff to affected behavior, claims, decisions, tests, owners,
+and documentation—then propose a reviewable patch with evidence.
+
+Read the full [product vision](https://github.com/boyeesu/prodocs/blob/main/docs/PRODUCT_VISION.md),
+[architecture](https://github.com/boyeesu/prodocs/blob/main/docs/ARCHITECTURE.md),
+and [roadmap](https://github.com/boyeesu/prodocs/blob/main/docs/ROADMAP.md).
+
+## Development
+
+```bash
+git clone https://github.com/boyeesu/prodocs.git
+cd prodocs
+npm ci
+npm run verify
+```
+
+See [CONTRIBUTING.md](https://github.com/boyeesu/prodocs/blob/main/CONTRIBUTING.md)
+for the project principles and review expectations.
+
+## Security
+
+Please report vulnerabilities privately. See
+[SECURITY.md](https://github.com/boyeesu/prodocs/blob/main/SECURITY.md).
+
+## License
+
+Licensed under the [Apache License 2.0](https://github.com/boyeesu/prodocs/blob/main/LICENSE).

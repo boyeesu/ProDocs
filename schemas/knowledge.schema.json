@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/boyeesu/prodocs/main/schemas/knowledge.schema.json",
+  "title": "ProDocs knowledge graph",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceHash",
+    "inputHash",
+    "root",
+    "stats",
+    "nodes",
+    "edges"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceHash": {
+      "$ref": "#/$defs/hash"
+    },
+    "inputHash": {
+      "$ref": "#/$defs/hash"
+    },
+    "root": {
+      "const": "."
+    },
+    "stats": {
+      "type": "object",
+      "required": [
+        "files",
+        "lines",
+        "symbols",
+        "edges",
+        "languages"
+      ],
+      "properties": {
+        "files": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "lines": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "symbols": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "edges": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "languages": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/edge"
+      }
+    }
+  },
+  "$defs": {
+    "hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "symbol": {
+      "type": "object",
+      "required": [
+        "name",
+        "kind",
+        "line"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "node": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "path",
+        "language",
+        "contentHash",
+        "lines",
+        "owner",
+        "entrypoint",
+        "symbols"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^file:"
+        },
+        "type": {
+          "const": "file"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "language": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contentHash": {
+          "$ref": "#/$defs/hash"
+        },
+        "lines": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "owner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "entrypoint": {
+          "type": "boolean"
+        },
+        "symbols": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/symbol"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "edge": {
+      "type": "object",
+      "required": [
+        "type",
+        "from",
+        "to",
+        "evidence"
+      ],
+      "properties": {
+        "type": {
+          "const": "imports"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "evidence": {
+          "type": "object",
+          "required": [
+            "source",
+            "specifier"
+          ],
+          "properties": {
+            "source": {
+              "type": "string"
+            },
+            "specifier": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
