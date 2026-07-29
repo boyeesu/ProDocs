@@ -27,6 +27,10 @@ function toPosix(value) {
   return value.split(path.sep).join("/");
 }
 
+function normalizeSource(value) {
+  return value.replace(/\r\n?/g, "\n");
+}
+
 function isExcluded(relativePath, excluded) {
   const segments = toPosix(relativePath).split("/");
   return excluded.some((rule) => {
@@ -352,7 +356,7 @@ export async function scanProject(root, config) {
         `Indexed source exceeds limits.maxTotalBytes (${config.limits.maxTotalBytes}) at ${relativePath}.`
       );
     }
-    const source = sourceFile.contents;
+    const source = normalizeSource(sourceFile.contents);
     const language = EXTENSION_LANGUAGE[path.extname(absolutePath)];
     const imports = extractImportSpecifiers(source, language);
     nodes.push({

@@ -57,6 +57,22 @@ test("source hash is deterministic and changes with evidence", async (t) => {
   assert.notEqual(first.sourceHash, changed.sourceHash);
 });
 
+test("source hash is stable across operating-system line endings", async (t) => {
+  const root = await fixture();
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+
+  const initial = await scanProject(root, structuredClone(DEFAULT_CONFIG));
+  const sourcePath = path.join(root, "src", "main.js");
+  const source = await fs.readFile(sourcePath, "utf8");
+  await fs.writeFile(sourcePath, source.replaceAll("\n", "\r\n"));
+  const windowsStyle = await scanProject(
+    root,
+    structuredClone(DEFAULT_CONFIG)
+  );
+
+  assert.equal(windowsStyle.sourceHash, initial.sourceHash);
+});
+
 test("input hash changes when documentation configuration changes", async (t) => {
   const root = await fixture();
   t.after(() => fs.rm(root, { recursive: true, force: true }));

@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-29T13:27:31.719Z",
-  "sourceHash": "c76dc75f4219d34caccc7f574ffe8960f4ab79fc35e457360293910bac46839c",
-  "inputHash": "db134a4258a89f0100964743368abbd0f891dd74a930e912cdc30f259bdac01b",
+  "generatedAt": "2026-07-29T13:29:21.771Z",
+  "sourceHash": "2cc40fcc67cddc665236f12ff46aefc8eaf501bff3e0473ebc0776fcee1dfec3",
+  "inputHash": "d2def446da0d42127145363715e243a8af0f57ad5f7c194519efdcbe86cecb97",
   "root": ".",
   "stats": {
     "files": 16,
-    "lines": 1866,
-    "symbols": 63,
+    "lines": 1886,
+    "symbols": 64,
     "edges": 24,
     "languages": {
       "JavaScript": 16
@@ -305,8 +305,8 @@
       "type": "file",
       "path": "src/scanner.js",
       "language": "JavaScript",
-      "contentHash": "a89fb6bf428f5cff1199a0e6817224f1abfb2d95bb25f5f8f31707846c4ca36d",
-      "lines": 463,
+      "contentHash": "5e9ae11e5441816a919e61e8376615591abf439d1a260f3126e56abe724e10dc",
+      "lines": 467,
       "owner": null,
       "entrypoint": false,
       "symbols": [
@@ -326,74 +326,79 @@
           "line": 26
         },
         {
-          "name": "isExcluded",
+          "name": "normalizeSource",
           "kind": "function",
           "line": 30
         },
         {
+          "name": "isExcluded",
+          "kind": "function",
+          "line": 34
+        },
+        {
           "name": "matchesGlob",
           "kind": "function",
-          "line": 41
+          "line": 45
         },
         {
           "name": "isIncluded",
           "kind": "function",
-          "line": 110
+          "line": 114
         },
         {
           "name": "walk",
           "kind": "function",
-          "line": 115
+          "line": 119
         },
         {
           "name": "discoverFiles",
           "kind": "function",
-          "line": 149
+          "line": 153
         },
         {
           "name": "lineNumberAt",
           "kind": "function",
-          "line": 183
+          "line": 187
         },
         {
           "name": "uniqueBy",
           "kind": "function",
-          "line": 187
+          "line": 191
         },
         {
           "name": "extractSymbols",
           "kind": "function",
-          "line": 197
+          "line": 201
         },
         {
           "name": "extractImportSpecifiers",
           "kind": "function",
-          "line": 259
+          "line": 263
         },
         {
           "name": "candidateImportPaths",
           "kind": "function",
-          "line": 282
+          "line": 286
         },
         {
           "name": "inferEntrypoint",
           "kind": "function",
-          "line": 304
+          "line": 308
         },
         {
           "name": "ownerFor",
           "kind": "function",
-          "line": 324
+          "line": 328
         },
         {
           "name": "scanProject",
           "kind": "function",
-          "line": 332
+          "line": 336
         },
         {
           "name": "selectContext",
           "kind": "function",
-          "line": 432
+          "line": 436
         }
       ]
     },
@@ -479,8 +484,8 @@
       "type": "file",
       "path": "test/scanner.test.js",
       "language": "JavaScript",
-      "contentHash": "672e8af9a1386471a1a1b28fce529dff550820e91e1d1ae1908f327ac22c8f6a",
-      "lines": 168,
+      "contentHash": "9703f15bc7ac9dc511c8b5df116b75ae992b4e811ed8785806690fade05986e4",
+      "lines": 184,
       "owner": null,
       "entrypoint": false,
       "symbols": [
@@ -507,12 +512,12 @@
         {
           "name": "other",
           "kind": "value",
-          "line": 95
+          "line": 111
         },
         {
           "name": "ignored",
           "kind": "value",
-          "line": 96
+          "line": 112
         }
       ]
     }

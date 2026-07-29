@@ -16,10 +16,10 @@ not prose claims.
 | [`src/paths.js`](../../src/paths.js) | JavaScript | 77 | — | isInside (function, L4)<br>requireRelativePath (function, L14)<br>resolveSourcePath (function, L23)<br>resolveOutputPath (function, L51) |
 | [`src/render.js`](../../src/render.js) | JavaScript | 183 | — | escapeCell (function, L9)<br>escapeHeading (function, L24)<br>sourceLink (function, L31)<br>languageSummary (function, L42)<br>renderSystemOverview (function, L49)<br>renderCodeMap (function, L117)<br>writeArtifacts (function, L141) |
 | [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 115 | — | readRegularFile (function, L8)<br>createFileExclusive (function, L66)<br>atomicWriteFile (function, L80) |
-| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 463 | — | sha256 (function, L11)<br>stableJson (function, L15)<br>toPosix (function, L26)<br>isExcluded (function, L30)<br>matchesGlob (function, L41)<br>isIncluded (function, L110)<br>walk (function, L115)<br>discoverFiles (function, L149) |
+| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 467 | — | sha256 (function, L11)<br>stableJson (function, L15)<br>toPosix (function, L26)<br>normalizeSource (function, L30)<br>isExcluded (function, L34)<br>matchesGlob (function, L45)<br>isIncluded (function, L114)<br>walk (function, L119) |
 | [`test/cli.test.js`](../../test/cli.test.js) | JavaScript | 60 | — | execute (function, L10)<br>main (function, L25)<br>changed (value, L40) |
 | [`test/config.test.js`](../../test/config.test.js) | JavaScript | 78 | — | — |
 | [`test/paths.test.js`](../../test/paths.test.js) | JavaScript | 44 | — | — |
 | [`test/render.test.js`](../../test/render.test.js) | JavaScript | 64 | — | graph (function, L9) |
 | [`test/safe-fs.test.js`](../../test/safe-fs.test.js) | JavaScript | 48 | — | — |
-| [`test/scanner.test.js`](../../test/scanner.test.js) | JavaScript | 168 | — | fixture (function, L9)<br>run (function, L14)<br>greet (function, L18)<br>version (value, L55)<br>other (value, L95)<br>ignored (value, L96) |
+| [`test/scanner.test.js`](../../test/scanner.test.js) | JavaScript | 184 | — | fixture (function, L9)<br>run (function, L14)<br>greet (function, L18)<br>version (value, L55)<br>other (value, L111)<br>ignored (value, L112) |

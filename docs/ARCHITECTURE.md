@@ -109,6 +109,8 @@ Configuration and source reads reject symbolic-link traversal; generated
 artifacts are written atomically and refuse symbolic-link destinations.
 Repository-scale limits bound file count, per-file bytes, and total indexed
 bytes.
+Source line endings are normalized before evidence hashing so the same revision
+produces the same graph on Linux, macOS, and Windows.
 
 ## Scaling direction
 
