@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "collector": {
+    "id": "babel-javascript-typescript",
+    "version": 1
+  },
+  "source": {
+    "path": "fixtures/collectors/javascript-module.mjs",
+    "language": "JavaScript"
+  },
+  "symbols": [
+    {
+      "name": "deceptive",
+      "kind": "value",
+      "line": 4
+    },
+    {
+      "name": "Runner",
+      "kind": "class",
+      "line": 6
+    },
+    {
+      "name": "Runner.constructor",
+      "kind": "constructor",
+      "line": 7
+    },
+    {
+      "name": "Runner.run",
+      "kind": "method",
+      "line": 9
+    },
+    {
+      "name": "load",
+      "kind": "value",
+      "line": 14
+    },
+    {
+      "name": "outer",
+      "kind": "function",
+      "line": 16
+    },
+    {
+      "name": "inner",
+      "kind": "function",
+      "line": 17
+    }
+  ],
+  "imports": [
+    {
+      "specifier": "./dependency.js",
+      "line": 1
+    },
+    {
+      "specifier": "./shared.js",
+      "line": 2
+    },
+    {
+      "specifier": "./lazy.js",
+      "line": 10
+    },
+    {
+      "specifier": "./common.cjs",
+      "line": 14
+    }
+  ],
+  "diagnostics": []
+}

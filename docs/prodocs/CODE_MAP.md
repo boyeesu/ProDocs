@@ -8,20 +8,26 @@ not prose claims.
 | File | Language | Lines | Owner | Indexed symbols |
 | --- | --- | ---: | --- | --- |
 | [`bin/prodocs.js`](../../bin/prodocs.js) | JavaScript | 10 | — | — |
-| [`scripts/lint.js`](../../scripts/lint.js) | JavaScript | 21 | — | — |
+| [`fixtures/collectors/typescript-component.tsx`](../../fixtures/collectors/typescript-component.tsx) | TypeScript | 27 | — | Identifier (type, L4)<br>ComponentProps (type, L6)<br>ComponentProps.render (method, L8)<br>State (type, L11)<br>Component (class, L16)<br>Component.constructor (constructor, L19)<br>Component.render (method, L21)<br>createComponent (value, L26) |
+| [`scripts/lint.js`](../../scripts/lint.js) | JavaScript | 25 | — | javascriptFiles (function, L5)<br>files (value, L16) |
 | [`src/cli.js`](../../src/cli.js) | JavaScript | 221 | — | hasFlag (function, L11)<br>valuesAfter (function, L15)<br>help (function, L23)<br>rootFrom (function, L42)<br>readManifest (function, L47)<br>init (function, L61)<br>sync (function, L84)<br>freshness (function, L105) |
-| [`src/config.js`](../../src/config.js) | JavaScript | 192 | — | requireStringArray (function, L7)<br>requirePositiveInteger (function, L30)<br>validateConfig (function, L36)<br>loadConfig (function, L159)<br>writeDefaultConfig (function, L184) |
-| [`src/constants.js`](../../src/constants.js) | JavaScript | 72 | — | VERSION (value, L1)<br>DEFAULT_CONFIG (value, L3)<br>EXTENSION_LANGUAGE (value, L54)<br>SUPPORTED_EXTENSIONS (value, L71) |
-| [`src/context.js`](../../src/context.js) | JavaScript | 521 | — | isObject (function, L15)<br>fail (function, L19)<br>requireObject (function, L23)<br>requireExactKeys (function, L27)<br>requireString (function, L36)<br>requireInteger (function, L49)<br>requireStringArray (function, L55)<br>normalizedPath (function, L80) |
-| [`src/integrations.js`](../../src/integrations.js) | JavaScript | 47 | — | writeIntegrations (function, L35) |
+| [`src/collectors/contract.js`](../../src/collectors/contract.js) | JavaScript | 315 | — | COLLECTOR_ID (value, L3)<br>SEVERITIES (value, L4)<br>compareStrings (function, L6)<br>requireNonEmptyString (function, L12)<br>requireString (function, L19)<br>requirePositiveInteger (function, L26)<br>uniqueSortedStrings (function, L33)<br>normalizeSymbol (function, L46) |
+| [`src/collectors/index.js`](../../src/collectors/index.js) | JavaScript | 20 | — | defaultCollectorRegistry (value, L12)<br>collectSourceEvidence (function, L17) |
+| [`src/collectors/javascript-typescript.js`](../../src/collectors/javascript-typescript.js) | JavaScript | 254 | — | parse (value, L4)<br>parserPlugins (function, L6)<br>location (function, L16)<br>nodeName (function, L20)<br>bindingNames (function, L37)<br>staticSpecifier (function, L56)<br>diagnosticFrom (function, L69)<br>isAstNode (function, L79) |
+| [`src/collectors/legacy.js`](../../src/collectors/legacy.js) | JavaScript | 126 | — | lineNumberAt (function, L3)<br>SYMBOL_PATTERNS (value, L7)<br>extractSymbols (function, L65)<br>extractImports (function, L79)<br>legacyLanguageCollector (value, L103) |
+| [`src/config.js`](../../src/config.js) | JavaScript | 192 | — | CONFIG_FILE (value, L5)<br>requireStringArray (function, L7)<br>requirePositiveInteger (function, L30)<br>validateConfig (function, L36)<br>loadConfig (function, L159)<br>writeDefaultConfig (function, L184) |
+| [`src/constants.js`](../../src/constants.js) | JavaScript | 80 | — | VERSION (value, L1)<br>DEFAULT_CONFIG (value, L3)<br>EXTENSION_LANGUAGE (value, L58)<br>SUPPORTED_EXTENSIONS (value, L79) |
+| [`src/context.js`](../../src/context.js) | JavaScript | 521 | — | HASH_PATTERN (value, L1)<br>PACKET_KEYS (value, L2)<br>isObject (function, L15)<br>fail (function, L19)<br>requireObject (function, L23)<br>requireExactKeys (function, L27)<br>requireString (function, L36)<br>requireInteger (function, L49) |
+| [`src/integrations.js`](../../src/integrations.js) | JavaScript | 47 | — | INTEGRATIONS (value, L5)<br>writeIntegrations (function, L35) |
 | [`src/paths.js`](../../src/paths.js) | JavaScript | 77 | — | isInside (function, L4)<br>requireRelativePath (function, L14)<br>resolveSourcePath (function, L23)<br>resolveOutputPath (function, L51) |
-| [`src/render.js`](../../src/render.js) | JavaScript | 183 | — | escapeCell (function, L9)<br>escapeHeading (function, L24)<br>sourceLink (function, L31)<br>languageSummary (function, L42)<br>renderSystemOverview (function, L49)<br>renderCodeMap (function, L117)<br>writeArtifacts (function, L141) |
-| [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 115 | — | readRegularFile (function, L8)<br>createFileExclusive (function, L66)<br>atomicWriteFile (function, L80) |
-| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 435 | — | sha256 (function, L11)<br>stableJson (function, L15)<br>toPosix (function, L26)<br>normalizeSource (function, L30)<br>isExcluded (function, L34)<br>matchesGlob (function, L45)<br>isIncluded (function, L114)<br>walk (function, L119) |
-| [`test/cli.test.js`](../../test/cli.test.js) | JavaScript | 97 | — | execute (function, L10)<br>main (function, L25)<br>main (function, L67)<br>changed (value, L40)<br>dependency (value, L71) |
+| [`src/render.js`](../../src/render.js) | JavaScript | 183 | — | GENERATED_NOTICE (value, L6)<br>escapeCell (function, L9)<br>escapeHeading (function, L24)<br>sourceLink (function, L31)<br>languageSummary (function, L42)<br>renderSystemOverview (function, L49)<br>renderCodeMap (function, L117)<br>writeArtifacts (function, L141) |
+| [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 115 | — | NO_FOLLOW (value, L6)<br>readRegularFile (function, L8)<br>createFileExclusive (function, L66)<br>atomicWriteFile (function, L80) |
+| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 365 | — | sha256 (function, L12)<br>stableJson (function, L16)<br>toPosix (function, L27)<br>normalizeSource (function, L31)<br>isExcluded (function, L35)<br>matchesGlob (function, L46)<br>isIncluded (function, L115)<br>walk (function, L120) |
+| [`test/cli.test.js`](../../test/cli.test.js) | JavaScript | 97 | — | cli (value, L8)<br>execute (function, L10) |
+| [`test/collectors.test.js`](../../test/collectors.test.js) | JavaScript | 321 | — | fixtures (value, L12) |
 | [`test/config.test.js`](../../test/config.test.js) | JavaScript | 78 | — | — |
-| [`test/context.test.js`](../../test/context.test.js) | JavaScript | 174 | — | node (function, L19)<br>edge (function, L39)<br>graph (function, L51) |
+| [`test/context.test.js`](../../test/context.test.js) | JavaScript | 174 | — | hashes (value, L11)<br>node (function, L19)<br>edge (function, L39)<br>graph (function, L51) |
 | [`test/paths.test.js`](../../test/paths.test.js) | JavaScript | 44 | — | — |
 | [`test/render.test.js`](../../test/render.test.js) | JavaScript | 64 | — | graph (function, L9) |
 | [`test/safe-fs.test.js`](../../test/safe-fs.test.js) | JavaScript | 48 | — | — |
-| [`test/scanner.test.js`](../../test/scanner.test.js) | JavaScript | 170 | — | fixture (function, L9)<br>run (function, L14)<br>greet (function, L18)<br>version (value, L55)<br>other (value, L97)<br>ignored (value, L98) |
+| [`test/scanner.test.js`](../../test/scanner.test.js) | JavaScript | 216 | — | fixture (function, L9) |

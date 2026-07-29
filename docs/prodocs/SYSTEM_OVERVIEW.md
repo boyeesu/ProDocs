@@ -8,16 +8,17 @@
 
 | Signal | Value |
 | --- | --- |
-| Source files | 18 |
-| Lines indexed | 2569 |
-| Symbols indexed | 86 |
-| Internal relationships | 26 |
-| Languages | JavaScript (18) |
-| Evidence snapshot | `113215693799` |
+| Source files | 24 |
+| Lines indexed | 3620 |
+| Symbols indexed | 125 |
+| Internal relationships | 32 |
+| Languages | JavaScript (23), TypeScript (1) |
+| Evidence snapshot | `67df2a08cdcf` |
 
 ## Entrypoints
 
 - [`src/cli.js`](../../src/cli.js) — 12 indexed symbols
+- [`src/collectors/index.js`](../../src/collectors/index.js) — 2 indexed symbols
 
 ## Most connected files
 
@@ -26,13 +27,13 @@
 | [`src/cli.js`](../../src/cli.js) | JavaScript | 9 | — |
 | [`src/constants.js`](../../src/constants.js) | JavaScript | 6 | — |
 | [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 6 | — |
-| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 5 | — |
+| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 6 | — |
+| [`src/collectors/index.js`](../../src/collectors/index.js) | JavaScript | 4 | — |
 | [`src/config.js`](../../src/config.js) | JavaScript | 4 | — |
 | [`src/paths.js`](../../src/paths.js) | JavaScript | 4 | — |
 | [`src/render.js`](../../src/render.js) | JavaScript | 4 | — |
-| [`src/context.js`](../../src/context.js) | JavaScript | 2 | — |
-| [`src/integrations.js`](../../src/integrations.js) | JavaScript | 2 | — |
-| [`test/config.test.js`](../../test/config.test.js) | JavaScript | 2 | — |
+| [`src/collectors/contract.js`](../../src/collectors/contract.js) | JavaScript | 3 | — |
+| [`src/collectors/javascript-typescript.js`](../../src/collectors/javascript-typescript.js) | JavaScript | 2 | — |
 
 ## How to use this map
 
@@ -40,4 +41,4 @@
 - Agents should read `knowledge.json` or run `prodocs context --path <path> --json`.
 - CI should run `prodocs check` to reject stale generated documentation.
 
-Generated at 2026-07-29T14:11:47.126Z.
+Generated at 2026-07-29T15:09:16.793Z.

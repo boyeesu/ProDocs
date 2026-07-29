@@ -22,12 +22,17 @@ flowchart LR
 
 ### Collectors
 
-Collectors turn a source into evidence. Language-specific collectors should use
-real parsers or language servers as the project matures. Other collectors can
-index OpenAPI, GraphQL, database schemas, infrastructure, test results, CODEOWNERS,
-git history, and runtime catalogs.
+Collectors turn a source into evidence through a versioned, language-neutral
+interface. The registry selects collectors by extension, rejects ambiguous
+registrations, validates normalized output, and preserves source provenance.
+JavaScript and TypeScript use a real syntax-tree parser; other language
+collectors currently remain lightweight patterns behind the same boundary.
+Other collectors can index OpenAPI, GraphQL, database schemas, infrastructure,
+test results, CODEOWNERS, git history, and runtime catalogs.
 
 Collector output is normalized and must include stable identity plus provenance.
+The contract and security boundary are documented in
+[`COLLECTORS.md`](COLLECTORS.md).
 
 ### Evidence graph
 
@@ -78,6 +83,7 @@ policy results. Applying it is a separate human- or policy-controlled action.
 bin/prodocs.js             command entrypoint
 src/cli.js                 stable command surface
 src/scanner.js             deterministic evidence collection and graph
+src/collectors/            collector contract, registry, and implementations
 src/render.js              Markdown and JSON projections
 src/paths.js               project-root containment for reads and writes
 src/integrations.js        opt-in agent instruction templates
@@ -88,10 +94,9 @@ docs/prodocs/              generated artifacts
 
 ## Versioned contracts
 
-The CLI and files expose `schemaVersion`. The knowledge graph and context packet
-have published JSON Schemas. Context packets are validated at runtime without
-adding a dependency to the CLI and include deterministic relevance, freshness,
-and size metadata.
+The CLI and files expose `schemaVersion`. The knowledge graph, context packet,
+and collector result have published JSON Schemas. Context packets are validated
+at runtime and include deterministic relevance, freshness, and size metadata.
 
 - JSON Schema for query and patch formats;
 - capability negotiation for collectors and renderers;
@@ -112,7 +117,10 @@ artifacts are written atomically and refuse symbolic-link destinations.
 Repository-scale limits bound file count, per-file bytes, and total indexed
 bytes.
 Source line endings are normalized before evidence hashing so the same revision
-produces the same graph on Linux, macOS, and Windows.
+produces the same graph on Linux, macOS, and Windows. Parser collectors operate
+only on supplied strings and never import, compile, evaluate, or execute indexed
+files. Parser errors stop graph generation rather than silently publishing
+incomplete evidence.
 
 ## Scaling direction
 

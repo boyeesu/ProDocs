@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "collector": {
+    "id": "babel-javascript-typescript",
+    "version": 1
+  },
+  "source": {
+    "path": "fixtures/collectors/typescript-component.tsx",
+    "language": "TypeScript"
+  },
+  "symbols": [
+    {
+      "name": "Identifier",
+      "kind": "type",
+      "line": 4
+    },
+    {
+      "name": "ComponentProps",
+      "kind": "type",
+      "line": 6
+    },
+    {
+      "name": "ComponentProps.render",
+      "kind": "method",
+      "line": 8
+    },
+    {
+      "name": "State",
+      "kind": "type",
+      "line": 11
+    },
+    {
+      "name": "Component",
+      "kind": "class",
+      "line": 16
+    },
+    {
+      "name": "Component.constructor",
+      "kind": "constructor",
+      "line": 19
+    },
+    {
+      "name": "Component.render",
+      "kind": "method",
+      "line": 21
+    },
+    {
+      "name": "createComponent",
+      "kind": "value",
+      "line": 26
+    }
+  ],
+  "imports": [
+    {
+      "specifier": "react",
+      "line": 1
+    },
+    {
+      "specifier": "./factory.js",
+      "line": 2
+    }
+  ],
+  "diagnostics": []
+}

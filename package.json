@@ -15,11 +15,17 @@
   "bin": {
     "prodocs": "bin/prodocs.js"
   },
+  "exports": {
+    "./collectors": "./src/collectors/index.js",
+    "./schemas/collector-result.schema.json": "./schemas/collector-result.schema.json"
+  },
   "files": [
     "bin",
+    "fixtures",
     "scripts",
     "src",
     "schemas",
+    "docs/COLLECTORS.md",
     "README.md",
     "LICENSE"
   ],
@@ -48,5 +54,8 @@
     "claude-code",
     "opencode",
     "knowledge-graph"
-  ]
+  ],
+  "dependencies": {
+    "@babel/parser": "7.28.5"
+  }
 }

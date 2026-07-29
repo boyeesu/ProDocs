@@ -5,6 +5,7 @@ import {
   EXTENSION_LANGUAGE,
   SUPPORTED_EXTENSIONS
 } from "./constants.js";
+import { collectSourceEvidence } from "./collectors/index.js";
 import { resolveSourcePath } from "./paths.js";
 import { readRegularFile } from "./safe-fs.js";
 
@@ -184,105 +185,6 @@ async function discoverFiles(root, config) {
   return [...new Set(files.map((file) => path.resolve(file)))].sort();
 }
 
-function lineNumberAt(source, offset) {
-  return source.slice(0, offset).split("\n").length;
-}
-
-function uniqueBy(items, keyFn) {
-  const seen = new Set();
-  return items.filter((item) => {
-    const key = keyFn(item);
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
-}
-
-function extractSymbols(source, language) {
-  const patterns = {
-    JavaScript: [
-      { kind: "function", regex: /(?:export\s+)?(?:async\s+)?function\s+([A-Za-z_$][\w$]*)/g },
-      { kind: "class", regex: /(?:export\s+)?class\s+([A-Za-z_$][\w$]*)/g },
-      { kind: "value", regex: /export\s+(?:const|let|var)\s+([A-Za-z_$][\w$]*)/g }
-    ],
-    TypeScript: [
-      { kind: "function", regex: /(?:export\s+)?(?:async\s+)?function\s+([A-Za-z_$][\w$]*)/g },
-      { kind: "class", regex: /(?:export\s+)?class\s+([A-Za-z_$][\w$]*)/g },
-      { kind: "type", regex: /export\s+(?:interface|type|enum)\s+([A-Za-z_$][\w$]*)/g },
-      { kind: "value", regex: /export\s+(?:const|let|var)\s+([A-Za-z_$][\w$]*)/g }
-    ],
-    Python: [
-      { kind: "function", regex: /^(?:async\s+)?def\s+([A-Za-z_]\w*)/gm },
-      { kind: "class", regex: /^class\s+([A-Za-z_]\w*)/gm }
-    ],
-    Go: [
-      { kind: "function", regex: /^func\s+(?:\([^)]*\)\s*)?([A-Za-z_]\w*)/gm },
-      { kind: "type", regex: /^type\s+([A-Za-z_]\w*)/gm }
-    ],
-    Rust: [
-      { kind: "function", regex: /^(?:pub(?:\([^)]*\))?\s+)?(?:async\s+)?fn\s+([A-Za-z_]\w*)/gm },
-      { kind: "type", regex: /^(?:pub(?:\([^)]*\))?\s+)?(?:struct|enum|trait)\s+([A-Za-z_]\w*)/gm }
-    ],
-    Java: [
-      { kind: "type", regex: /(?:public\s+)?(?:class|interface|enum|record)\s+([A-Za-z_]\w*)/g }
-    ],
-    "C#": [
-      { kind: "type", regex: /(?:public\s+)?(?:class|interface|enum|record|struct)\s+([A-Za-z_]\w*)/g }
-    ],
-    Ruby: [
-      { kind: "class", regex: /^class\s+([A-Za-z_]\w*)/gm },
-      { kind: "function", regex: /^\s*def\s+([A-Za-z_]\w*[!?=]?)/gm }
-    ],
-    PHP: [
-      { kind: "class", regex: /(?:class|interface|trait|enum)\s+([A-Za-z_]\w*)/g },
-      { kind: "function", regex: /function\s+([A-Za-z_]\w*)/g }
-    ],
-    Swift: [
-      { kind: "type", regex: /(?:class|struct|enum|protocol)\s+([A-Za-z_]\w*)/g },
-      { kind: "function", regex: /func\s+([A-Za-z_]\w*)/g }
-    ],
-    Kotlin: [
-      { kind: "type", regex: /(?:class|interface|object|enum\s+class)\s+([A-Za-z_]\w*)/g },
-      { kind: "function", regex: /fun\s+([A-Za-z_]\w*)/g }
-    ]
-  };
-
-  const symbols = [];
-  for (const pattern of patterns[language] ?? []) {
-    for (const match of source.matchAll(pattern.regex)) {
-      symbols.push({
-        name: match[1],
-        kind: pattern.kind,
-        line: lineNumberAt(source, match.index)
-      });
-    }
-  }
-  return uniqueBy(symbols, (symbol) => `${symbol.kind}:${symbol.name}:${symbol.line}`);
-}
-
-function extractImportSpecifiers(source, language) {
-  const specifiers = [];
-  if (language === "JavaScript" || language === "TypeScript") {
-    const patterns = [
-      /(?:import|export)\s+(?:[\s\S]*?\s+from\s+)?["']([^"']+)["']/g,
-      /require\(\s*["']([^"']+)["']\s*\)/g,
-      /import\(\s*["']([^"']+)["']\s*\)/g
-    ];
-    for (const pattern of patterns) {
-      for (const match of source.matchAll(pattern)) specifiers.push(match[1]);
-    }
-  } else if (language === "Python") {
-    for (const match of source.matchAll(/^(?:from\s+([.\w]+)\s+import|import\s+([.\w]+))/gm)) {
-      specifiers.push(match[1] ?? match[2]);
-    }
-  } else if (language === "Rust") {
-    for (const match of source.matchAll(/^(?:pub\s+)?mod\s+([A-Za-z_]\w*)\s*;/gm)) {
-      specifiers.push(`./${match[1]}`);
-    }
-  }
-  return [...new Set(specifiers)];
-}
-
 function candidateImportPaths(fromFile, specifier, language) {
   if (language === "Python") {
     if (!specifier.startsWith(".")) return [];
@@ -296,7 +198,19 @@ function candidateImportPaths(fromFile, specifier, language) {
 
   if (!specifier.startsWith(".")) return [];
   const stem = path.resolve(path.dirname(fromFile), specifier);
-  const extensions = [".js", ".jsx", ".ts", ".tsx", ".py", ".go", ".rs"];
+  const extensions = [
+    ".js",
+    ".jsx",
+    ".mjs",
+    ".cjs",
+    ".ts",
+    ".tsx",
+    ".mts",
+    ".cts",
+    ".py",
+    ".go",
+    ".rs"
+  ];
   return [
     stem,
     ...extensions.map((extension) => `${stem}${extension}`),
@@ -358,7 +272,23 @@ export async function scanProject(root, config) {
     }
     const source = normalizeSource(sourceFile.contents);
     const language = EXTENSION_LANGUAGE[path.extname(absolutePath)];
-    const imports = extractImportSpecifiers(source, language);
+    const evidence = await collectSourceEvidence({
+      source,
+      filePath: relativePath,
+      language
+    });
+    const parseErrors = evidence.diagnostics.filter(
+      (diagnostic) => diagnostic.severity === "error"
+    );
+    if (parseErrors.length > 0) {
+      const first = parseErrors[0];
+      throw new Error(
+        `Could not parse ${relativePath} with ${evidence.collector.id}: ${first.message} (${first.line}:${first.column}).`
+      );
+    }
+    const imports = [
+      ...new Set(evidence.imports.map((imported) => imported.specifier))
+    ];
     nodes.push({
       id: `file:${relativePath}`,
       type: "file",
@@ -369,7 +299,7 @@ export async function scanProject(root, config) {
       owner: ownerFor(relativePath, config.ownership),
       entrypoint:
         config.entrypoints.includes(relativePath) || inferEntrypoint(relativePath),
-      symbols: extractSymbols(source, language),
+      symbols: evidence.symbols,
       unresolvedImports: imports,
       _absolutePath: absolutePath
     });
