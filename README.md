@@ -1,9 +1,5 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/boyeesu/prodocs/main/assets/prodocs-logo-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/boyeesu/prodocs/main/assets/prodocs-logo-light.svg">
-    <img src="https://raw.githubusercontent.com/boyeesu/prodocs/main/assets/prodocs-logo-light.svg" width="520" alt="ProDocs">
-  </picture>
+  <img src="assets/prodocs-logo.png" width="300" alt="ProDocs robot logo">
 </p>
 
 <p align="center">
