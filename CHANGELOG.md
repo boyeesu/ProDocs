@@ -6,6 +6,18 @@ All notable changes to ProDocs are documented here. The project follows
 
 ## [Unreleased]
 
+### Added
+
+- Published a versioned context-packet JSON Schema with zero-dependency runtime
+  validation.
+- Added deterministic request normalization, one-hop relevance reasons,
+  documentation freshness, and context size/token estimates to agent packets.
+
+### Changed
+
+- Scoped context selection now uses a deterministic one-hop dependency
+  neighborhood instead of order-sensitive graph expansion.
+
 ## [0.1.0] - 2026-07-29
 
 ### Added

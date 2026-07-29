@@ -88,13 +88,15 @@ docs/prodocs/              generated artifacts
 
 ## Versioned contracts
 
-The CLI and files expose `schemaVersion`. Before an MCP server or third-party
-plugins ship, the project should publish:
+The CLI and files expose `schemaVersion`. The knowledge graph and context packet
+have published JSON Schemas. Context packets are validated at runtime without
+adding a dependency to the CLI and include deterministic relevance, freshness,
+and size metadata.
 
-- JSON Schema for graph, query, context packet, and patch formats;
+- JSON Schema for query and patch formats;
 - capability negotiation for collectors and renderers;
 - backwards-compatibility policy;
-- fixtures and conformance tests.
+- third-party conformance fixtures.
 
 ## Security and trust
 

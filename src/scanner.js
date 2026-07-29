@@ -432,35 +432,3 @@ export async function scanProject(root, config) {
     edges
   };
 }
-
-export function selectContext(graph, requestedPaths) {
-  const normalized = requestedPaths.map((value) =>
-    toPosix(value).replace(/^\.\//, "")
-  );
-  const selectedIds = new Set(
-    graph.nodes
-      .filter((node) =>
-        normalized.some(
-          (requested) =>
-            node.path === requested ||
-            node.path.startsWith(`${requested}/`) ||
-            requested.startsWith(`${node.path}/`)
-        )
-      )
-      .map((node) => node.id)
-  );
-
-  for (const edge of graph.edges) {
-    if (selectedIds.has(edge.from) || selectedIds.has(edge.to)) {
-      selectedIds.add(edge.from);
-      selectedIds.add(edge.to);
-    }
-  }
-
-  return {
-    nodes: graph.nodes.filter((node) => selectedIds.has(node.id)),
-    edges: graph.edges.filter(
-      (edge) => selectedIds.has(edge.from) && selectedIds.has(edge.to)
-    )
-  };
-}

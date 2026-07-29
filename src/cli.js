@@ -1,10 +1,11 @@
 import path from "node:path";
 import { loadConfig, writeDefaultConfig } from "./config.js";
+import { buildContextPacket } from "./context.js";
 import { writeIntegrations } from "./integrations.js";
 import { resolveOutputPath } from "./paths.js";
 import { writeArtifacts } from "./render.js";
 import { readRegularFile } from "./safe-fs.js";
-import { scanProject, selectContext } from "./scanner.js";
+import { scanProject } from "./scanner.js";
 import { VERSION } from "./constants.js";
 
 function hasFlag(args, flag) {
@@ -170,32 +171,28 @@ async function context(root, args, json) {
     throw new Error("`context` requires at least one `--path <file-or-directory>`.");
   }
   const config = await loadConfig(root);
-  const graph = await scanProject(root, config);
-  const selection = selectContext(graph, requestedPaths);
-  const result = {
-    schemaVersion: 1,
-    sourceHash: graph.sourceHash,
-    requestedPaths,
-    ...selection
-  };
+  const [graph, manifest] = await Promise.all([
+    scanProject(root, config),
+    readManifest(root, config)
+  ]);
+  const result = buildContextPacket(graph, requestedPaths, manifest);
 
   if (json) {
     console.log(JSON.stringify(result, null, 2));
     return;
   }
-  if (selection.nodes.length === 0) {
+  if (result.nodes.length === 0) {
     console.log("No indexed source matched the requested path.");
     return;
   }
-  for (const node of selection.nodes) {
-    const marker = requestedPaths.some(
-      (requested) => node.path === requested || node.path.startsWith(`${requested}/`)
-    )
-      ? "*"
-      : " ";
+  for (const node of result.nodes) {
+    const marker = node.selection.reason === "requested" ? "*" : " ";
     console.log(`${marker} ${node.path} — ${node.language}, ${node.symbols.length} symbols`);
   }
-  console.log(`\n${selection.edges.length} internal relationships in this context.`);
+  console.log(
+    `\n${result.stats.relationships} internal relationships; approximately ${result.stats.estimatedTokens} context tokens.`
+  );
+  console.log(`Documentation: ${result.freshness.status}`);
 }
 
 export async function run(args) {

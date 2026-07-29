@@ -8,12 +8,12 @@
 
 | Signal | Value |
 | --- | --- |
-| Source files | 16 |
-| Lines indexed | 1886 |
-| Symbols indexed | 64 |
-| Internal relationships | 24 |
-| Languages | JavaScript (16) |
-| Evidence snapshot | `2cc40fcc67cd` |
+| Source files | 18 |
+| Lines indexed | 2569 |
+| Symbols indexed | 86 |
+| Internal relationships | 26 |
+| Languages | JavaScript (18) |
+| Evidence snapshot | `113215693799` |
 
 ## Entrypoints
 
@@ -23,16 +23,16 @@
 
 | File | Language | Connections | Owner |
 | --- | --- | ---: | --- |
-| [`src/cli.js`](../../src/cli.js) | JavaScript | 8 | — |
+| [`src/cli.js`](../../src/cli.js) | JavaScript | 9 | — |
 | [`src/constants.js`](../../src/constants.js) | JavaScript | 6 | — |
 | [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 6 | — |
 | [`src/scanner.js`](../../src/scanner.js) | JavaScript | 5 | — |
 | [`src/config.js`](../../src/config.js) | JavaScript | 4 | — |
 | [`src/paths.js`](../../src/paths.js) | JavaScript | 4 | — |
 | [`src/render.js`](../../src/render.js) | JavaScript | 4 | — |
+| [`src/context.js`](../../src/context.js) | JavaScript | 2 | — |
 | [`src/integrations.js`](../../src/integrations.js) | JavaScript | 2 | — |
 | [`test/config.test.js`](../../test/config.test.js) | JavaScript | 2 | — |
-| [`test/render.test.js`](../../test/render.test.js) | JavaScript | 2 | — |
 
 ## How to use this map
 
@@ -40,4 +40,4 @@
 - Agents should read `knowledge.json` or run `prodocs context --path <path> --json`.
 - CI should run `prodocs check` to reject stale generated documentation.
 
-Generated at 2026-07-29T13:29:21.771Z.
+Generated at 2026-07-29T14:11:47.126Z.

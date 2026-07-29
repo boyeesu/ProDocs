@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { DEFAULT_CONFIG } from "../src/constants.js";
-import { matchesGlob, scanProject, selectContext } from "../src/scanner.js";
+import { matchesGlob, scanProject } from "../src/scanner.js";
 
 async function fixture() {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), "prodocs-test-"));
@@ -88,20 +88,6 @@ test("input hash changes when documentation configuration changes", async (t) =>
 
   assert.equal(first.sourceHash, changed.sourceHash);
   assert.notEqual(first.inputHash, changed.inputHash);
-});
-
-test("selectContext includes the dependency neighborhood", async (t) => {
-  const root = await fixture();
-  t.after(() => fs.rm(root, { recursive: true, force: true }));
-  const graph = await scanProject(root, DEFAULT_CONFIG);
-
-  const context = selectContext(graph, ["src/main.js"]);
-
-  assert.deepEqual(
-    context.nodes.map((node) => node.path).sort(),
-    ["src/greet.js", "src/main.js"]
-  );
-  assert.equal(context.edges.length, 1);
 });
 
 test("configured source and include scopes are enforced", async (t) => {
