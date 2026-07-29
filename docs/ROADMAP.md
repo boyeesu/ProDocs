@@ -67,9 +67,10 @@ less context than repository-wide retrieval.
 Exit test: non-engineering readers rely on ProDocs views while engineers retain
 traceability to source.
 
-## The next five issues
+## Implementation queue
 
-1. Publish a context-packet schema and add schema conformance validation.
+1. **Completed:** Publish a context-packet schema and add schema conformance
+   validation.
 2. Replace regular-expression TypeScript/JavaScript indexing with a parser
    collector behind a stable collector interface.
 3. Add `claim` and `decision` nodes with Markdown front matter and evidence

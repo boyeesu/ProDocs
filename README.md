@@ -85,6 +85,11 @@ Ask for scoped context:
 prodocs context --path src/auth --json
 ```
 
+The command emits a deterministic, runtime-validated context packet containing
+the requested files, their one-hop dependency neighborhood, inclusion reasons,
+evidence, documentation freshness, and a size/token estimate. The public
+contract is [`schemas/context-packet.schema.json`](schemas/context-packet.schema.json).
+
 Protect documentation freshness in CI:
 
 ```bash
@@ -136,6 +141,18 @@ prodocs sync && prodocs check
 
 Native MCP resources and task-shaped context budgets are on the
 [roadmap](https://github.com/boyeesu/prodocs/blob/main/docs/ROADMAP.md).
+
+### Context packet contract
+
+Context packets use `schemaVersion: 1` and `kind: "prodocs.context-packet"`.
+Requested paths are normalized, deduplicated, and sorted. Every included node
+states whether it matched the request or was included as a direct dependency.
+Packets carry current and documented hashes so an agent can distinguish fresh,
+stale, and missing documentation without guessing.
+
+`stats.contextBytes` measures the serialized request, nodes, and relationships.
+`stats.estimatedTokens` is a deterministic approximation of one token per four
+UTF-8 bytes; it is a budgeting hint, not a model-specific tokenizer result.
 
 ## Commands
 
