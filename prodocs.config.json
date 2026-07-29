@@ -38,6 +38,11 @@
   ],
   "entrypoints": [],
   "ownership": {},
+  "limits": {
+    "maxFiles": 50000,
+    "maxFileSizeBytes": 10485760,
+    "maxTotalBytes": 1073741824
+  },
   "documentation": {
     "productName": "ProDocs",
     "oneLineDescription": "Evidence-backed documentation and context infrastructure for codebases and coding agents.",

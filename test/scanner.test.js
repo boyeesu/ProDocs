@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { DEFAULT_CONFIG } from "../src/constants.js";
-import { scanProject, selectContext } from "../src/scanner.js";
+import { matchesGlob, scanProject, selectContext } from "../src/scanner.js";
 
 async function fixture() {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), "prodocs-test-"));
@@ -55,6 +55,22 @@ test("source hash is deterministic and changes with evidence", async (t) => {
   await fs.appendFile(path.join(root, "src", "greet.js"), "\nexport const version = 1;\n");
   const changed = await scanProject(root, DEFAULT_CONFIG);
   assert.notEqual(first.sourceHash, changed.sourceHash);
+});
+
+test("source hash is stable across operating-system line endings", async (t) => {
+  const root = await fixture();
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+
+  const initial = await scanProject(root, structuredClone(DEFAULT_CONFIG));
+  const sourcePath = path.join(root, "src", "main.js");
+  const source = await fs.readFile(sourcePath, "utf8");
+  await fs.writeFile(sourcePath, source.replaceAll("\n", "\r\n"));
+  const windowsStyle = await scanProject(
+    root,
+    structuredClone(DEFAULT_CONFIG)
+  );
+
+  assert.equal(windowsStyle.sourceHash, initial.sourceHash);
 });
 
 test("input hash changes when documentation configuration changes", async (t) => {
@@ -114,5 +130,54 @@ test("configured sources cannot escape the project root", async (t) => {
   await assert.rejects(
     scanProject(root, { ...DEFAULT_CONFIG, source: ["../"] }),
     /escapes the project root/
+  );
+});
+
+test("glob matching is bounded and preserves globstar semantics", () => {
+  assert.equal(matchesGlob("**/*.js", "main.js"), true);
+  assert.equal(matchesGlob("**/*.js", "src/deep/main.js"), true);
+  assert.equal(matchesGlob("src/?ain.*", "src/main.js"), true);
+  assert.equal(matchesGlob("src/*.js", "src/deep/main.js"), false);
+  assert.equal(matchesGlob("src/**/x.js", "src/foox.js"), false);
+  assert.equal(matchesGlob("src/**/x.js", "src/deep/x.js"), true);
+  assert.equal(matchesGlob("**/*.js", "src/main.ts"), false);
+
+  const adversarial = `${"*".repeat(256)}.js`;
+  assert.equal(matchesGlob(adversarial, `${"a".repeat(4096)}.js`), true);
+});
+
+test("scanProject enforces file count and byte limits", async (t) => {
+  const root = await fixture();
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+
+  await assert.rejects(
+    scanProject(root, {
+      ...structuredClone(DEFAULT_CONFIG),
+      limits: {
+        ...DEFAULT_CONFIG.limits,
+        maxFiles: 1
+      }
+    }),
+    /exceeded limits.maxFiles/
+  );
+  await assert.rejects(
+    scanProject(root, {
+      ...structuredClone(DEFAULT_CONFIG),
+      limits: {
+        ...DEFAULT_CONFIG.limits,
+        maxFileSizeBytes: 1
+      }
+    }),
+    /File exceeds the configured 1-byte limit/
+  );
+  await assert.rejects(
+    scanProject(root, {
+      ...structuredClone(DEFAULT_CONFIG),
+      limits: {
+        ...DEFAULT_CONFIG.limits,
+        maxTotalBytes: 1
+      }
+    }),
+    /limits.maxTotalBytes/
   );
 });

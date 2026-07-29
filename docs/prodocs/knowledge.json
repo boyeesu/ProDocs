@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-29T12:04:46.180Z",
-  "sourceHash": "1ddaf1379af0af771a5b2e3003e1e7fea1cb8e48b3c3ee6639dcd70dce2302e4",
-  "inputHash": "3c14be65db0ad5cc9f8be7ce530c1f73da0b614d9b0c65f3763b39dd8bfd0321",
+  "generatedAt": "2026-07-29T13:29:21.771Z",
+  "sourceHash": "2cc40fcc67cddc665236f12ff46aefc8eaf501bff3e0473ebc0776fcee1dfec3",
+  "inputHash": "d2def446da0d42127145363715e243a8af0f57ad5f7c194519efdcbe86cecb97",
   "root": ".",
   "stats": {
-    "files": 13,
-    "lines": 1432,
-    "symbols": 59,
-    "edges": 17,
+    "files": 16,
+    "lines": 1886,
+    "symbols": 64,
+    "edges": 24,
     "languages": {
-      "JavaScript": 13
+      "JavaScript": 16
     }
   },
   "nodes": [
@@ -26,74 +26,85 @@
       "symbols": []
     },
     {
+      "id": "file:scripts/lint.js",
+      "type": "file",
+      "path": "scripts/lint.js",
+      "language": "JavaScript",
+      "contentHash": "257f9e8a638610fc6eae46bac2cd3627b9e4912039cf32f2be130bb9e45add6d",
+      "lines": 21,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": []
+    },
+    {
       "id": "file:src/cli.js",
       "type": "file",
       "path": "src/cli.js",
       "language": "JavaScript",
-      "contentHash": "cb6a3bb525a742e98c7f41f543d2d4c74f91806439a3bd116524209eeef62ffc",
-      "lines": 219,
+      "contentHash": "c983e24b00873984288d55f5abaeb888a2d28065fdb2a65c656fd5f40c6cb9a8",
+      "lines": 224,
       "owner": null,
       "entrypoint": true,
       "symbols": [
         {
           "name": "hasFlag",
           "kind": "function",
-          "line": 9
+          "line": 10
         },
         {
           "name": "valuesAfter",
           "kind": "function",
-          "line": 13
+          "line": 14
         },
         {
           "name": "help",
           "kind": "function",
-          "line": 21
+          "line": 22
         },
         {
           "name": "rootFrom",
           "kind": "function",
-          "line": 40
+          "line": 41
         },
         {
           "name": "readManifest",
           "kind": "function",
-          "line": 45
+          "line": 46
         },
         {
           "name": "init",
           "kind": "function",
-          "line": 55
+          "line": 60
         },
         {
           "name": "sync",
           "kind": "function",
-          "line": 78
+          "line": 83
         },
         {
           "name": "freshness",
           "kind": "function",
-          "line": 99
+          "line": 104
         },
         {
           "name": "check",
           "kind": "function",
-          "line": 113
+          "line": 118
         },
         {
           "name": "status",
           "kind": "function",
-          "line": 141
+          "line": 146
         },
         {
           "name": "context",
           "kind": "function",
-          "line": 162
+          "line": 167
         },
         {
           "name": "run",
           "kind": "function",
-          "line": 196
+          "line": 201
         }
       ]
     },
@@ -102,8 +113,8 @@
       "type": "file",
       "path": "src/config.js",
       "language": "JavaScript",
-      "contentHash": "ab1d2aa7590df3ff69314c3da8eb311147b5836da32554adefce855abfe32443",
-      "lines": 121,
+      "contentHash": "febdfbcdff9de446f8db1460d07df0b815f4ffcbf5a3dad691713f8a5b1e9f63",
+      "lines": 192,
       "owner": null,
       "entrypoint": false,
       "symbols": [
@@ -113,19 +124,24 @@
           "line": 7
         },
         {
+          "name": "requirePositiveInteger",
+          "kind": "function",
+          "line": 30
+        },
+        {
           "name": "validateConfig",
           "kind": "function",
-          "line": 19
+          "line": 36
         },
         {
           "name": "loadConfig",
           "kind": "function",
-          "line": 89
+          "line": 159
         },
         {
           "name": "writeDefaultConfig",
           "kind": "function",
-          "line": 111
+          "line": 184
         }
       ]
     },
@@ -134,8 +150,8 @@
       "type": "file",
       "path": "src/constants.js",
       "language": "JavaScript",
-      "contentHash": "f2e07817b72f39a9c2587a25feacbce95527af01911da40582dddbcbb3e87330",
-      "lines": 67,
+      "contentHash": "30b4cbe77cc5f71d2f01696831d15366bdeff53229b10d8856358cdbda643123",
+      "lines": 72,
       "owner": null,
       "entrypoint": false,
       "symbols": [
@@ -152,12 +168,12 @@
         {
           "name": "EXTENSION_LANGUAGE",
           "kind": "value",
-          "line": 49
+          "line": 54
         },
         {
           "name": "SUPPORTED_EXTENSIONS",
           "kind": "value",
-          "line": 66
+          "line": 71
         }
       ]
     },
@@ -166,15 +182,15 @@
       "type": "file",
       "path": "src/integrations.js",
       "language": "JavaScript",
-      "contentHash": "22933e3aa076b989f672822a164dcfac2aec7711baf3861947832035b87aeebf",
-      "lines": 51,
+      "contentHash": "7913b71ac2b0cb6ec36a5a371cbf499ec32d0f4f45e27ef1cc43e0120aa62fde",
+      "lines": 47,
       "owner": null,
       "entrypoint": false,
       "symbols": [
         {
           "name": "writeIntegrations",
           "kind": "function",
-          "line": 34
+          "line": 35
         }
       ]
     },
@@ -215,45 +231,72 @@
       "type": "file",
       "path": "src/render.js",
       "language": "JavaScript",
-      "contentHash": "f2024e4417dcb13a5d00ea426c79f065c98c779437972a2e1fde4da6c7ff572d",
-      "lines": 166,
+      "contentHash": "3f2f424f77c32df01e11d194921f1d14623b09a8ca94514c47219389474e3eba",
+      "lines": 183,
       "owner": null,
       "entrypoint": false,
       "symbols": [
         {
           "name": "escapeCell",
           "kind": "function",
-          "line": 8
+          "line": 9
         },
         {
           "name": "escapeHeading",
           "kind": "function",
-          "line": 17
+          "line": 24
         },
         {
           "name": "sourceLink",
           "kind": "function",
-          "line": 24
+          "line": 31
         },
         {
           "name": "languageSummary",
           "kind": "function",
-          "line": 35
+          "line": 42
         },
         {
           "name": "renderSystemOverview",
           "kind": "function",
-          "line": 42
+          "line": 49
         },
         {
           "name": "renderCodeMap",
           "kind": "function",
-          "line": 110
+          "line": 117
         },
         {
           "name": "writeArtifacts",
           "kind": "function",
-          "line": 134
+          "line": 141
+        }
+      ]
+    },
+    {
+      "id": "file:src/safe-fs.js",
+      "type": "file",
+      "path": "src/safe-fs.js",
+      "language": "JavaScript",
+      "contentHash": "cfffe145afd00e4cb8b6909bcca34d03c6a02a86f27d988b657e8d8cb085f5bc",
+      "lines": 115,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": [
+        {
+          "name": "readRegularFile",
+          "kind": "function",
+          "line": 8
+        },
+        {
+          "name": "createFileExclusive",
+          "kind": "function",
+          "line": 66
+        },
+        {
+          "name": "atomicWriteFile",
+          "kind": "function",
+          "line": 80
         }
       ]
     },
@@ -262,95 +305,100 @@
       "type": "file",
       "path": "src/scanner.js",
       "language": "JavaScript",
-      "contentHash": "839749eefe8e7c427be470848c5703ac2167409805fc9530a9b8d00117dbf928",
-      "lines": 378,
+      "contentHash": "5e9ae11e5441816a919e61e8376615591abf439d1a260f3126e56abe724e10dc",
+      "lines": 467,
       "owner": null,
       "entrypoint": false,
       "symbols": [
         {
           "name": "sha256",
           "kind": "function",
-          "line": 10
+          "line": 11
         },
         {
           "name": "stableJson",
           "kind": "function",
-          "line": 14
+          "line": 15
         },
         {
           "name": "toPosix",
           "kind": "function",
-          "line": 25
+          "line": 26
+        },
+        {
+          "name": "normalizeSource",
+          "kind": "function",
+          "line": 30
         },
         {
           "name": "isExcluded",
           "kind": "function",
-          "line": 29
+          "line": 34
         },
         {
-          "name": "globToRegExp",
+          "name": "matchesGlob",
           "kind": "function",
-          "line": 40
+          "line": 45
         },
         {
           "name": "isIncluded",
           "kind": "function",
-          "line": 64
+          "line": 114
         },
         {
           "name": "walk",
           "kind": "function",
-          "line": 69
+          "line": 119
         },
         {
           "name": "discoverFiles",
           "kind": "function",
-          "line": 91
+          "line": 153
         },
         {
           "name": "lineNumberAt",
           "kind": "function",
-          "line": 113
+          "line": 187
         },
         {
           "name": "uniqueBy",
           "kind": "function",
-          "line": 117
+          "line": 191
         },
         {
           "name": "extractSymbols",
           "kind": "function",
-          "line": 127
+          "line": 201
         },
         {
           "name": "extractImportSpecifiers",
           "kind": "function",
-          "line": 189
+          "line": 263
         },
         {
           "name": "candidateImportPaths",
           "kind": "function",
-          "line": 212
+          "line": 286
         },
         {
           "name": "inferEntrypoint",
           "kind": "function",
-          "line": 234
+          "line": 308
         },
         {
           "name": "ownerFor",
           "kind": "function",
-          "line": 254
+          "line": 328
         },
         {
           "name": "scanProject",
           "kind": "function",
-          "line": 262
+          "line": 336
         },
         {
           "name": "selectContext",
           "kind": "function",
-          "line": 347
+          "line": 436
         }
       ]
     },
@@ -386,8 +434,8 @@
       "type": "file",
       "path": "test/config.test.js",
       "language": "JavaScript",
-      "contentHash": "54f5012c317433c43cce682c5711426f246c4d0e6c47a5752fc103c7d6be5be0",
-      "lines": 56,
+      "contentHash": "2468d2889e3177630d453034fb069db6d27cb57331eef60c6bff362579abdeb6",
+      "lines": 78,
       "owner": null,
       "entrypoint": false,
       "symbols": []
@@ -421,12 +469,23 @@
       ]
     },
     {
+      "id": "file:test/safe-fs.test.js",
+      "type": "file",
+      "path": "test/safe-fs.test.js",
+      "language": "JavaScript",
+      "contentHash": "039309a7a8b54b9d706c1a324e8e8420c77a37c39179146449b47876406ec849",
+      "lines": 48,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": []
+    },
+    {
       "id": "file:test/scanner.test.js",
       "type": "file",
       "path": "test/scanner.test.js",
       "language": "JavaScript",
-      "contentHash": "6fbfd3ff01601e8434c93dd965abf2540b1344a07435672fdcf2acee1832933f",
-      "lines": 119,
+      "contentHash": "9703f15bc7ac9dc511c8b5df116b75ae992b4e811ed8785806690fade05986e4",
+      "lines": 184,
       "owner": null,
       "entrypoint": false,
       "symbols": [
@@ -453,12 +512,12 @@
         {
           "name": "other",
           "kind": "value",
-          "line": 95
+          "line": 111
         },
         {
           "name": "ignored",
           "kind": "value",
-          "line": 96
+          "line": 112
         }
       ]
     }
@@ -494,10 +553,28 @@
     {
       "type": "imports",
       "from": "file:src/cli.js",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
       "to": "file:src/render.js",
       "evidence": {
         "source": "src/cli.js",
         "specifier": "./render.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./safe-fs.js"
       }
     },
     {
@@ -529,11 +606,38 @@
     },
     {
       "type": "imports",
+      "from": "file:src/config.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/config.js",
+        "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/integrations.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/integrations.js",
+        "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
       "from": "file:src/render.js",
       "to": "file:src/paths.js",
       "evidence": {
         "source": "src/render.js",
         "specifier": "./paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/render.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/render.js",
+        "specifier": "./safe-fs.js"
       }
     },
     {
@@ -552,6 +656,15 @@
       "evidence": {
         "source": "src/scanner.js",
         "specifier": "./paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/scanner.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/scanner.js",
+        "specifier": "./safe-fs.js"
       }
     },
     {
@@ -597,6 +710,15 @@
       "evidence": {
         "source": "test/render.test.js",
         "specifier": "../src/render.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/safe-fs.test.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "test/safe-fs.test.js",
+        "specifier": "../src/safe-fs.js"
       }
     },
     {

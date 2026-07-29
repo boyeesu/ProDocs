@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { createFileExclusive } from "./safe-fs.js";
 
 const INTEGRATIONS = {
   "AGENTS.md": `# Documentation contract for coding agents
@@ -38,13 +39,8 @@ export async function writeIntegrations(root) {
 
   for (const [name, contents] of Object.entries(INTEGRATIONS)) {
     const destination = path.join(directory, name);
-    try {
-      await fs.access(destination);
-      results.push({ path: destination, created: false });
-    } catch {
-      await fs.writeFile(destination, contents);
-      results.push({ path: destination, created: true });
-    }
+    const created = await createFileExclusive(destination, contents);
+    results.push({ path: destination, created });
   }
   return results;
 }

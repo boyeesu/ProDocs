@@ -53,3 +53,25 @@ test("validateConfig rejects unknown fields", () => {
     /Unknown documentation field: unexpected/
   );
 });
+
+test("validateConfig enforces bounded resource limits", () => {
+  assert.throws(
+    () =>
+      validateConfig({
+        ...structuredClone(DEFAULT_CONFIG),
+        limits: {
+          ...DEFAULT_CONFIG.limits,
+          maxFiles: 0
+        }
+      }),
+    /limits.maxFiles must be an integer/
+  );
+  assert.throws(
+    () =>
+      validateConfig({
+        ...structuredClone(DEFAULT_CONFIG),
+        include: ["a".repeat(257)]
+      }),
+    /no longer than 256 characters/
+  );
+});

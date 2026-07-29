@@ -6,6 +6,7 @@ import {
   SUPPORTED_EXTENSIONS
 } from "./constants.js";
 import { resolveSourcePath } from "./paths.js";
+import { readRegularFile } from "./safe-fs.js";
 
 function sha256(value) {
   return crypto.createHash("sha256").update(value).digest("hex");
@@ -26,6 +27,10 @@ function toPosix(value) {
   return value.split(path.sep).join("/");
 }
 
+function normalizeSource(value) {
+  return value.replace(/\r\n?/g, "\n");
+}
+
 function isExcluded(relativePath, excluded) {
   const segments = toPosix(relativePath).split("/");
   return excluded.some((rule) => {
@@ -37,36 +42,88 @@ function isExcluded(relativePath, excluded) {
   });
 }
 
-function globToRegExp(glob) {
-  const normalized = toPosix(glob).replace(/^\.\//, "");
-  let expression = "^";
-  for (let index = 0; index < normalized.length; index += 1) {
-    const character = normalized[index];
-    if (character === "*" && normalized[index + 1] === "*") {
+export function matchesGlob(glob, value) {
+  const pattern = toPosix(glob).replace(/^\.\//, "");
+  const candidate = toPosix(value);
+  const tokens = [];
+  for (let index = 0; index < pattern.length; index += 1) {
+    if (
+      pattern[index] === "*" &&
+      pattern[index + 1] === "*" &&
+      pattern[index + 2] === "/"
+    ) {
+      tokens.push("**/");
+      index += 2;
+    } else if (pattern[index] === "*" && pattern[index + 1] === "*") {
+      tokens.push("**");
       index += 1;
-      if (normalized[index + 1] === "/") {
-        index += 1;
-        expression += "(?:.*/)?";
-      } else {
-        expression += ".*";
-      }
-    } else if (character === "*") {
-      expression += "[^/]*";
-    } else if (character === "?") {
-      expression += "[^/]";
     } else {
-      expression += character.replace(/[|\\{}()[\]^$+?.]/g, "\\$&");
+      tokens.push(pattern[index]);
     }
   }
-  return new RegExp(`${expression}$`);
+
+  let next = new Uint8Array(candidate.length + 1);
+  next[candidate.length] = 1;
+  for (let tokenIndex = tokens.length - 1; tokenIndex >= 0; tokenIndex -= 1) {
+    const current = new Uint8Array(candidate.length + 1);
+    let globstarDirectoryMatch = 0;
+    for (
+      let candidateIndex = candidate.length;
+      candidateIndex >= 0;
+      candidateIndex -= 1
+    ) {
+      const token = tokens[tokenIndex];
+      if (token === "**/") {
+        if (
+          candidateIndex < candidate.length &&
+          candidate[candidateIndex] === "/" &&
+          next[candidateIndex + 1]
+        ) {
+          globstarDirectoryMatch = 1;
+        }
+        current[candidateIndex] =
+          next[candidateIndex] || globstarDirectoryMatch;
+      } else if (token === "**") {
+        current[candidateIndex] =
+          next[candidateIndex] ||
+          (candidateIndex < candidate.length &&
+            current[candidateIndex + 1]);
+      } else if (token === "*") {
+        current[candidateIndex] =
+          next[candidateIndex] ||
+          (candidateIndex < candidate.length &&
+            candidate[candidateIndex] !== "/" &&
+            current[candidateIndex + 1]);
+      } else if (token === "?") {
+        current[candidateIndex] =
+          candidateIndex < candidate.length &&
+          candidate[candidateIndex] !== "/" &&
+          next[candidateIndex + 1];
+      } else {
+        current[candidateIndex] =
+          candidateIndex < candidate.length &&
+          token === candidate[candidateIndex] &&
+          next[candidateIndex + 1];
+      }
+    }
+    next = current;
+  }
+  return next[0] === 1;
 }
 
 function isIncluded(relativePath, include) {
   if (!include?.length) return true;
-  return include.some((pattern) => globToRegExp(pattern).test(toPosix(relativePath)));
+  return include.some((pattern) => matchesGlob(pattern, relativePath));
 }
 
-async function walk(directory, root, excluded, include, files = []) {
+async function walk(
+  directory,
+  root,
+  excluded,
+  include,
+  maxFiles,
+  files = []
+) {
   const entries = await fs.readdir(directory, { withFileTypes: true });
   entries.sort((a, b) => a.name.localeCompare(b.name));
 
@@ -76,13 +133,18 @@ async function walk(directory, root, excluded, include, files = []) {
     if (isExcluded(relative, excluded)) continue;
     if (entry.isSymbolicLink()) continue;
     if (entry.isDirectory()) {
-      await walk(absolute, root, excluded, include, files);
+      await walk(absolute, root, excluded, include, maxFiles, files);
     } else if (
       entry.isFile() &&
       SUPPORTED_EXTENSIONS.has(path.extname(entry.name)) &&
       isIncluded(relative, include)
     ) {
       files.push(absolute);
+      if (files.length > maxFiles) {
+        throw new Error(
+          `Source discovery exceeded limits.maxFiles (${maxFiles}).`
+        );
+      }
     }
   }
   return files;
@@ -94,7 +156,14 @@ async function discoverFiles(root, config) {
     const absolute = await resolveSourcePath(root, source);
     const stat = await fs.stat(absolute);
     if (stat.isDirectory()) {
-      await walk(absolute, root, config.exclude, config.include, files);
+      await walk(
+        absolute,
+        root,
+        config.exclude,
+        config.include,
+        config.limits.maxFiles,
+        files
+      );
     } else {
       const relative = path.relative(root, absolute);
       if (
@@ -104,6 +173,11 @@ async function discoverFiles(root, config) {
         isIncluded(relative, config.include)
       ) {
         files.push(absolute);
+        if (files.length > config.limits.maxFiles) {
+          throw new Error(
+            `Source discovery exceeded limits.maxFiles (${config.limits.maxFiles}).`
+          );
+        }
       }
     }
   }
@@ -264,10 +338,25 @@ export async function scanProject(root, config) {
   const absoluteFiles = await discoverFiles(canonicalRoot, config);
   const knownFiles = new Set(absoluteFiles.map((file) => path.resolve(file)));
   const nodes = [];
+  let totalBytes = 0;
 
   for (const absolutePath of absoluteFiles) {
-    const source = await fs.readFile(absolutePath, "utf8");
     const relativePath = toPosix(path.relative(canonicalRoot, absolutePath));
+    let sourceFile;
+    try {
+      sourceFile = await readRegularFile(absolutePath, {
+        maxBytes: config.limits.maxFileSizeBytes
+      });
+    } catch (error) {
+      throw new Error(`Could not safely read ${relativePath}: ${error.message}`);
+    }
+    totalBytes += sourceFile.size;
+    if (totalBytes > config.limits.maxTotalBytes) {
+      throw new Error(
+        `Indexed source exceeds limits.maxTotalBytes (${config.limits.maxTotalBytes}) at ${relativePath}.`
+      );
+    }
+    const source = normalizeSource(sourceFile.contents);
     const language = EXTENSION_LANGUAGE[path.extname(absolutePath)];
     const imports = extractImportSpecifiers(source, language);
     nodes.push({

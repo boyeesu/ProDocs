@@ -11,6 +11,7 @@
     "exclude",
     "entrypoints",
     "ownership",
+    "limits",
     "documentation"
   ],
   "properties": {
@@ -60,6 +61,32 @@
         "type": "string",
         "minLength": 1
       }
+    },
+    "limits": {
+      "type": "object",
+      "required": [
+        "maxFiles",
+        "maxFileSizeBytes",
+        "maxTotalBytes"
+      ],
+      "properties": {
+        "maxFiles": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "maxFileSizeBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 104857600
+        },
+        "maxTotalBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10737418240
+        }
+      },
+      "additionalProperties": false
     },
     "documentation": {
       "type": "object",

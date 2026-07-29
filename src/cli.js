@@ -1,8 +1,9 @@
-import fs from "node:fs/promises";
 import path from "node:path";
 import { loadConfig, writeDefaultConfig } from "./config.js";
 import { writeIntegrations } from "./integrations.js";
+import { resolveOutputPath } from "./paths.js";
 import { writeArtifacts } from "./render.js";
+import { readRegularFile } from "./safe-fs.js";
 import { scanProject, selectContext } from "./scanner.js";
 import { VERSION } from "./constants.js";
 
@@ -43,9 +44,13 @@ function rootFrom(args) {
 }
 
 async function readManifest(root, config) {
-  const manifestPath = path.resolve(root, config.output, "manifest.json");
+  const outputPath = await resolveOutputPath(root, config.output);
+  const manifestPath = path.join(outputPath, "manifest.json");
   try {
-    return JSON.parse(await fs.readFile(manifestPath, "utf8"));
+    const { contents } = await readRegularFile(manifestPath, {
+      maxBytes: 1024 * 1024
+    });
+    return JSON.parse(contents);
   } catch (error) {
     if (error.code === "ENOENT") return null;
     throw new Error(`Could not read generated manifest: ${error.message}`);
