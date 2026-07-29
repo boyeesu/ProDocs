@@ -17,6 +17,7 @@
   },
   "files": [
     "bin",
+    "scripts",
     "src",
     "schemas",
     "README.md",
