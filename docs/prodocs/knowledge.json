@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-29T13:23:39.414Z",
-  "sourceHash": "262c2d7c6174768f153ebf1ce24fbb92920aa258da013b6b7596010bd012abbe",
-  "inputHash": "d6288d89315641855fbfcad365368aa5aaa50e8abcc5b223b5ff1e04e7afc6b8",
+  "generatedAt": "2026-07-29T13:27:31.719Z",
+  "sourceHash": "c76dc75f4219d34caccc7f574ffe8960f4ab79fc35e457360293910bac46839c",
+  "inputHash": "db134a4258a89f0100964743368abbd0f891dd74a930e912cdc30f259bdac01b",
   "root": ".",
   "stats": {
-    "files": 15,
-    "lines": 1845,
+    "files": 16,
+    "lines": 1866,
     "symbols": 63,
     "edges": 24,
     "languages": {
-      "JavaScript": 15
+      "JavaScript": 16
     }
   },
   "nodes": [
@@ -21,6 +21,17 @@
       "language": "JavaScript",
       "contentHash": "e187e003355f6a5f9c70e9cd7c672957e1a2ee0871fff333917e8e6d446fa17b",
       "lines": 10,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": []
+    },
+    {
+      "id": "file:scripts/lint.js",
+      "type": "file",
+      "path": "scripts/lint.js",
+      "language": "JavaScript",
+      "contentHash": "257f9e8a638610fc6eae46bac2cd3627b9e4912039cf32f2be130bb9e45add6d",
+      "lines": 21,
       "owner": null,
       "entrypoint": false,
       "symbols": []

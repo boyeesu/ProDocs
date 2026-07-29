@@ -26,7 +26,7 @@
     "start": "node ./bin/prodocs.js",
     "test": "node --test",
     "test:coverage": "node --test --experimental-test-coverage",
-    "lint": "node --check ./bin/prodocs.js && node --check ./src/*.js",
+    "lint": "node ./scripts/lint.js",
     "docs:sync": "node ./bin/prodocs.js sync",
     "docs:check": "node ./bin/prodocs.js check",
     "verify": "npm run lint && npm test && npm run docs:check",

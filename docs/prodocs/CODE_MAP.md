@@ -8,6 +8,7 @@ not prose claims.
 | File | Language | Lines | Owner | Indexed symbols |
 | --- | --- | ---: | --- | --- |
 | [`bin/prodocs.js`](../../bin/prodocs.js) | JavaScript | 10 | — | — |
+| [`scripts/lint.js`](../../scripts/lint.js) | JavaScript | 21 | — | — |
 | [`src/cli.js`](../../src/cli.js) | JavaScript | 224 | — | hasFlag (function, L10)<br>valuesAfter (function, L14)<br>help (function, L22)<br>rootFrom (function, L41)<br>readManifest (function, L46)<br>init (function, L60)<br>sync (function, L83)<br>freshness (function, L104) |
 | [`src/config.js`](../../src/config.js) | JavaScript | 192 | — | requireStringArray (function, L7)<br>requirePositiveInteger (function, L30)<br>validateConfig (function, L36)<br>loadConfig (function, L159)<br>writeDefaultConfig (function, L184) |
 | [`src/constants.js`](../../src/constants.js) | JavaScript | 72 | — | VERSION (value, L1)<br>DEFAULT_CONFIG (value, L3)<br>EXTENSION_LANGUAGE (value, L54)<br>SUPPORTED_EXTENSIONS (value, L71) |
