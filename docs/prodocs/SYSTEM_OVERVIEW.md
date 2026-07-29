@@ -8,12 +8,12 @@
 
 | Signal | Value |
 | --- | --- |
-| Source files | 13 |
-| Lines indexed | 1432 |
-| Symbols indexed | 59 |
-| Internal relationships | 17 |
-| Languages | JavaScript (13) |
-| Evidence snapshot | `1ddaf1379af0` |
+| Source files | 15 |
+| Lines indexed | 1845 |
+| Symbols indexed | 63 |
+| Internal relationships | 24 |
+| Languages | JavaScript (15) |
+| Evidence snapshot | `262c2d7c6174` |
 
 ## Entrypoints
 
@@ -23,16 +23,16 @@
 
 | File | Language | Connections | Owner |
 | --- | --- | ---: | --- |
-| [`src/cli.js`](../../src/cli.js) | JavaScript | 6 | — |
+| [`src/cli.js`](../../src/cli.js) | JavaScript | 8 | — |
 | [`src/constants.js`](../../src/constants.js) | JavaScript | 6 | — |
-| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 4 | — |
-| [`src/config.js`](../../src/config.js) | JavaScript | 3 | — |
-| [`src/paths.js`](../../src/paths.js) | JavaScript | 3 | — |
-| [`src/render.js`](../../src/render.js) | JavaScript | 3 | — |
+| [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 6 | — |
+| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 5 | — |
+| [`src/config.js`](../../src/config.js) | JavaScript | 4 | — |
+| [`src/paths.js`](../../src/paths.js) | JavaScript | 4 | — |
+| [`src/render.js`](../../src/render.js) | JavaScript | 4 | — |
+| [`src/integrations.js`](../../src/integrations.js) | JavaScript | 2 | — |
 | [`test/config.test.js`](../../test/config.test.js) | JavaScript | 2 | — |
 | [`test/render.test.js`](../../test/render.test.js) | JavaScript | 2 | — |
-| [`test/scanner.test.js`](../../test/scanner.test.js) | JavaScript | 2 | — |
-| [`bin/prodocs.js`](../../bin/prodocs.js) | JavaScript | 1 | — |
 
 ## How to use this map
 
@@ -40,4 +40,4 @@
 - Agents should read `knowledge.json` or run `prodocs context --path <path> --json`.
 - CI should run `prodocs check` to reject stale generated documentation.
 
-Generated at 2026-07-29T12:04:46.180Z.
+Generated at 2026-07-29T13:23:39.414Z.

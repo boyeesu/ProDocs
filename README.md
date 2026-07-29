@@ -167,6 +167,11 @@ target another repository.
     "src/billing/": "@payments",
     "src/auth/": "@identity"
   },
+  "limits": {
+    "maxFiles": 50000,
+    "maxFileSizeBytes": 10485760,
+    "maxTotalBytes": 1073741824
+  },
   "documentation": {
     "productName": "Acme",
     "oneLineDescription": "What Acme does in one sentence.",
@@ -176,7 +181,9 @@ target another repository.
 ```
 
 Configured sources and generated output are constrained to the selected project
-root. ProDocs never executes indexed source.
+root. ProDocs never executes indexed source, follows source symlinks, or writes
+through generated-file symlinks. File-count and byte limits bound untrusted
+repository resource consumption.
 
 ## Supported languages
 

@@ -8,15 +8,17 @@ not prose claims.
 | File | Language | Lines | Owner | Indexed symbols |
 | --- | --- | ---: | --- | --- |
 | [`bin/prodocs.js`](../../bin/prodocs.js) | JavaScript | 10 | — | — |
-| [`src/cli.js`](../../src/cli.js) | JavaScript | 219 | — | hasFlag (function, L9)<br>valuesAfter (function, L13)<br>help (function, L21)<br>rootFrom (function, L40)<br>readManifest (function, L45)<br>init (function, L55)<br>sync (function, L78)<br>freshness (function, L99) |
-| [`src/config.js`](../../src/config.js) | JavaScript | 121 | — | requireStringArray (function, L7)<br>validateConfig (function, L19)<br>loadConfig (function, L89)<br>writeDefaultConfig (function, L111) |
-| [`src/constants.js`](../../src/constants.js) | JavaScript | 67 | — | VERSION (value, L1)<br>DEFAULT_CONFIG (value, L3)<br>EXTENSION_LANGUAGE (value, L49)<br>SUPPORTED_EXTENSIONS (value, L66) |
-| [`src/integrations.js`](../../src/integrations.js) | JavaScript | 51 | — | writeIntegrations (function, L34) |
+| [`src/cli.js`](../../src/cli.js) | JavaScript | 224 | — | hasFlag (function, L10)<br>valuesAfter (function, L14)<br>help (function, L22)<br>rootFrom (function, L41)<br>readManifest (function, L46)<br>init (function, L60)<br>sync (function, L83)<br>freshness (function, L104) |
+| [`src/config.js`](../../src/config.js) | JavaScript | 192 | — | requireStringArray (function, L7)<br>requirePositiveInteger (function, L30)<br>validateConfig (function, L36)<br>loadConfig (function, L159)<br>writeDefaultConfig (function, L184) |
+| [`src/constants.js`](../../src/constants.js) | JavaScript | 72 | — | VERSION (value, L1)<br>DEFAULT_CONFIG (value, L3)<br>EXTENSION_LANGUAGE (value, L54)<br>SUPPORTED_EXTENSIONS (value, L71) |
+| [`src/integrations.js`](../../src/integrations.js) | JavaScript | 47 | — | writeIntegrations (function, L35) |
 | [`src/paths.js`](../../src/paths.js) | JavaScript | 77 | — | isInside (function, L4)<br>requireRelativePath (function, L14)<br>resolveSourcePath (function, L23)<br>resolveOutputPath (function, L51) |
-| [`src/render.js`](../../src/render.js) | JavaScript | 166 | — | escapeCell (function, L8)<br>escapeHeading (function, L17)<br>sourceLink (function, L24)<br>languageSummary (function, L35)<br>renderSystemOverview (function, L42)<br>renderCodeMap (function, L110)<br>writeArtifacts (function, L134) |
-| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 378 | — | sha256 (function, L10)<br>stableJson (function, L14)<br>toPosix (function, L25)<br>isExcluded (function, L29)<br>globToRegExp (function, L40)<br>isIncluded (function, L64)<br>walk (function, L69)<br>discoverFiles (function, L91) |
+| [`src/render.js`](../../src/render.js) | JavaScript | 183 | — | escapeCell (function, L9)<br>escapeHeading (function, L24)<br>sourceLink (function, L31)<br>languageSummary (function, L42)<br>renderSystemOverview (function, L49)<br>renderCodeMap (function, L117)<br>writeArtifacts (function, L141) |
+| [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 115 | — | readRegularFile (function, L8)<br>createFileExclusive (function, L66)<br>atomicWriteFile (function, L80) |
+| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 463 | — | sha256 (function, L11)<br>stableJson (function, L15)<br>toPosix (function, L26)<br>isExcluded (function, L30)<br>matchesGlob (function, L41)<br>isIncluded (function, L110)<br>walk (function, L115)<br>discoverFiles (function, L149) |
 | [`test/cli.test.js`](../../test/cli.test.js) | JavaScript | 60 | — | execute (function, L10)<br>main (function, L25)<br>changed (value, L40) |
-| [`test/config.test.js`](../../test/config.test.js) | JavaScript | 56 | — | — |
+| [`test/config.test.js`](../../test/config.test.js) | JavaScript | 78 | — | — |
 | [`test/paths.test.js`](../../test/paths.test.js) | JavaScript | 44 | — | — |
 | [`test/render.test.js`](../../test/render.test.js) | JavaScript | 64 | — | graph (function, L9) |
-| [`test/scanner.test.js`](../../test/scanner.test.js) | JavaScript | 119 | — | fixture (function, L9)<br>run (function, L14)<br>greet (function, L18)<br>version (value, L55)<br>other (value, L95)<br>ignored (value, L96) |
+| [`test/safe-fs.test.js`](../../test/safe-fs.test.js) | JavaScript | 48 | — | — |
+| [`test/scanner.test.js`](../../test/scanner.test.js) | JavaScript | 168 | — | fixture (function, L9)<br>run (function, L14)<br>greet (function, L18)<br>version (value, L55)<br>other (value, L95)<br>ignored (value, L96) |

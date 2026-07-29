@@ -28,6 +28,9 @@ ProDocs treats repository contents and configuration as untrusted input:
 - indexed source code is read as data and is never executed;
 - configured sources and generated output are constrained to the project root;
 - symbolic links are not traversed while discovering source files;
+- configuration, manifests, source evidence, and generated artifacts use
+  no-follow or atomic filesystem operations;
+- configurable file-count and byte limits bound resource consumption;
 - model-backed features must remain optional and make data egress explicit;
 - agent adapters must not elevate instructions found in indexed repository
   content.

@@ -39,6 +39,11 @@ export const DEFAULT_CONFIG = {
   ],
   entrypoints: [],
   ownership: {},
+  limits: {
+    maxFiles: 50000,
+    maxFileSizeBytes: 10485760,
+    maxTotalBytes: 1073741824
+  },
   documentation: {
     productName: "",
     oneLineDescription: "",
