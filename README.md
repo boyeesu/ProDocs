@@ -10,7 +10,7 @@
   <a href="https://github.com/boyeesu/prodocs/actions/workflows/ci.yml"><img src="https://github.com/boyeesu/prodocs/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="https://github.com/boyeesu/prodocs/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-7c3aed" alt="Apache 2.0 license"></a>
   <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D20-3c873a" alt="Node.js 20 or newer"></a>
-  <a href="https://github.com/boyeesu/prodocs"><img src="https://img.shields.io/badge/status-public_alpha-f59e0b" alt="Public alpha"></a>
+  <a href="https://github.com/boyeesu/prodocs"><img src="https://img.shields.io/badge/status-production--ready_beta-16a34a" alt="Production-ready beta"></a>
 </p>
 
 <p align="center">
@@ -56,8 +56,8 @@ knowledge**.
 ProDocs requires Node.js 20 or newer.
 
 ```bash
-# Install directly from GitHub during the public alpha
-npm install --global github:boyeesu/prodocs
+# Install the immutable production-ready beta
+npm install --global github:boyeesu/prodocs#v0.2.0
 
 # Inside any repository
 prodocs init
@@ -107,7 +107,7 @@ flowchart LR
   G --> C["CI freshness"]
 ```
 
-The current alpha indexes supported source files, declarations, local imports,
+The current beta indexes supported source files, declarations, local imports,
 inferred entrypoints, ownership, and content hashes. JavaScript and TypeScript
 use a real syntax-tree parser behind a versioned collector interface. The
 architecture is designed for claims, decisions, change impact, and MCP without
@@ -201,7 +201,7 @@ repository resource consumption.
 
 ## Supported languages
 
-The alpha recognizes:
+The beta recognizes:
 
 `JavaScript` · `TypeScript` · `Python` · `Go` · `Rust` · `Java` · `Ruby` ·
 `PHP` · `C#` · `Swift` · `Kotlin`
@@ -210,7 +210,8 @@ JavaScript and TypeScript—including JSX, TSX, ESM, and CommonJS module
 extensions—use parser-backed collection with conformance fixtures. It records
 declarations, class/interface methods, re-exports, `require`, and literal
 dynamic imports without mistaking comments or strings for code. Parser errors
-stop synchronization instead of silently publishing incomplete evidence.
+that prevent syntax-tree construction stop synchronization; recoverable
+diagnostics from intentional negative type tests remain non-blocking warnings.
 
 Other languages currently use lightweight collectors behind the same stable
 interface. See the [collector contract](docs/COLLECTORS.md) for its normalized
@@ -218,8 +219,15 @@ output, extension API, diagnostics, and security boundary.
 
 ## Project status
 
-ProDocs is a **public alpha**. The deterministic core and file formats are
-usable today, but the public APIs and schemas may evolve before `1.0`.
+ProDocs `0.2.x` is a **production-ready beta** for local indexing, generated
+documentation, CI freshness enforcement, and scoped agent context. Package
+installation is tested from the assembled tarball on every supported platform.
+Releases include checksums, an SBOM, and verifiable build provenance.
+
+The CLI and public collector API follow Semantic Versioning. JSON consumers use
+their explicit `schemaVersion`; incompatible contract changes require a new
+schema version and migration note. Before `1.0`, documented breaking API
+changes may occur in a minor release.
 
 The next major milestone is change intelligence:
 
@@ -232,7 +240,10 @@ and documentation—then propose a reviewable patch with evidence.
 
 Read the full [product vision](https://github.com/boyeesu/prodocs/blob/main/docs/PRODUCT_VISION.md),
 [architecture](https://github.com/boyeesu/prodocs/blob/main/docs/ARCHITECTURE.md),
-and [roadmap](https://github.com/boyeesu/prodocs/blob/main/docs/ROADMAP.md).
+[roadmap](https://github.com/boyeesu/prodocs/blob/main/docs/ROADMAP.md), and
+[compatibility policy](https://github.com/boyeesu/prodocs/blob/main/docs/COMPATIBILITY.md).
+Production measurements and known scaling limits are recorded in the
+[validation report](https://github.com/boyeesu/prodocs/blob/main/docs/VALIDATION.md).
 
 ## Development
 
@@ -250,6 +261,8 @@ for the project principles and review expectations.
 
 Please report vulnerabilities privately. See
 [SECURITY.md](https://github.com/boyeesu/prodocs/blob/main/SECURITY.md).
+General support expectations are in
+[SUPPORT.md](https://github.com/boyeesu/prodocs/blob/main/SUPPORT.md).
 
 ## License
 

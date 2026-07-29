@@ -119,8 +119,14 @@ bytes.
 Source line endings are normalized before evidence hashing so the same revision
 produces the same graph on Linux, macOS, and Windows. Parser collectors operate
 only on supplied strings and never import, compile, evaluate, or execute indexed
-files. Parser errors stop graph generation rather than silently publishing
-incomplete evidence.
+files. Unrecoverable parser errors stop graph generation rather than silently
+publishing incomplete evidence; recoverable diagnostics remain warnings.
+
+Release artifacts are rebuilt from version tags after the full production
+verification gate. GitHub releases include checksums, a CycloneDX SBOM, and a
+build-provenance attestation. npm publishing is a separate approval-gated
+workflow using OIDC trusted publishing, so no long-lived registry token is
+stored in the repository.
 
 ## Scaling direction
 

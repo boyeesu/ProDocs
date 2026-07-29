@@ -5,7 +5,7 @@ integrations.
 
 ## Phase 0 — executable thesis
 
-Status: working prototype.
+Status: production-ready beta.
 
 - minimal-dependency CLI;
 - multi-language file and symbol indexing;
@@ -73,8 +73,10 @@ traceability to source.
    validation.
 2. **Completed:** Replace regular-expression TypeScript/JavaScript indexing
    with a parser collector behind a stable collector interface.
-3. Add `claim` and `decision` nodes with Markdown front matter and evidence
+3. **Completed:** Add release compatibility, installed-package testing,
+   coverage gates, SBOMs, provenance attestations, and incident procedures.
+4. Add `claim` and `decision` nodes with Markdown front matter and evidence
    references.
-4. Implement `prodocs impact --base <ref>` using git diffs and graph traversal.
-5. Test the CLI against three fixture repositories and record precision,
-   indexing time, and context size.
+5. Implement `prodocs impact --base <ref>` using git diffs and graph traversal.
+6. **Completed:** Test the CLI against independent pinned repositories and
+   record structural precision, indexing time, and context size.

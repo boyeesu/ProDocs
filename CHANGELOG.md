@@ -6,6 +6,8 @@ All notable changes to ProDocs are documented here. The project follows
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-29
+
 ### Added
 
 - Published a versioned context-packet JSON Schema with zero-dependency runtime
@@ -17,6 +19,11 @@ All notable changes to ProDocs are documented here. The project follows
   declarations, class/interface methods, static module relationships, parse
   diagnostics, and conformance fixtures.
 - Added `.mjs`, `.cjs`, `.mts`, and `.cts` source discovery.
+- Added packaged-install smoke testing and enforced coverage minimums.
+- Added compatibility, support, release, and incident-response policies.
+- Added tag-driven GitHub releases with SBOMs, checksums, and build provenance
+  attestations.
+- Added approval-gated npm trusted publishing with package provenance.
 
 ### Changed
 
@@ -24,6 +31,10 @@ All notable changes to ProDocs are documented here. The project follows
   neighborhood instead of order-sensitive graph expansion.
 - JavaScript and TypeScript indexing now uses Babel syntax trees rather than
   regular-expression matching; parser errors stop incomplete graph generation.
+- The supported CLI is now classified as a production-ready beta with explicit
+  pre-`1.0` compatibility rules.
+- Recoverable JavaScript/TypeScript parser diagnostics are retained as warnings
+  so intentional negative type tests do not block repository indexing.
 
 ## [0.1.0] - 2026-07-29
 
@@ -40,5 +51,6 @@ All notable changes to ProDocs are documented here. The project follows
 - Project-root containment for configured sources and generated output.
 - Versioned JSON Schemas for configuration and knowledge graph artifacts.
 
-[Unreleased]: https://github.com/boyeesu/prodocs/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/boyeesu/prodocs/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/boyeesu/prodocs/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/boyeesu/prodocs/releases/tag/v0.1.0

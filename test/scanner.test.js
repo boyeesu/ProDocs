@@ -182,6 +182,25 @@ test("scanProject refuses incomplete evidence when parser diagnostics are errors
   );
 });
 
+test("scanProject accepts evidence recovered from intentionally invalid type tests", async (t) => {
+  const root = await fixture();
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+  await fs.writeFile(
+    path.join(root, "src", "type-test.ts"),
+    "type Duplicate = 1;\ntype Duplicate = 2;\n"
+  );
+
+  const graph = await scanProject(root, DEFAULT_CONFIG);
+  const typeTest = graph.nodes.find(
+    (node) => node.path === "src/type-test.ts"
+  );
+
+  assert.deepEqual(typeTest.symbols, [
+    { name: "Duplicate", kind: "type", line: 1 },
+    { name: "Duplicate", kind: "type", line: 2 }
+  ]);
+});
+
 test("scanProject supports modern JavaScript and TypeScript module extensions", async (t) => {
   const root = await fixture();
   t.after(() => fs.rm(root, { recursive: true, force: true }));

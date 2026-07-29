@@ -2,12 +2,12 @@
 
 ## Supported versions
 
-ProDocs is currently in public alpha. Security fixes are applied to the latest
-published minor release.
+Security fixes are applied to the latest published minor release.
 
 | Version | Supported |
 | --- | --- |
-| 0.1.x | Yes |
+| 0.2.x | Yes |
+| 0.1.x | No |
 | Earlier | No |
 
 ## Reporting a vulnerability
@@ -36,3 +36,8 @@ ProDocs treats repository contents and configuration as untrusted input:
   content.
 
 The current release does not send repository content over the network.
+
+Release packages include SHA-256 checksums, a CycloneDX SBOM, and GitHub build
+provenance attestations. npm publication uses trusted publishing and provenance
+without a long-lived registry token. Operational response and recovery are
+documented in [`docs/OPERATIONS.md`](docs/OPERATIONS.md).

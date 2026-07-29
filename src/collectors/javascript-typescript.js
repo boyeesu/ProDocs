@@ -66,9 +66,9 @@ function staticSpecifier(node) {
   return null;
 }
 
-function diagnosticFrom(error) {
+function diagnosticFrom(error, severity = "error") {
   return {
-    severity: "error",
+    severity,
     code: String(error.reasonCode ?? error.code ?? "BABEL_PARSE_ERROR"),
     message: String(error.message ?? "JavaScript/TypeScript parse error."),
     line: error.loc?.line ?? 1,
@@ -247,7 +247,7 @@ export const javascriptTypeScriptCollector = defineCollector({
     const evidence = collectAst(ast);
     return {
       ...evidence,
-      diagnostics: ast.errors.map(diagnosticFrom)
+      diagnostics: ast.errors.map((error) => diagnosticFrom(error, "warning"))
     };
   }
 });
