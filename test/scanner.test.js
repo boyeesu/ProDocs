@@ -167,3 +167,49 @@ test("scanProject enforces file count and byte limits", async (t) => {
     /limits.maxTotalBytes/
   );
 });
+
+test("scanProject refuses incomplete evidence when parser diagnostics are errors", async (t) => {
+  const root = await fixture();
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+  await fs.writeFile(
+    path.join(root, "src", "broken.ts"),
+    "export const broken = ;\n"
+  );
+
+  await assert.rejects(
+    scanProject(root, DEFAULT_CONFIG),
+    /Could not parse src\/broken\.ts with babel-javascript-typescript/
+  );
+});
+
+test("scanProject supports modern JavaScript and TypeScript module extensions", async (t) => {
+  const root = await fixture();
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+  await fs.writeFile(
+    path.join(root, "src", "module.mts"),
+    'export { greet } from "./greet.js";\n'
+  );
+  await fs.writeFile(
+    path.join(root, "src", "consumer.cjs"),
+    'const module = require("./module.mts");\n'
+  );
+
+  const graph = await scanProject(root, DEFAULT_CONFIG);
+
+  assert.equal(
+    graph.nodes.find((node) => node.path === "src/module.mts").language,
+    "TypeScript"
+  );
+  assert.equal(
+    graph.nodes.find((node) => node.path === "src/consumer.cjs").language,
+    "JavaScript"
+  );
+  assert.equal(
+    graph.edges.some(
+      (edge) =>
+        edge.from === "file:src/consumer.cjs" &&
+        edge.to === "file:src/module.mts"
+    ),
+    true
+  );
+});

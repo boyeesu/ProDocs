@@ -7,7 +7,7 @@ integrations.
 
 Status: working prototype.
 
-- zero-dependency CLI;
+- minimal-dependency CLI;
 - multi-language file and symbol indexing;
 - local import relationships;
 - entrypoint and owner metadata;
@@ -22,7 +22,7 @@ to orient themselves or an agent.
 ## Phase 1 — trustworthy knowledge kernel
 
 - formal graph and context-packet JSON Schemas;
-- tree-sitter or language-server collectors for precise symbols and references;
+- parser-backed collectors for precise symbols and references;
 - first-class authored claims, invariants, and architecture decisions;
 - evidence coverage and contradiction reporting;
 - incremental SQLite index and diff-aware updates;
@@ -71,8 +71,8 @@ traceability to source.
 
 1. **Completed:** Publish a context-packet schema and add schema conformance
    validation.
-2. Replace regular-expression TypeScript/JavaScript indexing with a parser
-   collector behind a stable collector interface.
+2. **Completed:** Replace regular-expression TypeScript/JavaScript indexing
+   with a parser collector behind a stable collector interface.
 3. Add `claim` and `decision` nodes with Markdown front matter and evidence
    references.
 4. Implement `prodocs impact --base <ref>` using git diffs and graph traversal.

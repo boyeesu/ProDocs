@@ -12,11 +12,18 @@ All notable changes to ProDocs are documented here. The project follows
   validation.
 - Added deterministic request normalization, one-hop relevance reasons,
   documentation freshness, and context size/token estimates to agent packets.
+- Added a versioned collector interface and public collector-result JSON Schema.
+- Added parser-backed JavaScript and TypeScript evidence collection with
+  declarations, class/interface methods, static module relationships, parse
+  diagnostics, and conformance fixtures.
+- Added `.mjs`, `.cjs`, `.mts`, and `.cts` source discovery.
 
 ### Changed
 
 - Scoped context selection now uses a deterministic one-hop dependency
   neighborhood instead of order-sensitive graph expansion.
+- JavaScript and TypeScript indexing now uses Babel syntax trees rather than
+  regular-expression matching; parser errors stop incomplete graph generation.
 
 ## [0.1.0] - 2026-07-29
 

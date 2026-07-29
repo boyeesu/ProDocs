@@ -111,10 +111,11 @@ flowchart LR
   G --> C["CI freshness"]
 ```
 
-The current alpha indexes supported source files, top-level/exported symbols,
-local imports, inferred entrypoints, ownership, and content hashes. The
-architecture is designed for parser-backed collectors, claims, decisions,
-change impact, and MCP without replacing the core graph.
+The current alpha indexes supported source files, declarations, local imports,
+inferred entrypoints, ownership, and content hashes. JavaScript and TypeScript
+use a real syntax-tree parser behind a versioned collector interface. The
+architecture is designed for claims, decisions, change impact, and MCP without
+replacing the core graph.
 
 ## Agent-native by default
 
@@ -209,8 +210,15 @@ The alpha recognizes:
 `JavaScript` · `TypeScript` · `Python` · `Go` · `Rust` · `Java` · `Ruby` ·
 `PHP` · `C#` · `Swift` · `Kotlin`
 
-Symbol extraction is intentionally lightweight in `0.1.x`. Parser-backed
-collectors and conformance fixtures are the next trust milestone.
+JavaScript and TypeScript—including JSX, TSX, ESM, and CommonJS module
+extensions—use parser-backed collection with conformance fixtures. It records
+declarations, class/interface methods, re-exports, `require`, and literal
+dynamic imports without mistaking comments or strings for code. Parser errors
+stop synchronization instead of silently publishing incomplete evidence.
+
+Other languages currently use lightweight collectors behind the same stable
+interface. See the [collector contract](docs/COLLECTORS.md) for its normalized
+output, extension API, diagnostics, and security boundary.
 
 ## Project status
 

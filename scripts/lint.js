@@ -2,14 +2,18 @@ import fs from "node:fs";
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 
-const files = [
-  path.join("bin", "prodocs.js"),
-  ...fs
-    .readdirSync("src", { withFileTypes: true })
-    .filter((entry) => entry.isFile() && entry.name.endsWith(".js"))
-    .map((entry) => path.join("src", entry.name))
-    .sort()
-];
+function javascriptFiles(directory) {
+  return fs
+    .readdirSync(directory, { withFileTypes: true })
+    .flatMap((entry) => {
+      const file = path.join(directory, entry.name);
+      if (entry.isDirectory()) return javascriptFiles(file);
+      return entry.isFile() && entry.name.endsWith(".js") ? [file] : [];
+    })
+    .sort();
+}
+
+const files = [path.join("bin", "prodocs.js"), ...javascriptFiles("src")];
 
 for (const file of files) {
   const result = spawnSync(process.execPath, ["--check", file], {

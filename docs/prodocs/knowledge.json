@@ -1,16 +1,17 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-29T14:11:47.126Z",
-  "sourceHash": "113215693799d316ec6eadbd63efe476344743130f97ab89e140754bf77f7447",
-  "inputHash": "32cb3c7715d9cd3456944c4381899be3fc6677c3d5d08fa92f147763db690e6a",
+  "generatedAt": "2026-07-29T15:09:16.793Z",
+  "sourceHash": "67df2a08cdcffd1758c7ebec1737915aefc0875243f24735809c12f6251e3447",
+  "inputHash": "383abbdaeb6325e631c1e9a5e71f949a7f7e6c9f1bcae3098067899597fe5ca6",
   "root": ".",
   "stats": {
-    "files": 18,
-    "lines": 2569,
-    "symbols": 86,
-    "edges": 26,
+    "files": 24,
+    "lines": 3620,
+    "symbols": 125,
+    "edges": 32,
     "languages": {
-      "JavaScript": 18
+      "JavaScript": 23,
+      "TypeScript": 1
     }
   },
   "nodes": [
@@ -26,15 +27,78 @@
       "symbols": []
     },
     {
+      "id": "file:fixtures/collectors/typescript-component.tsx",
+      "type": "file",
+      "path": "fixtures/collectors/typescript-component.tsx",
+      "language": "TypeScript",
+      "contentHash": "01ad953567f636697188e0e425b154ae8a952f4e263f91be8db67d84c72dc531",
+      "lines": 27,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": [
+        {
+          "name": "Identifier",
+          "kind": "type",
+          "line": 4
+        },
+        {
+          "name": "ComponentProps",
+          "kind": "type",
+          "line": 6
+        },
+        {
+          "name": "ComponentProps.render",
+          "kind": "method",
+          "line": 8
+        },
+        {
+          "name": "State",
+          "kind": "type",
+          "line": 11
+        },
+        {
+          "name": "Component",
+          "kind": "class",
+          "line": 16
+        },
+        {
+          "name": "Component.constructor",
+          "kind": "constructor",
+          "line": 19
+        },
+        {
+          "name": "Component.render",
+          "kind": "method",
+          "line": 21
+        },
+        {
+          "name": "createComponent",
+          "kind": "value",
+          "line": 26
+        }
+      ]
+    },
+    {
       "id": "file:scripts/lint.js",
       "type": "file",
       "path": "scripts/lint.js",
       "language": "JavaScript",
-      "contentHash": "257f9e8a638610fc6eae46bac2cd3627b9e4912039cf32f2be130bb9e45add6d",
-      "lines": 21,
+      "contentHash": "ed45a649e3686df222a7b1a999772bae25876ab0c3862c42025c36cfbe62caf4",
+      "lines": 25,
       "owner": null,
       "entrypoint": false,
-      "symbols": []
+      "symbols": [
+        {
+          "name": "javascriptFiles",
+          "kind": "function",
+          "line": 5
+        },
+        {
+          "name": "files",
+          "kind": "value",
+          "line": 16
+        }
+      ]
     },
     {
       "id": "file:src/cli.js",
@@ -109,6 +173,219 @@
       ]
     },
     {
+      "id": "file:src/collectors/contract.js",
+      "type": "file",
+      "path": "src/collectors/contract.js",
+      "language": "JavaScript",
+      "contentHash": "ccfe3bb54c2629cd324b9a77bd63ae71daff0b77c5e83662d5b34716e2eacbb5",
+      "lines": 315,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": [
+        {
+          "name": "COLLECTOR_ID",
+          "kind": "value",
+          "line": 3
+        },
+        {
+          "name": "SEVERITIES",
+          "kind": "value",
+          "line": 4
+        },
+        {
+          "name": "compareStrings",
+          "kind": "function",
+          "line": 6
+        },
+        {
+          "name": "requireNonEmptyString",
+          "kind": "function",
+          "line": 12
+        },
+        {
+          "name": "requireString",
+          "kind": "function",
+          "line": 19
+        },
+        {
+          "name": "requirePositiveInteger",
+          "kind": "function",
+          "line": 26
+        },
+        {
+          "name": "uniqueSortedStrings",
+          "kind": "function",
+          "line": 33
+        },
+        {
+          "name": "normalizeSymbol",
+          "kind": "function",
+          "line": 46
+        },
+        {
+          "name": "normalizeImport",
+          "kind": "function",
+          "line": 66
+        },
+        {
+          "name": "normalizeDiagnostic",
+          "kind": "function",
+          "line": 82
+        },
+        {
+          "name": "normalizeList",
+          "kind": "function",
+          "line": 122
+        },
+        {
+          "name": "defineCollector",
+          "kind": "function",
+          "line": 138
+        },
+        {
+          "name": "createCollectorRegistry",
+          "kind": "function",
+          "line": 181
+        }
+      ]
+    },
+    {
+      "id": "file:src/collectors/index.js",
+      "type": "file",
+      "path": "src/collectors/index.js",
+      "language": "JavaScript",
+      "contentHash": "96a255b7d4a5260aaf172f466032eaa1ccf4f7fabd754af7fa2cee62394149ba",
+      "lines": 20,
+      "owner": null,
+      "entrypoint": true,
+      "symbols": [
+        {
+          "name": "defaultCollectorRegistry",
+          "kind": "value",
+          "line": 12
+        },
+        {
+          "name": "collectSourceEvidence",
+          "kind": "function",
+          "line": 17
+        }
+      ]
+    },
+    {
+      "id": "file:src/collectors/javascript-typescript.js",
+      "type": "file",
+      "path": "src/collectors/javascript-typescript.js",
+      "language": "JavaScript",
+      "contentHash": "31e92c9f9560675491d7b1b12918ed871091807056297ec9458f9486364c586f",
+      "lines": 254,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": [
+        {
+          "name": "parse",
+          "kind": "value",
+          "line": 4
+        },
+        {
+          "name": "parserPlugins",
+          "kind": "function",
+          "line": 6
+        },
+        {
+          "name": "location",
+          "kind": "function",
+          "line": 16
+        },
+        {
+          "name": "nodeName",
+          "kind": "function",
+          "line": 20
+        },
+        {
+          "name": "bindingNames",
+          "kind": "function",
+          "line": 37
+        },
+        {
+          "name": "staticSpecifier",
+          "kind": "function",
+          "line": 56
+        },
+        {
+          "name": "diagnosticFrom",
+          "kind": "function",
+          "line": 69
+        },
+        {
+          "name": "isAstNode",
+          "kind": "function",
+          "line": 79
+        },
+        {
+          "name": "collectAst",
+          "kind": "function",
+          "line": 88
+        },
+        {
+          "name": "addSymbol",
+          "kind": "function",
+          "line": 92
+        },
+        {
+          "name": "addImport",
+          "kind": "function",
+          "line": 97
+        },
+        {
+          "name": "visit",
+          "kind": "function",
+          "line": 102
+        },
+        {
+          "name": "javascriptTypeScriptCollector",
+          "kind": "value",
+          "line": 223
+        }
+      ]
+    },
+    {
+      "id": "file:src/collectors/legacy.js",
+      "type": "file",
+      "path": "src/collectors/legacy.js",
+      "language": "JavaScript",
+      "contentHash": "5b98e03565eed5e1f81bd5a71f4635c3c435ed354c94c8d26a9a6cf7eff86697",
+      "lines": 126,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": [
+        {
+          "name": "lineNumberAt",
+          "kind": "function",
+          "line": 3
+        },
+        {
+          "name": "SYMBOL_PATTERNS",
+          "kind": "value",
+          "line": 7
+        },
+        {
+          "name": "extractSymbols",
+          "kind": "function",
+          "line": 65
+        },
+        {
+          "name": "extractImports",
+          "kind": "function",
+          "line": 79
+        },
+        {
+          "name": "legacyLanguageCollector",
+          "kind": "value",
+          "line": 103
+        }
+      ]
+    },
+    {
       "id": "file:src/config.js",
       "type": "file",
       "path": "src/config.js",
@@ -118,6 +395,11 @@
       "owner": null,
       "entrypoint": false,
       "symbols": [
+        {
+          "name": "CONFIG_FILE",
+          "kind": "value",
+          "line": 5
+        },
         {
           "name": "requireStringArray",
           "kind": "function",
@@ -150,8 +432,8 @@
       "type": "file",
       "path": "src/constants.js",
       "language": "JavaScript",
-      "contentHash": "30b4cbe77cc5f71d2f01696831d15366bdeff53229b10d8856358cdbda643123",
-      "lines": 72,
+      "contentHash": "81f2d13cacac74e77273d6e85727d15f9a7f0788cc8a3528801b987bb5b2a14d",
+      "lines": 80,
       "owner": null,
       "entrypoint": false,
       "symbols": [
@@ -168,12 +450,12 @@
         {
           "name": "EXTENSION_LANGUAGE",
           "kind": "value",
-          "line": 54
+          "line": 58
         },
         {
           "name": "SUPPORTED_EXTENSIONS",
           "kind": "value",
-          "line": 71
+          "line": 79
         }
       ]
     },
@@ -187,6 +469,16 @@
       "owner": null,
       "entrypoint": false,
       "symbols": [
+        {
+          "name": "HASH_PATTERN",
+          "kind": "value",
+          "line": 1
+        },
+        {
+          "name": "PACKET_KEYS",
+          "kind": "value",
+          "line": 2
+        },
         {
           "name": "isObject",
           "kind": "function",
@@ -290,6 +582,11 @@
       "entrypoint": false,
       "symbols": [
         {
+          "name": "INTEGRATIONS",
+          "kind": "value",
+          "line": 5
+        },
+        {
           "name": "writeIntegrations",
           "kind": "function",
           "line": 35
@@ -339,6 +636,11 @@
       "entrypoint": false,
       "symbols": [
         {
+          "name": "GENERATED_NOTICE",
+          "kind": "value",
+          "line": 6
+        },
+        {
           "name": "escapeCell",
           "kind": "function",
           "line": 9
@@ -386,6 +688,11 @@
       "entrypoint": false,
       "symbols": [
         {
+          "name": "NO_FOLLOW",
+          "kind": "value",
+          "line": 6
+        },
+        {
           "name": "readRegularFile",
           "kind": "function",
           "line": 8
@@ -407,95 +714,75 @@
       "type": "file",
       "path": "src/scanner.js",
       "language": "JavaScript",
-      "contentHash": "e18b901e89b863d7a15b1478b487d195d3b754636d2d4ec21215ef3c6b045900",
-      "lines": 435,
+      "contentHash": "78db4f18ef966f8c64838bd2ef997bfd334cac65d78287b0e3698e4b238155dd",
+      "lines": 365,
       "owner": null,
       "entrypoint": false,
       "symbols": [
         {
           "name": "sha256",
           "kind": "function",
-          "line": 11
+          "line": 12
         },
         {
           "name": "stableJson",
           "kind": "function",
-          "line": 15
+          "line": 16
         },
         {
           "name": "toPosix",
           "kind": "function",
-          "line": 26
+          "line": 27
         },
         {
           "name": "normalizeSource",
           "kind": "function",
-          "line": 30
+          "line": 31
         },
         {
           "name": "isExcluded",
           "kind": "function",
-          "line": 34
+          "line": 35
         },
         {
           "name": "matchesGlob",
           "kind": "function",
-          "line": 45
+          "line": 46
         },
         {
           "name": "isIncluded",
           "kind": "function",
-          "line": 114
+          "line": 115
         },
         {
           "name": "walk",
           "kind": "function",
-          "line": 119
+          "line": 120
         },
         {
           "name": "discoverFiles",
           "kind": "function",
-          "line": 153
-        },
-        {
-          "name": "lineNumberAt",
-          "kind": "function",
-          "line": 187
-        },
-        {
-          "name": "uniqueBy",
-          "kind": "function",
-          "line": 191
-        },
-        {
-          "name": "extractSymbols",
-          "kind": "function",
-          "line": 201
-        },
-        {
-          "name": "extractImportSpecifiers",
-          "kind": "function",
-          "line": 263
+          "line": 154
         },
         {
           "name": "candidateImportPaths",
           "kind": "function",
-          "line": 286
+          "line": 188
         },
         {
           "name": "inferEntrypoint",
           "kind": "function",
-          "line": 308
+          "line": 222
         },
         {
           "name": "ownerFor",
           "kind": "function",
-          "line": 328
+          "line": 242
         },
         {
           "name": "scanProject",
           "kind": "function",
-          "line": 336
+          "line": 250
         }
       ]
     },
@@ -510,29 +797,31 @@
       "entrypoint": false,
       "symbols": [
         {
+          "name": "cli",
+          "kind": "value",
+          "line": 8
+        },
+        {
           "name": "execute",
           "kind": "function",
           "line": 10
-        },
+        }
+      ]
+    },
+    {
+      "id": "file:test/collectors.test.js",
+      "type": "file",
+      "path": "test/collectors.test.js",
+      "language": "JavaScript",
+      "contentHash": "ea2517f16d4594e6315706fd43e52e3bf00a47eff7aa67b95b0e6472c8cd2f76",
+      "lines": 321,
+      "owner": null,
+      "entrypoint": false,
+      "symbols": [
         {
-          "name": "main",
-          "kind": "function",
-          "line": 25
-        },
-        {
-          "name": "main",
-          "kind": "function",
-          "line": 67
-        },
-        {
-          "name": "changed",
+          "name": "fixtures",
           "kind": "value",
-          "line": 40
-        },
-        {
-          "name": "dependency",
-          "kind": "value",
-          "line": 71
+          "line": 12
         }
       ]
     },
@@ -557,6 +846,11 @@
       "owner": null,
       "entrypoint": false,
       "symbols": [
+        {
+          "name": "hashes",
+          "kind": "value",
+          "line": 11
+        },
         {
           "name": "node",
           "kind": "function",
@@ -618,8 +912,8 @@
       "type": "file",
       "path": "test/scanner.test.js",
       "language": "JavaScript",
-      "contentHash": "7828f4f96d35d7b0464a58a8375f383ab51c24d8eca816a0c1c335d96c96d906",
-      "lines": 170,
+      "contentHash": "84b0d1455ccfc0e8f41768b3ec7993baa62ef6f76ce2082aeed1dcb83f5b5c0a",
+      "lines": 216,
       "owner": null,
       "entrypoint": false,
       "symbols": [
@@ -627,31 +921,6 @@
           "name": "fixture",
           "kind": "function",
           "line": 9
-        },
-        {
-          "name": "run",
-          "kind": "function",
-          "line": 14
-        },
-        {
-          "name": "greet",
-          "kind": "function",
-          "line": 18
-        },
-        {
-          "name": "version",
-          "kind": "value",
-          "line": 55
-        },
-        {
-          "name": "other",
-          "kind": "value",
-          "line": 97
-        },
-        {
-          "name": "ignored",
-          "kind": "value",
-          "line": 98
         }
       ]
     }
@@ -740,6 +1009,51 @@
     },
     {
       "type": "imports",
+      "from": "file:src/collectors/index.js",
+      "to": "file:src/collectors/contract.js",
+      "evidence": {
+        "source": "src/collectors/index.js",
+        "specifier": "./contract.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/collectors/index.js",
+      "to": "file:src/collectors/javascript-typescript.js",
+      "evidence": {
+        "source": "src/collectors/index.js",
+        "specifier": "./javascript-typescript.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/collectors/index.js",
+      "to": "file:src/collectors/legacy.js",
+      "evidence": {
+        "source": "src/collectors/index.js",
+        "specifier": "./legacy.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/collectors/javascript-typescript.js",
+      "to": "file:src/collectors/contract.js",
+      "evidence": {
+        "source": "src/collectors/javascript-typescript.js",
+        "specifier": "./contract.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/collectors/legacy.js",
+      "to": "file:src/collectors/contract.js",
+      "evidence": {
+        "source": "src/collectors/legacy.js",
+        "specifier": "./contract.js"
+      }
+    },
+    {
+      "type": "imports",
       "from": "file:src/config.js",
       "to": "file:src/constants.js",
       "evidence": {
@@ -790,6 +1104,15 @@
       "evidence": {
         "source": "src/scanner.js",
         "specifier": "./constants.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/scanner.js",
+      "to": "file:src/collectors/index.js",
+      "evidence": {
+        "source": "src/scanner.js",
+        "specifier": "./collectors/index.js"
       }
     },
     {
