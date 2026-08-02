@@ -1,8 +1,8 @@
 # Contributing
 
-ProDocs is at the executable-thesis stage. The most valuable contributions
-improve the trustworthiness of its knowledge model, validate it on real
-repositories, or make its agent context measurably better.
+ProDocs is a production-ready beta. The most valuable contributions improve the
+trustworthiness of its knowledge model, validate it on real repositories, or
+make its agent context measurably better without weakening compatibility.
 
 ## Before opening a change
 
@@ -26,6 +26,8 @@ npm run verify
 ```
 
 Commit generated changes under `docs/prodocs` when the indexed source changes.
+Changes to public commands, package exports, or JSON contracts must follow the
+[compatibility policy](docs/COMPATIBILITY.md).
 
 ## Design expectations
 

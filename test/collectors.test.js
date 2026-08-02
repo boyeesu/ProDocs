@@ -77,6 +77,21 @@ test("parser diagnostics identify malformed source without executing it", async 
   assert.equal(evidence.diagnostics[0].line, 1);
 });
 
+test("recoverable parser diagnostics preserve evidence as warnings", async () => {
+  const evidence = await collectSourceEvidence({
+    source: "type Duplicate = 1;\ntype Duplicate = 2;\n",
+    filePath: "test-d/duplicate.ts",
+    language: "TypeScript"
+  });
+
+  assert.deepEqual(evidence.symbols, [
+    { name: "Duplicate", kind: "type", line: 1 },
+    { name: "Duplicate", kind: "type", line: 2 }
+  ]);
+  assert.equal(evidence.diagnostics[0].severity, "warning");
+  assert.equal(evidence.diagnostics[0].code, "VarRedeclaration");
+});
+
 test("parser covers TypeScript module syntax and destructured declarations", async () => {
   const evidence = await collectSourceEvidence({
     source: [

@@ -9,7 +9,10 @@ not prose claims.
 | --- | --- | ---: | --- | --- |
 | [`bin/prodocs.js`](../../bin/prodocs.js) | JavaScript | 10 | — | — |
 | [`fixtures/collectors/typescript-component.tsx`](../../fixtures/collectors/typescript-component.tsx) | TypeScript | 27 | — | Identifier (type, L4)<br>ComponentProps (type, L6)<br>ComponentProps.render (method, L8)<br>State (type, L11)<br>Component (class, L16)<br>Component.constructor (constructor, L19)<br>Component.render (method, L21)<br>createComponent (value, L26) |
+| [`scripts/coverage.js`](../../scripts/coverage.js) | JavaScript | 53 | — | thresholds (value, L3)<br>result (value, L9)<br>summary (value, L25)<br>values (value, L32)<br>actual (value, L36) |
 | [`scripts/lint.js`](../../scripts/lint.js) | JavaScript | 25 | — | javascriptFiles (function, L5)<br>files (value, L16) |
+| [`scripts/validate-repository.js`](../../scripts/validate-repository.js) | JavaScript | 72 | — | repositoryPath (value, L10)<br>requestedPath (value, L11)<br>root (value, L20)<br>revisionResult (value, L21)<br>startedAt (value, L32)<br>graph (value, L33)<br>elapsedMs (value, L34)<br>selectedPath (value, L35) |
+| [`scripts/verify-release.js`](../../scripts/verify-release.js) | JavaScript | 67 | — | fail (function, L4)<br>packageMetadata (value, L9)<br>packageLock (value, L10)<br>changelog (value, L11)<br>requestedTag (value, L12) |
 | [`src/cli.js`](../../src/cli.js) | JavaScript | 221 | — | hasFlag (function, L11)<br>valuesAfter (function, L15)<br>help (function, L23)<br>rootFrom (function, L42)<br>readManifest (function, L47)<br>init (function, L61)<br>sync (function, L84)<br>freshness (function, L105) |
 | [`src/collectors/contract.js`](../../src/collectors/contract.js) | JavaScript | 315 | — | COLLECTOR_ID (value, L3)<br>SEVERITIES (value, L4)<br>compareStrings (function, L6)<br>requireNonEmptyString (function, L12)<br>requireString (function, L19)<br>requirePositiveInteger (function, L26)<br>uniqueSortedStrings (function, L33)<br>normalizeSymbol (function, L46) |
 | [`src/collectors/index.js`](../../src/collectors/index.js) | JavaScript | 20 | — | defaultCollectorRegistry (value, L12)<br>collectSourceEvidence (function, L17) |
@@ -24,10 +27,12 @@ not prose claims.
 | [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 115 | — | NO_FOLLOW (value, L6)<br>readRegularFile (function, L8)<br>createFileExclusive (function, L66)<br>atomicWriteFile (function, L80) |
 | [`src/scanner.js`](../../src/scanner.js) | JavaScript | 365 | — | sha256 (function, L12)<br>stableJson (function, L16)<br>toPosix (function, L27)<br>normalizeSource (function, L31)<br>isExcluded (function, L35)<br>matchesGlob (function, L46)<br>isIncluded (function, L115)<br>walk (function, L120) |
 | [`test/cli.test.js`](../../test/cli.test.js) | JavaScript | 97 | — | cli (value, L8)<br>execute (function, L10) |
-| [`test/collectors.test.js`](../../test/collectors.test.js) | JavaScript | 321 | — | fixtures (value, L12) |
+| [`test/collectors.test.js`](../../test/collectors.test.js) | JavaScript | 336 | — | fixtures (value, L12) |
 | [`test/config.test.js`](../../test/config.test.js) | JavaScript | 78 | — | — |
 | [`test/context.test.js`](../../test/context.test.js) | JavaScript | 174 | — | hashes (value, L11)<br>node (function, L19)<br>edge (function, L39)<br>graph (function, L51) |
+| [`test/package.test.js`](../../test/package.test.js) | JavaScript | 178 | — | npmCli (value, L8)<br>execute (function, L20)<br>executeNpm (function, L35) |
 | [`test/paths.test.js`](../../test/paths.test.js) | JavaScript | 44 | — | — |
 | [`test/render.test.js`](../../test/render.test.js) | JavaScript | 64 | — | graph (function, L9) |
 | [`test/safe-fs.test.js`](../../test/safe-fs.test.js) | JavaScript | 48 | — | — |
-| [`test/scanner.test.js`](../../test/scanner.test.js) | JavaScript | 216 | — | fixture (function, L9) |
+| [`test/scanner.test.js`](../../test/scanner.test.js) | JavaScript | 235 | — | fixture (function, L9) |
+| [`test/workflows.test.js`](../../test/workflows.test.js) | JavaScript | 47 | — | workflowDirectory (value, L6) |

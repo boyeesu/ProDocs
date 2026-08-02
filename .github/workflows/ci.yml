@@ -33,7 +33,11 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run verify
+      - if: matrix.node == 24
+        run: npm run test:coverage
       - run: npm audit --omit=dev
+      - if: matrix.node == 24
+        run: npm audit signatures
       - run: npm pack --dry-run
 
   platform:

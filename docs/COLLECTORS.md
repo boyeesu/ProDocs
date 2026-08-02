@@ -67,9 +67,10 @@ Other supported languages currently use the
 contract so each language can be replaced without changing the scanner or
 knowledge graph.
 
-The default CLI treats parser errors as incomplete evidence and stops with the
-file and location. Direct registry users can inspect diagnostics and choose
-their own policy.
+The default CLI stops with the file and location when a parser cannot produce
+an AST. Recoverable parser diagnostics—common in intentional negative type
+tests—are retained as warnings while their syntax-tree evidence remains usable.
+Direct registry users can inspect all diagnostics and choose their own policy.
 
 ## Security boundary
 

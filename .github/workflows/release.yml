@@ -1,0 +1,61 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Build and attest release
+    if: github.repository == 'boyeesu/ProDocs'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run release:check -- "$GITHUB_REF_NAME"
+      - name: Require an annotated tag on protected main
+        shell: bash
+        run: |
+          test "$(git cat-file -t "refs/tags/$GITHUB_REF_NAME")" = "tag"
+          git fetch --no-tags origin main
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/main
+      - run: npm run verify:production
+      - name: Build release artifacts
+        shell: bash
+        run: |
+          mkdir release
+          npm pack --ignore-scripts --silent --pack-destination release
+          version="$(node -p "require('./package.json').version")"
+          npm sbom --omit=dev --sbom-format=cyclonedx --sbom-type=application \
+            > "release/prodocs-${version}.cdx.json"
+          sha256sum release/*.tgz release/*.json > release/SHA256SUMS
+      - name: Attest package provenance
+        uses: actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
+        with:
+          subject-path: "release/*.tgz"
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh release create "$GITHUB_REF_NAME" release/*
+          --repo "$GITHUB_REPOSITORY"
+          --verify-tag
+          --title "ProDocs $GITHUB_REF_NAME"
+          --generate-notes

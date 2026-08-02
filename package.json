@@ -1,6 +1,6 @@
 {
   "name": "prodocs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Evidence-backed documentation and context infrastructure for codebases and coding agents.",
   "type": "module",
   "author": "ProDocs contributors",
@@ -26,18 +26,23 @@
     "src",
     "schemas",
     "docs/COLLECTORS.md",
+    "docs/COMPATIBILITY.md",
     "README.md",
+    "SECURITY.md",
+    "SUPPORT.md",
     "LICENSE"
   ],
   "scripts": {
     "start": "node ./bin/prodocs.js",
     "test": "node --test",
-    "test:coverage": "node --test --experimental-test-coverage",
+    "test:coverage": "node ./scripts/coverage.js",
     "lint": "node ./scripts/lint.js",
     "docs:sync": "node ./bin/prodocs.js sync",
     "docs:check": "node ./bin/prodocs.js check",
-    "verify": "npm run lint && npm test && npm run docs:check",
-    "prepack": "npm run lint && npm test"
+    "release:check": "node ./scripts/verify-release.js",
+    "verify": "npm run lint && npm test && npm run release:check && npm run docs:check",
+    "verify:production": "npm run verify && npm run test:coverage && npm audit --omit=dev && npm audit signatures && npm pack --dry-run",
+    "prepack": "npm run verify"
   },
   "engines": {
     "node": ">=20"

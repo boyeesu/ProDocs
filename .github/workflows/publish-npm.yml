@@ -1,0 +1,59 @@
+name: Publish npm
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing GitHub release tag to publish
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: publish-npm-${{ inputs.tag }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publish with provenance
+    if: github.repository == 'boyeesu/ProDocs'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: npm
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ inputs.tag }}
+          fetch-depth: 0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          cache: npm
+      - run: npm ci
+      - name: Verify release identity
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          npm run release:check -- "$RELEASE_TAG"
+          test "$(git cat-file -t "refs/tags/$RELEASE_TAG")" = "tag"
+          git fetch --no-tags origin main
+          git merge-base --is-ancestor HEAD origin/main
+      - run: npm run verify:production
+      - name: Verify the GitHub release artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          mkdir release
+          gh release download "$RELEASE_TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --pattern "prodocs-*.tgz" \
+            --pattern "SHA256SUMS" \
+            --dir release
+          (cd release && sha256sum --check SHA256SUMS --ignore-missing)
+          gh attestation verify release/*.tgz --repo "$GITHUB_REPOSITORY"
+      - run: npm publish release/*.tgz --access public --provenance
