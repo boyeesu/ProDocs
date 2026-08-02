@@ -78,6 +78,17 @@ export async function createFileExclusive(filePath, contents) {
 }
 
 export async function atomicWriteFile(filePath, contents) {
+  return atomicWrite(filePath, contents, "utf8");
+}
+
+export async function atomicWriteBuffer(filePath, contents) {
+  if (!Buffer.isBuffer(contents) && !(contents instanceof Uint8Array)) {
+    throw new TypeError("atomicWriteBuffer requires a Buffer or Uint8Array.");
+  }
+  return atomicWrite(filePath, contents, null);
+}
+
+async function atomicWrite(filePath, contents, encoding) {
   const directory = path.dirname(filePath);
   const basename = path.basename(filePath);
   const temporaryPath = path.join(
@@ -95,11 +106,9 @@ export async function atomicWriteFile(filePath, contents) {
       if (error.code !== "ENOENT") throw error;
     }
 
-    await fs.writeFile(temporaryPath, contents, {
-      encoding: "utf8",
-      flag: "wx",
-      mode: 0o644
-    });
+    const options = { flag: "wx", mode: 0o644 };
+    if (encoding) options.encoding = encoding;
+    await fs.writeFile(temporaryPath, contents, options);
     await fs.rename(temporaryPath, filePath);
   } catch (error) {
     try {

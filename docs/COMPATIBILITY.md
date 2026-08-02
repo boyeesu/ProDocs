@@ -1,7 +1,7 @@
 # Compatibility policy
 
 ProDocs separates CLI/package compatibility from its versioned data contracts.
-This policy applies from `0.2.0`.
+This policy applies from `1.0.0`.
 
 ## Runtime support
 
@@ -9,9 +9,8 @@ The supported runtime is Node.js 20 or newer. CI verifies the oldest supported
 major, the current active LTS line, the current release line, macOS, and Windows.
 Linux is covered by every Node.js matrix job.
 
-When a Node.js major reaches end of life, ProDocs may remove it in a minor
-release while the project is below `1.0`. The change must be announced in the
-changelog before release.
+When a Node.js major reaches end of life, removing it requires the next
+semantically appropriate release and advance notice in the changelog.
 
 ## CLI and package
 
@@ -19,10 +18,8 @@ ProDocs follows Semantic Versioning:
 
 - patch releases fix defects without intentionally changing accepted commands
   or versioned JSON shapes;
-- minor releases may add commands, fields behind a new schema version, or
-  collector capabilities;
-- before `1.0`, a necessary CLI or JavaScript API break may occur in a minor
-  release, but it must be documented with a migration path;
+- minor releases may add backwards-compatible commands, fields, or collector
+  capabilities;
 - after `1.0`, incompatible CLI or public JavaScript API changes require a
   major release.
 
@@ -43,6 +40,19 @@ schema version:
 An incompatible shape or semantic change increments `schemaVersion` and ships
 with a migration note. Package and schema versions are intentionally
 independent.
+
+### 0.2 to 1.0 migration
+
+- knowledge graphs move from schema version 1 to 2 and add authored knowledge,
+  typed evidence relationships, trust metadata, knowledge hashes, roles, public
+  surfaces, and deterministic index metadata;
+- context packets move from schema version 1 to 2 and add authored knowledge,
+  task/file/token budgets, truncation, knowledge freshness, and the
+  untrusted-repository boundary;
+- rerun `prodocs sync` after upgrading; schema version 1 generated artifacts
+  remain readable through git history but are not emitted by 1.0;
+- update consumers to reject unsupported schema versions and use the published
+  version 2 Schemas.
 
 ## Generated documentation
 

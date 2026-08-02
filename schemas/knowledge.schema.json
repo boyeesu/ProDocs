@@ -7,6 +7,7 @@
     "schemaVersion",
     "generatedAt",
     "sourceHash",
+    "knowledgeHash",
     "inputHash",
     "root",
     "stats",
@@ -14,22 +15,12 @@
     "edges"
   ],
   "properties": {
-    "schemaVersion": {
-      "const": 1
-    },
-    "generatedAt": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "sourceHash": {
-      "$ref": "#/$defs/hash"
-    },
-    "inputHash": {
-      "$ref": "#/$defs/hash"
-    },
-    "root": {
-      "const": "."
-    },
+    "schemaVersion": { "const": 2 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "sourceHash": { "$ref": "#/$defs/hash" },
+    "knowledgeHash": { "$ref": "#/$defs/hash" },
+    "inputHash": { "$ref": "#/$defs/hash" },
+    "root": { "const": "." },
     "stats": {
       "type": "object",
       "required": [
@@ -37,46 +28,56 @@
         "lines",
         "symbols",
         "edges",
-        "languages"
+        "languages",
+        "knowledge",
+        "index"
       ],
       "properties": {
-        "files": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "lines": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "symbols": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "edges": {
-          "type": "integer",
-          "minimum": 0
-        },
+        "files": { "type": "integer", "minimum": 0 },
+        "lines": { "type": "integer", "minimum": 0 },
+        "symbols": { "type": "integer", "minimum": 0 },
+        "edges": { "type": "integer", "minimum": 0 },
         "languages": {
           "type": "object",
-          "additionalProperties": {
-            "type": "integer",
-            "minimum": 0
-          }
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        },
+        "knowledge": {
+          "type": "object",
+          "required": [
+            "total",
+            "supported",
+            "unsupported",
+            "contradictions",
+            "instructionSignals"
+          ],
+          "properties": {
+            "total": { "type": "integer", "minimum": 0 },
+            "supported": { "type": "integer", "minimum": 0 },
+            "unsupported": { "type": "integer", "minimum": 0 },
+            "contradictions": { "type": "integer", "minimum": 0 },
+            "instructionSignals": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "index": {
+          "type": "object",
+          "required": ["backend", "entries"],
+          "properties": {
+            "backend": { "enum": ["sqlite", "disabled"] },
+            "entries": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false
     },
     "nodes": {
       "type": "array",
-      "items": {
-        "$ref": "#/$defs/node"
-      }
+      "items": { "$ref": "#/$defs/node" }
     },
     "edges": {
       "type": "array",
-      "items": {
-        "$ref": "#/$defs/edge"
-      }
+      "items": { "$ref": "#/$defs/edge" }
     }
   },
   "$defs": {
@@ -86,28 +87,38 @@
     },
     "symbol": {
       "type": "object",
-      "required": [
-        "name",
-        "kind",
-        "line"
-      ],
+      "required": ["name", "kind", "line"],
       "properties": {
-        "name": {
-          "type": "string",
-          "minLength": 1
-        },
-        "kind": {
-          "type": "string",
-          "minLength": 1
-        },
-        "line": {
-          "type": "integer",
-          "minimum": 1
+        "name": { "type": "string", "minLength": 1 },
+        "kind": { "type": "string", "minLength": 1 },
+        "line": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "signal": {
+      "type": "object",
+      "required": ["code", "offset", "excerpt"],
+      "properties": {
+        "code": { "const": "repository-instruction" },
+        "offset": { "type": "integer", "minimum": 0 },
+        "excerpt": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "trust": {
+      "type": "object",
+      "required": ["repositoryContent", "instructionSignals"],
+      "properties": {
+        "authored": { "type": "boolean" },
+        "repositoryContent": { "const": "untrusted" },
+        "instructionSignals": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/signal" }
         }
       },
       "additionalProperties": false
     },
-    "node": {
+    "fileNode": {
       "type": "object",
       "required": [
         "id",
@@ -118,80 +129,186 @@
         "lines",
         "owner",
         "entrypoint",
-        "symbols"
+        "publicSurface",
+        "role",
+        "symbols",
+        "trust"
       ],
       "properties": {
-        "id": {
-          "type": "string",
-          "pattern": "^file:"
-        },
-        "type": {
-          "const": "file"
-        },
-        "path": {
-          "type": "string",
-          "minLength": 1
-        },
-        "language": {
-          "type": "string",
-          "minLength": 1
-        },
-        "contentHash": {
-          "$ref": "#/$defs/hash"
-        },
-        "lines": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "owner": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "entrypoint": {
-          "type": "boolean"
+        "id": { "type": "string", "pattern": "^file:.+" },
+        "type": { "const": "file" },
+        "path": { "type": "string", "minLength": 1 },
+        "language": { "type": "string", "minLength": 1 },
+        "contentHash": { "$ref": "#/$defs/hash" },
+        "lines": { "type": "integer", "minimum": 0 },
+        "owner": { "type": ["string", "null"] },
+        "entrypoint": { "type": "boolean" },
+        "publicSurface": { "type": "boolean" },
+        "role": {
+          "enum": ["source", "entrypoint", "test", "api", "database"]
         },
         "symbols": {
           "type": "array",
-          "items": {
-            "$ref": "#/$defs/symbol"
-          }
+          "items": { "$ref": "#/$defs/symbol" }
+        },
+        "trust": { "$ref": "#/$defs/trust" }
+      },
+      "additionalProperties": false
+    },
+    "evidenceReference": {
+      "type": "object",
+      "required": ["path", "symbol", "supported", "contentHash"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "symbol": { "type": ["string", "null"] },
+        "supported": { "type": "boolean" },
+        "contentHash": {
+          "anyOf": [
+            { "$ref": "#/$defs/hash" },
+            { "type": "null" }
+          ]
         }
       },
       "additionalProperties": false
     },
-    "edge": {
+    "verification": {
       "type": "object",
       "required": [
-        "type",
-        "from",
-        "to",
-        "evidence"
+        "command",
+        "args",
+        "cwd",
+        "timeoutMs",
+        "expectedExitCode"
       ],
       "properties": {
+        "command": { "type": "string", "minLength": 1 },
+        "args": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "cwd": { "type": "string", "minLength": 1 },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 300000
+        },
+        "expectedExitCode": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        }
+      },
+      "additionalProperties": false
+    },
+    "knowledgeNode": {
+      "type": "object",
+      "required": [
+        "id",
+        "key",
+        "type",
+        "path",
+        "line",
+        "title",
+        "status",
+        "bodyHash",
+        "evidence",
+        "audiences",
+        "affects",
+        "contradicts",
+        "supersedes",
+        "customerImpact",
+        "verification",
+        "trust"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 3 },
+        "key": { "type": "string", "minLength": 1 },
         "type": {
-          "const": "imports"
+          "enum": ["claim", "decision", "invariant", "feature", "runbook"]
         },
-        "from": {
-          "type": "string"
+        "path": { "type": "string", "minLength": 1 },
+        "line": { "type": "integer", "minimum": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "status": {
+          "enum": ["active", "proposed", "deprecated", "superseded"]
         },
-        "to": {
-          "type": "string"
+        "bodyHash": { "$ref": "#/$defs/hash" },
+        "evidence": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/evidenceReference" }
         },
+        "audiences": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "affects": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "contradicts": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "supersedes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "customerImpact": { "type": "string" },
+        "verification": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/verification" }
+        },
+        "trust": { "$ref": "#/$defs/trust" }
+      },
+      "additionalProperties": false
+    },
+    "ownerNode": {
+      "type": "object",
+      "required": ["id", "type", "path", "title", "trust"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^owner:.+" },
+        "type": { "const": "owner" },
+        "path": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "trust": { "$ref": "#/$defs/trust" }
+      },
+      "additionalProperties": false
+    },
+    "node": {
+      "oneOf": [
+        { "$ref": "#/$defs/fileNode" },
+        { "$ref": "#/$defs/knowledgeNode" },
+        { "$ref": "#/$defs/ownerNode" }
+      ]
+    },
+    "edge": {
+      "type": "object",
+      "required": ["type", "from", "to", "evidence"],
+      "properties": {
+        "type": {
+          "enum": [
+            "imports",
+            "tests",
+            "supported-by",
+            "contradicts",
+            "supersedes",
+            "affects",
+            "owns"
+          ]
+        },
+        "from": { "type": "string", "minLength": 1 },
+        "to": { "type": "string", "minLength": 1 },
         "evidence": {
           "type": "object",
-          "required": [
-            "source",
-            "specifier"
-          ],
+          "required": ["source"],
           "properties": {
-            "source": {
-              "type": "string"
-            },
-            "specifier": {
-              "type": "string"
-            }
+            "source": { "type": "string", "minLength": 1 },
+            "specifier": { "type": "string", "minLength": 1 },
+            "reference": { "type": "string", "minLength": 1 }
           },
           "additionalProperties": false
         }

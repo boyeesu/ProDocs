@@ -1,10 +1,34 @@
 # Production validation
 
-ProDocs `0.2.0` was exercised against pinned revisions of four independent
-open-source repositories on 2026-07-29. These are read-only scans: dependencies
-were not installed and indexed code was not executed.
+ProDocs `1.0.0` combines deterministic self-validation with the external
+repository baseline first recorded for `0.2.0`. External scans are read-only:
+dependencies are not installed and indexed code is never executed.
 
-## Results
+## 1.0 release gates
+
+The production gate runs all of the following:
+
+- syntax and repository hygiene checks;
+- the complete unit, CLI, security-boundary, and installed-package suite;
+- minimum coverage of 85% lines, 80% branches, and 90% functions (the 1.0
+  production gate measures 93.15% lines, 80.17% branches, and 95.84%
+  functions);
+- package metadata, export, schema, and archive verification;
+- generated-document freshness and deterministic resynchronization;
+- documentation contracts for ownership, public claims, evidence, and runbook
+  verification;
+- context-retrieval recall, precision, and token-budget evaluation;
+- declarative plugin fixture verification;
+- dependency advisory and registry-signature audits;
+- an npm package dry-run.
+
+CI repeats compatible gates across Node.js 20, 22, and 24, with Linux, macOS,
+and Windows coverage. Pull requests also generate a machine-readable impact
+report before merge.
+
+## External repository baseline
+
+The following pinned revisions were scanned on 2026-07-29:
 
 | Repository | Revision | Languages | Files | Lines | Symbols | Relationships | Index time |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
@@ -17,7 +41,13 @@ Times are single local macOS measurements on Node.js 26 and are directional,
 not performance guarantees. Source hashes and structural counts are the
 reproducible baseline.
 
-## Context measurements
+## Bounded context
+
+Every 1.0 context request has explicit file and estimated-token budgets.
+Truncation is deterministic and visible in the packet rather than silently
+expanding through a large barrel entrypoint.
+
+Historical pre-budget measurements remain useful as a stress baseline:
 
 | Repository | Requested path | Files | Relationships | Bytes | Estimated tokens |
 | --- | --- | ---: | ---: | ---: | ---: |
@@ -26,36 +56,42 @@ reproducible baseline.
 | Express | `lib/application.js` | 4 | 3 | 3,872 | 968 |
 | ItsDangerous | `src/itsdangerous/serializer.py` | 7 | 20 | 7,353 | 1,839 |
 
-Barrel files are intentionally called out as a limitation. Requesting
-type-fest's `index.d.ts` selects 356 directly related files and approximately
-89,840 tokens. Users should request the narrowest task-relevant path until
-explicit context budgets ship.
+The type-fest `index.d.ts` stress case previously expanded to 356 files and
+approximately 89,840 tokens. In 1.0 it is constrained by
+`limits.maxContextFiles` and `limits.maxContextTokens`, with omitted counts and
+reasons returned to the caller.
 
 ## Precision evidence
 
-- JavaScript and TypeScript import evidence comes from syntax nodes, so
-  import-like comments and strings are excluded by conformance fixtures.
-- Every emitted local relationship resolved to an indexed file at the pinned
-  revision; unresolved package imports are not promoted into graph edges.
-- All 613 scanned files across the JavaScript, TypeScript, and Python
-  repositories completed without an unrecoverable parse failure.
-- type-fest exposed intentional negative TypeScript tests that Babel reports as
-  recoverable redeclarations. Production policy now retains those diagnostics
-  as warnings while preserving their AST evidence.
-
-This is structural precision evidence, not a semantic recall benchmark for
-calls or types that ProDocs does not yet claim to extract.
+- JavaScript and TypeScript imports come from syntax nodes, excluding
+  import-like comments and strings.
+- Local relationships resolve to indexed files; unresolved package imports are
+  not promoted into graph edges.
+- OpenAPI, SQL, CODEOWNERS, tests, and declarative plugin results have typed
+  provenance.
+- Every authored knowledge item resolves its evidence or fails synchronization
+  according to configuration.
+- Context packets report source, knowledge, and combined-input freshness.
+- SQLite is a content-hash cache only; generated output remains byte-stable
+  with the cache disabled.
 
 ## Reproduce
 
-Clone a repository at the recorded revision and run:
+Run the complete release gate:
+
+```sh
+npm ci
+node ./bin/prodocs.js sync
+npm run verify:production
+```
+
+Reproduce an external scan:
 
 ```sh
 node scripts/validate-repository.js <repository-path> <context-path>
 ```
 
-The command prints the revision, source hash, graph statistics, elapsed index
-time, and context size as JSON. Expected source hashes are:
+Expected external source hashes are:
 
 | Repository | Source hash |
 | --- | --- |

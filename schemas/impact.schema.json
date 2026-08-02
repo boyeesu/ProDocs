@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/boyeesu/prodocs/main/schemas/impact.schema.json",
+  "title": "ProDocs change impact report",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "kind",
+    "range",
+    "sourceHash",
+    "knowledgeHash",
+    "changes",
+    "affected",
+    "id"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "kind": { "const": "prodocs.impact" },
+    "range": { "type": "string", "minLength": 1 },
+    "sourceHash": { "$ref": "#/$defs/hash" },
+    "knowledgeHash": { "$ref": "#/$defs/hash" },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["status", "similarity", "before", "path"],
+        "properties": {
+          "status": { "enum": ["A", "C", "D", "M", "R", "T", "U", "X", "B"] },
+          "similarity": { "type": ["integer", "null"] },
+          "before": { "type": ["string", "null"] },
+          "path": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "affected": {
+      "type": "object",
+      "required": [
+        "files",
+        "claims",
+        "decisions",
+        "features",
+        "runbooks",
+        "owners",
+        "tests"
+      ],
+      "additionalProperties": {
+        "type": "array",
+        "items": { "$ref": "#/$defs/affected" }
+      }
+    },
+    "id": { "$ref": "#/$defs/hash" }
+  },
+  "$defs": {
+    "hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "affected": {
+      "type": "object",
+      "required": ["id", "type", "path", "title", "owner", "reason"],
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "path": { "type": "string" },
+        "title": { "type": ["string", "null"] },
+        "owner": { "type": ["string", "null"] },
+        "reason": { "enum": ["changed", "graph-neighbor"] }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -12,6 +12,10 @@
     "entrypoints",
     "ownership",
     "limits",
+    "knowledge",
+    "index",
+    "plugins",
+    "policies",
     "documentation"
   ],
   "properties": {
@@ -68,6 +72,9 @@
         "maxFiles",
         "maxFileSizeBytes",
         "maxTotalBytes"
+        ,"maxContextFiles"
+        ,"maxContextTokens"
+        ,"maxProviderBytes"
       ],
       "properties": {
         "maxFiles": {
@@ -84,7 +91,72 @@
           "type": "integer",
           "minimum": 1,
           "maximum": 10737418240
+        },
+        "maxContextFiles": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "maxContextTokens": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000000
+        },
+        "maxProviderBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 104857600
         }
+      },
+      "additionalProperties": false
+    },
+    "knowledge": {
+      "type": "object",
+      "required": ["paths", "requireEvidence"],
+      "properties": {
+        "paths": {
+          "type": "array",
+          "maxItems": 256,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "requireEvidence": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "index": {
+      "type": "object",
+      "required": ["enabled", "path"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "path": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "plugins": {
+      "type": "object",
+      "required": ["paths"],
+      "properties": {
+        "paths": {
+          "type": "array",
+          "maxItems": 64,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      },
+      "additionalProperties": false
+    },
+    "policies": {
+      "type": "object",
+      "required": [
+        "publicSurfaceRequiresOwner",
+        "publicSurfaceRequiresClaim",
+        "claimRequiresEvidence",
+        "runbookRequiresVerification"
+      ],
+      "properties": {
+        "publicSurfaceRequiresOwner": { "type": "boolean" },
+        "publicSurfaceRequiresClaim": { "type": "boolean" },
+        "claimRequiresEvidence": { "type": "boolean" },
+        "runbookRequiresVerification": { "type": "boolean" }
       },
       "additionalProperties": false
     },

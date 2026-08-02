@@ -19,7 +19,11 @@
     "**/*.cs",
     "**/*.swift",
     "**/*.kt",
-    "**/*.kts"
+    "**/*.kts",
+    "**/*.sql",
+    "**/*.openapi.json",
+    "**/*.openapi.yaml",
+    "**/*.openapi.yml"
   ],
   "exclude": [
     ".git",
@@ -41,13 +45,41 @@
   "limits": {
     "maxFiles": 50000,
     "maxFileSizeBytes": 10485760,
-    "maxTotalBytes": 1073741824
+    "maxTotalBytes": 1073741824,
+    "maxContextFiles": 50,
+    "maxContextTokens": 12000,
+    "maxProviderBytes": 262144
+  },
+  "knowledge": {
+    "paths": [
+      "docs/knowledge"
+    ],
+    "requireEvidence": true
+  },
+  "index": {
+    "enabled": true,
+    "path": ".prodocs/index.sqlite"
+  },
+  "plugins": {
+    "paths": [
+      "fixtures/plugins/service.prodocs-plugin.json"
+    ]
+  },
+  "policies": {
+    "publicSurfaceRequiresOwner": true,
+    "publicSurfaceRequiresClaim": true,
+    "claimRequiresEvidence": true,
+    "runbookRequiresVerification": true
   },
   "documentation": {
     "productName": "ProDocs",
     "oneLineDescription": "Evidence-backed documentation and context infrastructure for codebases and coding agents.",
     "audiences": [
-      "engineers",
+      "product",
+      "technical",
+      "support",
+      "security",
+      "operations",
       "coding-agents"
     ]
   }

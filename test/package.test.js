@@ -19,16 +19,30 @@ const npmCli =
 
 function execute(command, args, options = {}) {
   return new Promise((resolve, reject) => {
+    const { timeoutMs = 120_000, ...spawnOptions } = options;
     const child = spawn(command, args, {
-      ...options,
+      ...spawnOptions,
       windowsHide: true
     });
     let stdout = "";
     let stderr = "";
+    let settled = false;
+    const timer = setTimeout(() => {
+      stderr += `Process exceeded ${timeoutMs}ms timeout.`;
+      child.kill("SIGTERM");
+    }, timeoutMs);
+    const finish = (callback) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      callback();
+    };
     child.stdout.on("data", (chunk) => (stdout += chunk));
     child.stderr.on("data", (chunk) => (stderr += chunk));
-    child.on("error", reject);
-    child.on("close", (code) => resolve({ code, stdout, stderr }));
+    child.on("error", (error) => finish(() => reject(error)));
+    child.on("close", (code) =>
+      finish(() => resolve({ code, stdout, stderr }))
+    );
   });
 }
 
@@ -81,6 +95,8 @@ test("published package installs and completes the documented workflow", async (
     "docs/COLLECTORS.md",
     "docs/COMPATIBILITY.md",
     "schemas/collector-result.schema.json",
+    "schemas/impact.schema.json",
+    "schemas/proposal.schema.json",
     "SECURITY.md",
     "SUPPORT.md"
   ]) {
@@ -98,6 +114,8 @@ test("published package installs and completes the documented workflow", async (
     ["@babel", "types"],
     ["@babel", "helper-string-parser"],
     ["@babel", "helper-validator-identifier"]
+    ,["sql.js"]
+    ,["yaml"]
   ]) {
     const dependencyPackage = await executeNpm(
       [
@@ -155,7 +173,10 @@ test("published package installs and completes the documented workflow", async (
     cwd: project
   });
   assert.equal(version.code, 0, version.stderr);
-  assert.equal(version.stdout.trim(), "0.2.0");
+  const packageManifest = JSON.parse(
+    await fs.readFile(path.resolve("package.json"), "utf8")
+  );
+  assert.equal(version.stdout.trim(), packageManifest.version);
 
   for (const command of ["init", "sync", "check"]) {
     const result = await execute(process.execPath, [installedCli, command], {

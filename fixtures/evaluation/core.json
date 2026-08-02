@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "name": "impact implementation context",
+      "paths": [
+        "src/impact.js"
+      ],
+      "task": "Review change-impact behavior",
+      "expectedPaths": [
+        "src/impact.js"
+      ],
+      "unwantedPaths": [
+        "src/server.js"
+      ],
+      "maxFiles": 12,
+      "maxTokens": 12000
+    },
+    {
+      "name": "agent context implementation",
+      "paths": [
+        "src/context.js"
+      ],
+      "task": "Review bounded context selection",
+      "expectedPaths": [
+        "src/context.js"
+      ],
+      "unwantedPaths": [
+        "src/runbooks.js"
+      ],
+      "maxFiles": 12,
+      "maxTokens": 12000
+    }
+  ]
+}
