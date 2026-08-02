@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/prodocs-logo.png" width="300" alt="ProDocs robot logo">
+  <img src="assets/prodocs-logo.png" width="150" alt="ProDocs robot logo">
 </p>
 
 <p align="center">
