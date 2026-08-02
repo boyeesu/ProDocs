@@ -8,32 +8,33 @@
 
 | Signal | Value |
 | --- | --- |
-| Source files | 29 |
-| Lines indexed | 4071 |
-| Symbols indexed | 148 |
-| Internal relationships | 36 |
-| Languages | JavaScript (28), TypeScript (1) |
-| Evidence snapshot | `355fc39c49b5` |
+| Source files | 46 |
+| Lines indexed | 8318 |
+| Symbols indexed | 256 |
+| Internal relationships | 346 |
+| Languages | JavaScript (45), TypeScript (1) |
+| Evidence snapshot | `a361a353b5bb` |
 
 ## Entrypoints
 
-- [`src/cli.js`](../../src/cli.js) — 12 indexed symbols
+- [`src/cli.js`](../../src/cli.js) — 27 indexed symbols
 - [`src/collectors/index.js`](../../src/collectors/index.js) — 2 indexed symbols
+- [`src/server.js`](../../src/server.js) — 6 indexed symbols
 
 ## Most connected files
 
 | File | Language | Connections | Owner |
 | --- | --- | ---: | --- |
-| [`src/cli.js`](../../src/cli.js) | JavaScript | 9 | — |
-| [`src/constants.js`](../../src/constants.js) | JavaScript | 8 | — |
-| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 7 | — |
-| [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 6 | — |
-| [`src/collectors/index.js`](../../src/collectors/index.js) | JavaScript | 4 | — |
-| [`src/config.js`](../../src/config.js) | JavaScript | 4 | — |
-| [`src/paths.js`](../../src/paths.js) | JavaScript | 4 | — |
-| [`src/render.js`](../../src/render.js) | JavaScript | 4 | — |
-| [`scripts/validate-repository.js`](../../scripts/validate-repository.js) | JavaScript | 3 | — |
-| [`src/collectors/contract.js`](../../src/collectors/contract.js) | JavaScript | 3 | — |
+| [`test/roadmap.test.js`](../../test/roadmap.test.js) | JavaScript | 31 | @boyeesu |
+| [`src/cli.js`](../../src/cli.js) | JavaScript | 29 | @boyeesu |
+| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 25 | @boyeesu |
+| [`src/constants.js`](../../src/constants.js) | JavaScript | 22 | @boyeesu |
+| [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 21 | @boyeesu |
+| [`src/mcp.js`](../../src/mcp.js) | JavaScript | 19 | @boyeesu |
+| [`src/security.js`](../../src/security.js) | JavaScript | 19 | @boyeesu |
+| [`src/server.js`](../../src/server.js) | JavaScript | 19 | @boyeesu |
+| [`src/context.js`](../../src/context.js) | JavaScript | 16 | @boyeesu |
+| [`src/paths.js`](../../src/paths.js) | JavaScript | 15 | @boyeesu |
 
 ## How to use this map
 
@@ -41,4 +42,4 @@
 - Agents should read `knowledge.json` or run `prodocs context --path <path> --json`.
 - CI should run `prodocs check` to reject stale generated documentation.
 
-Generated at 2026-08-02T07:02:24.374Z.
+Generated at 2026-08-02T08:28:10.570Z.

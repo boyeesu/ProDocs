@@ -1,17 +1,29 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-08-02T07:02:24.374Z",
-  "sourceHash": "355fc39c49b5150ad63f2b295c728969bffec30d5fd9f76fff2f1431f2e28494",
-  "inputHash": "198c2f1fe9fb683f48901ce421e22edfa7bb54760e5d3fd34772c58ae9bc7699",
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-02T08:28:10.570Z",
+  "sourceHash": "a361a353b5bb4993d8aa8478e290e451da484f9ebcfa30446656676c11955794",
+  "knowledgeHash": "17bf50522d8c0a3aec84691bad3375a7861cdfcf1f546569313928942c2f74dd",
+  "inputHash": "dd472db6f494b256b04f084d65882654ae5108ebcce55289b442cda23a1fbb29",
   "root": ".",
   "stats": {
-    "files": 29,
-    "lines": 4071,
-    "symbols": 148,
-    "edges": 36,
+    "files": 46,
+    "lines": 8318,
+    "symbols": 256,
+    "edges": 346,
     "languages": {
-      "JavaScript": 28,
+      "JavaScript": 45,
       "TypeScript": 1
+    },
+    "knowledge": {
+      "total": 8,
+      "supported": 8,
+      "unsupported": 0,
+      "contradictions": 0,
+      "instructionSignals": 0
+    },
+    "index": {
+      "backend": "sqlite",
+      "entries": 46
     }
   },
   "nodes": [
@@ -22,9 +34,15 @@
       "language": "JavaScript",
       "contentHash": "e187e003355f6a5f9c70e9cd7c672957e1a2ee0871fff333917e8e6d446fa17b",
       "lines": 10,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
-      "symbols": []
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:fixtures/collectors/typescript-component.tsx",
@@ -33,8 +51,10 @@
       "language": "TypeScript",
       "contentHash": "01ad953567f636697188e0e425b154ae8a952f4e263f91be8db67d84c72dc531",
       "lines": 27,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
       "symbols": [
         {
           "name": "Identifier",
@@ -76,7 +96,11 @@
           "kind": "value",
           "line": 26
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:scripts/coverage.js",
@@ -85,8 +109,10 @@
       "language": "JavaScript",
       "contentHash": "a538bdc0f2e163ce97b55f2f803a70d2761b319607c461545bb99f1f4eefe85b",
       "lines": 53,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
       "symbols": [
         {
           "name": "thresholds",
@@ -113,7 +139,11 @@
           "kind": "value",
           "line": 36
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:scripts/lint.js",
@@ -122,8 +152,10 @@
       "language": "JavaScript",
       "contentHash": "ed45a649e3686df222a7b1a999772bae25876ab0c3862c42025c36cfbe62caf4",
       "lines": 25,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
       "symbols": [
         {
           "name": "javascriptFiles",
@@ -135,7 +167,11 @@
           "kind": "value",
           "line": 16
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:scripts/validate-repository.js",
@@ -144,8 +180,10 @@
       "language": "JavaScript",
       "contentHash": "a42bc6980275df30dbe73d63e716f60eaec6ead8d6e5e2fbff789c88b6b83beb",
       "lines": 72,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
       "symbols": [
         {
           "name": "repositoryPath",
@@ -192,17 +230,23 @@
           "kind": "value",
           "line": 40
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:scripts/verify-release.js",
       "type": "file",
       "path": "scripts/verify-release.js",
       "language": "JavaScript",
-      "contentHash": "cff42abc107ec7748bc575005232be90d2cd51cbe881ef1abf72c1eae2fb3f06",
-      "lines": 67,
-      "owner": null,
+      "contentHash": "c5e9c3f9ac7f2ea05652a90050c9219f071000e499369d21bfb58a2e6178e9c7",
+      "lines": 69,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
       "symbols": [
         {
           "name": "fail",
@@ -229,79 +273,202 @@
           "kind": "value",
           "line": 12
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:src/cli.js",
       "type": "file",
       "path": "src/cli.js",
       "language": "JavaScript",
-      "contentHash": "0c4099dda2cf489a4c3ece5c4cd943faf6743c484b9a2eac1d754d0b6ccc6d8e",
-      "lines": 221,
-      "owner": null,
+      "contentHash": "99dce6d610f37ee3f38f6b8e1682f290170dc25b92e13f516b4a642e594e6c72",
+      "lines": 535,
+      "owner": "@boyeesu",
       "entrypoint": true,
+      "publicSurface": true,
+      "role": "entrypoint",
       "symbols": [
         {
           "name": "hasFlag",
           "kind": "function",
-          "line": 11
+          "line": 36
+        },
+        {
+          "name": "valueAfter",
+          "kind": "function",
+          "line": 40
         },
         {
           "name": "valuesAfter",
           "kind": "function",
-          "line": 15
+          "line": 45
+        },
+        {
+          "name": "integerAfter",
+          "kind": "function",
+          "line": 53
         },
         {
           "name": "help",
           "kind": "function",
-          "line": 23
+          "line": 63
         },
         {
           "name": "rootFrom",
           "kind": "function",
-          "line": 42
+          "line": 106
         },
         {
           "name": "readManifest",
           "kind": "function",
-          "line": 47
+          "line": 113
+        },
+        {
+          "name": "writeRepositoryJson",
+          "kind": "function",
+          "line": 127
         },
         {
           "name": "init",
           "kind": "function",
-          "line": 61
+          "line": 139
         },
         {
           "name": "sync",
           "kind": "function",
-          "line": 84
+          "line": 155
         },
         {
           "name": "freshness",
           "kind": "function",
-          "line": 105
+          "line": 179
         },
         {
           "name": "check",
           "kind": "function",
-          "line": 119
+          "line": 196
         },
         {
           "name": "status",
           "kind": "function",
-          "line": 147
+          "line": 223
         },
         {
           "name": "context",
           "kind": "function",
-          "line": 168
+          "line": 245
+        },
+        {
+          "name": "impact",
+          "kind": "function",
+          "line": 284
+        },
+        {
+          "name": "policy",
+          "kind": "function",
+          "line": 312
+        },
+        {
+          "name": "proposal",
+          "kind": "function",
+          "line": 326
+        },
+        {
+          "name": "propose",
+          "kind": "function",
+          "line": 352
+        },
+        {
+          "name": "evaluate",
+          "kind": "function",
+          "line": 379
+        },
+        {
+          "name": "plugin",
+          "kind": "function",
+          "line": 399
+        },
+        {
+          "name": "hooks",
+          "kind": "function",
+          "line": 408
+        },
+        {
+          "name": "view",
+          "kind": "function",
+          "line": 422
+        },
+        {
+          "name": "history",
+          "kind": "function",
+          "line": 433
+        },
+        {
+          "name": "runbook",
+          "kind": "function",
+          "line": 445
+        },
+        {
+          "name": "capabilities",
+          "kind": "function",
+          "line": 472
+        },
+        {
+          "name": "serve",
+          "kind": "function",
+          "line": 491
         },
         {
           "name": "run",
           "kind": "function",
-          "line": 198
+          "line": 500
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/collectors/artifacts.js",
+      "type": "file",
+      "path": "src/collectors/artifacts.js",
+      "language": "JavaScript",
+      "contentHash": "192f9fbba58755cb9e177a30f63f31344916eea71ae3c53c013aacfd644517c1",
+      "lines": 114,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "HTTP_METHODS",
+          "kind": "value",
+          "line": 4
+        },
+        {
+          "name": "lineFor",
+          "kind": "function",
+          "line": 15
+        },
+        {
+          "name": "openApiCollector",
+          "kind": "value",
+          "line": 20
+        },
+        {
+          "name": "databaseSchemaCollector",
+          "kind": "value",
+          "line": 92
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:src/collectors/contract.js",
@@ -310,8 +477,10 @@
       "language": "JavaScript",
       "contentHash": "ccfe3bb54c2629cd324b9a77bd63ae71daff0b77c5e83662d5b34716e2eacbb5",
       "lines": 315,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
       "symbols": [
         {
           "name": "COLLECTOR_ID",
@@ -378,29 +547,39 @@
           "kind": "function",
           "line": 181
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:src/collectors/index.js",
       "type": "file",
       "path": "src/collectors/index.js",
       "language": "JavaScript",
-      "contentHash": "96a255b7d4a5260aaf172f466032eaa1ccf4f7fabd754af7fa2cee62394149ba",
-      "lines": 20,
-      "owner": null,
+      "contentHash": "0492cf3d281537464a0cc92f684af30c67fd486253263d7d8732d4df66be2291",
+      "lines": 27,
+      "owner": "@boyeesu",
       "entrypoint": true,
+      "publicSurface": true,
+      "role": "entrypoint",
       "symbols": [
         {
           "name": "defaultCollectorRegistry",
           "kind": "value",
-          "line": 12
+          "line": 17
         },
         {
           "name": "collectSourceEvidence",
           "kind": "function",
-          "line": 17
+          "line": 24
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:src/collectors/javascript-typescript.js",
@@ -409,8 +588,10 @@
       "language": "JavaScript",
       "contentHash": "8ca2ed9069c3759ca2a21db6928d5e25e82fa8d718048dd0bbb39357c14bcbf7",
       "lines": 254,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
       "symbols": [
         {
           "name": "parse",
@@ -477,7 +658,11 @@
           "kind": "value",
           "line": 223
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:src/collectors/legacy.js",
@@ -486,8 +671,10 @@
       "language": "JavaScript",
       "contentHash": "5b98e03565eed5e1f81bd5a71f4635c3c435ed354c94c8d26a9a6cf7eff86697",
       "lines": 126,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
       "symbols": [
         {
           "name": "lineNumberAt",
@@ -514,17 +701,23 @@
           "kind": "value",
           "line": 103
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:src/config.js",
       "type": "file",
       "path": "src/config.js",
       "language": "JavaScript",
-      "contentHash": "febdfbcdff9de446f8db1460d07df0b815f4ffcbf5a3dad691713f8a5b1e9f63",
-      "lines": 192,
-      "owner": null,
+      "contentHash": "ee9e383c9d3180a1b1d8f9600ad2c7271a474fb561a7eeee936473656b72b492",
+      "lines": 306,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
       "symbols": [
         {
           "name": "CONFIG_FILE",
@@ -549,24 +742,30 @@
         {
           "name": "loadConfig",
           "kind": "function",
-          "line": 159
+          "line": 253
         },
         {
           "name": "writeDefaultConfig",
           "kind": "function",
-          "line": 184
+          "line": 298
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:src/constants.js",
       "type": "file",
       "path": "src/constants.js",
       "language": "JavaScript",
-      "contentHash": "1d2db61ad40f6444f879e124433e701221751916c96af1b542742240f34093d1",
-      "lines": 80,
-      "owner": null,
+      "contentHash": "1a78d3fbbcf34f5eb679013feb35eb293e3ca7e039654efb684cd4d1a76cfae6",
+      "lines": 115,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
       "symbols": [
         {
           "name": "VERSION",
@@ -581,24 +780,30 @@
         {
           "name": "EXTENSION_LANGUAGE",
           "kind": "value",
-          "line": 58
+          "line": 89
         },
         {
           "name": "SUPPORTED_EXTENSIONS",
           "kind": "value",
-          "line": 79
+          "line": 114
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:src/context.js",
       "type": "file",
       "path": "src/context.js",
       "language": "JavaScript",
-      "contentHash": "d30f717da7258d7afc8d554a47fec7b99bdbd29b11df5be0077e10c6b4b607c8",
-      "lines": 521,
-      "owner": null,
+      "contentHash": "c43671a0b171fb923a8a4c295d7c022fefe7bd58cc6593a964eaf2209668ff63",
+      "lines": 362,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
       "symbols": [
         {
           "name": "HASH_PATTERN",
@@ -606,111 +811,297 @@
           "line": 1
         },
         {
-          "name": "PACKET_KEYS",
-          "kind": "value",
-          "line": 2
-        },
-        {
           "name": "isObject",
           "kind": "function",
-          "line": 15
+          "line": 3
         },
         {
           "name": "fail",
           "kind": "function",
-          "line": 19
-        },
-        {
-          "name": "requireObject",
-          "kind": "function",
-          "line": 23
-        },
-        {
-          "name": "requireExactKeys",
-          "kind": "function",
-          "line": 27
-        },
-        {
-          "name": "requireString",
-          "kind": "function",
-          "line": 36
-        },
-        {
-          "name": "requireInteger",
-          "kind": "function",
-          "line": 49
-        },
-        {
-          "name": "requireStringArray",
-          "kind": "function",
-          "line": 55
+          "line": 7
         },
         {
           "name": "normalizedPath",
           "kind": "function",
-          "line": 80
+          "line": 11
         },
         {
           "name": "normalizeRequestedPaths",
           "kind": "function",
-          "line": 88
+          "line": 19
         },
         {
           "name": "matchesRequestedPath",
           "kind": "function",
-          "line": 113
+          "line": 49
+        },
+        {
+          "name": "priority",
+          "kind": "function",
+          "line": 58
         },
         {
           "name": "selectContext",
           "kind": "function",
-          "line": 122
+          "line": 67
         },
         {
           "name": "hashOrNull",
           "kind": "function",
-          "line": 155
+          "line": 143
         },
         {
-          "name": "packetMeasurements",
+          "name": "measurements",
           "kind": "function",
-          "line": 159
+          "line": 147
+        },
+        {
+          "name": "relatedIds",
+          "kind": "function",
+          "line": 158
         },
         {
           "name": "buildContextPacket",
           "kind": "function",
-          "line": 170
-        },
-        {
-          "name": "validateSymbol",
-          "kind": "function",
-          "line": 246
-        },
-        {
-          "name": "validateNode",
-          "kind": "function",
-          "line": 255
-        },
-        {
-          "name": "validateEdge",
-          "kind": "function",
-          "line": 327
+          "line": 169
         },
         {
           "name": "validateContextPacket",
           "kind": "function",
-          "line": 337
+          "line": 262
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/evaluate.js",
+      "type": "file",
+      "path": "src/evaluate.js",
+      "language": "JavaScript",
+      "contentHash": "0481b1d3489c27ca8b82f2bd00f52e89827e98fe11de2c071507d0fab4f2831d",
+      "lines": 87,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "readEvaluationSuite",
+          "kind": "function",
+          "line": 4
+        },
+        {
+          "name": "evaluateContextSuite",
+          "kind": "function",
+          "line": 22
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/history.js",
+      "type": "file",
+      "path": "src/history.js",
+      "language": "JavaScript",
+      "contentHash": "8d3f5bfcadab234281d40e27657da47f3483ade423c29d7f62237e30f582f0fb",
+      "lines": 46,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "executeFile",
+          "kind": "value",
+          "line": 4
+        },
+        {
+          "name": "REF_PATTERN",
+          "kind": "value",
+          "line": 5
+        },
+        {
+          "name": "readHistoricalGraph",
+          "kind": "function",
+          "line": 7
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/hooks.js",
+      "type": "file",
+      "path": "src/hooks.js",
+      "language": "JavaScript",
+      "contentHash": "43b310dbc60b907ea29715b87d34e72232eb6ac301b0e2ecfa979b1f0f1202b3",
+      "lines": 68,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "executeFile",
+          "kind": "value",
+          "line": 7
+        },
+        {
+          "name": "PRE_PUSH",
+          "kind": "value",
+          "line": 9
+        },
+        {
+          "name": "git",
+          "kind": "function",
+          "line": 21
+        },
+        {
+          "name": "installGitHooks",
+          "kind": "function",
+          "line": 33
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/impact.js",
+      "type": "file",
+      "path": "src/impact.js",
+      "language": "JavaScript",
+      "contentHash": "5e8657eb91ab8b8aaa4bcd37ccb6751969d79c0b97b8dda24fa620467413e212",
+      "lines": 177,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "executeFile",
+          "kind": "value",
+          "line": 5
+        },
+        {
+          "name": "REF_PATTERN",
+          "kind": "value",
+          "line": 6
+        },
+        {
+          "name": "git",
+          "kind": "function",
+          "line": 8
+        },
+        {
+          "name": "requireRef",
+          "kind": "function",
+          "line": 23
+        },
+        {
+          "name": "resolveImpactRange",
+          "kind": "function",
+          "line": 30
+        },
+        {
+          "name": "parseNameStatus",
+          "kind": "function",
+          "line": 54
+        },
+        {
+          "name": "nodeMatchesChange",
+          "kind": "function",
+          "line": 72
+        },
+        {
+          "name": "expandAffected",
+          "kind": "function",
+          "line": 80
+        },
+        {
+          "name": "analyzeImpact",
+          "kind": "function",
+          "line": 95
+        },
+        {
+          "name": "createImpactProposal",
+          "kind": "function",
+          "line": 150
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/index-store.js",
+      "type": "file",
+      "path": "src/index-store.js",
+      "language": "JavaScript",
+      "contentHash": "ae6b25dd8d1dd739d688256938aba277d51500b12ca38959b781d26331709504",
+      "lines": 161,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "require",
+          "kind": "value",
+          "line": 8
+        },
+        {
+          "name": "sqlPromise",
+          "kind": "value",
+          "line": 9
+        },
+        {
+          "name": "loadSql",
+          "kind": "function",
+          "line": 11
+        },
+        {
+          "name": "databasePath",
+          "kind": "function",
+          "line": 18
+        },
+        {
+          "name": "firstValue",
+          "kind": "function",
+          "line": 34
+        },
+        {
+          "name": "openIndexStore",
+          "kind": "function",
+          "line": 44
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:src/integrations.js",
       "type": "file",
       "path": "src/integrations.js",
       "language": "JavaScript",
-      "contentHash": "7913b71ac2b0cb6ec36a5a371cbf499ec32d0f4f45e27ef1cc43e0120aa62fde",
-      "lines": 47,
-      "owner": null,
+      "contentHash": "257e22d102f85f830ba595a2af6741e5a19a7f9765c2268d5e88a5ab48e15929",
+      "lines": 71,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
       "symbols": [
         {
           "name": "INTEGRATIONS",
@@ -720,9 +1111,149 @@
         {
           "name": "writeIntegrations",
           "kind": "function",
-          "line": 35
+          "line": 59
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/knowledge.js",
+      "type": "file",
+      "path": "src/knowledge.js",
+      "language": "JavaScript",
+      "contentHash": "4fd9169c7fed3dd3576bf7707a42f74cc5afacf865b299f3022bdd71edbb3fd4",
+      "lines": 414,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "KNOWLEDGE_KINDS",
+          "kind": "value",
+          "line": 15
+        },
+        {
+          "name": "IDENTIFIER",
+          "kind": "value",
+          "line": 22
+        },
+        {
+          "name": "strings",
+          "kind": "function",
+          "line": 24
+        },
+        {
+          "name": "parseFrontMatter",
+          "kind": "function",
+          "line": 46
+        },
+        {
+          "name": "normalizeEvidenceReference",
+          "kind": "function",
+          "line": 77
+        },
+        {
+          "name": "verification",
+          "kind": "function",
+          "line": 86
+        },
+        {
+          "name": "normalizeKnowledgeDocument",
+          "kind": "function",
+          "line": 138
+        },
+        {
+          "name": "walkMarkdown",
+          "kind": "function",
+          "line": 224
+        },
+        {
+          "name": "discoverKnowledgeFiles",
+          "kind": "function",
+          "line": 245
+        },
+        {
+          "name": "resolveEvidence",
+          "kind": "function",
+          "line": 274
+        },
+        {
+          "name": "collectAuthoredKnowledge",
+          "kind": "function",
+          "line": 288
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/mcp.js",
+      "type": "file",
+      "path": "src/mcp.js",
+      "language": "JavaScript",
+      "contentHash": "e12e604a01d6e342c774c946964bb05f20297506f61bb7fd60bd3d03b78a4af0",
+      "lines": 221,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "PROTOCOL_VERSION",
+          "kind": "value",
+          "line": 11
+        },
+        {
+          "name": "result",
+          "kind": "function",
+          "line": 13
+        },
+        {
+          "name": "error",
+          "kind": "function",
+          "line": 17
+        },
+        {
+          "name": "textTool",
+          "kind": "function",
+          "line": 21
+        },
+        {
+          "name": "TOOLS",
+          "kind": "value",
+          "line": 30
+        },
+        {
+          "name": "state",
+          "kind": "function",
+          "line": 84
+        },
+        {
+          "name": "readManifest",
+          "kind": "function",
+          "line": 93
+        },
+        {
+          "name": "handleMcpRequest",
+          "kind": "function",
+          "line": 106
+        },
+        {
+          "name": "runMcpServer",
+          "kind": "function",
+          "line": 196
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:src/paths.js",
@@ -731,8 +1262,10 @@
       "language": "JavaScript",
       "contentHash": "a33c9bd447a6e801f6e2bd4bf7558e87612b755ae26e22ff8c42f62c942e4c15",
       "lines": 77,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
       "symbols": [
         {
           "name": "isInside",
@@ -754,17 +1287,180 @@
           "kind": "function",
           "line": 51
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/plugins.js",
+      "type": "file",
+      "path": "src/plugins.js",
+      "language": "JavaScript",
+      "contentHash": "37e99dd3a6ebdf84d3048decbd93cd0f4b8f67d3dd1b1345df48a20a1fbbdbf3",
+      "lines": 182,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "IDENTIFIER",
+          "kind": "value",
+          "line": 5
+        },
+        {
+          "name": "stringArray",
+          "kind": "function",
+          "line": 7
+        },
+        {
+          "name": "rules",
+          "kind": "function",
+          "line": 25
+        },
+        {
+          "name": "nameAfterPrefix",
+          "kind": "function",
+          "line": 57
+        },
+        {
+          "name": "defineDeclarativePlugin",
+          "kind": "function",
+          "line": 62
+        },
+        {
+          "name": "loadDeclarativePlugin",
+          "kind": "function",
+          "line": 136
+        },
+        {
+          "name": "verifyDeclarativePlugin",
+          "kind": "function",
+          "line": 149
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/policy.js",
+      "type": "file",
+      "path": "src/policy.js",
+      "language": "JavaScript",
+      "contentHash": "ba0e1d8b05e0521a7fbb444a25a9dcdf26421b42fe236ef6788d6ab24aff4d9e",
+      "lines": 90,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "violation",
+          "kind": "function",
+          "line": 1
+        },
+        {
+          "name": "evaluatePolicies",
+          "kind": "function",
+          "line": 11
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/proposals.js",
+      "type": "file",
+      "path": "src/proposals.js",
+      "language": "JavaScript",
+      "contentHash": "399a1aa37ffaf9564354fe2a9c50c7f97af8b5e5631d421b4b22543763400473",
+      "lines": 145,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "proposalHash",
+          "kind": "function",
+          "line": 12
+        },
+        {
+          "name": "validateProposal",
+          "kind": "function",
+          "line": 18
+        },
+        {
+          "name": "allowedKnowledgePath",
+          "kind": "function",
+          "line": 66
+        },
+        {
+          "name": "applyProposal",
+          "kind": "function",
+          "line": 73
+        },
+        {
+          "name": "readProposal",
+          "kind": "function",
+          "line": 139
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/providers.js",
+      "type": "file",
+      "path": "src/providers.js",
+      "language": "JavaScript",
+      "contentHash": "a6260f8ac8079c615a1623ad51916a0d48104dfeebe8b5e54df0f41d3f685dae",
+      "lines": 125,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "endpointUrl",
+          "kind": "function",
+          "line": 3
+        },
+        {
+          "name": "templateProposal",
+          "kind": "function",
+          "line": 17
+        },
+        {
+          "name": "openAiCompatibleProposal",
+          "kind": "function",
+          "line": 34
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:src/render.js",
       "type": "file",
       "path": "src/render.js",
       "language": "JavaScript",
-      "contentHash": "3f2f424f77c32df01e11d194921f1d14623b09a8ca94514c47219389474e3eba",
-      "lines": 183,
-      "owner": null,
+      "contentHash": "d9ee8c7f4c426828892f8d2c71e39f185c82e5b76208ad1558384e0d0d9893ff",
+      "lines": 372,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
       "symbols": [
         {
           "name": "GENERATED_NOTICE",
@@ -799,24 +1495,93 @@
         {
           "name": "renderCodeMap",
           "kind": "function",
-          "line": 117
+          "line": 118
+        },
+        {
+          "name": "knowledgeNodes",
+          "kind": "function",
+          "line": 143
+        },
+        {
+          "name": "knowledgeList",
+          "kind": "function",
+          "line": 153
+        },
+        {
+          "name": "featureMap",
+          "kind": "function",
+          "line": 165
+        },
+        {
+          "name": "knowledgeHealth",
+          "kind": "function",
+          "line": 196
+        },
+        {
+          "name": "renderAudienceView",
+          "kind": "function",
+          "line": 235
         },
         {
           "name": "writeArtifacts",
           "kind": "function",
-          "line": 141
+          "line": 316
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/runbooks.js",
+      "type": "file",
+      "path": "src/runbooks.js",
+      "language": "JavaScript",
+      "contentHash": "f80debb8857e6885ae6cefb6ff65f965c3a6f148af27b630752bb8715d72ca07",
+      "lines": 119,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "publicStep",
+          "kind": "function",
+          "line": 7
+        },
+        {
+          "name": "runbookPlan",
+          "kind": "function",
+          "line": 17
+        },
+        {
+          "name": "execute",
+          "kind": "function",
+          "line": 37
+        },
+        {
+          "name": "verifyRunbook",
+          "kind": "function",
+          "line": 71
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:src/safe-fs.js",
       "type": "file",
       "path": "src/safe-fs.js",
       "language": "JavaScript",
-      "contentHash": "cfffe145afd00e4cb8b6909bcca34d03c6a02a86f27d988b657e8d8cb085f5bc",
-      "lines": 115,
-      "owner": null,
+      "contentHash": "c81f55ff527c8f7372d6ef5836f82f05a32dd23db30a40c95a4ac4490ffba4f7",
+      "lines": 124,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
       "symbols": [
         {
           "name": "NO_FOLLOW",
@@ -837,85 +1602,259 @@
           "name": "atomicWriteFile",
           "kind": "function",
           "line": 80
+        },
+        {
+          "name": "atomicWriteBuffer",
+          "kind": "function",
+          "line": 84
+        },
+        {
+          "name": "atomicWrite",
+          "kind": "function",
+          "line": 91
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:src/scanner.js",
       "type": "file",
       "path": "src/scanner.js",
       "language": "JavaScript",
-      "contentHash": "78db4f18ef966f8c64838bd2ef997bfd334cac65d78287b0e3698e4b238155dd",
-      "lines": 365,
-      "owner": null,
+      "contentHash": "ea6bea86e30aa22bf155369a3a963c10777bc48a270e8d8f07119ea6ef031187",
+      "lines": 585,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
       "symbols": [
-        {
-          "name": "sha256",
-          "kind": "function",
-          "line": 12
-        },
-        {
-          "name": "stableJson",
-          "kind": "function",
-          "line": 16
-        },
-        {
-          "name": "toPosix",
-          "kind": "function",
-          "line": 27
-        },
         {
           "name": "normalizeSource",
           "kind": "function",
-          "line": 31
+          "line": 26
         },
         {
           "name": "isExcluded",
           "kind": "function",
-          "line": 35
+          "line": 30
         },
         {
           "name": "matchesGlob",
           "kind": "function",
-          "line": 46
+          "line": 41
         },
         {
           "name": "isIncluded",
           "kind": "function",
-          "line": 115
+          "line": 110
         },
         {
           "name": "walk",
           "kind": "function",
-          "line": 120
+          "line": 115
         },
         {
           "name": "discoverFiles",
           "kind": "function",
-          "line": 154
+          "line": 158
         },
         {
           "name": "candidateImportPaths",
           "kind": "function",
-          "line": 188
+          "line": 193
         },
         {
           "name": "inferEntrypoint",
           "kind": "function",
-          "line": 222
+          "line": 227
+        },
+        {
+          "name": "languageForPath",
+          "kind": "function",
+          "line": 247
+        },
+        {
+          "name": "codeownersMatch",
+          "kind": "function",
+          "line": 255
+        },
+        {
+          "name": "readCodeowners",
+          "kind": "function",
+          "line": 268
         },
         {
           "name": "ownerFor",
           "kind": "function",
-          "line": 242
+          "line": 302
+        },
+        {
+          "name": "roleFor",
+          "kind": "function",
+          "line": 317
         },
         {
           "name": "scanProject",
           "kind": "function",
-          "line": 250
+          "line": 335
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/security.js",
+      "type": "file",
+      "path": "src/security.js",
+      "language": "JavaScript",
+      "contentHash": "7f4510da60babf1bac15b108cc94cc82a455dcc0f6b4b1b48ac8b9fc6a1aa691",
+      "lines": 102,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "INSTRUCTION_PATTERNS",
+          "kind": "value",
+          "line": 4
+        },
+        {
+          "name": "SECRET_PATTERNS",
+          "kind": "value",
+          "line": 13
+        },
+        {
+          "name": "sha256",
+          "kind": "function",
+          "line": 28
+        },
+        {
+          "name": "stableJson",
+          "kind": "function",
+          "line": 32
+        },
+        {
+          "name": "toPosix",
+          "kind": "function",
+          "line": 43
+        },
+        {
+          "name": "normalizeRepositoryPath",
+          "kind": "function",
+          "line": 47
+        },
+        {
+          "name": "detectPromptInjection",
+          "kind": "function",
+          "line": 65
+        },
+        {
+          "name": "redactSecrets",
+          "kind": "function",
+          "line": 81
+        },
+        {
+          "name": "timingSafeEqualText",
+          "kind": "function",
+          "line": 94
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/server.js",
+      "type": "file",
+      "path": "src/server.js",
+      "language": "JavaScript",
+      "contentHash": "06345d2b64236ad5961be9626656b700b4cf54a93e4a949cb1178ad77aa19dd5",
+      "lines": 161,
+      "owner": "@boyeesu",
+      "entrypoint": true,
+      "publicSurface": true,
+      "role": "entrypoint",
+      "symbols": [
+        {
+          "name": "json",
+          "kind": "function",
+          "line": 13
+        },
+        {
+          "name": "authorized",
+          "kind": "function",
+          "line": 27
+        },
+        {
+          "name": "body",
+          "kind": "function",
+          "line": 36
+        },
+        {
+          "name": "readManifest",
+          "kind": "function",
+          "line": 47
+        },
+        {
+          "name": "createCollaborationServer",
+          "kind": "function",
+          "line": 60
+        },
+        {
+          "name": "listenForCollaboration",
+          "kind": "function",
+          "line": 138
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:test/cli-roadmap.test.js",
+      "type": "file",
+      "path": "test/cli-roadmap.test.js",
+      "language": "JavaScript",
+      "contentHash": "5a133ce24c4b104204579ebd3837587d6a3f73d845604f9f5c2f5613a66ea25f",
+      "lines": 396,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "test",
+      "symbols": [
+        {
+          "name": "executeFile",
+          "kind": "value",
+          "line": 11
+        },
+        {
+          "name": "cli",
+          "kind": "value",
+          "line": 12
+        },
+        {
+          "name": "execute",
+          "kind": "function",
+          "line": 14
+        },
+        {
+          "name": "fullProject",
+          "kind": "function",
+          "line": 34
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:test/cli.test.js",
@@ -924,8 +1863,10 @@
       "language": "JavaScript",
       "contentHash": "329a878c9d7fa19af9ca121a597b5f21240cdf17c926584885572e175396b544",
       "lines": 97,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "test",
       "symbols": [
         {
           "name": "cli",
@@ -937,7 +1878,11 @@
           "kind": "function",
           "line": 10
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:test/collectors.test.js",
@@ -946,26 +1891,38 @@
       "language": "JavaScript",
       "contentHash": "60158fb5d27a1d3400277378fe4f3a086464477dda4b1dd747fb15a2e0f57c1c",
       "lines": 336,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "test",
       "symbols": [
         {
           "name": "fixtures",
           "kind": "value",
           "line": 12
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:test/config.test.js",
       "type": "file",
       "path": "test/config.test.js",
       "language": "JavaScript",
-      "contentHash": "2468d2889e3177630d453034fb069db6d27cb57331eef60c6bff362579abdeb6",
-      "lines": 78,
-      "owner": null,
+      "contentHash": "6e394bb97bba3ea0309d8f6daaa7f3a57279b2124a49b4d21f570029fe376419",
+      "lines": 151,
+      "owner": "@boyeesu",
       "entrypoint": false,
-      "symbols": []
+      "publicSurface": false,
+      "role": "test",
+      "symbols": [],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:test/context.test.js",
@@ -974,8 +1931,10 @@
       "language": "JavaScript",
       "contentHash": "c07d205b570bacb2a9ae30de4989ddb0b2ac08dca7870349430382ea194d6bb6",
       "lines": 174,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "test",
       "symbols": [
         {
           "name": "hashes",
@@ -997,17 +1956,23 @@
           "kind": "function",
           "line": 51
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:test/package.test.js",
       "type": "file",
       "path": "test/package.test.js",
       "language": "JavaScript",
-      "contentHash": "e01bcdfad9a55701b5db2888fe083226b965dcfa544d7a54bdda5033187c7083",
-      "lines": 178,
-      "owner": null,
+      "contentHash": "f3b7eab15029911bb7d8e1bf39b7cd91b1eb10da9f51c93f9488f2de4a991228",
+      "lines": 199,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "test",
       "symbols": [
         {
           "name": "npmCli",
@@ -1022,9 +1987,13 @@
         {
           "name": "executeNpm",
           "kind": "function",
-          "line": 35
+          "line": 49
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:test/paths.test.js",
@@ -1033,9 +2002,15 @@
       "language": "JavaScript",
       "contentHash": "45da0b52f2a4ff9c22d4514debbcbc1baa52dfbbdbb761bb63d05cc45a443a08",
       "lines": 44,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
-      "symbols": []
+      "publicSurface": false,
+      "role": "test",
+      "symbols": [],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:test/render.test.js",
@@ -1044,15 +2019,60 @@
       "language": "JavaScript",
       "contentHash": "2a101220e6179792fd10aad6256aee372184d31400cda0cd68f93d8dfd6631f5",
       "lines": 64,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "test",
       "symbols": [
         {
           "name": "graph",
           "kind": "function",
           "line": 9
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:test/roadmap.test.js",
+      "type": "file",
+      "path": "test/roadmap.test.js",
+      "language": "JavaScript",
+      "contentHash": "862c77409bb9f237fd86cd4b2ad422675cb9965c6f1e5f35f3adfb15dfcd0b7a",
+      "lines": 790,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "test",
+      "symbols": [
+        {
+          "name": "executeFile",
+          "kind": "value",
+          "line": 45
+        },
+        {
+          "name": "project",
+          "kind": "function",
+          "line": 47
+        },
+        {
+          "name": "config",
+          "kind": "function",
+          "line": 57
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": [
+          {
+            "code": "repository-instruction",
+            "offset": 22493,
+            "excerpt": "Ignore all previous instructions"
+          }
+        ]
+      }
     },
     {
       "id": "file:test/safe-fs.test.js",
@@ -1061,9 +2081,15 @@
       "language": "JavaScript",
       "contentHash": "039309a7a8b54b9d706c1a324e8e8420c77a37c39179146449b47876406ec849",
       "lines": 48,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
-      "symbols": []
+      "publicSurface": false,
+      "role": "test",
+      "symbols": [],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:test/scanner.test.js",
@@ -1072,15 +2098,21 @@
       "language": "JavaScript",
       "contentHash": "52f7d30415385aa3c98fccc53c6202fa6ec54cfd726189e22e6dc11c192043bd",
       "lines": 235,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "test",
       "symbols": [
         {
           "name": "fixture",
           "kind": "function",
           "line": 9
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     },
     {
       "id": "file:test/workflows.test.js",
@@ -1089,18 +2121,1744 @@
       "language": "JavaScript",
       "contentHash": "2ba92676c5cbfe64da03c3c27a6288be68c7b268a84e8f1e379b3da6cc9ab305",
       "lines": 47,
-      "owner": null,
+      "owner": "@boyeesu",
       "entrypoint": false,
+      "publicSurface": false,
+      "role": "test",
       "symbols": [
         {
           "name": "workflowDirectory",
           "kind": "value",
           "line": 6
         }
-      ]
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "claim:local-first",
+      "key": "local-first",
+      "type": "claim",
+      "path": "docs/knowledge/claims/local-first.md",
+      "line": 1,
+      "title": "Core workflows remain local-first",
+      "status": "active",
+      "bodyHash": "88e3e1ab9e85d38dfa5b6338c8efdc04bd02850356b37af181e09435de575add",
+      "evidence": [
+        {
+          "path": "src/cli.js",
+          "symbol": "run",
+          "supported": true,
+          "contentHash": "99dce6d610f37ee3f38f6b8e1682f290170dc25b92e13f516b4a642e594e6c72"
+        },
+        {
+          "path": "src/index-store.js",
+          "symbol": "openIndexStore",
+          "supported": true,
+          "contentHash": "ae6b25dd8d1dd739d688256938aba277d51500b12ca38959b781d26331709504"
+        },
+        {
+          "path": "src/providers.js",
+          "symbol": "openAiCompatibleProposal",
+          "supported": true,
+          "contentHash": "a6260f8ac8079c615a1623ad51916a0d48104dfeebe8b5e54df0f41d3f685dae"
+        }
+      ],
+      "audiences": [
+        "product",
+        "security",
+        "technical"
+      ],
+      "affects": [
+        "src"
+      ],
+      "contradicts": [],
+      "supersedes": [],
+      "customerImpact": "Repository evidence stays on the user's machine unless they explicitly approve a model-provider network request.",
+      "verification": [],
+      "trust": {
+        "authored": true,
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "decision:deterministic-core",
+      "key": "deterministic-core",
+      "type": "decision",
+      "path": "docs/knowledge/decisions/deterministic-core.md",
+      "line": 1,
+      "title": "Deterministic core with optional model providers",
+      "status": "active",
+      "bodyHash": "1197a8ae7e343a1ef9bf0823b694c859ae5d56418c6028cff8b61803b33231ef",
+      "evidence": [
+        {
+          "path": "src/impact.js",
+          "symbol": "analyzeImpact",
+          "supported": true,
+          "contentHash": "5e8657eb91ab8b8aaa4bcd37ccb6751969d79c0b97b8dda24fa620467413e212"
+        },
+        {
+          "path": "src/providers.js",
+          "symbol": "templateProposal",
+          "supported": true,
+          "contentHash": "a6260f8ac8079c615a1623ad51916a0d48104dfeebe8b5e54df0f41d3f685dae"
+        },
+        {
+          "path": "src/scanner.js",
+          "symbol": "scanProject",
+          "supported": true,
+          "contentHash": "ea6bea86e30aa22bf155369a3a963c10777bc48a270e8d8f07119ea6ef031187"
+        }
+      ],
+      "audiences": [
+        "coding-agents",
+        "security",
+        "technical"
+      ],
+      "affects": [
+        "src"
+      ],
+      "contradicts": [],
+      "supersedes": [],
+      "customerImpact": "",
+      "verification": [],
+      "trust": {
+        "authored": true,
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "feature:agent-interface",
+      "key": "agent-interface",
+      "type": "feature",
+      "path": "docs/knowledge/features/agent-interface.md",
+      "line": 1,
+      "title": "Agent-neutral context and MCP interface",
+      "status": "active",
+      "bodyHash": "17eaf35e194a192b7f67fbc07cc385d1399752f45b729c7437f20684dc3fdca0",
+      "evidence": [
+        {
+          "path": "src/context.js",
+          "symbol": "buildContextPacket",
+          "supported": true,
+          "contentHash": "c43671a0b171fb923a8a4c295d7c022fefe7bd58cc6593a964eaf2209668ff63"
+        },
+        {
+          "path": "src/integrations.js",
+          "symbol": "writeIntegrations",
+          "supported": true,
+          "contentHash": "257e22d102f85f830ba595a2af6741e5a19a7f9765c2268d5e88a5ab48e15929"
+        },
+        {
+          "path": "src/mcp.js",
+          "symbol": "runMcpServer",
+          "supported": true,
+          "contentHash": "e12e604a01d6e342c774c946964bb05f20297506f61bb7fd60bd3d03b78a4af0"
+        }
+      ],
+      "audiences": [
+        "coding-agents",
+        "technical"
+      ],
+      "affects": [
+        "src/context.js",
+        "src/mcp.js"
+      ],
+      "contradicts": [],
+      "supersedes": [],
+      "customerImpact": "Codex, Claude Code, OpenCode, and MCP-compatible editors receive small, current, task-relevant context without vendor lock-in.",
+      "verification": [],
+      "trust": {
+        "authored": true,
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "feature:change-intelligence",
+      "key": "change-intelligence",
+      "type": "feature",
+      "path": "docs/knowledge/features/change-intelligence.md",
+      "line": 1,
+      "title": "Change intelligence",
+      "status": "active",
+      "bodyHash": "c02b07bc9cbab322e8876599380fce5f25a0cebea541a9a1119b573399cc0ddd",
+      "evidence": [
+        {
+          "path": "src/impact.js",
+          "symbol": "analyzeImpact",
+          "supported": true,
+          "contentHash": "5e8657eb91ab8b8aaa4bcd37ccb6751969d79c0b97b8dda24fa620467413e212"
+        },
+        {
+          "path": "src/policy.js",
+          "symbol": "evaluatePolicies",
+          "supported": true,
+          "contentHash": "ba0e1d8b05e0521a7fbb444a25a9dcdf26421b42fe236ef6788d6ab24aff4d9e"
+        },
+        {
+          "path": "src/proposals.js",
+          "symbol": "applyProposal",
+          "supported": true,
+          "contentHash": "399a1aa37ffaf9564354fe2a9c50c7f97af8b5e5631d421b4b22543763400473"
+        }
+      ],
+      "audiences": [
+        "coding-agents",
+        "product",
+        "technical"
+      ],
+      "affects": [
+        "src/impact.js",
+        "src/policy.js",
+        "src/proposals.js"
+      ],
+      "contradicts": [],
+      "supersedes": [],
+      "customerImpact": "Maintainers can see which code, documentation, tests, owners, decisions, and runbooks a change affects before merging it.",
+      "verification": [],
+      "trust": {
+        "authored": true,
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "feature:evidence-kernel",
+      "key": "evidence-kernel",
+      "type": "feature",
+      "path": "docs/knowledge/features/evidence-kernel.md",
+      "line": 1,
+      "title": "Evidence-backed knowledge kernel",
+      "status": "active",
+      "bodyHash": "820bd35d33d7e7a5b200a28dbca324049ed99d62f769fc6ed0d462cc1b104355",
+      "evidence": [
+        {
+          "path": "src/collectors/index.js",
+          "symbol": "collectSourceEvidence",
+          "supported": true,
+          "contentHash": "0492cf3d281537464a0cc92f684af30c67fd486253263d7d8732d4df66be2291"
+        },
+        {
+          "path": "src/knowledge.js",
+          "symbol": "collectAuthoredKnowledge",
+          "supported": true,
+          "contentHash": "4fd9169c7fed3dd3576bf7707a42f74cc5afacf865b299f3022bdd71edbb3fd4"
+        },
+        {
+          "path": "src/scanner.js",
+          "symbol": "scanProject",
+          "supported": true,
+          "contentHash": "ea6bea86e30aa22bf155369a3a963c10777bc48a270e8d8f07119ea6ef031187"
+        }
+      ],
+      "audiences": [
+        "coding-agents",
+        "product",
+        "technical"
+      ],
+      "affects": [
+        "src"
+      ],
+      "contradicts": [],
+      "supersedes": [],
+      "customerImpact": "Teams get documentation that remains traceable to code and explicitly reports unsupported knowledge.",
+      "verification": [],
+      "trust": {
+        "authored": true,
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "feature:product-views",
+      "key": "product-views",
+      "type": "feature",
+      "path": "docs/knowledge/features/product-views.md",
+      "line": 1,
+      "title": "Audience-specific product knowledge",
+      "status": "active",
+      "bodyHash": "2e968dd68c19448b1215b01569b72df7517b77211d4f3c5543115d5b961e9b2c",
+      "evidence": [
+        {
+          "path": "src/history.js",
+          "symbol": "readHistoricalGraph",
+          "supported": true,
+          "contentHash": "8d3f5bfcadab234281d40e27657da47f3483ade423c29d7f62237e30f582f0fb"
+        },
+        {
+          "path": "src/render.js",
+          "symbol": "renderAudienceView",
+          "supported": true,
+          "contentHash": "d9ee8c7f4c426828892f8d2c71e39f185c82e5b76208ad1558384e0d0d9893ff"
+        },
+        {
+          "path": "src/server.js",
+          "symbol": "createCollaborationServer",
+          "supported": true,
+          "contentHash": "06345d2b64236ad5961be9626656b700b4cf54a93e4a949cb1178ad77aa19dd5"
+        }
+      ],
+      "audiences": [
+        "operations",
+        "product",
+        "security",
+        "support",
+        "technical"
+      ],
+      "affects": [
+        "src/render.js",
+        "src/server.js"
+      ],
+      "contradicts": [],
+      "supersedes": [],
+      "customerImpact": "Product, support, security, operations, and engineering readers share the same traceable knowledge while seeing language suited to their work.",
+      "verification": [],
+      "trust": {
+        "authored": true,
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "invariant:untrusted-repository",
+      "key": "untrusted-repository",
+      "type": "invariant",
+      "path": "docs/knowledge/invariants/untrusted-repository.md",
+      "line": 1,
+      "title": "Repository content is untrusted data",
+      "status": "active",
+      "bodyHash": "49379a84bc5a1d58efcac4695cde41daf7ca548b477f2ab2c614499148db7fe2",
+      "evidence": [
+        {
+          "path": "src/context.js",
+          "symbol": "buildContextPacket",
+          "supported": true,
+          "contentHash": "c43671a0b171fb923a8a4c295d7c022fefe7bd58cc6593a964eaf2209668ff63"
+        },
+        {
+          "path": "src/mcp.js",
+          "symbol": "handleMcpRequest",
+          "supported": true,
+          "contentHash": "e12e604a01d6e342c774c946964bb05f20297506f61bb7fd60bd3d03b78a4af0"
+        },
+        {
+          "path": "src/security.js",
+          "symbol": "detectPromptInjection",
+          "supported": true,
+          "contentHash": "7f4510da60babf1bac15b108cc94cc82a455dcc0f6b4b1b48ac8b9fc6a1aa691"
+        }
+      ],
+      "audiences": [
+        "coding-agents",
+        "security",
+        "technical"
+      ],
+      "affects": [
+        "src"
+      ],
+      "contradicts": [],
+      "supersedes": [],
+      "customerImpact": "",
+      "verification": [],
+      "trust": {
+        "authored": true,
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "runbook:production-verification",
+      "key": "production-verification",
+      "type": "runbook",
+      "path": "docs/knowledge/runbooks/production-verification.md",
+      "line": 1,
+      "title": "Verify ProDocs for production",
+      "status": "active",
+      "bodyHash": "2885e3133e7b495db31c04b3059212f91c9648efa476188ab22a3d597ebcff64",
+      "evidence": [
+        {
+          "path": "scripts/verify-release.js",
+          "symbol": null,
+          "supported": true,
+          "contentHash": "c5e9c3f9ac7f2ea05652a90050c9219f071000e499369d21bfb58a2e6178e9c7"
+        },
+        {
+          "path": "src/cli.js",
+          "symbol": "run",
+          "supported": true,
+          "contentHash": "99dce6d610f37ee3f38f6b8e1682f290170dc25b92e13f516b4a642e594e6c72"
+        }
+      ],
+      "audiences": [
+        "operations",
+        "technical"
+      ],
+      "affects": [
+        "schemas",
+        "src"
+      ],
+      "contradicts": [],
+      "supersedes": [],
+      "customerImpact": "",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "./bin/prodocs.js",
+            "check"
+          ],
+          "cwd": "",
+          "timeoutMs": 30000,
+          "expectedExitCode": 0
+        }
+      ],
+      "trust": {
+        "authored": true,
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "owner:@boyeesu",
+      "type": "owner",
+      "path": ".github/CODEOWNERS",
+      "title": "@boyeesu",
+      "trust": {
+        "authored": true,
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
     }
   ],
   "edges": [
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/cli.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/collectors/artifacts.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/collectors/contract.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/collectors/index.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/collectors/javascript-typescript.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/collectors/legacy.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/config.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/context.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/evaluate.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/history.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/hooks.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/impact.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/index-store.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/integrations.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/knowledge.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/mcp.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/plugins.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/policy.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/proposals.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/providers.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/render.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/runbooks.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/server.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/cli.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/collectors/artifacts.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/collectors/contract.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/collectors/index.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/collectors/javascript-typescript.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/collectors/legacy.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/config.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/context.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/evaluate.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/history.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/hooks.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/impact.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/index-store.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/integrations.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/knowledge.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/mcp.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/plugins.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/policy.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/proposals.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/providers.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/render.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/runbooks.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/server.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:agent-interface",
+      "to": "file:src/context.js",
+      "evidence": {
+        "source": "docs/knowledge/features/agent-interface.md",
+        "reference": "src/context.js"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:agent-interface",
+      "to": "file:src/mcp.js",
+      "evidence": {
+        "source": "docs/knowledge/features/agent-interface.md",
+        "reference": "src/mcp.js"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:change-intelligence",
+      "to": "file:src/impact.js",
+      "evidence": {
+        "source": "docs/knowledge/features/change-intelligence.md",
+        "reference": "src/impact.js"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:change-intelligence",
+      "to": "file:src/policy.js",
+      "evidence": {
+        "source": "docs/knowledge/features/change-intelligence.md",
+        "reference": "src/policy.js"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:change-intelligence",
+      "to": "file:src/proposals.js",
+      "evidence": {
+        "source": "docs/knowledge/features/change-intelligence.md",
+        "reference": "src/proposals.js"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/cli.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/collectors/artifacts.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/collectors/contract.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/collectors/index.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/collectors/javascript-typescript.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/collectors/legacy.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/config.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/context.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/evaluate.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/history.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/hooks.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/impact.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/index-store.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/integrations.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/knowledge.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/mcp.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/plugins.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/policy.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/proposals.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/providers.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/render.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/runbooks.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/server.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:product-views",
+      "to": "file:src/render.js",
+      "evidence": {
+        "source": "docs/knowledge/features/product-views.md",
+        "reference": "src/render.js"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:product-views",
+      "to": "file:src/server.js",
+      "evidence": {
+        "source": "docs/knowledge/features/product-views.md",
+        "reference": "src/server.js"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/cli.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/collectors/artifacts.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/collectors/contract.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/collectors/index.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/collectors/javascript-typescript.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/collectors/legacy.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/config.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/context.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/evaluate.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/history.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/hooks.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/impact.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/index-store.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/integrations.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/knowledge.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/mcp.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/plugins.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/policy.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/proposals.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/providers.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/render.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/runbooks.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/server.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/cli.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/collectors/artifacts.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/collectors/contract.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/collectors/index.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/collectors/javascript-typescript.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/collectors/legacy.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/config.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/context.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/evaluate.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/history.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/hooks.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/impact.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/index-store.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/integrations.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/knowledge.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/mcp.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/plugins.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/policy.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/proposals.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/providers.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/render.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/runbooks.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/server.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
     {
       "type": "imports",
       "from": "file:bin/prodocs.js",
@@ -1158,10 +3916,55 @@
     {
       "type": "imports",
       "from": "file:src/cli.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./constants.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
       "to": "file:src/context.js",
       "evidence": {
         "source": "src/cli.js",
         "specifier": "./context.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/evaluate.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./evaluate.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/history.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./history.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/hooks.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./hooks.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/impact.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./impact.js"
       }
     },
     {
@@ -1176,6 +3979,15 @@
     {
       "type": "imports",
       "from": "file:src/cli.js",
+      "to": "file:src/mcp.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./mcp.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
       "to": "file:src/paths.js",
       "evidence": {
         "source": "src/cli.js",
@@ -1185,10 +3997,55 @@
     {
       "type": "imports",
       "from": "file:src/cli.js",
+      "to": "file:src/plugins.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./plugins.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/policy.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./policy.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/proposals.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./proposals.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/providers.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./providers.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
       "to": "file:src/render.js",
       "evidence": {
         "source": "src/cli.js",
         "specifier": "./render.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/runbooks.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./runbooks.js"
       }
     },
     {
@@ -1212,10 +4069,37 @@
     {
       "type": "imports",
       "from": "file:src/cli.js",
-      "to": "file:src/constants.js",
+      "to": "file:src/security.js",
       "evidence": {
         "source": "src/cli.js",
-        "specifier": "./constants.js"
+        "specifier": "./security.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/server.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./server.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/collectors/artifacts.js",
+      "to": "file:src/collectors/contract.js",
+      "evidence": {
+        "source": "src/collectors/artifacts.js",
+        "specifier": "./contract.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/collectors/index.js",
+      "to": "file:src/collectors/artifacts.js",
+      "evidence": {
+        "source": "src/collectors/index.js",
+        "specifier": "./artifacts.js"
       }
     },
     {
@@ -1283,11 +4167,218 @@
     },
     {
       "type": "imports",
+      "from": "file:src/evaluate.js",
+      "to": "file:src/context.js",
+      "evidence": {
+        "source": "src/evaluate.js",
+        "specifier": "./context.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/evaluate.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/evaluate.js",
+        "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/hooks.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/hooks.js",
+        "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/impact.js",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "src/impact.js",
+        "specifier": "./security.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/index-store.js",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "src/index-store.js",
+        "specifier": "./paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/index-store.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/index-store.js",
+        "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
       "from": "file:src/integrations.js",
       "to": "file:src/safe-fs.js",
       "evidence": {
         "source": "src/integrations.js",
         "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/knowledge.js",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "src/knowledge.js",
+        "specifier": "./paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/knowledge.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/knowledge.js",
+        "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/knowledge.js",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "src/knowledge.js",
+        "specifier": "./scanner.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/knowledge.js",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "src/knowledge.js",
+        "specifier": "./security.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/mcp.js",
+      "to": "file:src/config.js",
+      "evidence": {
+        "source": "src/mcp.js",
+        "specifier": "./config.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/mcp.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "src/mcp.js",
+        "specifier": "./constants.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/mcp.js",
+      "to": "file:src/context.js",
+      "evidence": {
+        "source": "src/mcp.js",
+        "specifier": "./context.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/mcp.js",
+      "to": "file:src/impact.js",
+      "evidence": {
+        "source": "src/mcp.js",
+        "specifier": "./impact.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/mcp.js",
+      "to": "file:src/policy.js",
+      "evidence": {
+        "source": "src/mcp.js",
+        "specifier": "./policy.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/mcp.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/mcp.js",
+        "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/mcp.js",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "src/mcp.js",
+        "specifier": "./scanner.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/plugins.js",
+      "to": "file:src/collectors/contract.js",
+      "evidence": {
+        "source": "src/plugins.js",
+        "specifier": "./collectors/contract.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/plugins.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/plugins.js",
+        "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/proposals.js",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "src/proposals.js",
+        "specifier": "./paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/proposals.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/proposals.js",
+        "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/proposals.js",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "src/proposals.js",
+        "specifier": "./security.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/providers.js",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "src/providers.js",
+        "specifier": "./security.js"
       }
     },
     {
@@ -1310,11 +4401,20 @@
     },
     {
       "type": "imports",
-      "from": "file:src/scanner.js",
-      "to": "file:src/constants.js",
+      "from": "file:src/runbooks.js",
+      "to": "file:src/paths.js",
       "evidence": {
-        "source": "src/scanner.js",
-        "specifier": "./constants.js"
+        "source": "src/runbooks.js",
+        "specifier": "./paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/runbooks.js",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "src/runbooks.js",
+        "specifier": "./security.js"
       }
     },
     {
@@ -1329,10 +4429,46 @@
     {
       "type": "imports",
       "from": "file:src/scanner.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "src/scanner.js",
+        "specifier": "./constants.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/scanner.js",
+      "to": "file:src/index-store.js",
+      "evidence": {
+        "source": "src/scanner.js",
+        "specifier": "./index-store.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/scanner.js",
+      "to": "file:src/knowledge.js",
+      "evidence": {
+        "source": "src/scanner.js",
+        "specifier": "./knowledge.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/scanner.js",
       "to": "file:src/paths.js",
       "evidence": {
         "source": "src/scanner.js",
         "specifier": "./paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/scanner.js",
+      "to": "file:src/plugins.js",
+      "evidence": {
+        "source": "src/scanner.js",
+        "specifier": "./plugins.js"
       }
     },
     {
@@ -1346,11 +4482,101 @@
     },
     {
       "type": "imports",
-      "from": "file:test/config.test.js",
+      "from": "file:src/scanner.js",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "src/scanner.js",
+        "specifier": "./security.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/server.js",
+      "to": "file:src/config.js",
+      "evidence": {
+        "source": "src/server.js",
+        "specifier": "./config.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/server.js",
+      "to": "file:src/context.js",
+      "evidence": {
+        "source": "src/server.js",
+        "specifier": "./context.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/server.js",
+      "to": "file:src/policy.js",
+      "evidence": {
+        "source": "src/server.js",
+        "specifier": "./policy.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/server.js",
+      "to": "file:src/proposals.js",
+      "evidence": {
+        "source": "src/server.js",
+        "specifier": "./proposals.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/server.js",
+      "to": "file:src/render.js",
+      "evidence": {
+        "source": "src/server.js",
+        "specifier": "./render.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/server.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/server.js",
+        "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/server.js",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "src/server.js",
+        "specifier": "./scanner.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/server.js",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "src/server.js",
+        "specifier": "./security.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/cli-roadmap.test.js",
       "to": "file:src/constants.js",
       "evidence": {
-        "source": "test/config.test.js",
+        "source": "test/cli-roadmap.test.js",
         "specifier": "../src/constants.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/cli-roadmap.test.js",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "test/cli-roadmap.test.js",
+        "specifier": "../src/security.js"
       }
     },
     {
@@ -1360,6 +4586,15 @@
       "evidence": {
         "source": "test/config.test.js",
         "specifier": "../src/config.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/config.test.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "test/config.test.js",
+        "specifier": "../src/constants.js"
       }
     },
     {
@@ -1400,6 +4635,141 @@
     },
     {
       "type": "imports",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/collectors/artifacts.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "specifier": "../src/collectors/artifacts.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "specifier": "../src/constants.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/evaluate.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "specifier": "../src/evaluate.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/history.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "specifier": "../src/history.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/hooks.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "specifier": "../src/hooks.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/impact.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "specifier": "../src/impact.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/mcp.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "specifier": "../src/mcp.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/plugins.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "specifier": "../src/plugins.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/policy.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "specifier": "../src/policy.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/proposals.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "specifier": "../src/proposals.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/providers.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "specifier": "../src/providers.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/runbooks.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "specifier": "../src/runbooks.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "specifier": "../src/scanner.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "specifier": "../src/security.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/server.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "specifier": "../src/server.js"
+      }
+    },
+    {
+      "type": "imports",
       "from": "file:test/safe-fs.test.js",
       "to": "file:src/safe-fs.js",
       "evidence": {
@@ -1423,6 +4793,861 @@
       "evidence": {
         "source": "test/scanner.test.js",
         "specifier": "../src/scanner.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:bin/prodocs.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "bin/prodocs.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:fixtures/collectors/typescript-component.tsx",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "fixtures/collectors/typescript-component.tsx"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:scripts/coverage.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "scripts/coverage.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:scripts/lint.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "scripts/lint.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:scripts/validate-repository.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "scripts/validate-repository.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:scripts/verify-release.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "scripts/verify-release.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/cli.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/cli.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/collectors/artifacts.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/collectors/artifacts.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/collectors/contract.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/collectors/contract.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/collectors/index.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/collectors/index.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/collectors/javascript-typescript.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/collectors/javascript-typescript.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/collectors/legacy.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/collectors/legacy.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/config.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/config.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/constants.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/context.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/context.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/evaluate.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/evaluate.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/history.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/history.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/hooks.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/hooks.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/impact.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/impact.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/index-store.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/index-store.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/integrations.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/integrations.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/knowledge.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/knowledge.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/mcp.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/mcp.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/paths.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/plugins.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/plugins.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/policy.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/policy.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/proposals.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/proposals.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/providers.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/providers.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/render.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/render.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/runbooks.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/runbooks.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/safe-fs.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/scanner.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/security.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/server.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/server.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:test/cli-roadmap.test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "test/cli-roadmap.test.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:test/cli.test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "test/cli.test.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:test/collectors.test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "test/collectors.test.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:test/config.test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "test/config.test.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:test/context.test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "test/context.test.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:test/package.test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "test/package.test.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:test/paths.test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "test/paths.test.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:test/render.test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "test/render.test.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:test/roadmap.test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "test/roadmap.test.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:test/safe-fs.test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "test/safe-fs.test.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:test/scanner.test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "test/scanner.test.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:test/workflows.test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "test/workflows.test.js"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "claim:local-first",
+      "to": "file:src/cli.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src/cli.js#run"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "claim:local-first",
+      "to": "file:src/index-store.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src/index-store.js#openIndexStore"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "claim:local-first",
+      "to": "file:src/providers.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src/providers.js#openAiCompatibleProposal"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "decision:deterministic-core",
+      "to": "file:src/impact.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src/impact.js#analyzeImpact"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "decision:deterministic-core",
+      "to": "file:src/providers.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src/providers.js#templateProposal"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "decision:deterministic-core",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src/scanner.js#scanProject"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:agent-interface",
+      "to": "file:src/context.js",
+      "evidence": {
+        "source": "docs/knowledge/features/agent-interface.md",
+        "reference": "src/context.js#buildContextPacket"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:agent-interface",
+      "to": "file:src/integrations.js",
+      "evidence": {
+        "source": "docs/knowledge/features/agent-interface.md",
+        "reference": "src/integrations.js#writeIntegrations"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:agent-interface",
+      "to": "file:src/mcp.js",
+      "evidence": {
+        "source": "docs/knowledge/features/agent-interface.md",
+        "reference": "src/mcp.js#runMcpServer"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:change-intelligence",
+      "to": "file:src/impact.js",
+      "evidence": {
+        "source": "docs/knowledge/features/change-intelligence.md",
+        "reference": "src/impact.js#analyzeImpact"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:change-intelligence",
+      "to": "file:src/policy.js",
+      "evidence": {
+        "source": "docs/knowledge/features/change-intelligence.md",
+        "reference": "src/policy.js#evaluatePolicies"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:change-intelligence",
+      "to": "file:src/proposals.js",
+      "evidence": {
+        "source": "docs/knowledge/features/change-intelligence.md",
+        "reference": "src/proposals.js#applyProposal"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/collectors/index.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src/collectors/index.js#collectSourceEvidence"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/knowledge.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src/knowledge.js#collectAuthoredKnowledge"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src/scanner.js#scanProject"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:product-views",
+      "to": "file:src/history.js",
+      "evidence": {
+        "source": "docs/knowledge/features/product-views.md",
+        "reference": "src/history.js#readHistoricalGraph"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:product-views",
+      "to": "file:src/render.js",
+      "evidence": {
+        "source": "docs/knowledge/features/product-views.md",
+        "reference": "src/render.js#renderAudienceView"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:product-views",
+      "to": "file:src/server.js",
+      "evidence": {
+        "source": "docs/knowledge/features/product-views.md",
+        "reference": "src/server.js#createCollaborationServer"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/context.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src/context.js#buildContextPacket"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/mcp.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src/mcp.js#handleMcpRequest"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src/security.js#detectPromptInjection"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "runbook:production-verification",
+      "to": "file:scripts/verify-release.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "scripts/verify-release.js"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "runbook:production-verification",
+      "to": "file:src/cli.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src/cli.js#run"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/cli-roadmap.test.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "test/cli-roadmap.test.js",
+        "reference": "../src/constants.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/cli-roadmap.test.js",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "test/cli-roadmap.test.js",
+        "reference": "../src/security.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/config.test.js",
+      "to": "file:src/config.js",
+      "evidence": {
+        "source": "test/config.test.js",
+        "reference": "../src/config.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/config.test.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "test/config.test.js",
+        "reference": "../src/constants.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/context.test.js",
+      "to": "file:src/context.js",
+      "evidence": {
+        "source": "test/context.test.js",
+        "reference": "../src/context.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/paths.test.js",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "test/paths.test.js",
+        "reference": "../src/paths.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/render.test.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "test/render.test.js",
+        "reference": "../src/constants.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/render.test.js",
+      "to": "file:src/render.js",
+      "evidence": {
+        "source": "test/render.test.js",
+        "reference": "../src/render.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/collectors/artifacts.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "reference": "../src/collectors/artifacts.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "reference": "../src/constants.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/evaluate.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "reference": "../src/evaluate.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/history.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "reference": "../src/history.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/hooks.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "reference": "../src/hooks.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/impact.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "reference": "../src/impact.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/mcp.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "reference": "../src/mcp.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/plugins.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "reference": "../src/plugins.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/policy.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "reference": "../src/policy.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/proposals.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "reference": "../src/proposals.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/providers.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "reference": "../src/providers.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/runbooks.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "reference": "../src/runbooks.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "reference": "../src/scanner.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "reference": "../src/security.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/roadmap.test.js",
+      "to": "file:src/server.js",
+      "evidence": {
+        "source": "test/roadmap.test.js",
+        "reference": "../src/server.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/safe-fs.test.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "test/safe-fs.test.js",
+        "reference": "../src/safe-fs.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/scanner.test.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "test/scanner.test.js",
+        "reference": "../src/constants.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/scanner.test.js",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "test/scanner.test.js",
+        "reference": "../src/scanner.js"
       }
     }
   ]

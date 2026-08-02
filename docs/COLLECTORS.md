@@ -67,6 +67,11 @@ Other supported languages currently use the
 contract so each language can be replaced without changing the scanner or
 knowledge graph.
 
+OpenAPI documents named `*.openapi.json`, `*.openapi.yaml`, or
+`*.openapi.yml` produce endpoint and schema evidence. SQL files produce table
+and view evidence. CODEOWNERS is ingested as ownership evidence, and imports
+from recognized test paths produce explicit `tests` relationships.
+
 The default CLI stops with the file and location when a parser cannot produce
 an AST. Recoverable parser diagnostics—common in intentional negative type
 tests—are retained as warnings while their syntax-tree evidence remains usable.
@@ -79,6 +84,18 @@ in-process and never import, evaluate, compile, or run the indexed file. The
 scanner applies its existing file-count and byte limits before invoking a
 collector.
 
-Third-party collector loading is not enabled by the CLI yet. A future plugin
-SDK must add explicit capabilities and isolation before external collector code
-can run.
+Third-party collectors use declarative `prodocs.collector-plugin` JSON. The only
+supported capability is `collect:source-text`; plugins declare bounded
+line-prefix symbol and import rules. ProDocs does not import or execute plugin
+code.
+
+Verify a plugin and its embedded fixtures:
+
+```bash
+prodocs plugin verify path/to/plugin.prodocs-plugin.json
+```
+
+Enable a verified plugin through `plugins.paths` in `prodocs.config.json`.
+Duplicate extensions, unknown capabilities, malformed rules, unsafe paths, and
+fixture mismatches fail closed. See
+`fixtures/plugins/service.prodocs-plugin.json` for the conformance format.

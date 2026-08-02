@@ -51,7 +51,9 @@ for (const schemaPath of [
   "schemas/prodocs-config.schema.json",
   "schemas/knowledge.schema.json",
   "schemas/context-packet.schema.json",
-  "schemas/collector-result.schema.json"
+  "schemas/collector-result.schema.json",
+  "schemas/impact.schema.json",
+  "schemas/proposal.schema.json"
 ]) {
   const schema = JSON.parse(fs.readFileSync(schemaPath, "utf8"));
   if (!schema.$id || !schema.$schema) {

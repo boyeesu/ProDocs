@@ -6,6 +6,56 @@ All notable changes to ProDocs are documented here. The project follows
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-08-02
+
+### Added
+
+- Added first-class authored claims, decisions, invariants, features, and
+  executable runbooks with strict YAML front matter and evidence references.
+- Added evidence coverage, unsupported-knowledge, contradiction, supersession,
+  feature-to-code, and customer-impact reporting.
+- Added an incremental SQLite evidence cache with content-hash invalidation and
+  deterministic portable graph exports.
+- Added OpenAPI, SQL schema, CODEOWNERS, and test-relationship collectors.
+- Added a declarative, capability-bounded plugin SDK with conformance fixtures
+  and no third-party code execution.
+- Added `prodocs impact` for git-diff traversal across code, claims, decisions,
+  features, runbooks, tests, and owners.
+- Added documentation-contract policies, content-addressed review/write
+  proposals, safe proposal application, and an installable pre-push gate.
+- Added deterministic and explicitly network-approved OpenAI-compatible cited
+  narrative providers with secret redaction and citation validation.
+- Added an MCP `2025-11-25` stdio server with bounded context, impact, policy,
+  graph, and policy resources.
+- Added task, file, and token context budgets with visible truncation and a
+  context quality evaluation harness.
+- Added product, technical, support, security, operations, and coding-agent
+  views, feature maps, and knowledge health output.
+- Added content-bound runbook execution, git time-travel views, and an optional
+  self-hosted collaboration API with authenticated writes.
+
+### Changed
+
+- Promoted ProDocs from a production-ready beta to the production-ready 1.0
+  product contract.
+- Upgraded knowledge graphs and context packets to schema version 2.
+- Expanded the public package exports to collectors, plugins, providers,
+  impact, proposal, context, and knowledge Schemas.
+- Expanded the production gate with 66+ tests, policy enforcement, context
+  evaluation, plugin conformance, and pull-request impact evidence.
+
+### Security
+
+- Repository-derived instructions are explicitly untrusted in context and MCP
+  output.
+- Provider egress requires explicit approval, bounded HTTPS or loopback
+  endpoints, secret redaction, response limits, timeouts, and supplied-evidence
+  citations.
+- Runbook execution is shell-free, repository-contained, time-bounded,
+  output-bounded, secret-minimized, and tied to an exact approval hash.
+- Proposal writes reject generated paths, repository escapes, symbolic-link
+  destinations, stale expected hashes, and mismatched approvals.
+
 ## [0.2.0] - 2026-08-02
 
 ### Added
@@ -54,6 +104,7 @@ All notable changes to ProDocs are documented here. The project follows
 - Project-root containment for configured sources and generated output.
 - Versioned JSON Schemas for configuration and knowledge graph artifacts.
 
-[Unreleased]: https://github.com/boyeesu/prodocs/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/boyeesu/prodocs/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/boyeesu/prodocs/compare/v0.2.0...v1.0.0
 [0.2.0]: https://github.com/boyeesu/prodocs/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/boyeesu/prodocs/releases/tag/v0.1.0

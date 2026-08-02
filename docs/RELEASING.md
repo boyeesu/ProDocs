@@ -3,6 +3,11 @@
 Only maintainers should perform a release. Releases are built from protected
 `main`; source code and generated documentation must be clean and fresh.
 
+The `1.0.0` codebase completes all product-roadmap phases. Publishing remains a
+separate maintainer-controlled operation: merge the verified release PR, tag
+the exact protected `main` commit, verify its artifacts, and then approve npm
+publication.
+
 ## One-time npm setup
 
 1. Claim the `prodocs` package name on npm.
@@ -27,8 +32,10 @@ The publishing workflow intentionally contains no long-lived npm token.
    npm run release:check -- v<version>
    ```
 
-4. Merge the release preparation through the protected pull-request workflow.
-5. Confirm post-merge CI and CodeQL are green.
+4. Review `prodocs impact --base origin/main --json`, `prodocs policy --json`,
+   and the generated audience views.
+5. Merge the release preparation through the protected pull-request workflow.
+6. Confirm post-merge CI and CodeQL are green.
 
 ## Create the release
 

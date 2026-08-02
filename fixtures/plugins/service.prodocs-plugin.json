@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "kind": "prodocs.collector-plugin",
+  "id": "service-definition",
+  "version": 1,
+  "capabilities": [
+    "collect:source-text"
+  ],
+  "languages": [
+    "Service Definition"
+  ],
+  "extensions": [
+    ".svcdef"
+  ],
+  "rules": {
+    "symbols": [
+      {
+        "prefix": "service ",
+        "kind": "service"
+      }
+    ],
+    "imports": [
+      {
+        "prefix": "use "
+      }
+    ]
+  },
+  "fixtures": [
+    {
+      "source": "use ./shared.svcdef\nservice Billing {\n}\n",
+      "filePath": "billing.svcdef",
+      "language": "Service Definition",
+      "symbols": [
+        {
+          "name": "Billing",
+          "kind": "service",
+          "line": 2
+        }
+      ]
+    }
+  ]
+}

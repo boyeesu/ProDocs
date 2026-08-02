@@ -50,6 +50,10 @@ export function validateConfig(config) {
     "entrypoints",
     "ownership",
     "limits",
+    "knowledge",
+    "index",
+    "plugins",
+    "policies",
     "documentation"
   ]);
   const unknownKeys = Object.keys(config).filter((key) => !allowedKeys.has(key));
@@ -99,7 +103,10 @@ export function validateConfig(config) {
   const allowedLimitKeys = new Set([
     "maxFiles",
     "maxFileSizeBytes",
-    "maxTotalBytes"
+    "maxTotalBytes",
+    "maxContextFiles",
+    "maxContextTokens",
+    "maxProviderBytes"
   ]);
   const unknownLimitKeys = Object.keys(config.limits).filter(
     (key) => !allowedLimitKeys.has(key)
@@ -118,6 +125,93 @@ export function validateConfig(config) {
     "limits.maxTotalBytes",
     10 * 1024 * 1024 * 1024
   );
+  requirePositiveInteger(
+    config.limits.maxContextFiles,
+    "limits.maxContextFiles",
+    10_000
+  );
+  requirePositiveInteger(
+    config.limits.maxContextTokens,
+    "limits.maxContextTokens",
+    10_000_000
+  );
+  requirePositiveInteger(
+    config.limits.maxProviderBytes,
+    "limits.maxProviderBytes",
+    100 * 1024 * 1024
+  );
+  if (
+    !config.knowledge ||
+    typeof config.knowledge !== "object" ||
+    Array.isArray(config.knowledge)
+  ) {
+    throw new Error("knowledge must be an object.");
+  }
+  const unknownKnowledgeKeys = Object.keys(config.knowledge).filter(
+    (key) => !["paths", "requireEvidence"].includes(key)
+  );
+  if (unknownKnowledgeKeys.length > 0) {
+    throw new Error(`Unknown knowledge field: ${unknownKnowledgeKeys.join(", ")}`);
+  }
+  requireStringArray(config.knowledge.paths, "knowledge.paths", {
+    maxItems: 256,
+    maxLength: 1024
+  });
+  if (typeof config.knowledge.requireEvidence !== "boolean") {
+    throw new Error("knowledge.requireEvidence must be a boolean.");
+  }
+  if (
+    !config.index ||
+    typeof config.index !== "object" ||
+    Array.isArray(config.index) ||
+    Object.keys(config.index).some((key) => !["enabled", "path"].includes(key))
+  ) {
+    throw new Error("index must contain only enabled and path.");
+  }
+  if (
+    typeof config.index.enabled !== "boolean" ||
+    typeof config.index.path !== "string" ||
+    config.index.path.trim() === "" ||
+    config.index.path.includes("\0")
+  ) {
+    throw new Error("index requires a boolean enabled and a relative path.");
+  }
+  if (
+    !config.policies ||
+    typeof config.policies !== "object" ||
+    Array.isArray(config.policies)
+  ) {
+    throw new Error("policies must be an object.");
+  }
+  if (
+    !config.plugins ||
+    typeof config.plugins !== "object" ||
+    Array.isArray(config.plugins) ||
+    Object.keys(config.plugins).some((key) => key !== "paths")
+  ) {
+    throw new Error("plugins must contain only paths.");
+  }
+  requireStringArray(config.plugins.paths, "plugins.paths", {
+    maxItems: 64,
+    maxLength: 1024
+  });
+  const policyKeys = [
+    "publicSurfaceRequiresOwner",
+    "publicSurfaceRequiresClaim",
+    "claimRequiresEvidence",
+    "runbookRequiresVerification"
+  ];
+  const unknownPolicyKeys = Object.keys(config.policies).filter(
+    (key) => !policyKeys.includes(key)
+  );
+  if (
+    unknownPolicyKeys.length > 0 ||
+    policyKeys.some((key) => typeof config.policies[key] !== "boolean")
+  ) {
+    throw new Error(
+      `policies must contain boolean fields: ${policyKeys.join(", ")}.`
+    );
+  }
   if (
     !config.documentation ||
     typeof config.documentation !== "object" ||
@@ -174,6 +268,26 @@ export async function loadConfig(root) {
   return validateConfig({
     ...DEFAULT_CONFIG,
     ...userConfig,
+    limits: {
+      ...DEFAULT_CONFIG.limits,
+      ...(userConfig.limits ?? {})
+    },
+    knowledge: {
+      ...DEFAULT_CONFIG.knowledge,
+      ...(userConfig.knowledge ?? {})
+    },
+    index: {
+      ...DEFAULT_CONFIG.index,
+      ...(userConfig.index ?? {})
+    },
+    plugins: {
+      ...DEFAULT_CONFIG.plugins,
+      ...(userConfig.plugins ?? {})
+    },
+    policies: {
+      ...DEFAULT_CONFIG.policies,
+      ...(userConfig.policies ?? {})
+    },
     documentation: {
       ...DEFAULT_CONFIG.documentation,
       ...(userConfig.documentation ?? {})

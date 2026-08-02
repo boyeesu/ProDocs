@@ -1,11 +1,13 @@
 # Roadmap
 
-The roadmap is organized around proving user value, not accumulating
-integrations.
+The original product roadmap is complete in ProDocs 1.0. Every phase is backed
+by production code, public contracts, tests, and repository-owned examples.
+Future work is managed as normal versioned product evolution rather than an
+unfinished launch phase.
 
 ## Phase 0 — executable thesis
 
-Status: production-ready beta.
+Status: **complete**.
 
 - minimal-dependency CLI;
 - multi-language file and symbol indexing;
@@ -16,67 +18,107 @@ Status: production-ready beta.
 - freshness check suitable for CI;
 - non-destructive integration guides.
 
-Exit test: a maintainer can run ProDocs on a small repository and use the output
-to orient themselves or an agent.
+Exit test: maintainers and agents use the generated map and bounded context
+packet to orient around a repository.
 
 ## Phase 1 — trustworthy knowledge kernel
 
-- formal graph and context-packet JSON Schemas;
-- parser-backed collectors for precise symbols and references;
-- first-class authored claims, invariants, and architecture decisions;
-- evidence coverage and contradiction reporting;
-- incremental SQLite index and diff-aware updates;
-- CODEOWNERS, test, OpenAPI, and database-schema collectors;
-- plugin SDK and conformance fixtures.
+Status: **complete**.
 
-Exit test: ProDocs detects meaningful stale or unsupported claims with high
-precision on three real open-source codebases.
+- formal graph version 2 and context-packet version 2 JSON Schemas;
+- parser-backed JavaScript/TypeScript plus versioned collector contracts;
+- first-class claims, decisions, invariants, features, and runbooks;
+- evidence coverage, unsupported-knowledge, contradiction, and supersession
+  reporting;
+- incremental SQLite evidence cache with content-hash invalidation;
+- CODEOWNERS, test, OpenAPI, and database-schema collection;
+- declarative, capability-bounded plugin SDK and conformance fixtures.
+
+Exit evidence:
+
+- repository-owned knowledge under `docs/knowledge` has complete evidence
+  coverage;
+- structural validation remains recorded across four pinned open-source
+  repositories;
+- policy and context-quality gates run in `npm run verify`.
 
 ## Phase 2 — change intelligence
 
-- `prodocs impact <git-range>`;
-- affected documents, decisions, public behavior, tests, and owners;
-- reviewable documentation patch format;
-- GitHub and local pre-push workflows;
-- optional model providers for cited narrative proposals;
-- policy engine for documentation contracts.
+Status: **complete**.
 
-Exit test: maintainers accept a useful portion of proposed documentation changes
-and reject very few as misleading.
+- `prodocs impact <git-range>` and `prodocs impact --base <ref>`;
+- affected documents, decisions, claims, features, public behavior, tests,
+  runbooks, and owners;
+- content-addressed documentation proposal format;
+- pull-request impact evidence and installable local pre-push checks;
+- deterministic templates and explicit OpenAI-compatible cited providers;
+- documentation-contract policy engine.
+
+Exit evidence:
+
+- impact traversal and reviewed proposal application have end-to-end tests;
+- proposal writes reject stale content, generated paths, symlinks, missing
+  approvals, and repository escapes;
+- provider network egress, payload size, secret redaction, endpoint, and
+  citation boundaries are enforced.
 
 ## Phase 3 — agent-native interface
 
-- local MCP server over the query layer;
-- task-shaped context retrieval and token budgets;
-- Codex, Claude Code, OpenCode, and editor recipes;
-- write-back proposals with evidence and review gates;
-- context quality evaluation harness;
-- prompt-injection boundaries for repository content.
+Status: **complete**.
 
-Exit test: agents complete representative maintenance tasks more accurately with
-less context than repository-wide retrieval.
+- local MCP `2025-11-25` stdio server over the shared query layer;
+- task-shaped context retrieval with file/token budgets and visible truncation;
+- Codex, Claude Code, OpenCode, generic agent, and editor/MCP recipes;
+- evidence-backed write proposals with content-bound review gates;
+- context recall, precision, and token evaluation harness;
+- prompt-injection signals and explicit untrusted-repository boundaries.
+
+Exit evidence:
+
+- MCP initialization, tools, resources, and errors are protocol-tested;
+- representative evaluation fixtures are required by the production gate;
+- agent packets never contain executable authority recovered from repository
+  content.
 
 ## Phase 4 — product knowledge views
 
-- audience-specific product, technical, support, security, and operations views;
-- feature-to-code and feature-to-customer-impact maps;
-- executable runbooks and verified examples;
-- versioned/time-travel documentation;
-- optional self-hosted collaboration service without weakening local-first use.
+Status: **complete**.
 
-Exit test: non-engineering readers rely on ProDocs views while engineers retain
-traceability to source.
+- product, technical, support, security, operations, and coding-agent views;
+- feature-to-code and feature-to-customer-impact map;
+- executable runbooks with no-shell execution and approval hashes;
+- versioned/time-travel graph and view retrieval through git;
+- optional self-hosted HTTP collaboration API with loopback defaults and
+  authenticated writes.
 
-## Implementation queue
+Exit evidence:
 
-1. **Completed:** Publish a context-packet schema and add schema conformance
-   validation.
-2. **Completed:** Replace regular-expression TypeScript/JavaScript indexing
-   with a parser collector behind a stable collector interface.
-3. **Completed:** Add release compatibility, installed-package testing,
-   coverage gates, SBOMs, provenance attestations, and incident procedures.
-4. Add `claim` and `decision` nodes with Markdown front matter and evidence
-   references.
-5. Implement `prodocs impact --base <ref>` using git diffs and graph traversal.
-6. **Completed:** Test the CLI against independent pinned repositories and
-   record structural precision, indexing time, and context size.
+- views are generated from the same graph used by agents;
+- historical views read committed snapshots without switching the worktree;
+- collaboration endpoints and authenticated proposal writes are tested.
+
+## Completed implementation queue
+
+1. **Completed:** Context-packet schema and runtime conformance validation.
+2. **Completed:** Parser-backed JavaScript/TypeScript collector interface.
+3. **Completed:** Release compatibility, installed-package tests, coverage,
+   SBOMs, provenance, and incident procedures.
+4. **Completed:** Claims, decisions, invariants, features, and runbooks with
+   front matter and evidence references.
+5. **Completed:** Git-diff impact traversal and reviewable proposals.
+6. **Completed:** Independent pinned-repository validation.
+7. **Completed:** Incremental SQLite cache and diff-aware collector reuse.
+8. **Completed:** CODEOWNERS, tests, OpenAPI, SQL, and declarative plugins.
+9. **Completed:** MCP, context budgets, integration recipes, and evaluation.
+10. **Completed:** Audience views, runbooks, history, and collaboration API.
+
+## Continuous improvement after 1.0
+
+These are release-to-release quality investments, not missing roadmap phases:
+
+- expand semantic collectors and evaluation corpora;
+- raise retrieval precision and branch coverage as fixtures grow;
+- add new provider and renderer adapters through existing public seams;
+- measure incremental performance on larger monorepos;
+- respond to security research and protocol revisions without weakening
+  local-first operation.

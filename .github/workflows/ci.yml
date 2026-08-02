@@ -33,6 +33,11 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run verify
+      - if: matrix.node == 24 && github.event_name == 'pull_request'
+        name: Build change-impact evidence
+        env:
+          PRODOCS_BASE: ${{ github.event.pull_request.base.sha }}
+        run: node ./bin/prodocs.js impact --base "$PRODOCS_BASE" --json > .prodocs/ci-impact.json
       - if: matrix.node == 24
         run: npm run test:coverage
       - run: npm audit --omit=dev

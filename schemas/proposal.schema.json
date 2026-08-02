@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/boyeesu/prodocs/main/schemas/proposal.schema.json",
+  "title": "ProDocs reviewable knowledge proposal",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "kind",
+    "mode",
+    "source",
+    "operations",
+    "approvalHash"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "kind": { "const": "prodocs.proposal" },
+    "mode": { "enum": ["review", "write"] },
+    "source": { "type": "object" },
+    "operations": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "object",
+        "required": ["op", "path"],
+        "properties": {
+          "op": { "enum": ["review", "create", "replace"] },
+          "path": { "type": "string", "minLength": 1 },
+          "targetId": { "type": "string" },
+          "reason": { "type": "string" },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "content": { "type": "string", "maxLength": 2097152 },
+          "expectedHash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "approvalHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false
+}
