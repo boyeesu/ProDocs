@@ -107,6 +107,10 @@ flowchart LR
   G --> C["CI freshness"]
 ```
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/boyeesu/prodocs/main/assets/prodocs-flow.jpg" width="1200" alt="Source files flow through the ProDocs evidence graph into verified documentation and scoped context for coding agents">
+</p>
+
 The current beta indexes supported source files, declarations, local imports,
 inferred entrypoints, ownership, and content hashes. JavaScript and TypeScript
 use a real syntax-tree parser behind a versioned collector interface. The

@@ -129,7 +129,7 @@ or parser execution boundaries change.
 
 The suite covers CLI workflows, malformed input, path and symlink containment,
 atomic writes, graph determinism, schema validation, collectors, package
-installation (`test/package.test.js:25-118`), and external repositories.
+installation (`test/package.test.js:41-177`), and external repositories.
 Required CI spans Node.js 20/22/24, Linux, macOS, and Windows
 (`.github/workflows/ci.yml:17-60`). Coverage floors are 85% lines, 80% branches,
 and 90% functions (`scripts/coverage.js:3-7`).

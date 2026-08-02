@@ -5,7 +5,17 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 
-const npm = process.platform === "win32" ? "npm.cmd" : "npm";
+const npmCli =
+  process.env.npm_execpath ??
+  (process.platform === "win32"
+    ? path.join(
+        path.dirname(process.execPath),
+        "node_modules",
+        "npm",
+        "bin",
+        "npm-cli.js"
+      )
+    : null);
 
 function execute(command, args, options = {}) {
   return new Promise((resolve, reject) => {
@@ -22,17 +32,32 @@ function execute(command, args, options = {}) {
   });
 }
 
+function executeNpm(args, options = {}) {
+  return npmCli
+    ? execute(process.execPath, [npmCli, ...args], options)
+    : execute("npm", args, options);
+}
+
 test("published package installs and completes the documented workflow", async (t) => {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), "prodocs-package-"));
   t.after(() => fs.rm(root, { recursive: true, force: true }));
   const packDirectory = path.join(root, "pack");
+  const dependencyPackDirectory = path.join(root, "dependencies");
   const consumer = path.join(root, "consumer");
   const project = path.join(consumer, "project");
+  const npmCache = path.join(root, "npm-cache");
+  const npmEnvironment = {
+    ...process.env,
+    NPM_CONFIG_CACHE: npmCache,
+    NPM_CONFIG_DRY_RUN: "false",
+    npm_config_cache: npmCache,
+    npm_config_dry_run: "false"
+  };
   await fs.mkdir(packDirectory);
+  await fs.mkdir(dependencyPackDirectory);
   await fs.mkdir(path.join(project, "src"), { recursive: true });
 
-  const packed = await execute(
-    npm,
+  const packed = await executeNpm(
     [
       "pack",
       "--ignore-scripts",
@@ -42,11 +67,7 @@ test("published package installs and completes the documented workflow", async (
     ],
     {
       cwd: process.cwd(),
-      env: {
-        ...process.env,
-        NPM_CONFIG_DRY_RUN: "false",
-        npm_config_dry_run: "false"
-      }
+      env: npmEnvironment
     }
   );
   assert.equal(packed.code, 0, packed.stderr);
@@ -71,25 +92,49 @@ test("published package installs and completes the documented workflow", async (
   }
   const tarball = path.join(packDirectory, filename);
 
-  const installed = await execute(
-    npm,
+  const dependencyTarballs = [];
+  for (const dependencyPath of [
+    ["@babel", "parser"],
+    ["@babel", "types"],
+    ["@babel", "helper-string-parser"],
+    ["@babel", "helper-validator-identifier"]
+  ]) {
+    const dependencyPackage = await executeNpm(
+      [
+        "pack",
+        "--ignore-scripts",
+        "--json",
+        "--pack-destination",
+        dependencyPackDirectory,
+        path.join(process.cwd(), "node_modules", ...dependencyPath)
+      ],
+      { cwd: root, env: npmEnvironment }
+    );
+    assert.equal(dependencyPackage.code, 0, dependencyPackage.stderr);
+    const [{ filename: dependencyFilename }] = JSON.parse(
+      dependencyPackage.stdout
+    );
+    dependencyTarballs.push(
+      path.join(dependencyPackDirectory, dependencyFilename)
+    );
+  }
+
+  const installed = await executeNpm(
     [
       "install",
       "--ignore-scripts",
       "--no-audit",
       "--no-fund",
+      "--offline",
       "--prefer-offline",
       "--prefix",
       consumer,
-      tarball
+      tarball,
+      ...dependencyTarballs
     ],
     {
       cwd: root,
-      env: {
-        ...process.env,
-        NPM_CONFIG_DRY_RUN: "false",
-        npm_config_dry_run: "false"
-      }
+      env: npmEnvironment
     }
   );
   assert.equal(installed.code, 0, installed.stderr);

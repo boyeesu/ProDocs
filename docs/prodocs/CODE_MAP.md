@@ -30,7 +30,7 @@ not prose claims.
 | [`test/collectors.test.js`](../../test/collectors.test.js) | JavaScript | 336 | — | fixtures (value, L12) |
 | [`test/config.test.js`](../../test/config.test.js) | JavaScript | 78 | — | — |
 | [`test/context.test.js`](../../test/context.test.js) | JavaScript | 174 | — | hashes (value, L11)<br>node (function, L19)<br>edge (function, L39)<br>graph (function, L51) |
-| [`test/package.test.js`](../../test/package.test.js) | JavaScript | 133 | — | npm (value, L8)<br>execute (function, L10) |
+| [`test/package.test.js`](../../test/package.test.js) | JavaScript | 178 | — | npmCli (value, L8)<br>execute (function, L20)<br>executeNpm (function, L35) |
 | [`test/paths.test.js`](../../test/paths.test.js) | JavaScript | 44 | — | — |
 | [`test/render.test.js`](../../test/render.test.js) | JavaScript | 64 | — | graph (function, L9) |
 | [`test/safe-fs.test.js`](../../test/safe-fs.test.js) | JavaScript | 48 | — | — |

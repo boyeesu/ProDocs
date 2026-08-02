@@ -6,7 +6,7 @@ All notable changes to ProDocs are documented here. The project follows
 
 ## [Unreleased]
 
-## [0.2.0] - 2026-07-29
+## [0.2.0] - 2026-08-02
 
 ### Added
 
@@ -24,6 +24,7 @@ All notable changes to ProDocs are documented here. The project follows
 - Added tag-driven GitHub releases with SBOMs, checksums, and build provenance
   attestations.
 - Added approval-gated npm trusted publishing with package provenance.
+- Added a README visual showing the code-to-evidence-to-agent-context flow.
 
 ### Changed
 
@@ -35,6 +36,8 @@ All notable changes to ProDocs are documented here. The project follows
   pre-`1.0` compatibility rules.
 - Recoverable JavaScript/TypeScript parser diagnostics are retained as warnings
   so intentional negative type tests do not block repository indexing.
+- Package installation tests invoke npm portably on Windows and use isolated,
+  locally populated package state instead of a developer's global cache.
 
 ## [0.1.0] - 2026-07-29
 
