@@ -1,6 +1,6 @@
 {
   "name": "prodocs",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Evidence-backed documentation and context infrastructure for codebases and coding agents.",
   "type": "module",
   "author": "ProDocs contributors",
@@ -17,7 +17,13 @@
   },
   "exports": {
     "./collectors": "./src/collectors/index.js",
-    "./schemas/collector-result.schema.json": "./schemas/collector-result.schema.json"
+    "./plugins": "./src/plugins.js",
+    "./providers": "./src/providers.js",
+    "./schemas/collector-result.schema.json": "./schemas/collector-result.schema.json",
+    "./schemas/context-packet.schema.json": "./schemas/context-packet.schema.json",
+    "./schemas/impact.schema.json": "./schemas/impact.schema.json",
+    "./schemas/knowledge.schema.json": "./schemas/knowledge.schema.json",
+    "./schemas/proposal.schema.json": "./schemas/proposal.schema.json"
   },
   "files": [
     "bin",
@@ -25,8 +31,7 @@
     "scripts",
     "src",
     "schemas",
-    "docs/COLLECTORS.md",
-    "docs/COMPATIBILITY.md",
+    "docs",
     "README.md",
     "SECURITY.md",
     "SUPPORT.md",
@@ -40,7 +45,8 @@
     "docs:sync": "node ./bin/prodocs.js sync",
     "docs:check": "node ./bin/prodocs.js check",
     "release:check": "node ./scripts/verify-release.js",
-    "verify": "npm run lint && npm test && npm run release:check && npm run docs:check",
+    "quality:check": "node ./bin/prodocs.js policy && node ./bin/prodocs.js evaluate --suite fixtures/evaluation/core.json && node ./bin/prodocs.js plugin verify fixtures/plugins/service.prodocs-plugin.json",
+    "verify": "npm run lint && npm test && npm run release:check && npm run docs:check && npm run quality:check",
     "verify:production": "npm run verify && npm run test:coverage && npm audit --omit=dev && npm audit signatures && npm pack --dry-run",
     "prepack": "npm run verify"
   },
@@ -61,6 +67,8 @@
     "knowledge-graph"
   ],
   "dependencies": {
-    "@babel/parser": "7.28.5"
+    "@babel/parser": "7.28.5",
+    "sql.js": "1.14.1",
+    "yaml": "2.9.0"
   }
 }

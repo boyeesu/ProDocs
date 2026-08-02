@@ -2,3 +2,7 @@ node_modules/
 .DS_Store
 coverage/
 *.log
+.prodocs/index.sqlite
+.prodocs/index.sqlite-*
+.prodocs/*-impact.json
+.prodocs/proposals/

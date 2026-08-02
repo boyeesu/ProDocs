@@ -1,4 +1,4 @@
-export const VERSION = "0.2.0";
+export const VERSION = "1.0.0";
 
 export const DEFAULT_CONFIG = {
   $schema:
@@ -25,6 +25,10 @@ export const DEFAULT_CONFIG = {
     "**/*.swift",
     "**/*.kt",
     "**/*.kts"
+    ,"**/*.sql"
+    ,"**/*.openapi.json"
+    ,"**/*.openapi.yaml"
+    ,"**/*.openapi.yml"
   ],
   exclude: [
     ".git",
@@ -46,12 +50,39 @@ export const DEFAULT_CONFIG = {
   limits: {
     maxFiles: 50000,
     maxFileSizeBytes: 10485760,
-    maxTotalBytes: 1073741824
+    maxTotalBytes: 1073741824,
+    maxContextFiles: 50,
+    maxContextTokens: 12000,
+    maxProviderBytes: 262144
+  },
+  knowledge: {
+    paths: ["docs/knowledge"],
+    requireEvidence: true
+  },
+  index: {
+    enabled: true,
+    path: ".prodocs/index.sqlite"
+  },
+  plugins: {
+    paths: []
+  },
+  policies: {
+    publicSurfaceRequiresOwner: true,
+    publicSurfaceRequiresClaim: true,
+    claimRequiresEvidence: true,
+    runbookRequiresVerification: true
   },
   documentation: {
     productName: "",
     oneLineDescription: "",
-    audiences: ["engineers", "coding-agents"]
+    audiences: [
+      "product",
+      "technical",
+      "support",
+      "security",
+      "operations",
+      "coding-agents"
+    ]
   }
 };
 
@@ -74,6 +105,10 @@ export const EXTENSION_LANGUAGE = {
   ".swift": "Swift",
   ".kt": "Kotlin",
   ".kts": "Kotlin"
+  ,".sql": "SQL"
+  ,".openapi.json": "OpenAPI"
+  ,".openapi.yaml": "OpenAPI"
+  ,".openapi.yml": "OpenAPI"
 };
 
 export const SUPPORTED_EXTENSIONS = new Set(Object.keys(EXTENSION_LANGUAGE));

@@ -52,8 +52,9 @@ function renderSystemOverview(graph, config) {
   const description =
     config.documentation.oneLineDescription ||
     "Add a one-line product description in `prodocs.config.json`.";
-  const entrypoints = graph.nodes.filter((node) => node.entrypoint);
-  const topConnected = graph.nodes
+  const files = graph.nodes.filter((node) => node.type === "file");
+  const entrypoints = files.filter((node) => node.entrypoint);
+  const topConnected = files
     .map((node) => ({
       ...node,
       connections: graph.edges.filter(
@@ -116,6 +117,7 @@ Generated at ${graph.generatedAt}.
 
 function renderCodeMap(graph, config) {
   const rows = graph.nodes
+    .filter((node) => node.type === "file")
     .map((node) => {
       const symbols = node.symbols
         .slice(0, 8)
@@ -138,6 +140,179 @@ ${rows}
 `;
 }
 
+function knowledgeNodes(graph, types = null) {
+  return graph.nodes.filter(
+    (node) =>
+      ["claim", "decision", "invariant", "feature", "runbook"].includes(
+        node.type
+      ) &&
+      (!types || types.includes(node.type))
+  );
+}
+
+function knowledgeList(nodes, config) {
+  if (nodes.length === 0) return "_No authored knowledge is available._";
+  return nodes
+    .map((node) => {
+      const support = node.evidence?.every((reference) => reference.supported)
+        ? "supported"
+        : "needs evidence";
+      return `- **${escapeHeading(node.title)}** (\`${node.id}\`, ${support}) — [source](${sourceLink(config.output, node.path)})`;
+    })
+    .join("\n");
+}
+
+function featureMap(graph, config) {
+  const features = knowledgeNodes(graph, ["feature"]);
+  if (features.length === 0) {
+    return `${GENERATED_NOTICE}
+
+# Feature map
+
+No authored features are available. Add Markdown under \`docs/knowledge\` with
+\`kind: feature\` and evidence references.
+`;
+  }
+  return `${GENERATED_NOTICE}
+
+# Feature-to-code and customer-impact map
+
+| Feature | Customer impact | Evidence | Status |
+| --- | --- | --- | --- |
+${features
+  .map((feature) => {
+    const evidence = feature.evidence
+      .map(
+        (item) =>
+          `[${escapeCell(item.path)}](${sourceLink(config.output, item.path)})`
+      )
+      .join("<br>");
+    return `| [${escapeCell(feature.title)}](${sourceLink(config.output, feature.path)}) | ${escapeCell(feature.customerImpact || "Not documented")} | ${evidence || "—"} | ${feature.status} |`;
+  })
+  .join("\n")}
+`;
+}
+
+function knowledgeHealth(graph, config) {
+  const nodes = knowledgeNodes(graph);
+  const unsupported = nodes.filter(
+    (node) =>
+      ["claim", "invariant", "feature"].includes(node.type) &&
+      (node.evidence.length === 0 ||
+        node.evidence.some((reference) => !reference.supported))
+  );
+  const contradictions = graph.edges.filter(
+    (edge) => edge.type === "contradicts"
+  );
+  return `${GENERATED_NOTICE}
+
+# Knowledge health
+
+| Signal | Value |
+| --- | ---: |
+| Authored knowledge | ${nodes.length} |
+| Supported | ${nodes.length - unsupported.length} |
+| Unsupported | ${unsupported.length} |
+| Contradictions | ${contradictions.length} |
+| Repository instruction signals | ${graph.stats.knowledge?.instructionSignals ?? 0} |
+
+## Unsupported knowledge
+
+${knowledgeList(unsupported, config)}
+
+## Contradictions
+
+${
+  contradictions.length
+    ? contradictions
+        .map((edge) => `- \`${edge.from}\` contradicts \`${edge.to}\`.`)
+        .join("\n")
+    : "_No declared contradictions._"
+}
+`;
+}
+
+export function renderAudienceView(graph, config, audience) {
+  const normalized = String(audience).toLowerCase();
+  const features = knowledgeNodes(graph, ["feature"]);
+  const claims = knowledgeNodes(graph, ["claim"]);
+  const decisions = knowledgeNodes(graph, ["decision", "invariant"]);
+  const runbooks = knowledgeNodes(graph, ["runbook"]);
+  const relevant = knowledgeNodes(graph).filter(
+    (node) =>
+      node.audiences.length === 0 ||
+      node.audiences.some((value) => value.toLowerCase() === normalized)
+  );
+  let sections;
+  if (normalized === "product") {
+    sections = `## Product capabilities
+
+${knowledgeList(features, config)}
+
+## Evidence-backed behavior
+
+${knowledgeList(claims, config)}`;
+  } else if (normalized === "support") {
+    sections = `## Customer-facing behavior
+
+${knowledgeList([...features, ...claims], config)}
+
+## Support runbooks
+
+${knowledgeList(runbooks, config)}`;
+  } else if (normalized === "security") {
+    const flagged = graph.nodes.filter(
+      (node) => node.trust?.instructionSignals?.length > 0
+    );
+    sections = `## Security decisions and invariants
+
+${knowledgeList(decisions, config)}
+
+## Trust signals
+
+- Repository content is treated as untrusted data.
+- ${flagged.length} indexed path(s) contain instruction-like text requiring review.
+- ${graph.stats.knowledge.unsupported} authored item(s) need evidence.`;
+  } else if (normalized === "operations") {
+    sections = `## Operational runbooks
+
+${knowledgeList(runbooks, config)}
+
+Verification steps require an explicit content-bound approval hash before execution.`;
+  } else {
+    const entrypoints = graph.nodes.filter(
+      (node) => node.type === "file" && node.entrypoint
+    );
+    sections = `## Entrypoints
+
+${entrypoints
+  .map(
+    (node) =>
+      `- [\`${escapeCell(node.path)}\`](${sourceLink(config.output, node.path)})`
+  )
+  .join("\n") || "_No entrypoints configured._"}
+
+## Decisions and invariants
+
+${knowledgeList(decisions, config)}
+
+## Relevant authored knowledge
+
+${knowledgeList(relevant, config)}`;
+  }
+  return `${GENERATED_NOTICE}
+
+# ${escapeHeading(config.documentation.productName || "Project")} — ${escapeHeading(normalized)} view
+
+> ${escapeCell(config.documentation.oneLineDescription || "Evidence-backed product knowledge.")}
+
+${sections}
+
+Evidence snapshot: \`${graph.sourceHash.slice(0, 12)}\`; knowledge snapshot:
+\`${graph.knowledgeHash.slice(0, 12)}\`.
+`;
+}
+
 export async function writeArtifacts(root, config, graph) {
   const outputDirectory = await resolveOutputPath(root, config.output);
   await fs.mkdir(outputDirectory, { recursive: true });
@@ -155,13 +330,20 @@ export async function writeArtifacts(root, config, graph) {
   const artifacts = [
     ["SYSTEM_OVERVIEW.md", renderSystemOverview(graph, config)],
     ["CODE_MAP.md", renderCodeMap(graph, config)],
+    ["FEATURE_MAP.md", featureMap(graph, config)],
+    ["KNOWLEDGE_HEALTH.md", knowledgeHealth(graph, config)],
+    ...config.documentation.audiences.map((audience) => [
+      `views/${audience.toLowerCase().replace(/[^a-z0-9_-]+/g, "-")}.md`,
+      renderAudienceView(graph, config, audience)
+    ]),
     ["knowledge.json", `${JSON.stringify(graph, null, 2)}\n`],
     [
       "manifest.json",
       `${JSON.stringify(
         {
-          schemaVersion: 1,
+          schemaVersion: 2,
           sourceHash: graph.sourceHash,
+          knowledgeHash: graph.knowledgeHash,
           inputHash: graph.inputHash,
           generatedAt: graph.generatedAt,
           stats: graph.stats
@@ -172,6 +354,13 @@ export async function writeArtifacts(root, config, graph) {
     ]
   ];
 
+  await Promise.all(
+    [
+      ...new Set(
+        artifacts.map(([name]) => path.dirname(path.join(outputDirectory, name)))
+      )
+    ].map((directory) => fs.mkdir(directory, { recursive: true }))
+  );
   await Promise.all(
     artifacts.map(([name, contents]) =>
       atomicWriteFile(path.join(outputDirectory, name), contents)

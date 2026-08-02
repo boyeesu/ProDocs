@@ -41,9 +41,11 @@ concepts, decisions, claims, documents, owners, and systems. Typed edges describ
 relationships such as imports, calls, implements, proves, contradicts, owns,
 documents, supersedes, and affects.
 
-The prototype writes portable JSON. A later storage layer should support
-incremental updates and indexes while retaining a deterministic JSON export for
-debugging and interoperability.
+The index uses SQLite for content-addressed collector evidence. Unchanged files
+reuse validated results; changed and removed paths are invalidated
+deterministically. SQLite is a local performance layer. Portable JSON remains
+the canonical interoperability, debugging, and git-review format, and runtime
+cache metrics are deliberately excluded from graph hashes.
 
 ### Claims and intent
 
@@ -77,13 +79,21 @@ LLMs are optional proposal generators over retrieved evidence. A proposal
 contains patch operations, citations, the evidence snapshot, confidence, and
 policy results. Applying it is a separate human- or policy-controlled action.
 
-## Prototype layout
+## Production layout
 
 ```text
 bin/prodocs.js             command entrypoint
 src/cli.js                 stable command surface
 src/scanner.js             deterministic evidence collection and graph
 src/collectors/            collector contract, registry, and implementations
+src/knowledge.js           strict authored-knowledge ingestion and evidence links
+src/index-store.js         incremental SQLite evidence cache
+src/impact.js              git diff and graph impact traversal
+src/policy.js              deterministic documentation contracts
+src/proposals.js           content-addressed reviewed write gate
+src/mcp.js                 MCP stdio resources and read-only tools
+src/server.js              optional self-hosted collaboration API
+src/runbooks.js            approved no-shell verification execution
 src/render.js              Markdown and JSON projections
 src/paths.js               project-root containment for reads and writes
 src/integrations.js        opt-in agent instruction templates
@@ -102,6 +112,10 @@ at runtime and include deterministic relevance, freshness, and size metadata.
 - capability negotiation for collectors and renderers;
 - backwards-compatibility policy;
 - third-party conformance fixtures.
+
+The graph and context packet use schema version 2. Impact, proposal, collector,
+plugin, policy, runbook-plan, and evaluation outputs have independent versioned
+contracts.
 
 ## Security and trust
 
@@ -128,14 +142,14 @@ build-provenance attestation. npm publishing is a separate approval-gated
 workflow using OIDC trusted publishing, so no long-lived registry token is
 stored in the repository.
 
-## Scaling direction
+## Scaling implementation and direction
 
-The prototype performs a full scan, suitable for validating the model. The
-production design should use:
+ProDocs 1.0 implements content-addressed evidence, per-file invalidation,
+SQLite caching, portable graph export, deterministic bounded queries, explicit
+file/token budgets, and diff-based impact traversal. Repository-wide discovery
+still reads file metadata and content hashes to prove freshness; parsing is
+reused for unchanged files.
 
-- content-addressed evidence and per-file invalidation;
-- parser workers isolated by language;
-- diff-aware edge recomputation;
-- SQLite for local indexes with portable graph export;
-- bounded graph queries and relevance scoring;
-- monorepo workspaces with shared and package-specific views.
+Future scale work can isolate parsers by language, parallelize safe collectors,
+add workspace-specific views, and optimize discovery for very large monorepos
+without changing public graph semantics.

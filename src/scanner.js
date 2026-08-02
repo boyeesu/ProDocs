@@ -1,32 +1,27 @@
-import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
 import {
   EXTENSION_LANGUAGE,
   SUPPORTED_EXTENSIONS
 } from "./constants.js";
-import { collectSourceEvidence } from "./collectors/index.js";
+import {
+  createCollectorRegistry,
+  databaseSchemaCollector,
+  javascriptTypeScriptCollector,
+  legacyLanguageCollector,
+  openApiCollector
+} from "./collectors/index.js";
+import { openIndexStore } from "./index-store.js";
+import { collectAuthoredKnowledge } from "./knowledge.js";
+import { loadDeclarativePlugin } from "./plugins.js";
 import { resolveSourcePath } from "./paths.js";
 import { readRegularFile } from "./safe-fs.js";
-
-function sha256(value) {
-  return crypto.createHash("sha256").update(value).digest("hex");
-}
-
-function stableJson(value) {
-  if (Array.isArray(value)) return `[${value.map(stableJson).join(",")}]`;
-  if (value && typeof value === "object") {
-    return `{${Object.keys(value)
-      .sort()
-      .map((key) => `${JSON.stringify(key)}:${stableJson(value[key])}`)
-      .join(",")}}`;
-  }
-  return JSON.stringify(value);
-}
-
-function toPosix(value) {
-  return value.split(path.sep).join("/");
-}
+import {
+  detectPromptInjection,
+  sha256,
+  stableJson,
+  toPosix
+} from "./security.js";
 
 function normalizeSource(value) {
   return value.replace(/\r\n?/g, "\n");
@@ -123,6 +118,7 @@ async function walk(
   excluded,
   include,
   maxFiles,
+  languageMap,
   files = []
 ) {
   const entries = await fs.readdir(directory, { withFileTypes: true });
@@ -134,10 +130,18 @@ async function walk(
     if (isExcluded(relative, excluded)) continue;
     if (entry.isSymbolicLink()) continue;
     if (entry.isDirectory()) {
-      await walk(absolute, root, excluded, include, maxFiles, files);
+      await walk(
+        absolute,
+        root,
+        excluded,
+        include,
+        maxFiles,
+        languageMap,
+        files
+      );
     } else if (
       entry.isFile() &&
-      SUPPORTED_EXTENSIONS.has(path.extname(entry.name)) &&
+      languageForPath(relative, languageMap) &&
       isIncluded(relative, include)
     ) {
       files.push(absolute);
@@ -151,7 +155,7 @@ async function walk(
   return files;
 }
 
-async function discoverFiles(root, config) {
+async function discoverFiles(root, config, languageMap) {
   const files = [];
   for (const source of config.source) {
     const absolute = await resolveSourcePath(root, source);
@@ -163,6 +167,7 @@ async function discoverFiles(root, config) {
         config.exclude,
         config.include,
         config.limits.maxFiles,
+        languageMap,
         files
       );
     } else {
@@ -170,7 +175,7 @@ async function discoverFiles(root, config) {
       if (
         stat.isFile() &&
         !isExcluded(relative, config.exclude) &&
-        SUPPORTED_EXTENSIONS.has(path.extname(absolute)) &&
+        languageForPath(relative, languageMap) &&
         isIncluded(relative, config.include)
       ) {
         files.push(absolute);
@@ -239,7 +244,69 @@ function inferEntrypoint(relativePath) {
   ].includes(basename);
 }
 
-function ownerFor(relativePath, ownership) {
+function languageForPath(filePath, languageMap = EXTENSION_LANGUAGE) {
+  const normalized = filePath.toLowerCase();
+  const extension = Object.keys(languageMap)
+    .sort((left, right) => right.length - left.length)
+    .find((candidate) => normalized.endsWith(candidate));
+  return extension ? languageMap[extension] : null;
+}
+
+function codeownersMatch(pattern, relativePath) {
+  const normalized = pattern
+    .replace(/^!/, "")
+    .replace(/^\//, "")
+    .replace(/\/$/, "/**");
+  if (normalized.includes("/")) {
+    return matchesGlob(normalized, relativePath);
+  }
+  return relativePath.split("/").some((segment) =>
+    matchesGlob(normalized, segment)
+  );
+}
+
+async function readCodeowners(root) {
+  for (const candidate of [
+    ".github/CODEOWNERS",
+    "CODEOWNERS",
+    "docs/CODEOWNERS"
+  ]) {
+    const absolute = path.join(root, candidate);
+    try {
+      const { contents } = await readRegularFile(absolute, {
+        maxBytes: 1024 * 1024
+      });
+      const rules = contents
+        .replace(/\r\n?/g, "\n")
+        .split("\n")
+        .map((line, index) => ({
+          line: index + 1,
+          text: line.trim()
+        }))
+        .filter(({ text }) => text && !text.startsWith("#"))
+        .map(({ line, text }) => {
+          const [pattern, ...owners] = text.split(/\s+/);
+          return { pattern, owners, line };
+        })
+        .filter((rule) => rule.pattern && rule.owners.length > 0);
+      return { path: candidate, rules };
+    } catch (error) {
+      if (error.code !== "ENOENT") {
+        throw new Error(`Could not safely read ${candidate}: ${error.message}`);
+      }
+    }
+  }
+  return { path: null, rules: [] };
+}
+
+function ownerFor(relativePath, ownership, codeowners) {
+  let resolved = null;
+  for (const rule of codeowners.rules) {
+    if (codeownersMatch(rule.pattern, relativePath)) {
+      resolved = rule.owners.join(" ");
+    }
+  }
+  if (resolved) return resolved;
   for (const [pattern, owner] of Object.entries(ownership ?? {})) {
     const prefix = pattern.replace(/\*+$/, "").replace(/\/$/, "");
     if (relativePath.startsWith(prefix)) return owner;
@@ -247,62 +314,129 @@ function ownerFor(relativePath, ownership) {
   return null;
 }
 
-export async function scanProject(root, config) {
+function roleFor(relativePath, evidence, entrypoint) {
+  if (
+    /(^|\/)(?:test|tests|__tests__|spec)(?:\/|\.|$)/i.test(relativePath) ||
+    /\.(?:test|spec)\.[^.]+$/i.test(relativePath)
+  ) {
+    return "test";
+  }
+  if (evidence.symbols.some((symbol) => symbol.kind === "endpoint")) return "api";
+  if (
+    evidence.symbols.some((symbol) =>
+      ["table", "view"].includes(symbol.kind)
+    )
+  ) {
+    return "database";
+  }
+  return entrypoint ? "entrypoint" : "source";
+}
+
+export async function scanProject(
+  root,
+  config,
+  { indexMode = "write" } = {}
+) {
   const canonicalRoot = await fs.realpath(root);
-  const absoluteFiles = await discoverFiles(canonicalRoot, config);
+  const pluginCollectors = [];
+  const languageMap = { ...EXTENSION_LANGUAGE };
+  for (const pluginPath of config.plugins.paths) {
+    const absolutePluginPath = await resolveSourcePath(canonicalRoot, pluginPath);
+    const plugin = await loadDeclarativePlugin(absolutePluginPath);
+    pluginCollectors.push(plugin.collector);
+    for (const extension of plugin.collector.extensions) {
+      languageMap[extension] = plugin.collector.languages[0];
+    }
+  }
+  const absoluteFiles = await discoverFiles(canonicalRoot, config, languageMap);
   const knownFiles = new Set(absoluteFiles.map((file) => path.resolve(file)));
+  const codeowners = await readCodeowners(canonicalRoot);
+  const collectorRegistry = createCollectorRegistry([
+    javascriptTypeScriptCollector,
+    openApiCollector,
+    databaseSchemaCollector,
+    legacyLanguageCollector,
+    ...pluginCollectors
+  ]);
+  const index = await openIndexStore(canonicalRoot, config, {
+    readOnly: indexMode !== "write"
+  });
   const nodes = [];
   let totalBytes = 0;
+  let cacheHits = 0;
+  let cacheMisses = 0;
 
-  for (const absolutePath of absoluteFiles) {
-    const relativePath = toPosix(path.relative(canonicalRoot, absolutePath));
-    let sourceFile;
-    try {
-      sourceFile = await readRegularFile(absolutePath, {
-        maxBytes: config.limits.maxFileSizeBytes
+  try {
+    for (const absolutePath of absoluteFiles) {
+      const relativePath = toPosix(path.relative(canonicalRoot, absolutePath));
+      let sourceFile;
+      try {
+        sourceFile = await readRegularFile(absolutePath, {
+          maxBytes: config.limits.maxFileSizeBytes
+        });
+      } catch (error) {
+        throw new Error(`Could not safely read ${relativePath}: ${error.message}`);
+      }
+      totalBytes += sourceFile.size;
+      if (totalBytes > config.limits.maxTotalBytes) {
+        throw new Error(
+          `Indexed source exceeds limits.maxTotalBytes (${config.limits.maxTotalBytes}) at ${relativePath}.`
+        );
+      }
+      const source = normalizeSource(sourceFile.contents);
+      const contentHash = sha256(source);
+      const language = languageForPath(relativePath, languageMap);
+      let evidence = index.get(relativePath, contentHash);
+      if (evidence) {
+        cacheHits += 1;
+      } else {
+        cacheMisses += 1;
+        evidence = await collectorRegistry.collect({
+          source,
+          filePath: relativePath,
+          language
+        });
+        index.set(relativePath, contentHash, evidence);
+      }
+      const parseErrors = evidence.diagnostics.filter(
+        (diagnostic) => diagnostic.severity === "error"
+      );
+      if (parseErrors.length > 0) {
+        const first = parseErrors[0];
+        throw new Error(
+          `Could not parse ${relativePath} with ${evidence.collector.id}: ${first.message} (${first.line}:${first.column}).`
+        );
+      }
+      const imports = [
+        ...new Set(evidence.imports.map((imported) => imported.specifier))
+      ];
+      const entrypoint =
+        config.entrypoints.includes(relativePath) ||
+        inferEntrypoint(relativePath);
+      const role = roleFor(relativePath, evidence, entrypoint);
+      nodes.push({
+        id: `file:${relativePath}`,
+        type: "file",
+        path: relativePath,
+        language,
+        contentHash,
+        lines: source === "" ? 0 : source.split("\n").length,
+        owner: ownerFor(relativePath, config.ownership, codeowners),
+        entrypoint,
+        publicSurface: entrypoint || role === "api",
+        role,
+        symbols: evidence.symbols,
+        trust: {
+          repositoryContent: "untrusted",
+          instructionSignals: detectPromptInjection(source)
+        },
+        unresolvedImports: imports,
+        _absolutePath: absolutePath
       });
-    } catch (error) {
-      throw new Error(`Could not safely read ${relativePath}: ${error.message}`);
     }
-    totalBytes += sourceFile.size;
-    if (totalBytes > config.limits.maxTotalBytes) {
-      throw new Error(
-        `Indexed source exceeds limits.maxTotalBytes (${config.limits.maxTotalBytes}) at ${relativePath}.`
-      );
-    }
-    const source = normalizeSource(sourceFile.contents);
-    const language = EXTENSION_LANGUAGE[path.extname(absolutePath)];
-    const evidence = await collectSourceEvidence({
-      source,
-      filePath: relativePath,
-      language
-    });
-    const parseErrors = evidence.diagnostics.filter(
-      (diagnostic) => diagnostic.severity === "error"
-    );
-    if (parseErrors.length > 0) {
-      const first = parseErrors[0];
-      throw new Error(
-        `Could not parse ${relativePath} with ${evidence.collector.id}: ${first.message} (${first.line}:${first.column}).`
-      );
-    }
-    const imports = [
-      ...new Set(evidence.imports.map((imported) => imported.specifier))
-    ];
-    nodes.push({
-      id: `file:${relativePath}`,
-      type: "file",
-      path: relativePath,
-      language,
-      contentHash: sha256(source),
-      lines: source === "" ? 0 : source.split("\n").length,
-      owner: ownerFor(relativePath, config.ownership),
-      entrypoint:
-        config.entrypoints.includes(relativePath) || inferEntrypoint(relativePath),
-      symbols: evidence.symbols,
-      unresolvedImports: imports,
-      _absolutePath: absolutePath
-    });
+    index.removeMissing(nodes.map((node) => node.path));
+  } finally {
+    await index.close();
   }
 
   const nodeByAbsolutePath = new Map(
@@ -328,37 +462,123 @@ export async function scanProject(root, config) {
           specifier
         }
       });
+      if (node.role === "test") {
+        edges.push({
+          type: "tests",
+          from: node.id,
+          to: target.id,
+          evidence: {
+            source: node.path,
+            reference: specifier
+          }
+        });
+      }
     }
     delete node._absolutePath;
     delete node.unresolvedImports;
   }
 
+  const sourceNodes = [...nodes];
   const languages = {};
   for (const node of nodes) {
     languages[node.language] = (languages[node.language] ?? 0) + 1;
   }
   const sourceHash = sha256(
-    nodes
+    sourceNodes
       .map((node) => `${node.path}:${node.contentHash}`)
       .sort()
       .join("\n")
   );
-  const inputHash = sha256(`${sourceHash}\n${stableJson(config)}`);
+  const partialGraph = {
+    nodes: sourceNodes,
+    edges
+  };
+  const authored = await collectAuthoredKnowledge(
+    canonicalRoot,
+    config,
+    partialGraph
+  );
+  nodes.push(...authored.nodes);
+  edges.push(...authored.edges);
 
-  return {
-    schemaVersion: 1,
+  const ownerValues = [
+    ...new Set(
+      sourceNodes
+        .flatMap((node) => node.owner?.split(/\s+/) ?? [])
+        .filter(Boolean)
+    )
+  ].sort();
+  for (const owner of ownerValues) {
+    const ownerNode = {
+      id: `owner:${owner}`,
+      type: "owner",
+      path: codeowners.path ?? "prodocs.config.json",
+      title: owner,
+      trust: {
+        authored: true,
+        repositoryContent: "untrusted",
+        instructionSignals: []
+      }
+    };
+    nodes.push(ownerNode);
+    for (const node of sourceNodes.filter((candidate) =>
+      candidate.owner?.split(/\s+/).includes(owner)
+    )) {
+      edges.push({
+        type: "owns",
+        from: ownerNode.id,
+        to: node.id,
+        evidence: {
+          source: codeowners.path ?? "prodocs.config.json",
+          reference: node.path
+        }
+      });
+    }
+  }
+
+  edges.sort((left, right) =>
+    `${left.type}:${left.from}:${left.to}`.localeCompare(
+      `${right.type}:${right.from}:${right.to}`
+    )
+  );
+  const inputHash = sha256(
+    `${sourceHash}\n${authored.knowledgeHash}\n${stableJson(config)}`
+  );
+
+  const graph = {
+    schemaVersion: 2,
     generatedAt: new Date().toISOString(),
     sourceHash,
+    knowledgeHash: authored.knowledgeHash,
     inputHash,
     root: ".",
     stats: {
-      files: nodes.length,
-      lines: nodes.reduce((total, node) => total + node.lines, 0),
-      symbols: nodes.reduce((total, node) => total + node.symbols.length, 0),
+      files: sourceNodes.length,
+      lines: sourceNodes.reduce((total, node) => total + node.lines, 0),
+      symbols: sourceNodes.reduce(
+        (total, node) => total + node.symbols.length,
+        0
+      ),
       edges: edges.length,
-      languages
+      languages,
+      knowledge: authored.coverage,
+      index: {
+        backend: index.backend,
+        entries: sourceNodes.length
+      }
     },
     nodes,
     edges
   };
+  Object.defineProperty(graph, "runtime", {
+    value: {
+      index: {
+        backend: index.backend,
+        cacheHits,
+        cacheMisses
+      }
+    },
+    enumerable: false
+  });
+  return graph;
 }

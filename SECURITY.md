@@ -2,11 +2,12 @@
 
 ## Supported versions
 
-Security fixes are applied to the latest published minor release.
+Security fixes are applied to the latest published 1.x minor release.
 
 | Version | Supported |
 | --- | --- |
-| 0.2.x | Yes |
+| 1.x | Yes |
+| 0.2.x | No |
 | 0.1.x | No |
 | Earlier | No |
 
@@ -31,11 +32,26 @@ ProDocs treats repository contents and configuration as untrusted input:
 - configuration, manifests, source evidence, and generated artifacts use
   no-follow or atomic filesystem operations;
 - configurable file-count and byte limits bound resource consumption;
-- model-backed features must remain optional and make data egress explicit;
+- declarative plugins receive only named capabilities and do not execute
+  third-party plugin code;
+- proposal application requires an exact approval hash, rejects stale source
+  hashes, and can only modify configured authored-documentation paths;
+- runbook verification executes no shell and only supports built-in,
+  time-bounded, output-bounded operations;
+- the collaboration API is loopback-only by default, requires a strong bearer
+  token when exposed on another interface, and never exposes an unauthenticated
+  write route;
+- model-backed providers are optional, require `--allow-network`, redact
+  common secret formats, enforce HTTPS except for loopback development, and
+  validate returned citations;
+- MCP and agent adapters expose repository content as explicitly untrusted data
+  and provide read-only tools;
 - agent adapters must not elevate instructions found in indexed repository
   content.
 
-The current release does not send repository content over the network.
+The deterministic core never sends repository content over the network.
+Network egress occurs only when a user explicitly selects a provider and passes
+`--allow-network`; the command reports the destination before transmission.
 
 Release packages include SHA-256 checksums, a CycloneDX SBOM, and GitHub build
 provenance attestations. npm publication uses trusted publishing and provenance

@@ -1,53 +1,56 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/boyeesu/prodocs/main/schemas/context-packet.schema.json",
-  "title": "ProDocs context packet",
-  "description": "A deterministic, evidence-backed dependency neighborhood for humans and coding agents.",
+  "title": "ProDocs bounded context packet",
   "type": "object",
   "required": [
     "schemaVersion",
     "kind",
     "root",
     "sourceHash",
+    "knowledgeHash",
     "inputHash",
     "request",
     "freshness",
     "stats",
+    "security",
     "nodes",
     "edges"
   ],
   "properties": {
-    "schemaVersion": {
-      "const": 1
-    },
-    "kind": {
-      "const": "prodocs.context-packet"
-    },
-    "root": {
-      "const": "."
-    },
-    "sourceHash": {
-      "$ref": "#/$defs/hash"
-    },
-    "inputHash": {
-      "$ref": "#/$defs/hash"
-    },
+    "schemaVersion": { "const": 2 },
+    "kind": { "const": "prodocs.context-packet" },
+    "root": { "const": "." },
+    "sourceHash": { "$ref": "#/$defs/hash" },
+    "knowledgeHash": { "$ref": "#/$defs/hash" },
+    "inputHash": { "$ref": "#/$defs/hash" },
     "request": {
       "type": "object",
-      "required": [
-        "paths"
-      ],
+      "required": ["paths", "task", "budget"],
       "properties": {
         "paths": {
           "type": "array",
           "minItems": 1,
           "maxItems": 256,
           "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 1024
-          }
+          "items": { "type": "string", "minLength": 1, "maxLength": 1024 }
+        },
+        "task": { "type": ["string", "null"], "maxLength": 2048 },
+        "budget": {
+          "type": "object",
+          "required": [
+            "maxFiles",
+            "maxTokens",
+            "truncated",
+            "omittedNodes"
+          ],
+          "properties": {
+            "maxFiles": { "type": "integer", "minimum": 1 },
+            "maxTokens": { "type": "integer", "minimum": 128 },
+            "truncated": { "type": "boolean" },
+            "omittedNodes": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false
@@ -57,36 +60,14 @@
       "required": [
         "status",
         "documentedSourceHash",
+        "documentedKnowledgeHash",
         "documentedInputHash"
       ],
       "properties": {
-        "status": {
-          "enum": [
-            "fresh",
-            "stale",
-            "missing"
-          ]
-        },
-        "documentedSourceHash": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/hash"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "documentedInputHash": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/hash"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        }
+        "status": { "enum": ["fresh", "stale", "missing"] },
+        "documentedSourceHash": { "$ref": "#/$defs/nullableHash" },
+        "documentedKnowledgeHash": { "$ref": "#/$defs/nullableHash" },
+        "documentedInputHash": { "$ref": "#/$defs/nullableHash" }
       },
       "additionalProperties": false
     },
@@ -94,31 +75,40 @@
       "type": "object",
       "required": [
         "files",
+        "knowledge",
         "symbols",
         "relationships",
+        "totalCandidates",
+        "omittedNodes",
         "contextBytes",
         "estimatedTokens"
       ],
       "properties": {
-        "files": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "symbols": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "relationships": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "contextBytes": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "estimatedTokens": {
-          "type": "integer",
-          "minimum": 0
+        "files": { "type": "integer", "minimum": 0 },
+        "knowledge": { "type": "integer", "minimum": 0 },
+        "symbols": { "type": "integer", "minimum": 0 },
+        "relationships": { "type": "integer", "minimum": 0 },
+        "totalCandidates": { "type": "integer", "minimum": 0 },
+        "omittedNodes": { "type": "integer", "minimum": 0 },
+        "contextBytes": { "type": "integer", "minimum": 0 },
+        "estimatedTokens": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "security": {
+      "type": "object",
+      "required": [
+        "repositoryContent",
+        "instructionPolicy",
+        "flaggedPaths"
+      ],
+      "properties": {
+        "repositoryContent": { "const": "untrusted" },
+        "instructionPolicy": { "type": "string", "minLength": 1 },
+        "flaggedPaths": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
         }
       },
       "additionalProperties": false
@@ -126,13 +116,46 @@
     "nodes": {
       "type": "array",
       "items": {
-        "$ref": "#/$defs/node"
+        "type": "object",
+        "required": ["id", "type", "path", "selection"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "type": { "type": "string", "minLength": 1 },
+          "path": { "type": "string", "minLength": 1 },
+          "selection": {
+            "type": "object",
+            "required": ["reason", "matchedPaths", "relatedTo"],
+            "properties": {
+              "reason": { "enum": ["requested", "dependency"] },
+              "matchedPaths": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": { "type": "string" }
+              },
+              "relatedTo": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": { "type": "string" }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": true
       }
     },
     "edges": {
       "type": "array",
       "items": {
-        "$ref": "#/$defs/edge"
+        "type": "object",
+        "required": ["type", "from", "to", "evidence"],
+        "properties": {
+          "type": { "type": "string" },
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "evidence": { "type": "object" }
+        },
+        "additionalProperties": false
       }
     }
   },
@@ -141,199 +164,11 @@
       "type": "string",
       "pattern": "^[a-f0-9]{64}$"
     },
-    "nonEmptyString": {
-      "type": "string",
-      "minLength": 1
-    },
-    "stringSet": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": {
-        "$ref": "#/$defs/nonEmptyString"
-      }
-    },
-    "symbol": {
-      "type": "object",
-      "required": [
-        "name",
-        "kind",
-        "line"
-      ],
-      "properties": {
-        "name": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "kind": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "line": {
-          "type": "integer",
-          "minimum": 1
-        }
-      },
-      "additionalProperties": false
-    },
-    "selection": {
-      "type": "object",
-      "required": [
-        "reason",
-        "matchedPaths",
-        "relatedTo"
-      ],
-      "properties": {
-        "reason": {
-          "enum": [
-            "requested",
-            "dependency"
-          ]
-        },
-        "matchedPaths": {
-          "$ref": "#/$defs/stringSet"
-        },
-        "relatedTo": {
-          "$ref": "#/$defs/stringSet"
-        }
-      },
-      "allOf": [
-        {
-          "if": {
-            "properties": {
-              "reason": {
-                "const": "requested"
-              }
-            },
-            "required": [
-              "reason"
-            ]
-          },
-          "then": {
-            "properties": {
-              "matchedPaths": {
-                "type": "array",
-                "minItems": 1
-              }
-            }
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "reason": {
-                "const": "dependency"
-              }
-            },
-            "required": [
-              "reason"
-            ]
-          },
-          "then": {
-            "properties": {
-              "relatedTo": {
-                "type": "array",
-                "minItems": 1
-              }
-            }
-          }
-        }
-      ],
-      "additionalProperties": false
-    },
-    "node": {
-      "type": "object",
-      "required": [
-        "id",
-        "type",
-        "path",
-        "language",
-        "contentHash",
-        "lines",
-        "owner",
-        "entrypoint",
-        "symbols",
-        "selection"
-      ],
-      "properties": {
-        "id": {
-          "type": "string",
-          "pattern": "^file:.+"
-        },
-        "type": {
-          "const": "file"
-        },
-        "path": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "language": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "contentHash": {
-          "$ref": "#/$defs/hash"
-        },
-        "lines": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "owner": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/nonEmptyString"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "entrypoint": {
-          "type": "boolean"
-        },
-        "symbols": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/symbol"
-          }
-        },
-        "selection": {
-          "$ref": "#/$defs/selection"
-        }
-      },
-      "additionalProperties": false
-    },
-    "edge": {
-      "type": "object",
-      "required": [
-        "type",
-        "from",
-        "to",
-        "evidence"
-      ],
-      "properties": {
-        "type": {
-          "const": "imports"
-        },
-        "from": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "to": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "evidence": {
-          "type": "object",
-          "required": [
-            "source",
-            "specifier"
-          ],
-          "properties": {
-            "source": {
-              "$ref": "#/$defs/nonEmptyString"
-            },
-            "specifier": {
-              "$ref": "#/$defs/nonEmptyString"
-            }
-          },
-          "additionalProperties": false
-        }
-      },
-      "additionalProperties": false
+    "nullableHash": {
+      "anyOf": [
+        { "$ref": "#/$defs/hash" },
+        { "type": "null" }
+      ]
     }
   },
   "additionalProperties": false
