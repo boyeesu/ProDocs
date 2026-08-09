@@ -301,7 +301,7 @@ least 24 characters.
 | `prodocs doctor` | Require warning-free identity, evidence, freshness, integrations, and knowledge readiness |
 | `prodocs tutorial` | Create a safe, complete getting-started project |
 | `prodocs sync` | Incrementally index evidence and render all views |
-| `prodocs check` | Fail when generated knowledge is stale |
+| `prodocs check` | Fail when generated knowledge is stale or contains broken local links |
 | `prodocs status` | Show evidence, index, and knowledge health |
 | `prodocs context` | Return bounded task-shaped context |
 | `prodocs impact` | Map git changes through the knowledge graph |

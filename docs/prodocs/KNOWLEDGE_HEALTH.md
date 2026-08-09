@@ -12,7 +12,7 @@
 
 ## Unsupported knowledge
 
-_No authored knowledge is available._
+_No unsupported authored knowledge._
 
 ## Contradictions
 

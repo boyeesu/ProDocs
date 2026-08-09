@@ -6,6 +6,17 @@ All notable changes to ProDocs are documented here. The project follows
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-08-09
+
+### Fixed
+
+- generate source and authored-knowledge links relative to nested audience
+  views instead of the output root;
+- use section-specific empty states so a populated knowledge graph is not
+  described as having no authored knowledge;
+- make `prodocs check` reject missing, escaping, malformed, or broken local
+  links in generated Markdown artifacts.
+
 ## [1.2.0] - 2026-08-09
 
 ### Added
@@ -190,7 +201,8 @@ All notable changes to ProDocs are documented here. The project follows
 - Project-root containment for configured sources and generated output.
 - Versioned JSON Schemas for configuration and knowledge graph artifacts.
 
-[Unreleased]: https://github.com/boyeesu/prodocs/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/boyeesu/prodocs/compare/v1.2.1...HEAD
+[1.2.1]: https://github.com/boyeesu/prodocs/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/boyeesu/prodocs/compare/v1.1.2...v1.2.0
 [1.1.2]: https://github.com/boyeesu/prodocs/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/boyeesu/prodocs/compare/v1.1.0...v1.1.1

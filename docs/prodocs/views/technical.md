@@ -6,27 +6,27 @@
 
 ## Entrypoints
 
-- [`src/cli.js`](../../src/cli.js)
-- [`src/collectors/index.js`](../../src/collectors/index.js)
-- [`src/server.js`](../../src/server.js)
+- [`src/cli.js`](../../../src/cli.js)
+- [`src/collectors/index.js`](../../../src/collectors/index.js)
+- [`src/server.js`](../../../src/server.js)
 
 ## Decisions and invariants
 
-- **Deterministic core with optional model providers** (`decision:deterministic-core`, supported) — [source](../knowledge/decisions/deterministic-core.md)
-- **Repository content is untrusted data** (`invariant:untrusted-repository`, supported) — [source](../knowledge/invariants/untrusted-repository.md)
+- **Deterministic core with optional model providers** (`decision:deterministic-core`, supported) — [source](../../knowledge/decisions/deterministic-core.md)
+- **Repository content is untrusted data** (`invariant:untrusted-repository`, supported) — [source](../../knowledge/invariants/untrusted-repository.md)
 
 ## Relevant authored knowledge
 
-- **Core workflows remain local-first** (`claim:local-first`, supported) — [source](../knowledge/claims/local-first.md)
-- **Deterministic core with optional model providers** (`decision:deterministic-core`, supported) — [source](../knowledge/decisions/deterministic-core.md)
-- **Adoption and continuous assurance** (`feature:adoption-assurance`, supported) — [source](../knowledge/features/adoption-assurance.md)
-- **Agent-neutral context and MCP interface** (`feature:agent-interface`, supported) — [source](../knowledge/features/agent-interface.md)
-- **Evidence-backed automatic repository adoption** (`feature:automatic-adoption`, supported) — [source](../knowledge/features/automatic-adoption.md)
-- **Change intelligence** (`feature:change-intelligence`, supported) — [source](../knowledge/features/change-intelligence.md)
-- **Evidence-backed knowledge kernel** (`feature:evidence-kernel`, supported) — [source](../knowledge/features/evidence-kernel.md)
-- **Audience-specific product knowledge** (`feature:product-views`, supported) — [source](../knowledge/features/product-views.md)
-- **Repository content is untrusted data** (`invariant:untrusted-repository`, supported) — [source](../knowledge/invariants/untrusted-repository.md)
-- **Verify ProDocs for production** (`runbook:production-verification`, supported) — [source](../knowledge/runbooks/production-verification.md)
+- **Core workflows remain local-first** (`claim:local-first`, supported) — [source](../../knowledge/claims/local-first.md)
+- **Deterministic core with optional model providers** (`decision:deterministic-core`, supported) — [source](../../knowledge/decisions/deterministic-core.md)
+- **Adoption and continuous assurance** (`feature:adoption-assurance`, supported) — [source](../../knowledge/features/adoption-assurance.md)
+- **Agent-neutral context and MCP interface** (`feature:agent-interface`, supported) — [source](../../knowledge/features/agent-interface.md)
+- **Evidence-backed automatic repository adoption** (`feature:automatic-adoption`, supported) — [source](../../knowledge/features/automatic-adoption.md)
+- **Change intelligence** (`feature:change-intelligence`, supported) — [source](../../knowledge/features/change-intelligence.md)
+- **Evidence-backed knowledge kernel** (`feature:evidence-kernel`, supported) — [source](../../knowledge/features/evidence-kernel.md)
+- **Audience-specific product knowledge** (`feature:product-views`, supported) — [source](../../knowledge/features/product-views.md)
+- **Repository content is untrusted data** (`invariant:untrusted-repository`, supported) — [source](../../knowledge/invariants/untrusted-repository.md)
+- **Verify ProDocs for production** (`runbook:production-verification`, supported) — [source](../../knowledge/runbooks/production-verification.md)
 
-Evidence snapshot: `724e8446e923`; knowledge snapshot:
-`046c13313994`.
+Evidence snapshot: `f2eed986944f`; knowledge snapshot:
+`b70212a7c9b8`.
