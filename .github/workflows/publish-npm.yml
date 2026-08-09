@@ -51,7 +51,7 @@ jobs:
           mkdir release
           gh release download "$RELEASE_TAG" \
             --repo "$GITHUB_REPOSITORY" \
-            --pattern "prodocs-*.tgz" \
+            --pattern "danielesuga-prodocs-*.tgz" \
             --pattern "SHA256SUMS" \
             --dir release
           sha256sum --check release/SHA256SUMS --ignore-missing
