@@ -4,8 +4,8 @@
 
 | Signal | Value |
 | --- | ---: |
-| Authored knowledge | 8 |
-| Supported | 8 |
+| Authored knowledge | 9 |
+| Supported | 9 |
 | Unsupported | 0 |
 | Contradictions | 0 |
 | Repository instruction signals | 0 |

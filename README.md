@@ -56,15 +56,22 @@ providers can propose cited prose only after explicit network approval.
 ProDocs supports Node.js 20, 22, and 24 on Linux, macOS, and Windows.
 
 ```bash
-git clone https://github.com/boyeesu/prodocs.git
-cd prodocs
-npm ci
-npm link
+npm install --global prodocs
 
 cd /path/to/your/repository
 prodocs init
 prodocs sync
+prodocs doctor
 prodocs status
+```
+
+Try the product without modifying an existing repository:
+
+```bash
+prodocs tutorial --output prodocs-tutorial
+cd prodocs-tutorial
+prodocs sync
+prodocs doctor
 ```
 
 Generated output includes:
@@ -210,6 +217,16 @@ prodocs evaluate --suite fixtures/evaluation/core.json
 Evaluation suites report recall, precision, truncation, and token use for
 representative maintenance tasks.
 
+Measure cold/warm indexing, cache reuse, and per-agent context quality locally:
+
+```bash
+prodocs benchmark \
+  --suite fixtures/evaluation/agents.json \
+  --output .prodocs/product-benchmark.json
+```
+
+No telemetry or repository content is transmitted.
+
 ## Collectors and plugins
 
 Built-in evidence includes:
@@ -261,6 +278,8 @@ least 24 characters.
 | Command | Purpose |
 | --- | --- |
 | `prodocs init` | Create configuration and agent/MCP recipes |
+| `prodocs doctor` | Diagnose runtime, setup, freshness, integrations, and knowledge health |
+| `prodocs tutorial` | Create a safe, complete getting-started project |
 | `prodocs sync` | Incrementally index evidence and render all views |
 | `prodocs check` | Fail when generated knowledge is stale |
 | `prodocs status` | Show evidence, index, and knowledge health |
@@ -271,6 +290,7 @@ least 24 characters.
 | `prodocs proposal` | Validate or explicitly apply reviewed writes |
 | `prodocs mcp` | Run the local stdio MCP server |
 | `prodocs evaluate` | Measure context retrieval quality |
+| `prodocs benchmark` | Measure indexing, cache reuse, and per-agent context locally |
 | `prodocs plugin verify` | Verify declarative collector conformance |
 | `prodocs hooks install` | Install the local pre-push gate |
 | `prodocs view` | Render an audience-specific view |
@@ -332,7 +352,10 @@ audit, signature verification, and package inspection.
 Read the [product vision](docs/PRODUCT_VISION.md),
 [architecture](docs/ARCHITECTURE.md), [completed roadmap](docs/ROADMAP.md),
 [compatibility policy](docs/COMPATIBILITY.md), and
-[production validation](docs/VALIDATION.md).
+[production validation](docs/VALIDATION.md). Adoption measurement is documented
+in [docs/ADOPTION.md](docs/ADOPTION.md), troubleshooting in
+[docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md), and dependency posture in
+[docs/SUPPLY_CHAIN.md](docs/SUPPLY_CHAIN.md).
 
 ## Contributing, support, and license
 

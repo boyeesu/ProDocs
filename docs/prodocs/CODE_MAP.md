@@ -8,12 +8,16 @@ not prose claims.
 | File | Language | Lines | Owner | Indexed symbols |
 | --- | --- | ---: | --- | --- |
 | [`bin/prodocs.js`](../../bin/prodocs.js) | JavaScript | 10 | @boyeesu | — |
+| [`examples/getting-started/src/delivery.js`](../../examples/getting-started/src/delivery.js) | JavaScript | 4 | @boyeesu | retryDelivery (function, L1) |
+| [`examples/getting-started/test/delivery.test.js`](../../examples/getting-started/test/delivery.test.js) | JavaScript | 9 | @boyeesu | — |
 | [`fixtures/collectors/typescript-component.tsx`](../../fixtures/collectors/typescript-component.tsx) | TypeScript | 27 | @boyeesu | Identifier (type, L4)<br>ComponentProps (type, L6)<br>ComponentProps.render (method, L8)<br>State (type, L11)<br>Component (class, L16)<br>Component.constructor (constructor, L19)<br>Component.render (method, L21)<br>createComponent (value, L26) |
+| [`scripts/complexity.js`](../../scripts/complexity.js) | JavaScript | 88 | @boyeesu | FILE_LIMIT (value, L5)<br>FUNCTION_LIMIT (value, L6)<br>files (function, L8)<br>increment (function, L19)<br>analyze (function, L34)<br>visit (function, L44)<br>results (value, L70)<br>violations (value, L71) |
 | [`scripts/coverage.js`](../../scripts/coverage.js) | JavaScript | 53 | @boyeesu | thresholds (value, L3)<br>result (value, L9)<br>summary (value, L25)<br>values (value, L32)<br>actual (value, L36) |
 | [`scripts/lint.js`](../../scripts/lint.js) | JavaScript | 25 | @boyeesu | javascriptFiles (function, L5)<br>files (value, L16) |
 | [`scripts/validate-repository.js`](../../scripts/validate-repository.js) | JavaScript | 72 | @boyeesu | repositoryPath (value, L10)<br>requestedPath (value, L11)<br>root (value, L20)<br>revisionResult (value, L21)<br>startedAt (value, L32)<br>graph (value, L33)<br>elapsedMs (value, L34)<br>selectedPath (value, L35) |
 | [`scripts/verify-release.js`](../../scripts/verify-release.js) | JavaScript | 69 | @boyeesu | fail (function, L4)<br>packageMetadata (value, L9)<br>packageLock (value, L10)<br>changelog (value, L11)<br>requestedTag (value, L12) |
-| [`src/cli.js`](../../src/cli.js) | JavaScript | 535 | @boyeesu | hasFlag (function, L36)<br>valueAfter (function, L40)<br>valuesAfter (function, L45)<br>integerAfter (function, L53)<br>help (function, L63)<br>rootFrom (function, L106)<br>readManifest (function, L113)<br>writeRepositoryJson (function, L127) |
+| [`src/benchmark.js`](../../src/benchmark.js) | JavaScript | 40 | @boyeesu | timed (function, L5)<br>benchmarkProject (function, L11) |
+| [`src/cli.js`](../../src/cli.js) | JavaScript | 591 | @boyeesu | hasFlag (function, L39)<br>valueAfter (function, L43)<br>valuesAfter (function, L48)<br>integerAfter (function, L56)<br>help (function, L66)<br>rootFrom (function, L112)<br>readManifest (function, L119)<br>writeRepositoryJson (function, L133) |
 | [`src/collectors/artifacts.js`](../../src/collectors/artifacts.js) | JavaScript | 114 | @boyeesu | HTTP_METHODS (value, L4)<br>lineFor (function, L15)<br>openApiCollector (value, L20)<br>databaseSchemaCollector (value, L92) |
 | [`src/collectors/contract.js`](../../src/collectors/contract.js) | JavaScript | 315 | @boyeesu | COLLECTOR_ID (value, L3)<br>SEVERITIES (value, L4)<br>compareStrings (function, L6)<br>requireNonEmptyString (function, L12)<br>requireString (function, L19)<br>requirePositiveInteger (function, L26)<br>uniqueSortedStrings (function, L33)<br>normalizeSymbol (function, L46) |
 | [`src/collectors/index.js`](../../src/collectors/index.js) | JavaScript | 27 | @boyeesu | defaultCollectorRegistry (value, L17)<br>collectSourceEvidence (function, L24) |
@@ -22,7 +26,8 @@ not prose claims.
 | [`src/config.js`](../../src/config.js) | JavaScript | 306 | @boyeesu | CONFIG_FILE (value, L5)<br>requireStringArray (function, L7)<br>requirePositiveInteger (function, L30)<br>validateConfig (function, L36)<br>loadConfig (function, L253)<br>writeDefaultConfig (function, L298) |
 | [`src/constants.js`](../../src/constants.js) | JavaScript | 115 | @boyeesu | VERSION (value, L1)<br>DEFAULT_CONFIG (value, L3)<br>EXTENSION_LANGUAGE (value, L89)<br>SUPPORTED_EXTENSIONS (value, L114) |
 | [`src/context.js`](../../src/context.js) | JavaScript | 362 | @boyeesu | HASH_PATTERN (value, L1)<br>isObject (function, L3)<br>fail (function, L7)<br>normalizedPath (function, L11)<br>normalizeRequestedPaths (function, L19)<br>matchesRequestedPath (function, L49)<br>priority (function, L58)<br>selectContext (function, L67) |
-| [`src/evaluate.js`](../../src/evaluate.js) | JavaScript | 87 | @boyeesu | readEvaluationSuite (function, L4)<br>evaluateContextSuite (function, L22) |
+| [`src/doctor.js`](../../src/doctor.js) | JavaScript | 179 | @boyeesu | executeFile (value, L10)<br>INTEGRATIONS (value, L11)<br>check (function, L20)<br>exists (function, L24)<br>gitRepository (function, L34)<br>diagnoseProject (function, L47)<br>summarize (function, L165) |
+| [`src/evaluate.js`](../../src/evaluate.js) | JavaScript | 109 | @boyeesu | readEvaluationSuite (function, L4)<br>evaluateContextSuite (function, L22) |
 | [`src/history.js`](../../src/history.js) | JavaScript | 46 | @boyeesu | executeFile (value, L4)<br>REF_PATTERN (value, L5)<br>readHistoricalGraph (function, L7) |
 | [`src/hooks.js`](../../src/hooks.js) | JavaScript | 68 | @boyeesu | executeFile (value, L7)<br>PRE_PUSH (value, L9)<br>git (function, L21)<br>installGitHooks (function, L33) |
 | [`src/impact.js`](../../src/impact.js) | JavaScript | 177 | @boyeesu | executeFile (value, L5)<br>REF_PATTERN (value, L6)<br>git (function, L8)<br>requireRef (function, L23)<br>resolveImpactRange (function, L30)<br>parseNameStatus (function, L54)<br>nodeMatchesChange (function, L72)<br>expandAffected (function, L80) |
@@ -41,15 +46,17 @@ not prose claims.
 | [`src/scanner.js`](../../src/scanner.js) | JavaScript | 585 | @boyeesu | normalizeSource (function, L26)<br>isExcluded (function, L30)<br>matchesGlob (function, L41)<br>isIncluded (function, L110)<br>walk (function, L115)<br>discoverFiles (function, L158)<br>candidateImportPaths (function, L193)<br>inferEntrypoint (function, L227) |
 | [`src/security.js`](../../src/security.js) | JavaScript | 102 | @boyeesu | INSTRUCTION_PATTERNS (value, L4)<br>SECRET_PATTERNS (value, L13)<br>sha256 (function, L28)<br>stableJson (function, L32)<br>toPosix (function, L43)<br>normalizeRepositoryPath (function, L47)<br>detectPromptInjection (function, L65)<br>redactSecrets (function, L81) |
 | [`src/server.js`](../../src/server.js) | JavaScript | 161 | @boyeesu | json (function, L13)<br>authorized (function, L27)<br>body (function, L36)<br>readManifest (function, L47)<br>createCollaborationServer (function, L60)<br>listenForCollaboration (function, L138) |
-| [`test/cli-roadmap.test.js`](../../test/cli-roadmap.test.js) | JavaScript | 396 | @boyeesu | executeFile (value, L11)<br>cli (value, L12)<br>execute (function, L14)<br>fullProject (function, L34) |
+| [`src/tutorial.js`](../../src/tutorial.js) | JavaScript | 89 | @boyeesu | FILES (value, L7)<br>createTutorial (function, L59) |
+| [`test/adoption.test.js`](../../test/adoption.test.js) | JavaScript | 100 | @boyeesu | temporaryProject (function, L10) |
+| [`test/cli-roadmap.test.js`](../../test/cli-roadmap.test.js) | JavaScript | 428 | @boyeesu | executeFile (value, L11)<br>cli (value, L12)<br>execute (function, L14)<br>fullProject (function, L34) |
 | [`test/cli.test.js`](../../test/cli.test.js) | JavaScript | 97 | @boyeesu | cli (value, L8)<br>execute (function, L10) |
 | [`test/collectors.test.js`](../../test/collectors.test.js) | JavaScript | 336 | @boyeesu | fixtures (value, L12) |
 | [`test/config.test.js`](../../test/config.test.js) | JavaScript | 151 | @boyeesu | — |
 | [`test/context.test.js`](../../test/context.test.js) | JavaScript | 174 | @boyeesu | hashes (value, L11)<br>node (function, L19)<br>edge (function, L39)<br>graph (function, L51) |
-| [`test/package.test.js`](../../test/package.test.js) | JavaScript | 199 | @boyeesu | npmCli (value, L8)<br>execute (function, L20)<br>executeNpm (function, L49) |
+| [`test/package.test.js`](../../test/package.test.js) | JavaScript | 213 | @boyeesu | npmCli (value, L8)<br>execute (function, L20)<br>executeNpm (function, L49) |
 | [`test/paths.test.js`](../../test/paths.test.js) | JavaScript | 44 | @boyeesu | — |
 | [`test/render.test.js`](../../test/render.test.js) | JavaScript | 64 | @boyeesu | graph (function, L9) |
-| [`test/roadmap.test.js`](../../test/roadmap.test.js) | JavaScript | 790 | @boyeesu | executeFile (value, L45)<br>project (function, L47)<br>config (function, L57) |
+| [`test/roadmap.test.js`](../../test/roadmap.test.js) | JavaScript | 807 | @boyeesu | executeFile (value, L45)<br>project (function, L47)<br>config (function, L57) |
 | [`test/safe-fs.test.js`](../../test/safe-fs.test.js) | JavaScript | 48 | @boyeesu | — |
 | [`test/scanner.test.js`](../../test/scanner.test.js) | JavaScript | 235 | @boyeesu | fixture (function, L9) |
 | [`test/workflows.test.js`](../../test/workflows.test.js) | JavaScript | 47 | @boyeesu | workflowDirectory (value, L6) |

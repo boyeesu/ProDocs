@@ -1,7 +1,7 @@
 # Code maturity assessment
 
 Assessment date: 2026-08-02
-Target: ProDocs `1.0.0`, Node.js CLI and JavaScript library
+Target: ProDocs `1.1.0`, Node.js CLI and JavaScript library
 
 ## Executive summary
 
@@ -23,9 +23,10 @@ Production strengths include:
    installation, coverage floors, CodeQL, dependency review, audits, SBOMs,
    checksums, and attestations.
 
-Remaining work is continuous assurance rather than an incomplete roadmap phase:
-mutation testing, complexity ratcheting, additional ecosystem fixtures, and
-operational tabletop exercises.
+Continuous assurance now includes targeted mutation testing, complexity
+ratcheting, multi-agent fixtures, and a dependency ownership review. Remaining
+work is operational evidence from external adopter sessions and recurring
+tabletop exercises rather than an incomplete implementation phase.
 
 ## Scorecard
 
@@ -58,13 +59,20 @@ workflow additionally verifies deterministic generated documentation,
 documentation policies, retrieval evaluation, plugin fixtures, the packed
 artifact, dependency advisories, registry signatures, and release metadata.
 
-## Continuous assurance backlog
+## Continuous assurance
 
-These items improve confidence without blocking 1.0:
+Implemented after 1.0:
 
-- mutation-test path containment, proposal application, and collector
-  normalization;
-- add a ratcheting cyclomatic-complexity report;
-- expand pinned external validation fixtures for Go and Rust;
-- record a compromised-release and provider-egress tabletop exercise;
-- review dependency ownership and transitive risk on each release line.
+- targeted mutation tests cover path containment, proposal application, and
+  security helpers;
+- file and function complexity ceilings prevent silent growth;
+- the supply-chain report records dependency ownership, parser/runtime risk,
+  alternatives, and compensating controls;
+- agent fixtures measure Codex, Claude Code, and OpenCode retrieval separately.
+
+Recurring operational work:
+
+- run compromised-release and provider-egress tabletop exercises per release
+  line;
+- collect consented external adoption evidence using `docs/ADOPTION.md`;
+- reassess dependency ownership and alternatives on every minor release.

@@ -486,13 +486,30 @@ test("context evaluation measures recall, precision, and token budgets", async (
           expectedPaths: ["src/main.js"],
           unwantedPaths: [],
           maxTokens: 1000
+        },
+        {
+          name: "empty request",
+          paths: ["src/missing.js"],
+          expectedPaths: [],
+          unwantedPaths: [],
+          maxTokens: 1000
+        },
+        {
+          name: "unwanted result",
+          paths: ["src/main.js"],
+          expectedPaths: [],
+          unwantedPaths: ["src/main.js"],
+          maxTokens: 1000
         }
       ]
     },
     { maxFiles: 10, maxTokens: 1000 }
   );
-  assert.equal(report.passed, true);
+  assert.equal(report.passed, false);
   assert.equal(report.summary.meanRecall, 1);
+  assert.equal(report.byAgent.generic.cases, 3);
+  assert.equal(report.cases[1].precision, 1);
+  assert.equal(report.cases[2].precision, 0);
 });
 
 test("runbooks bind execution approval to evidence and execute without a shell", async (t) => {

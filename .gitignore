@@ -6,3 +6,5 @@ coverage/
 .prodocs/index.sqlite-*
 .prodocs/*-impact.json
 .prodocs/proposals/
+.prodocs/stryker-incremental.json
+.prodocs/mutation-report.json

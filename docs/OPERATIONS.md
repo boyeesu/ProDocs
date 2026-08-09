@@ -52,8 +52,9 @@ and restart on loopback until the exposure is understood.
 The maintainer owning the active incident coordinates technical response and
 communications. Security reporters receive acknowledgement within the target
 published in `SECURITY.md`. At least once per release line, maintainers should
-walk through a compromised-release tabletop scenario and record follow-up work
-in a private issue.
+walk through a compromised-release tabletop scenario and record follow-up work.
+The current reproducible walkthrough and findings are in `docs/TABLETOPS.md`;
+real incidents and sensitive follow-up remain in private issues.
 
 ## Recovery
 

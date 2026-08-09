@@ -1,0 +1,8 @@
+{
+  "name": "prodocs-getting-started",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}

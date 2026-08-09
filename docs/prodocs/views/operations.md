@@ -10,5 +10,5 @@
 
 Verification steps require an explicit content-bound approval hash before execution.
 
-Evidence snapshot: `a361a353b5bb`; knowledge snapshot:
-`17bf50522d8c`.
+Evidence snapshot: `b4624d9231ed`; knowledge snapshot:
+`5dbba2bd8dca`.

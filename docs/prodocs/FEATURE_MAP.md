@@ -4,6 +4,7 @@
 
 | Feature | Customer impact | Evidence | Status |
 | --- | --- | --- | --- |
+| [Adoption and continuous assurance](../knowledge/features/adoption-assurance.md) | Teams can validate setup, learn safely, measure local outcomes, and continuously test critical safety boundaries. | [scripts/complexity.js](../../scripts/complexity.js)<br>[src/benchmark.js](../../src/benchmark.js)<br>[src/doctor.js](../../src/doctor.js)<br>[src/tutorial.js](../../src/tutorial.js) | active |
 | [Agent-neutral context and MCP interface](../knowledge/features/agent-interface.md) | Codex, Claude Code, OpenCode, and MCP-compatible editors receive small, current, task-relevant context without vendor lock-in. | [src/context.js](../../src/context.js)<br>[src/integrations.js](../../src/integrations.js)<br>[src/mcp.js](../../src/mcp.js) | active |
 | [Change intelligence](../knowledge/features/change-intelligence.md) | Maintainers can see which code, documentation, tests, owners, decisions, and runbooks a change affects before merging it. | [src/impact.js](../../src/impact.js)<br>[src/policy.js](../../src/policy.js)<br>[src/proposals.js](../../src/proposals.js) | active |
 | [Evidence-backed knowledge kernel](../knowledge/features/evidence-kernel.md) | Teams get documentation that remains traceable to code and explicitly reports unsupported knowledge. | [src/collectors/index.js](../../src/collectors/index.js)<br>[src/knowledge.js](../../src/knowledge.js)<br>[src/scanner.js](../../src/scanner.js) | active |

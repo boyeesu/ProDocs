@@ -8,16 +8,16 @@
 
 | Signal | Value |
 | --- | --- |
-| Source files | 46 |
-| Lines indexed | 8318 |
-| Symbols indexed | 256 |
-| Internal relationships | 346 |
-| Languages | JavaScript (45), TypeScript (1) |
-| Evidence snapshot | `a361a353b5bb` |
+| Source files | 53 |
+| Lines indexed | 8968 |
+| Symbols indexed | 280 |
+| Internal relationships | 392 |
+| Languages | JavaScript (52), TypeScript (1) |
+| Evidence snapshot | `b4624d9231ed` |
 
 ## Entrypoints
 
-- [`src/cli.js`](../../src/cli.js) — 27 indexed symbols
+- [`src/cli.js`](../../src/cli.js) — 30 indexed symbols
 - [`src/collectors/index.js`](../../src/collectors/index.js) — 2 indexed symbols
 - [`src/server.js`](../../src/server.js) — 6 indexed symbols
 
@@ -25,16 +25,16 @@
 
 | File | Language | Connections | Owner |
 | --- | --- | ---: | --- |
+| [`src/cli.js`](../../src/cli.js) | JavaScript | 32 | @boyeesu |
 | [`test/roadmap.test.js`](../../test/roadmap.test.js) | JavaScript | 31 | @boyeesu |
-| [`src/cli.js`](../../src/cli.js) | JavaScript | 29 | @boyeesu |
-| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 25 | @boyeesu |
-| [`src/constants.js`](../../src/constants.js) | JavaScript | 22 | @boyeesu |
-| [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 21 | @boyeesu |
+| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 27 | @boyeesu |
+| [`src/constants.js`](../../src/constants.js) | JavaScript | 25 | @boyeesu |
+| [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 22 | @boyeesu |
+| [`src/security.js`](../../src/security.js) | JavaScript | 20 | @boyeesu |
 | [`src/mcp.js`](../../src/mcp.js) | JavaScript | 19 | @boyeesu |
-| [`src/security.js`](../../src/security.js) | JavaScript | 19 | @boyeesu |
 | [`src/server.js`](../../src/server.js) | JavaScript | 19 | @boyeesu |
+| [`src/paths.js`](../../src/paths.js) | JavaScript | 17 | @boyeesu |
 | [`src/context.js`](../../src/context.js) | JavaScript | 16 | @boyeesu |
-| [`src/paths.js`](../../src/paths.js) | JavaScript | 15 | @boyeesu |
 
 ## How to use this map
 
@@ -42,4 +42,4 @@
 - Agents should read `knowledge.json` or run `prodocs context --path <path> --json`.
 - CI should run `prodocs check` to reject stale generated documentation.
 
-Generated at 2026-08-02T08:28:10.570Z.
+Generated at 2026-08-09T13:39:33.774Z.

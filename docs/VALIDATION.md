@@ -22,6 +22,23 @@ The production gate runs all of the following:
 - dependency advisory and registry-signature audits;
 - an npm package dry-run.
 
+## 1.1 adoption and assurance gates
+
+- `prodocs doctor` validates first-run readiness and installed-package setup;
+- the packaged tutorial is created without overwriting an existing path;
+- Codex, Claude Code, and OpenCode evaluation cases report separate recall,
+  precision, and token totals;
+- cold/warm indexing benchmarks report cache reuse locally without telemetry;
+- the current reproducible measurement is recorded in `docs/BENCHMARKS.md`;
+- file and function complexity cannot exceed the reviewed ratchet;
+- targeted mutation testing covers containment, proposal approval, and security
+  helpers on a weekly or manually dispatched workflow, with the measured
+  baseline and survivor policy in `docs/MUTATION_TESTING.md`;
+- the complete dependency tree audits with zero known vulnerabilities and the
+  direct-dependency ownership review is current;
+- compromised-release and provider-egress response procedures have a recorded
+  tabletop walkthrough in `docs/TABLETOPS.md`.
+
 CI repeats compatible gates across Node.js 20, 22, and 24, with Linux, macOS,
 and Windows coverage. Pull requests also generate a machine-readable impact
 report before merge.

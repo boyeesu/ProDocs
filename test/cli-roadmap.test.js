@@ -97,7 +97,13 @@ test("the complete roadmap CLI works as one reviewed workflow", async (t) => {
   t.after(() => fs.rm(root, { recursive: true, force: true }));
 
   assert.match((await execute(["--help"], root)).stdout, /Change intelligence/);
-  assert.equal((await execute(["--version"], root)).stdout.trim(), "1.0.0");
+  const packageManifest = JSON.parse(
+    await fs.readFile(path.resolve("package.json"), "utf8")
+  );
+  assert.equal(
+    (await execute(["--version"], root)).stdout.trim(),
+    packageManifest.version
+  );
   const unknown = await execute(["unknown"], root);
   assert.equal(unknown.code, 1);
   assert.match(unknown.stderr, /Unknown command/);
@@ -112,6 +118,10 @@ test("the complete roadmap CLI works as one reviewed workflow", async (t) => {
   );
   assert.equal((await execute(["sync"], root)).code, 0);
   assert.equal((await execute(["check"], root)).code, 0);
+  const doctor = await execute(["doctor", "--json"], root);
+  assert.equal(doctor.code, 0, doctor.stderr);
+  assert.equal(JSON.parse(doctor.stdout).ready, true);
+  assert.match((await execute(["doctor"], root)).stdout, /Ready:/);
 
   const status = await execute(["status", "--json"], root);
   assert.equal(status.code, 0, status.stderr);
@@ -178,6 +188,12 @@ test("the complete roadmap CLI works as one reviewed workflow", async (t) => {
     (await execute(["evaluate", "--suite", "suite.json"], root)).stdout,
     /context cases passed/
   );
+  const benchmark = await execute(
+    ["benchmark", "--suite", "suite.json", "--json"],
+    root
+  );
+  assert.equal(benchmark.code, 0, benchmark.stderr);
+  assert.equal(JSON.parse(benchmark.stdout).kind, "prodocs.product-benchmark");
 
   const pluginSource = await fs.readFile(
     path.resolve("fixtures/plugins/service.prodocs-plugin.json"),
@@ -345,6 +361,22 @@ test("the complete roadmap CLI works as one reviewed workflow", async (t) => {
       )
     ).code,
     0
+  );
+
+  const tutorial = await execute(
+    ["tutorial", "--output", "tutorial-project", "--json"],
+    root
+  );
+  assert.equal(tutorial.code, 0, tutorial.stderr);
+  assert.equal(JSON.parse(tutorial.stdout).files.length, 7);
+  assert.equal(
+    (
+      await execute(
+        ["tutorial", "--output", "tutorial-project", "--json"],
+        root
+      )
+    ).code,
+    1
   );
 });
 
