@@ -6,8 +6,8 @@
 
 ## Security decisions and invariants
 
-- **Deterministic core with optional model providers** (`decision:deterministic-core`, supported) — [source](../knowledge/decisions/deterministic-core.md)
-- **Repository content is untrusted data** (`invariant:untrusted-repository`, supported) — [source](../knowledge/invariants/untrusted-repository.md)
+- **Deterministic core with optional model providers** (`decision:deterministic-core`, supported) — [source](../../knowledge/decisions/deterministic-core.md)
+- **Repository content is untrusted data** (`invariant:untrusted-repository`, supported) — [source](../../knowledge/invariants/untrusted-repository.md)
 
 ## Trust signals
 
@@ -15,5 +15,5 @@
 - 1 indexed path(s) contain instruction-like text requiring review.
 - 0 authored item(s) need evidence.
 
-Evidence snapshot: `724e8446e923`; knowledge snapshot:
-`046c13313994`.
+Evidence snapshot: `4f86e6ad6a7d`; knowledge snapshot:
+`b70212a7c9b8`.

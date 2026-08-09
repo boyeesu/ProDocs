@@ -53,6 +53,8 @@ The production gate runs all of the following:
   fail before any operation is applied;
 - Kourti Tech moves from 8 passes and 4 warnings to 12 passes and no warnings,
   with 20 entrypoints, 46/46 owned files, and supported starter knowledge.
+- generated audience views resolve every local source and knowledge link from
+  their actual nested location, and `prodocs check` fails closed on link drift.
 
 CI repeats compatible gates across Node.js 20, 22, and 24, with Linux, macOS,
 and Windows coverage. Pull requests also generate a machine-readable impact

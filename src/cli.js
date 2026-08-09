@@ -3,6 +3,10 @@ import path from "node:path";
 import { runAdoptionCommand } from "./adoption-command.js";
 import { loadConfig, writeDefaultConfig } from "./config.js";
 import { buildContextPacket } from "./context.js";
+import {
+  documentationCheckState,
+  validateGeneratedLinks
+} from "./generated-links.js";
 import { benchmarkProject } from "./benchmark.js";
 import { diagnoseProject } from "./doctor.js";
 import {
@@ -73,7 +77,7 @@ Core:
   prodocs doctor                       Diagnose production readiness and setup
   prodocs tutorial                     Create a safe getting-started project
   prodocs sync                         Incrementally index and refresh all views
-  prodocs check                        Fail when generated knowledge is stale
+  prodocs check                        Fail on stale docs or broken generated links
   prodocs status [--json]              Show evidence and knowledge health
   prodocs context --path <path>        Return bounded task-shaped context
 
@@ -231,8 +235,16 @@ async function freshness(root) {
 
 async function check(root, _args, json) {
   const result = await freshness(root);
+  const linkIssues = await validateGeneratedLinks(root, result.config);
+  const checkState = documentationCheckState(
+    result.fresh,
+    Boolean(result.manifest),
+    linkIssues
+  );
   const output = {
     fresh: result.fresh,
+    validLinks: linkIssues.length === 0,
+    linkIssues,
     currentSourceHash: result.graph.sourceHash,
     documentedSourceHash: result.manifest?.sourceHash ?? null,
     currentKnowledgeHash: result.graph.knowledgeHash,
@@ -242,18 +254,14 @@ async function check(root, _args, json) {
     knowledge: result.graph.stats.knowledge
   };
   if (json) console.log(JSON.stringify(output, null, 2));
-  else if (result.fresh) {
+  else if (checkState.ready) {
     console.log(
       `Documentation and authored knowledge are fresh (${result.graph.sourceHash.slice(0, 12)}).`
     );
   } else {
-    console.error(
-      result.manifest
-        ? "Documentation is stale. Run `prodocs sync` and commit the result."
-        : "Documentation has not been generated. Run `prodocs sync`."
-    );
+    console.error(checkState.message);
   }
-  if (!result.fresh) process.exitCode = 1;
+  if (!checkState.ready) process.exitCode = 1;
 }
 
 async function status(root, _args, json) {

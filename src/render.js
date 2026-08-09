@@ -150,14 +150,19 @@ function knowledgeNodes(graph, types = null) {
   );
 }
 
-function knowledgeList(nodes, config) {
-  if (nodes.length === 0) return "_No authored knowledge is available._";
+function knowledgeList(
+  nodes,
+  config,
+  output = config.output,
+  empty = "_No authored knowledge is available._"
+) {
+  if (nodes.length === 0) return empty;
   return nodes
     .map((node) => {
       const support = node.evidence?.every((reference) => reference.supported)
         ? "supported"
         : "needs evidence";
-      return `- **${escapeHeading(node.title)}** (\`${node.id}\`, ${support}) — [source](${sourceLink(config.output, node.path)})`;
+      return `- **${escapeHeading(node.title)}** (\`${node.id}\`, ${support}) — [source](${sourceLink(output, node.path)})`;
     })
     .join("\n");
 }
@@ -218,7 +223,7 @@ function knowledgeHealth(graph, config) {
 
 ## Unsupported knowledge
 
-${knowledgeList(unsupported, config)}
+${knowledgeList(unsupported, config, config.output, "_No unsupported authored knowledge._")}
 
 ## Contradictions
 
@@ -234,6 +239,7 @@ ${
 
 export function renderAudienceView(graph, config, audience) {
   const normalized = String(audience).toLowerCase();
+  const viewOutput = path.posix.join(config.output, "views");
   const features = knowledgeNodes(graph, ["feature"]);
   const claims = knowledgeNodes(graph, ["claim"]);
   const decisions = knowledgeNodes(graph, ["decision", "invariant"]);
@@ -247,26 +253,26 @@ export function renderAudienceView(graph, config, audience) {
   if (normalized === "product") {
     sections = `## Product capabilities
 
-${knowledgeList(features, config)}
+${knowledgeList(features, config, viewOutput, "_No authored product capabilities._")}
 
 ## Evidence-backed behavior
 
-${knowledgeList(claims, config)}`;
+${knowledgeList(claims, config, viewOutput, "_No authored behavioral claims._")}`;
   } else if (normalized === "support") {
     sections = `## Customer-facing behavior
 
-${knowledgeList([...features, ...claims], config)}
+${knowledgeList([...features, ...claims], config, viewOutput, "_No authored customer-facing behavior._")}
 
 ## Support runbooks
 
-${knowledgeList(runbooks, config)}`;
+${knowledgeList(runbooks, config, viewOutput, "_No authored support runbooks._")}`;
   } else if (normalized === "security") {
     const flagged = graph.nodes.filter(
       (node) => node.trust?.instructionSignals?.length > 0
     );
     sections = `## Security decisions and invariants
 
-${knowledgeList(decisions, config)}
+${knowledgeList(decisions, config, viewOutput, "_No authored security decisions or invariants._")}
 
 ## Trust signals
 
@@ -276,7 +282,7 @@ ${knowledgeList(decisions, config)}
   } else if (normalized === "operations") {
     sections = `## Operational runbooks
 
-${knowledgeList(runbooks, config)}
+${knowledgeList(runbooks, config, viewOutput, "_No authored operational runbooks._")}
 
 Verification steps require an explicit content-bound approval hash before execution.`;
   } else {
@@ -288,17 +294,17 @@ Verification steps require an explicit content-bound approval hash before execut
 ${entrypoints
   .map(
     (node) =>
-      `- [\`${escapeCell(node.path)}\`](${sourceLink(config.output, node.path)})`
+      `- [\`${escapeCell(node.path)}\`](${sourceLink(viewOutput, node.path)})`
   )
   .join("\n") || "_No entrypoints configured._"}
 
 ## Decisions and invariants
 
-${knowledgeList(decisions, config)}
+${knowledgeList(decisions, config, viewOutput, "_No authored decisions or invariants._")}
 
 ## Relevant authored knowledge
 
-${knowledgeList(relevant, config)}`;
+${knowledgeList(relevant, config, viewOutput, "_No authored knowledge targets this audience._")}`;
   }
   return `${GENERATED_NOTICE}
 

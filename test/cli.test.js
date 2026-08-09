@@ -27,6 +27,15 @@ test("init, sync, check, and stale detection form a complete loop", async (t) =>
   assert.equal((await execute(["init"], root)).code, 0);
   assert.equal((await execute(["sync"], root)).code, 0);
   assert.equal((await execute(["check"], root)).code, 0);
+  await fs.appendFile(
+    path.join(root, "docs", "prodocs", "views", "technical.md"),
+    "\n[broken](../../missing.ts)\n"
+  );
+  const brokenLinks = await execute(["check", "--json"], root);
+  assert.equal(brokenLinks.code, 1);
+  assert.equal(JSON.parse(brokenLinks.stdout).validLinks, false);
+  await execute(["sync"], root);
+  assert.equal((await execute(["check"], root)).code, 0);
   const firstManifest = await fs.readFile(
     path.join(root, "docs", "prodocs", "manifest.json"),
     "utf8"

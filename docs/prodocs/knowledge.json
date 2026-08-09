@@ -1,17 +1,17 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-09T15:30:18.325Z",
-  "sourceHash": "724e8446e92338fad5e7e4efc85f4c6ec1ba9a7c1a1a04badec21984cc0a48f0",
-  "knowledgeHash": "046c1331399460fce8f6f74c6732c69ce3538cc9aa5d3294fe3e53eb8a3c05a7",
-  "inputHash": "2d02c593e300f02694296c2fe23d187cc173da74d5704e656f24c7942c1a09c2",
+  "generatedAt": "2026-08-09T16:07:24.122Z",
+  "sourceHash": "4f86e6ad6a7d7ea3c265b49a2eb3b90eb263a8c88d5581ac0a999c72c1aaf182",
+  "knowledgeHash": "b70212a7c9b8dfe1fccd5e6e358486e880d242b662f45fd2f317cdf154530f8b",
+  "inputHash": "2b7363ebc896efe8754860c3378ad3fdc018c86a59837a6c96e2f78c94bcc330",
   "root": ".",
   "stats": {
-    "files": 59,
-    "lines": 10525,
-    "symbols": 337,
-    "edges": 461,
+    "files": 60,
+    "lines": 10668,
+    "symbols": 344,
+    "edges": 472,
     "languages": {
-      "JavaScript": 58,
+      "JavaScript": 59,
       "TypeScript": 1
     },
     "knowledge": {
@@ -23,7 +23,7 @@
     },
     "index": {
       "backend": "sqlite",
-      "entries": 59
+      "entries": 60
     }
   },
   "nodes": [
@@ -697,8 +697,8 @@
       "type": "file",
       "path": "src/cli.js",
       "language": "JavaScript",
-      "contentHash": "f8e0572516d9ff7228b9b02c9c40f7e58c9157da7ef13798591b4c06ce96fa6a",
-      "lines": 594,
+      "contentHash": "e7d5aae1d495176358a9c61c1f37ac5fdb4b6a7861855827a650eea53785ef31",
+      "lines": 602,
       "owner": "@boyeesu",
       "entrypoint": true,
       "publicSurface": true,
@@ -707,152 +707,152 @@
         {
           "name": "hasFlag",
           "kind": "function",
-          "line": 40
+          "line": 44
         },
         {
           "name": "valueAfter",
           "kind": "function",
-          "line": 44
+          "line": 48
         },
         {
           "name": "valuesAfter",
           "kind": "function",
-          "line": 49
+          "line": 53
         },
         {
           "name": "integerAfter",
           "kind": "function",
-          "line": 57
+          "line": 61
         },
         {
           "name": "help",
           "kind": "function",
-          "line": 67
+          "line": 71
         },
         {
           "name": "rootFrom",
           "kind": "function",
-          "line": 114
+          "line": 118
         },
         {
           "name": "readManifest",
           "kind": "function",
-          "line": 121
+          "line": 125
         },
         {
           "name": "writeRepositoryJson",
           "kind": "function",
-          "line": 135
+          "line": 139
         },
         {
           "name": "init",
           "kind": "function",
-          "line": 147
+          "line": 151
         },
         {
           "name": "doctor",
           "kind": "function",
-          "line": 163
+          "line": 167
         },
         {
           "name": "tutorial",
           "kind": "function",
-          "line": 179
+          "line": 183
         },
         {
           "name": "sync",
           "kind": "function",
-          "line": 191
+          "line": 195
         },
         {
           "name": "freshness",
           "kind": "function",
-          "line": 215
+          "line": 219
         },
         {
           "name": "check",
           "kind": "function",
-          "line": 232
+          "line": 236
         },
         {
           "name": "status",
           "kind": "function",
-          "line": 259
+          "line": 267
         },
         {
           "name": "context",
           "kind": "function",
-          "line": 281
+          "line": 289
         },
         {
           "name": "impact",
           "kind": "function",
-          "line": 320
+          "line": 328
         },
         {
           "name": "policy",
           "kind": "function",
-          "line": 348
+          "line": 356
         },
         {
           "name": "proposal",
           "kind": "function",
-          "line": 362
+          "line": 370
         },
         {
           "name": "propose",
           "kind": "function",
-          "line": 388
+          "line": 396
         },
         {
           "name": "evaluate",
           "kind": "function",
-          "line": 415
+          "line": 423
         },
         {
           "name": "benchmark",
           "kind": "function",
-          "line": 435
+          "line": 443
         },
         {
           "name": "plugin",
           "kind": "function",
-          "line": 454
+          "line": 462
         },
         {
           "name": "hooks",
           "kind": "function",
-          "line": 463
+          "line": 471
         },
         {
           "name": "view",
           "kind": "function",
-          "line": 477
+          "line": 485
         },
         {
           "name": "history",
           "kind": "function",
-          "line": 488
+          "line": 496
         },
         {
           "name": "runbook",
           "kind": "function",
-          "line": 500
+          "line": 508
         },
         {
           "name": "capabilities",
           "kind": "function",
-          "line": 527
+          "line": 535
         },
         {
           "name": "serve",
           "kind": "function",
-          "line": 546
+          "line": 554
         },
         {
           "name": "run",
           "kind": "function",
-          "line": 555
+          "line": 563
         }
       ],
       "trust": {
@@ -1188,7 +1188,7 @@
       "type": "file",
       "path": "src/constants.js",
       "language": "JavaScript",
-      "contentHash": "d7d3cccc5b72ffa31922cddf59bfeff33d814c19952df7d28f84ca5f274fdad1",
+      "contentHash": "c1ddfcc11f8706f5c763108af62f38d76af51504386440fdb530efd6f1abd6bb",
       "lines": 115,
       "owner": "@boyeesu",
       "entrypoint": false,
@@ -1378,6 +1378,59 @@
           "name": "evaluateContextSuite",
           "kind": "function",
           "line": 22
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/generated-links.js",
+      "type": "file",
+      "path": "src/generated-links.js",
+      "language": "JavaScript",
+      "contentHash": "fd28ca6f0300e9f3c104ae918031f88ad74807a5e0845c0e9d0c6ddd8b807080",
+      "lines": 90,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "ROOT_MARKDOWN",
+          "kind": "value",
+          "line": 5
+        },
+        {
+          "name": "audiencePath",
+          "kind": "function",
+          "line": 12
+        },
+        {
+          "name": "generatedMarkdownPaths",
+          "kind": "function",
+          "line": 16
+        },
+        {
+          "name": "localTargets",
+          "kind": "function",
+          "line": 23
+        },
+        {
+          "name": "decodedPath",
+          "kind": "function",
+          "line": 34
+        },
+        {
+          "name": "validateGeneratedLinks",
+          "kind": "function",
+          "line": 43
+        },
+        {
+          "name": "documentationCheckState",
+          "kind": "function",
+          "line": 73
         }
       ],
       "trust": {
@@ -2014,8 +2067,8 @@
       "type": "file",
       "path": "src/render.js",
       "language": "JavaScript",
-      "contentHash": "d9ee8c7f4c426828892f8d2c71e39f185c82e5b76208ad1558384e0d0d9893ff",
-      "lines": 372,
+      "contentHash": "60cc2715129e8c040f0cb23fccc3ca99db1fd5ac53c117f1e04bf9ccf94397d2",
+      "lines": 378,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -2069,22 +2122,22 @@
         {
           "name": "featureMap",
           "kind": "function",
-          "line": 165
+          "line": 170
         },
         {
           "name": "knowledgeHealth",
           "kind": "function",
-          "line": 196
+          "line": 201
         },
         {
           "name": "renderAudienceView",
           "kind": "function",
-          "line": 235
+          "line": 240
         },
         {
           "name": "writeArtifacts",
           "kind": "function",
-          "line": 316
+          "line": 322
         }
       ],
       "trust": {
@@ -2476,8 +2529,8 @@
       "type": "file",
       "path": "test/cli.test.js",
       "language": "JavaScript",
-      "contentHash": "329a878c9d7fa19af9ca121a597b5f21240cdf17c926584885572e175396b544",
-      "lines": 97,
+      "contentHash": "f1e1d332d66c4843248ec2df03de56c8efb6f554aa5e4f8fa23681777f73a3f5",
+      "lines": 106,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -2655,8 +2708,8 @@
       "type": "file",
       "path": "test/render.test.js",
       "language": "JavaScript",
-      "contentHash": "2a101220e6179792fd10aad6256aee372184d31400cda0cd68f93d8dfd6631f5",
-      "lines": 64,
+      "contentHash": "e15de92c14ce37ca275c4ffe453f167d0726c70b32c7261e799466453256a9e1",
+      "lines": 94,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -2665,7 +2718,7 @@
         {
           "name": "graph",
           "kind": "function",
-          "line": 9
+          "line": 10
         }
       ],
       "trust": {
@@ -2789,7 +2842,7 @@
           "path": "src/cli.js",
           "symbol": "run",
           "supported": true,
-          "contentHash": "f8e0572516d9ff7228b9b02c9c40f7e58c9157da7ef13798591b4c06ce96fa6a"
+          "contentHash": "e7d5aae1d495176358a9c61c1f37ac5fdb4b6a7861855827a650eea53785ef31"
         },
         {
           "path": "src/index-store.js",
@@ -3148,7 +3201,7 @@
           "path": "src/render.js",
           "symbol": "renderAudienceView",
           "supported": true,
-          "contentHash": "d9ee8c7f4c426828892f8d2c71e39f185c82e5b76208ad1558384e0d0d9893ff"
+          "contentHash": "60cc2715129e8c040f0cb23fccc3ca99db1fd5ac53c117f1e04bf9ccf94397d2"
         },
         {
           "path": "src/server.js",
@@ -3245,7 +3298,7 @@
           "path": "src/cli.js",
           "symbol": "run",
           "supported": true,
-          "contentHash": "f8e0572516d9ff7228b9b02c9c40f7e58c9157da7ef13798591b4c06ce96fa6a"
+          "contentHash": "e7d5aae1d495176358a9c61c1f37ac5fdb4b6a7861855827a650eea53785ef31"
         }
       ],
       "audiences": [
@@ -3420,6 +3473,15 @@
       "type": "affects",
       "from": "claim:local-first",
       "to": "file:src/evaluate.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/generated-links.js",
       "evidence": {
         "source": "docs/knowledge/claims/local-first.md",
         "reference": "src"
@@ -3735,6 +3797,15 @@
       "type": "affects",
       "from": "decision:deterministic-core",
       "to": "file:src/evaluate.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/generated-links.js",
       "evidence": {
         "source": "docs/knowledge/decisions/deterministic-core.md",
         "reference": "src"
@@ -4148,6 +4219,15 @@
     {
       "type": "affects",
       "from": "feature:evidence-kernel",
+      "to": "file:src/generated-links.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
       "to": "file:src/history.js",
       "evidence": {
         "source": "docs/knowledge/features/evidence-kernel.md",
@@ -4481,6 +4561,15 @@
     {
       "type": "affects",
       "from": "invariant:untrusted-repository",
+      "to": "file:src/generated-links.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
       "to": "file:src/history.js",
       "evidence": {
         "source": "docs/knowledge/invariants/untrusted-repository.md",
@@ -4788,6 +4877,15 @@
       "type": "affects",
       "from": "runbook:production-verification",
       "to": "file:src/evaluate.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/generated-links.js",
       "evidence": {
         "source": "docs/knowledge/runbooks/production-verification.md",
         "reference": "src"
@@ -5282,6 +5380,15 @@
     {
       "type": "imports",
       "from": "file:src/cli.js",
+      "to": "file:src/generated-links.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./generated-links.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
       "to": "file:src/history.js",
       "evidence": {
         "source": "src/cli.js",
@@ -5564,6 +5671,24 @@
       "to": "file:src/safe-fs.js",
       "evidence": {
         "source": "src/evaluate.js",
+        "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/generated-links.js",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "src/generated-links.js",
+        "specifier": "./paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/generated-links.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/generated-links.js",
         "specifier": "./safe-fs.js"
       }
     },
@@ -6146,6 +6271,15 @@
     {
       "type": "imports",
       "from": "file:test/render.test.js",
+      "to": "file:src/generated-links.js",
+      "evidence": {
+        "source": "test/render.test.js",
+        "specifier": "../src/generated-links.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/render.test.js",
       "to": "file:src/render.js",
       "evidence": {
         "source": "test/render.test.js",
@@ -6537,6 +6671,15 @@
       "evidence": {
         "source": ".github/CODEOWNERS",
         "reference": "src/evaluate.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/generated-links.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/generated-links.js"
       }
     },
     {
@@ -7266,6 +7409,15 @@
       "evidence": {
         "source": "test/render.test.js",
         "reference": "../src/constants.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/render.test.js",
+      "to": "file:src/generated-links.js",
+      "evidence": {
+        "source": "test/render.test.js",
+        "reference": "../src/generated-links.js"
       }
     },
     {

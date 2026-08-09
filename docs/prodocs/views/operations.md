@@ -6,9 +6,9 @@
 
 ## Operational runbooks
 
-- **Verify ProDocs for production** (`runbook:production-verification`, supported) — [source](../knowledge/runbooks/production-verification.md)
+- **Verify ProDocs for production** (`runbook:production-verification`, supported) — [source](../../knowledge/runbooks/production-verification.md)
 
 Verification steps require an explicit content-bound approval hash before execution.
 
-Evidence snapshot: `724e8446e923`; knowledge snapshot:
-`046c13313994`.
+Evidence snapshot: `4f86e6ad6a7d`; knowledge snapshot:
+`b70212a7c9b8`.

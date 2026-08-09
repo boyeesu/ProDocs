@@ -5,7 +5,7 @@
 ## Metadata
 
 - **Scan Date**: 2026-08-09 14:31 WAT
-- **Project**: ProDocs 1.2.0
+- **Project**: ProDocs 1.2.1
 - **Repositories Scanned**: 3 direct dependency repositories
 - **Total Dependencies**: 6 production packages excluding ProDocs
 - **Scan Duration**: approximately 2 minutes
