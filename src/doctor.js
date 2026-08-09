@@ -113,7 +113,7 @@ export async function diagnoseProject(root) {
         : "Product name or description is missing.",
       hasIdentity
         ? null
-        : "Set documentation.productName and documentation.oneLineDescription."
+        : "Run `prodocs adopt` for a cited proposal, or set documentation.productName and documentation.oneLineDescription."
     )
   );
 
@@ -125,7 +125,7 @@ export async function diagnoseProject(root) {
       `${entrypointCount} source entrypoints identified.`,
       entrypointCount > 0
         ? null
-        : "Add the product's primary files to entrypoints in prodocs.config.json."
+        : "Run `prodocs adopt` to infer framework boundaries, or add primary files to entrypoints."
     )
   );
 
@@ -138,7 +138,7 @@ export async function diagnoseProject(root) {
       `${ownedCount}/${sourceNodes.length} source files have ownership evidence.`,
       ownershipReady
         ? null
-        : "Add CODEOWNERS or ownership mappings for release accountability."
+        : "Run `prodocs adopt` to infer repository ownership, or add CODEOWNERS/ownership mappings."
     )
   );
 
@@ -213,7 +213,7 @@ export async function diagnoseProject(root) {
       `${graph.stats.knowledge.total} authored knowledge items indexed.`,
       hasKnowledge
         ? null
-        : "Add evidence-backed product, architecture, operations, or decision knowledge."
+        : "Run `prodocs adopt` to draft cited starter knowledge, then extend it as intent evolves."
     )
   );
 

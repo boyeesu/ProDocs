@@ -14,8 +14,24 @@ prodocs doctor
 prodocs context --path src/delivery.js --task "change retry behavior" --json
 ```
 
-In an existing repository, run `prodocs init`, review the configuration, then
-run `prodocs sync` and `prodocs doctor`.
+In an existing repository, let ProDocs research the initial configuration and
+knowledge instead of starting from blank fields:
+
+```sh
+prodocs init
+prodocs adopt
+```
+
+The proposal records confidence and evidence for product identity, framework
+entrypoints, repository ownership, and starter product knowledge. Review it,
+then run the exact content-bound apply command printed by ProDocs. Application
+creates missing agent recipes, synchronizes generated views, and returns both
+doctor and policy results. Repository source or configuration drift invalidates
+the proposal.
+
+Agents can retrieve the same proposal through `prodocs adopt --json` or the
+read-only `prodocs_adopt` MCP tool. Applying still requires the exact proposal
+hash, so repository-derived text never grants itself write authority.
 
 ## Local measurement
 

@@ -39,6 +39,21 @@ The production gate runs all of the following:
 - compromised-release and provider-egress response procedures have a recorded
   tabletop walkthrough in `docs/TABLETOPS.md`.
 
+## 1.2 automatic-adoption gates
+
+- structured site metadata produces high-confidence identity citations;
+- Next.js App Router pages, layouts, route handlers, and metadata endpoints are
+  inferred as public entrypoints;
+- GitHub origin ownership produces a bounded CODEOWNERS proposal;
+- starter product knowledge cites every inferred public surface and passes
+  documentation policy after apply;
+- exact proposal, source, configuration, and inference-evidence hashes are
+  required before writes;
+- stale, tampered, unapproved, malformed, and symbolic-link-escaping proposals
+  fail before any operation is applied;
+- Kourti Tech moves from 8 passes and 4 warnings to 12 passes and no warnings,
+  with 20 entrypoints, 46/46 owned files, and supported starter knowledge.
+
 CI repeats compatible gates across Node.js 20, 22, and 24, with Linux, macOS,
 and Windows coverage. Pull requests also generate a machine-readable impact
 report before merge.

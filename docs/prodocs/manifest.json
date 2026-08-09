@@ -1,28 +1,28 @@
 {
   "schemaVersion": 2,
-  "sourceHash": "1a4e707958e0551e523310e007e92899d8f76602c70ca9772cacd664e1299693",
-  "knowledgeHash": "092b8734f7923cebd3f960a64524283eded0e179cc7aa91b7d01cc5464b63796",
-  "inputHash": "904ee070a130941400ad57bec6c2be1582e31d064aeda9889cfad96e28df1f49",
-  "generatedAt": "2026-08-09T14:50:53.200Z",
+  "sourceHash": "724e8446e92338fad5e7e4efc85f4c6ec1ba9a7c1a1a04badec21984cc0a48f0",
+  "knowledgeHash": "046c1331399460fce8f6f74c6732c69ce3538cc9aa5d3294fe3e53eb8a3c05a7",
+  "inputHash": "2d02c593e300f02694296c2fe23d187cc173da74d5704e656f24c7942c1a09c2",
+  "generatedAt": "2026-08-09T15:30:18.325Z",
   "stats": {
-    "files": 56,
-    "lines": 9454,
-    "symbols": 292,
-    "edges": 407,
+    "files": 59,
+    "lines": 10525,
+    "symbols": 337,
+    "edges": 461,
     "languages": {
-      "JavaScript": 55,
+      "JavaScript": 58,
       "TypeScript": 1
     },
     "knowledge": {
-      "total": 9,
-      "supported": 9,
+      "total": 10,
+      "supported": 10,
       "unsupported": 0,
       "contradictions": 0,
       "instructionSignals": 0
     },
     "index": {
       "backend": "sqlite",
-      "entries": 56
+      "entries": 59
     }
   }
 }

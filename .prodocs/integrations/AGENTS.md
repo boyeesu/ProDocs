@@ -2,8 +2,9 @@
 
 Before changing code:
 
-1. Run `prodocs context --path <area> --json` to load the local architecture context.
-2. Read `docs/prodocs/SYSTEM_OVERVIEW.md` for system-level constraints.
+1. If `prodocs doctor` reports incomplete onboarding, run `prodocs adopt` and review its cited proposal.
+2. Run `prodocs context --path <area> --json` to load the local architecture context.
+3. Read `docs/prodocs/SYSTEM_OVERVIEW.md` for system-level constraints.
 
 After changing code:
 

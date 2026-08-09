@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/boyeesu/prodocs/main/schemas/adoption-proposal.schema.json",
+  "title": "ProDocs evidence-backed adoption proposal",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "kind",
+    "source",
+    "inference",
+    "operations",
+    "approvalHash"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "kind": { "const": "prodocs.adoption-proposal" },
+    "source": {
+      "type": "object",
+      "required": ["sourceHash", "configHash", "inferenceHash"],
+      "properties": {
+        "sourceHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "configHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "inferenceHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      },
+      "additionalProperties": false
+    },
+    "inference": {
+      "type": "object",
+      "required": [
+        "productName",
+        "oneLineDescription",
+        "entrypoints",
+        "ownership",
+        "sourceFiles",
+        "sourceHash",
+        "repositoryRoot"
+      ],
+      "properties": {
+        "productName": {
+          "anyOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/inferenceValue" }
+          ]
+        },
+        "oneLineDescription": {
+          "anyOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/inferenceValue" }
+          ]
+        },
+        "ownership": {
+          "anyOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/inferenceValue" }
+          ]
+        },
+        "entrypoints": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": {
+            "type": "object",
+            "required": ["path", "confidence", "reason", "evidence"],
+            "properties": {
+              "path": { "type": "string", "minLength": 1 },
+              "confidence": { "$ref": "#/$defs/confidence" },
+              "reason": { "type": "string", "maxLength": 2048 },
+              "evidence": { "$ref": "#/$defs/evidence" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "sourceFiles": { "type": "integer", "minimum": 0 },
+        "sourceHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "repositoryRoot": { "const": "." }
+      },
+      "additionalProperties": false
+    },
+    "operations": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "required": ["op", "path", "reason", "evidence", "content"],
+        "properties": {
+          "op": { "enum": ["create", "replace"] },
+          "path": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string" },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "content": { "type": "string", "maxLength": 2097152 },
+          "expectedHash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "approvalHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "$defs": {
+    "confidence": {
+      "enum": ["high", "medium", "low"]
+    },
+    "evidence": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2048
+      }
+    },
+    "inferenceValue": {
+      "type": "object",
+      "required": ["value", "confidence", "evidence"],
+      "properties": {
+        "value": { "type": "string", "maxLength": 10000 },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "evidence": { "$ref": "#/$defs/evidence" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

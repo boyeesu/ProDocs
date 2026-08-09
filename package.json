@@ -1,6 +1,6 @@
 {
   "name": "@danielesuga/prodocs",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Evidence-backed documentation and context infrastructure for codebases and coding agents.",
   "type": "module",
   "author": "ProDocs contributors",
@@ -16,9 +16,11 @@
     "prodocs": "bin/prodocs.js"
   },
   "exports": {
+    "./adoption": "./src/adoption.js",
     "./collectors": "./src/collectors/index.js",
     "./plugins": "./src/plugins.js",
     "./providers": "./src/providers.js",
+    "./schemas/adoption-proposal.schema.json": "./schemas/adoption-proposal.schema.json",
     "./schemas/collector-result.schema.json": "./schemas/collector-result.schema.json",
     "./schemas/context-packet.schema.json": "./schemas/context-packet.schema.json",
     "./schemas/impact.schema.json": "./schemas/impact.schema.json",

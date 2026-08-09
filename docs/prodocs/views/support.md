@@ -8,6 +8,7 @@
 
 - **Adoption and continuous assurance** (`feature:adoption-assurance`, supported) — [source](../knowledge/features/adoption-assurance.md)
 - **Agent-neutral context and MCP interface** (`feature:agent-interface`, supported) — [source](../knowledge/features/agent-interface.md)
+- **Evidence-backed automatic repository adoption** (`feature:automatic-adoption`, supported) — [source](../knowledge/features/automatic-adoption.md)
 - **Change intelligence** (`feature:change-intelligence`, supported) — [source](../knowledge/features/change-intelligence.md)
 - **Evidence-backed knowledge kernel** (`feature:evidence-kernel`, supported) — [source](../knowledge/features/evidence-kernel.md)
 - **Audience-specific product knowledge** (`feature:product-views`, supported) — [source](../knowledge/features/product-views.md)
@@ -17,5 +18,5 @@
 
 - **Verify ProDocs for production** (`runbook:production-verification`, supported) — [source](../knowledge/runbooks/production-verification.md)
 
-Evidence snapshot: `1a4e707958e0`; knowledge snapshot:
-`092b8734f792`.
+Evidence snapshot: `724e8446e923`; knowledge snapshot:
+`046c13313994`.

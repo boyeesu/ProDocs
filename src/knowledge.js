@@ -221,6 +221,10 @@ function normalizeKnowledgeDocument(filePath, contents) {
   };
 }
 
+export function validateKnowledgeDocument(filePath, contents) {
+  return normalizeKnowledgeDocument(filePath, contents);
+}
+
 async function walkMarkdown(directory, root, limits, files = []) {
   const entries = await fs.readdir(directory, { withFileTypes: true });
   entries.sort((left, right) => left.name.localeCompare(right.name));

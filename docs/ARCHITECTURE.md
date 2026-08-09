@@ -13,6 +13,7 @@ flowchart LR
   Q --> C["CI drift and impact checks"]
   Q --> M["MCP and editor integrations"]
   L["Optional model providers"] --> P["Proposal engine"]
+  I --> P
   G --> P
   P --> R["Reviewable knowledge patches"]
   R --> H
@@ -79,11 +80,21 @@ LLMs are optional proposal generators over retrieved evidence. A proposal
 contains patch operations, citations, the evidence snapshot, confidence, and
 policy results. Applying it is a separate human- or policy-controlled action.
 
+Initial adoption uses the same boundary without an LLM. Bounded deterministic
+inference reads structured metadata, framework conventions, Git origin
+ownership, and indexed source evidence. It produces a content-bound proposal;
+source or configuration drift invalidates approval before any write. The apply
+path is repository-contained, preflights every operation, creates only missing
+ownership/knowledge files, and never replaces existing intent.
+
 ## Production layout
 
 ```text
 bin/prodocs.js             command entrypoint
 src/cli.js                 stable command surface
+src/adoption-inference.js  bounded identity, entrypoint, and owner inference
+src/adoption.js            content-bound adoption proposal and apply gate
+src/adoption-command.js    CLI orchestration and post-apply assurance
 src/scanner.js             deterministic evidence collection and graph
 src/collectors/            collector contract, registry, and implementations
 src/knowledge.js           strict authored-knowledge ingestion and evidence links
@@ -113,9 +124,9 @@ at runtime and include deterministic relevance, freshness, and size metadata.
 - backwards-compatibility policy;
 - third-party conformance fixtures.
 
-The graph and context packet use schema version 2. Impact, proposal, collector,
-plugin, policy, runbook-plan, and evaluation outputs have independent versioned
-contracts.
+The graph and context packet use schema version 2. Adoption, impact, proposal,
+collector, plugin, policy, runbook-plan, and evaluation outputs have independent
+versioned contracts.
 
 ## Security and trust
 
