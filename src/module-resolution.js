@@ -183,7 +183,7 @@ function aliasStems(specifier, resolution) {
     }
     for (const target of mapping.targets) {
       const substituted = target.includes("*")
-        ? target.replace("*", replacement)
+        ? target.replaceAll("*", replacement)
         : target;
       const absolute = path.resolve(resolution.baseUrl, substituted);
       if (isInside(resolution.root, absolute)) stems.push(absolute);

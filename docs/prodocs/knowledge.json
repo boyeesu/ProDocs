@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-09T14:38:14.833Z",
-  "sourceHash": "54423dcde74ead9e3564598954fbf186a592fdd0789b3e1fa65e87034501bce9",
+  "generatedAt": "2026-08-09T14:41:23.500Z",
+  "sourceHash": "66578559a2a926cc77e5eed0f9a2b1f015f5dcd4c4cb6c7fd2ce4d42b61f5c4c",
   "knowledgeHash": "092b8734f7923cebd3f960a64524283eded0e179cc7aa91b7d01cc5464b63796",
-  "inputHash": "0b34377df947b7865036f61e214577a8e1fa1979b66a6975802b93932efa3ada",
+  "inputHash": "5ee6bae14ccafa73b5f9171a07afbc70c1929145df8b9e14c40a4685364afd49",
   "root": ".",
   "stats": {
     "files": 56,
@@ -1477,7 +1477,7 @@
       "type": "file",
       "path": "src/module-resolution.js",
       "language": "JavaScript",
-      "contentHash": "847eda09f6539d69703354a41cd7ed4d2777330708bfdacc6d5927b744daeaf6",
+      "contentHash": "fd8cc9c5f6f0aa81da82d764657af889bd083f43efe20fedbd1270555fde9f07",
       "lines": 244,
       "owner": "@boyeesu",
       "entrypoint": false,

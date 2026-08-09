@@ -13,7 +13,7 @@
 | Symbols indexed | 292 |
 | Internal relationships | 407 |
 | Languages | JavaScript (55), TypeScript (1) |
-| Evidence snapshot | `54423dcde74e` |
+| Evidence snapshot | `66578559a2a9` |
 
 ## Entrypoints
 
@@ -42,4 +42,4 @@
 - Agents should read `knowledge.json` or run `prodocs context --path <path> --json`.
 - CI should run `prodocs check` to reject stale generated documentation.
 
-Generated at 2026-08-09T14:38:14.833Z.
+Generated at 2026-08-09T14:41:23.500Z.
