@@ -62,4 +62,4 @@ not prose claims.
 | [`test/roadmap.test.js`](../../test/roadmap.test.js) | JavaScript | 807 | @boyeesu | executeFile (value, L45)<br>project (function, L47)<br>config (function, L57) |
 | [`test/safe-fs.test.js`](../../test/safe-fs.test.js) | JavaScript | 48 | @boyeesu | — |
 | [`test/scanner.test.js`](../../test/scanner.test.js) | JavaScript | 297 | @boyeesu | fixture (function, L9) |
-| [`test/workflows.test.js`](../../test/workflows.test.js) | JavaScript | 48 | @boyeesu | workflowDirectory (value, L6) |
+| [`test/workflows.test.js`](../../test/workflows.test.js) | JavaScript | 49 | @boyeesu | workflowDirectory (value, L6) |
