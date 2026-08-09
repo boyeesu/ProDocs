@@ -17,5 +17,5 @@
 
 - **Verify ProDocs for production** (`runbook:production-verification`, supported) — [source](../knowledge/runbooks/production-verification.md)
 
-Evidence snapshot: `5bf468818e97`; knowledge snapshot:
-`5dbba2bd8dca`.
+Evidence snapshot: `66578559a2a9`; knowledge snapshot:
+`092b8734f792`.

@@ -190,8 +190,14 @@ test("published package installs and completes the documented workflow", async (
   const doctor = await execute(process.execPath, [installedCli, "doctor", "--json"], {
     cwd: project
   });
-  assert.equal(doctor.code, 0, doctor.stderr);
-  assert.equal(JSON.parse(doctor.stdout).ready, true);
+  assert.equal(doctor.code, 1, doctor.stderr);
+  const doctorReport = JSON.parse(doctor.stdout);
+  assert.equal(doctorReport.ready, false);
+  assert.equal(
+    doctorReport.checks.find((item) => item.id === "documentation.identity")
+      .status,
+    "warning"
+  );
 
   const status = await execute(
     process.execPath,

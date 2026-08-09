@@ -278,7 +278,7 @@ least 24 characters.
 | Command | Purpose |
 | --- | --- |
 | `prodocs init` | Create configuration and agent/MCP recipes |
-| `prodocs doctor` | Diagnose runtime, setup, freshness, integrations, and knowledge health |
+| `prodocs doctor` | Require warning-free identity, evidence, freshness, integrations, and knowledge readiness |
 | `prodocs tutorial` | Create a safe, complete getting-started project |
 | `prodocs sync` | Incrementally index evidence and render all views |
 | `prodocs check` | Fail when generated knowledge is stale |

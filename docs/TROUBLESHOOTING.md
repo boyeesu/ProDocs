@@ -2,7 +2,9 @@
 
 Start with `prodocs doctor --json`. It checks the runtime, Git availability,
 configuration, evidence index, documentation freshness, agent recipes, and
-knowledge health without sending data anywhere.
+knowledge health without sending data anywhere. `ready: true` means there are
+no errors or warnings; incomplete product identity, entrypoints, ownership,
+relationships, or authored knowledge keeps the project explicitly not ready.
 
 ## `prodocs` is not found
 
@@ -18,6 +20,13 @@ not follow symbolic links and rejects sources outside the repository.
 
 Run `prodocs sync`, inspect the generated diff under `docs/prodocs`, then run
 `prodocs check`. Do not hand-edit generated artifacts.
+
+## Context returns only the requested file
+
+Run `prodocs doctor --json` and inspect `evidence.relationships`. ProDocs reads
+root `tsconfig.json` or `jsconfig.json` path mappings, including common `@/*`
+aliases. Fix unresolved local imports, then run `prodocs sync`; changes to
+module-resolution configuration intentionally make generated output stale.
 
 ## Authored knowledge is unsupported
 

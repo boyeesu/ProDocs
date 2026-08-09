@@ -12,7 +12,7 @@ The public collector boundary is available from `prodocs/collectors`:
 import {
   createCollectorRegistry,
   defineCollector
-} from "prodocs/collectors";
+} from "@danielesuga/prodocs/collectors";
 
 const collector = defineCollector({
   id: "example-language",
@@ -61,6 +61,11 @@ collector selection deterministic rather than dependent on registration order.
 and interface methods, static imports, re-exports, CommonJS `require` calls, and
 literal dynamic imports. Text inside comments and string literals is not
 evidence.
+
+The scanner resolves relative imports and repository-local aliases declared in
+root `tsconfig.json` or `jsconfig.json` `compilerOptions.paths`. JSON comments
+and trailing commas are supported. Resolution stays within the repository,
+uses bounded mappings, and never loads or executes configuration code.
 
 Other supported languages currently use the
 `legacy-language-patterns` collector. Those patterns remain behind the same

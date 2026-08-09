@@ -125,7 +125,7 @@ These are release-to-release quality investments, not missing roadmap phases:
 
 ## Release 1.1 — adoption and assurance
 
-Status: **complete in the 1.1 release candidate**.
+Status: **complete**.
 
 - one-command npm installation and an immutable 1.0 GitHub release;
 - `prodocs doctor` readiness diagnostics;
@@ -138,6 +138,8 @@ Status: **complete in the 1.1 release candidate**.
 - weekly mutation workflow and retained machine-readable reports;
 - direct-dependency ownership and supply-chain risk assessment;
 - troubleshooting guidance and repaired npm artifact verification.
+- TypeScript/JavaScript path-alias resolution and warning-free readiness gates
+  validated against an adopter repository.
 
 Exit evidence:
 

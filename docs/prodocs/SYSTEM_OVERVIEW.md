@@ -8,12 +8,12 @@
 
 | Signal | Value |
 | --- | --- |
-| Source files | 53 |
-| Lines indexed | 8970 |
-| Symbols indexed | 280 |
-| Internal relationships | 392 |
-| Languages | JavaScript (52), TypeScript (1) |
-| Evidence snapshot | `5bf468818e97` |
+| Source files | 56 |
+| Lines indexed | 9453 |
+| Symbols indexed | 292 |
+| Internal relationships | 407 |
+| Languages | JavaScript (55), TypeScript (1) |
+| Evidence snapshot | `66578559a2a9` |
 
 ## Entrypoints
 
@@ -27,13 +27,13 @@
 | --- | --- | ---: | --- |
 | [`src/cli.js`](../../src/cli.js) | JavaScript | 32 | @boyeesu |
 | [`test/roadmap.test.js`](../../test/roadmap.test.js) | JavaScript | 31 | @boyeesu |
-| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 27 | @boyeesu |
+| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 28 | @boyeesu |
 | [`src/constants.js`](../../src/constants.js) | JavaScript | 25 | @boyeesu |
-| [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 22 | @boyeesu |
-| [`src/security.js`](../../src/security.js) | JavaScript | 20 | @boyeesu |
+| [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 23 | @boyeesu |
+| [`src/security.js`](../../src/security.js) | JavaScript | 21 | @boyeesu |
 | [`src/mcp.js`](../../src/mcp.js) | JavaScript | 19 | @boyeesu |
 | [`src/server.js`](../../src/server.js) | JavaScript | 19 | @boyeesu |
-| [`src/paths.js`](../../src/paths.js) | JavaScript | 17 | @boyeesu |
+| [`src/paths.js`](../../src/paths.js) | JavaScript | 18 | @boyeesu |
 | [`src/context.js`](../../src/context.js) | JavaScript | 16 | @boyeesu |
 
 ## How to use this map
@@ -42,4 +42,4 @@
 - Agents should read `knowledge.json` or run `prodocs context --path <path> --json`.
 - CI should run `prodocs check` to reject stale generated documentation.
 
-Generated at 2026-08-09T14:07:41.484Z.
+Generated at 2026-08-09T14:41:23.500Z.
