@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1] - 2026-08-09
+
+### Fixed
+
+- publish under the collision-safe npm name `@danielesuga/prodocs` while
+  retaining the `prodocs` command;
+- document the scoped global-install and `npx` commands.
+
 All notable changes to ProDocs are documented here. The project follows
 [Semantic Versioning](https://semver.org/) and
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
@@ -132,7 +140,8 @@ All notable changes to ProDocs are documented here. The project follows
 - Project-root containment for configured sources and generated output.
 - Versioned JSON Schemas for configuration and knowledge graph artifacts.
 
-[Unreleased]: https://github.com/boyeesu/prodocs/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/boyeesu/prodocs/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/boyeesu/prodocs/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/boyeesu/prodocs/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/boyeesu/prodocs/compare/v0.2.0...v1.0.0
 [0.2.0]: https://github.com/boyeesu/prodocs/compare/v0.1.0...v0.2.0

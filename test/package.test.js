@@ -161,6 +161,7 @@ test("published package installs and completes the documented workflow", async (
   const installedCli = path.join(
     consumer,
     "node_modules",
+    "@danielesuga",
     "prodocs",
     "bin",
     "prodocs.js"

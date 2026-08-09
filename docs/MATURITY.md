@@ -1,7 +1,7 @@
 # Code maturity assessment
 
 Assessment date: 2026-08-02
-Target: ProDocs `1.1.0`, Node.js CLI and JavaScript library
+Target: ProDocs `1.1.1`, Node.js CLI and JavaScript library
 
 ## Executive summary
 

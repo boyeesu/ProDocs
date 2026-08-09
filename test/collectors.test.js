@@ -7,7 +7,7 @@ import {
   createCollectorRegistry,
   defaultCollectorRegistry,
   defineCollector
-} from "prodocs/collectors";
+} from "@danielesuga/prodocs/collectors";
 
 const fixtures = [
   {

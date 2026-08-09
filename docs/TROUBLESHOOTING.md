@@ -6,8 +6,8 @@ knowledge health without sending data anywhere.
 
 ## `prodocs` is not found
 
-Install globally with `npm install --global prodocs`, or use
-`npx prodocs@<version>`. Node.js 20 or newer is required.
+Install globally with `npm install --global @danielesuga/prodocs`, or use
+`npx @danielesuga/prodocs@<version>`. Node.js 20 or newer is required.
 
 ## No files are indexed
 

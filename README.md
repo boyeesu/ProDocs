@@ -56,7 +56,7 @@ providers can propose cited prose only after explicit network approval.
 ProDocs supports Node.js 20, 22, and 24 on Linux, macOS, and Windows.
 
 ```bash
-npm install --global prodocs
+npm install --global @danielesuga/prodocs
 
 cd /path/to/your/repository
 prodocs init
