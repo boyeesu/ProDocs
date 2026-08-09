@@ -59,7 +59,7 @@ test("rendered links follow custom output directories and encode paths", async (
     documentation: {
       productName: "<Product>",
       oneLineDescription: "A <safe> description.",
-      audiences: ["product", "technical"]
+      audiences: ["product", "technical", "support", "security", "operations"]
     }
   };
 
@@ -89,5 +89,17 @@ test("rendered links follow custom output directories and encode paths", async (
   );
   assert.match(product, /\.\.\/\.\.\/\.\.\/docs\/knowledge\/features\/example\.md/);
   assert.match(product, /_No authored behavioral claims\._/);
+  const emptyStates = [
+    ["support.md", "_No authored support runbooks._"],
+    ["security.md", "_No authored security decisions or invariants._"],
+    ["operations.md", "_No authored operational runbooks._"]
+  ];
+  for (const [file, expected] of emptyStates) {
+    const view = await fs.readFile(
+      path.join(root, ".generated", "docs", "views", file),
+      "utf8"
+    );
+    assert.match(view, new RegExp(expected.replaceAll(".", "\\.")));
+  }
   assert.deepEqual(await validateGeneratedLinks(root, config), []);
 });

@@ -9,11 +9,11 @@
 | Signal | Value |
 | --- | --- |
 | Source files | 60 |
-| Lines indexed | 10668 |
+| Lines indexed | 10680 |
 | Symbols indexed | 344 |
 | Internal relationships | 472 |
 | Languages | JavaScript (59), TypeScript (1) |
-| Evidence snapshot | `4f86e6ad6a7d` |
+| Evidence snapshot | `f2eed986944f` |
 
 ## Entrypoints
 
@@ -42,4 +42,4 @@
 - Agents should read `knowledge.json` or run `prodocs context --path <path> --json`.
 - CI should run `prodocs check` to reject stale generated documentation.
 
-Generated at 2026-08-09T16:07:24.122Z.
+Generated at 2026-08-09T16:12:03.140Z.

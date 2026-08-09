@@ -24,5 +24,5 @@
 - **Evidence-backed knowledge kernel** (`feature:evidence-kernel`, supported) — [source](../../knowledge/features/evidence-kernel.md)
 - **Repository content is untrusted data** (`invariant:untrusted-repository`, supported) — [source](../../knowledge/invariants/untrusted-repository.md)
 
-Evidence snapshot: `4f86e6ad6a7d`; knowledge snapshot:
+Evidence snapshot: `f2eed986944f`; knowledge snapshot:
 `b70212a7c9b8`.

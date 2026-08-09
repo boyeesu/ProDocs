@@ -62,7 +62,7 @@ not prose claims.
 | [`test/module-resolution.test.js`](../../test/module-resolution.test.js) | JavaScript | 102 | @boyeesu | temporaryRoot (function, L11) |
 | [`test/package.test.js`](../../test/package.test.js) | JavaScript | 221 | @boyeesu | npmCli (value, L8)<br>execute (function, L20)<br>executeNpm (function, L49) |
 | [`test/paths.test.js`](../../test/paths.test.js) | JavaScript | 44 | @boyeesu | — |
-| [`test/render.test.js`](../../test/render.test.js) | JavaScript | 94 | @boyeesu | graph (function, L10) |
+| [`test/render.test.js`](../../test/render.test.js) | JavaScript | 106 | @boyeesu | graph (function, L10) |
 | [`test/roadmap.test.js`](../../test/roadmap.test.js) | JavaScript | 817 | @boyeesu | executeFile (value, L45)<br>project (function, L47)<br>config (function, L57) |
 | [`test/safe-fs.test.js`](../../test/safe-fs.test.js) | JavaScript | 48 | @boyeesu | — |
 | [`test/scanner.test.js`](../../test/scanner.test.js) | JavaScript | 297 | @boyeesu | fixture (function, L9) |

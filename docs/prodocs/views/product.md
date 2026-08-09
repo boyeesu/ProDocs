@@ -17,5 +17,5 @@
 
 - **Core workflows remain local-first** (`claim:local-first`, supported) — [source](../../knowledge/claims/local-first.md)
 
-Evidence snapshot: `4f86e6ad6a7d`; knowledge snapshot:
+Evidence snapshot: `f2eed986944f`; knowledge snapshot:
 `b70212a7c9b8`.
