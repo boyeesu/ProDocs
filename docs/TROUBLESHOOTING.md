@@ -6,6 +6,14 @@ knowledge health without sending data anywhere. `ready: true` means there are
 no errors or warnings; incomplete product identity, entrypoints, ownership,
 relationships, or authored knowledge keeps the project explicitly not ready.
 
+## Onboarding fields are empty
+
+Run `prodocs adopt`. It inspects bounded structured metadata, framework file
+conventions, the Git origin, and indexed evidence to create a cited proposal.
+Review the proposal and run the exact `adopt --apply ... --approve ...` command
+it prints. ProDocs then synchronizes views and reports doctor and policy status.
+It never silently overwrites existing identity, ownership, or knowledge.
+
 ## `prodocs` is not found
 
 Install globally with `npm install --global @danielesuga/prodocs`, or use

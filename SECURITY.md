@@ -36,6 +36,9 @@ ProDocs treats repository contents and configuration as untrusted input:
   third-party plugin code;
 - proposal application requires an exact approval hash, rejects stale source
   hashes, and can only modify configured authored-documentation paths;
+- adoption proposals additionally bind configuration state, validate inferred
+  content, preflight all destinations, and restrict writes to configuration,
+  CODEOWNERS, and configured authored-knowledge paths;
 - runbook verification executes no shell and only supports built-in,
   time-bounded, output-bounded operations;
 - the collaboration API is loopback-only by default, requires a strong bearer

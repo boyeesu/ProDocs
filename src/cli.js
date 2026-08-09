@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { runAdoptionCommand } from "./adoption-command.js";
 import { loadConfig, writeDefaultConfig } from "./config.js";
 import { buildContextPacket } from "./context.js";
 import { benchmarkProject } from "./benchmark.js";
@@ -68,6 +69,7 @@ function help() {
 
 Core:
   prodocs init                         Create config and agent/MCP recipes
+  prodocs adopt                        Propose evidence-backed repository onboarding
   prodocs doctor                       Diagnose production readiness and setup
   prodocs tutorial                     Create a safe getting-started project
   prodocs sync                         Incrementally index and refresh all views
@@ -155,7 +157,7 @@ async function init(root, _args, json) {
       `${integration.created ? "Created" : "Kept"} ${path.relative(root, integration.path)}`
     );
   }
-  console.log("\nNext: add authored knowledge, then run `prodocs sync`.");
+  console.log("\nNext: run `prodocs adopt` to create a cited onboarding proposal.");
 }
 
 async function doctor(root, _args, json) {
@@ -528,7 +530,7 @@ function capabilities(json) {
     graphSchema: 2,
     contextSchema: 2,
     commands: [
-      "init", "sync", "check", "status", "context", "impact", "policy",
+      "init", "adopt", "sync", "check", "status", "context", "impact", "policy",
       "propose", "proposal", "mcp", "evaluate", "plugin", "hooks", "view", "history",
       "runbook", "serve", "doctor", "tutorial", "benchmark"
     ],
@@ -562,6 +564,7 @@ export async function run(args) {
   const json = hasFlag(args, "--json");
   const commands = {
     init,
+    adopt: runAdoptionCommand,
     doctor,
     tutorial,
     sync,

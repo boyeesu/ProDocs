@@ -156,3 +156,28 @@ New roadmap items require adopter evidence rather than speculative scope. The
 candidate themes are deeper language semantics, additional renderer/provider
 adapters, and larger monorepo performance, but each must begin with a
 reproducible adopter fixture and a measurable success threshold.
+
+## Release 1.2 — evidence-backed automatic adoption
+
+Status: **complete**.
+
+- deterministic `prodocs adopt` identity, framework-entrypoint, and GitHub
+  ownership inference;
+- cited starter product knowledge that covers inferred public surfaces;
+- content-bound proposals invalidated by source, configuration, or proposal
+  drift;
+- repository-contained application with existing-intent preservation;
+- automatic integration generation, view synchronization, doctor diagnostics,
+  and policy evaluation after apply;
+- read-only `prodocs_adopt` MCP support for Codex, Claude Code, OpenCode, and
+  other MCP clients;
+- public adoption-proposal JSON Schema and package API.
+
+Exit evidence:
+
+- a blank Kourti Tech onboarding advances from four readiness warnings to
+  12/12 passing checks without manually authored product text;
+- inferred product identity cites structured site metadata, 20 Next.js
+  boundaries are covered, and all 46 indexed files receive ownership evidence;
+- tampered, stale, unapproved, malformed, and repository-escaping proposals
+  fail closed in automated tests.

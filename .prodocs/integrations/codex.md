@@ -1,5 +1,6 @@
 # ProDocs for Codex
 
+Use the read-only `prodocs_adopt` MCP tool to draft missing onboarding evidence.
 Run `prodocs context --path <area> --task "<goal>" --json` before editing.
 Use the local MCP server with `prodocs mcp` for bounded graph queries.
 After changes, run `prodocs impact --base <ref>`, `prodocs policy`,

@@ -6,6 +6,34 @@ All notable changes to ProDocs are documented here. The project follows
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-08-09
+
+### Added
+
+- added `prodocs adopt` to infer cited product identity, framework entrypoints,
+  GitHub ownership, and policy-backed starter product knowledge;
+- added the read-only `prodocs_adopt` MCP tool for agent-led repository
+  onboarding;
+- published a versioned adoption-proposal JSON Schema and package API;
+- added automatic post-apply integration generation, documentation sync,
+  readiness diagnostics, and policy evaluation.
+
+### Changed
+
+- readiness remediation now directs adopters to automatic cited proposals
+  instead of requiring blank-field authorship;
+- agent integration recipes now research incomplete onboarding before asking
+  maintainers to write documentation manually.
+
+### Security
+
+- adoption approvals are bound to exact proposal content, source evidence, and
+  configuration state;
+- adoption writes are preflighted, repository-contained, schema-validated, and
+  limited to configuration, CODEOWNERS, and configured authored knowledge;
+- structured repository strings containing instruction-injection signals are
+  excluded from automatic identity inference.
+
 ## [1.1.2] - 2026-08-09
 
 ### Added
@@ -162,7 +190,8 @@ All notable changes to ProDocs are documented here. The project follows
 - Project-root containment for configured sources and generated output.
 - Versioned JSON Schemas for configuration and knowledge graph artifacts.
 
-[Unreleased]: https://github.com/boyeesu/prodocs/compare/v1.1.2...HEAD
+[Unreleased]: https://github.com/boyeesu/prodocs/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/boyeesu/prodocs/compare/v1.1.2...v1.2.0
 [1.1.2]: https://github.com/boyeesu/prodocs/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/boyeesu/prodocs/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/boyeesu/prodocs/compare/v1.0.0...v1.1.0

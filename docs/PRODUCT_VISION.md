@@ -66,8 +66,8 @@ ProDocs separates four concepts that conventional documentation mixes together:
 2. **Claims** — assertions such as “the API retries failed deliveries three
    times.” A claim records supporting evidence, confidence, scope, and freshness.
 3. **Intent** — product goals, architectural decisions, invariants, policies,
-   tradeoffs, and operational expectations. Intent is explicitly authored and
-   reviewed by people.
+   tradeoffs, and operational expectations. ProDocs can infer a cited initial
+   draft; intent becomes authoritative only through content-bound approval.
 4. **Views** — system overviews, onboarding guides, product explanations,
    runbooks, diagrams, PR impact reports, and agent context packets.
 

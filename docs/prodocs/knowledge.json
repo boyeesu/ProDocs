@@ -1,29 +1,29 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-09T14:50:53.200Z",
-  "sourceHash": "1a4e707958e0551e523310e007e92899d8f76602c70ca9772cacd664e1299693",
-  "knowledgeHash": "092b8734f7923cebd3f960a64524283eded0e179cc7aa91b7d01cc5464b63796",
-  "inputHash": "904ee070a130941400ad57bec6c2be1582e31d064aeda9889cfad96e28df1f49",
+  "generatedAt": "2026-08-09T15:30:18.325Z",
+  "sourceHash": "724e8446e92338fad5e7e4efc85f4c6ec1ba9a7c1a1a04badec21984cc0a48f0",
+  "knowledgeHash": "046c1331399460fce8f6f74c6732c69ce3538cc9aa5d3294fe3e53eb8a3c05a7",
+  "inputHash": "2d02c593e300f02694296c2fe23d187cc173da74d5704e656f24c7942c1a09c2",
   "root": ".",
   "stats": {
-    "files": 56,
-    "lines": 9454,
-    "symbols": 292,
-    "edges": 407,
+    "files": 59,
+    "lines": 10525,
+    "symbols": 337,
+    "edges": 461,
     "languages": {
-      "JavaScript": 55,
+      "JavaScript": 58,
       "TypeScript": 1
     },
     "knowledge": {
-      "total": 9,
-      "supported": 9,
+      "total": 10,
+      "supported": 10,
       "unsupported": 0,
       "contradictions": 0,
       "instructionSignals": 0
     },
     "index": {
       "backend": "sqlite",
-      "entries": 56
+      "entries": 59
     }
   },
   "nodes": [
@@ -401,6 +401,270 @@
       }
     },
     {
+      "id": "file:src/adoption-command.js",
+      "type": "file",
+      "path": "src/adoption-command.js",
+      "language": "JavaScript",
+      "contentHash": "2ff81ecdc1d45fafaf7d0c6a302773a7db971cb10497787cdace6c93937b0448",
+      "lines": 82,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "valueAfter",
+          "kind": "function",
+          "line": 18
+        },
+        {
+          "name": "writeProposal",
+          "kind": "function",
+          "line": 23
+        },
+        {
+          "name": "apply",
+          "kind": "function",
+          "line": 31
+        },
+        {
+          "name": "runAdoptionCommand",
+          "kind": "function",
+          "line": 64
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/adoption-inference.js",
+      "type": "file",
+      "path": "src/adoption-inference.js",
+      "language": "JavaScript",
+      "contentHash": "90f05c8dcd7c684efde2a007a5aead73c9307aae378c78fefc9bc4fa347eb2f2",
+      "lines": 215,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "executeFile",
+          "kind": "value",
+          "line": 7
+        },
+        {
+          "name": "SOURCE_EXTENSIONS",
+          "kind": "value",
+          "line": 8
+        },
+        {
+          "name": "cleanText",
+          "kind": "function",
+          "line": 10
+        },
+        {
+          "name": "lineFor",
+          "kind": "function",
+          "line": 17
+        },
+        {
+          "name": "fieldFromSource",
+          "kind": "function",
+          "line": 21
+        },
+        {
+          "name": "productNameFromHeading",
+          "kind": "function",
+          "line": 31
+        },
+        {
+          "name": "descriptionFromReadme",
+          "kind": "function",
+          "line": 37
+        },
+        {
+          "name": "optionalFile",
+          "kind": "function",
+          "line": 55
+        },
+        {
+          "name": "packageEvidence",
+          "kind": "function",
+          "line": 66
+        },
+        {
+          "name": "humanizePackageName",
+          "kind": "function",
+          "line": 84
+        },
+        {
+          "name": "structuredSiteEvidence",
+          "kind": "function",
+          "line": 93
+        },
+        {
+          "name": "inference",
+          "kind": "function",
+          "line": 111
+        },
+        {
+          "name": "inferIdentity",
+          "kind": "function",
+          "line": 115
+        },
+        {
+          "name": "entrypointReason",
+          "kind": "function",
+          "line": 142
+        },
+        {
+          "name": "inferEntrypoints",
+          "kind": "function",
+          "line": 161
+        },
+        {
+          "name": "githubOwner",
+          "kind": "function",
+          "line": 179
+        },
+        {
+          "name": "inferOwnership",
+          "kind": "function",
+          "line": 184
+        },
+        {
+          "name": "inferAdoption",
+          "kind": "function",
+          "line": 202
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:src/adoption.js",
+      "type": "file",
+      "path": "src/adoption.js",
+      "language": "JavaScript",
+      "contentHash": "76f33027a5fb3d07b1591093c7fb8032f823f0459f3f98d6f8f02cb8bd63e0d3",
+      "lines": 438,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "CONFIG_PATH",
+          "kind": "value",
+          "line": 19
+        },
+        {
+          "name": "CODEOWNERS_PATHS",
+          "kind": "value",
+          "line": 20
+        },
+        {
+          "name": "adoptionHash",
+          "kind": "function",
+          "line": 26
+        },
+        {
+          "name": "quoteYaml",
+          "kind": "function",
+          "line": 32
+        },
+        {
+          "name": "slug",
+          "kind": "function",
+          "line": 36
+        },
+        {
+          "name": "featureDocument",
+          "kind": "function",
+          "line": 45
+        },
+        {
+          "name": "existingFile",
+          "kind": "function",
+          "line": 71
+        },
+        {
+          "name": "configOperation",
+          "kind": "function",
+          "line": 82
+        },
+        {
+          "name": "ownershipOperation",
+          "kind": "function",
+          "line": 109
+        },
+        {
+          "name": "knowledgeOperation",
+          "kind": "function",
+          "line": 123
+        },
+        {
+          "name": "createAdoptionProposal",
+          "kind": "function",
+          "line": 153
+        },
+        {
+          "name": "validInference",
+          "kind": "function",
+          "line": 179
+        },
+        {
+          "name": "validEvidence",
+          "kind": "function",
+          "line": 196
+        },
+        {
+          "name": "validEntrypoint",
+          "kind": "function",
+          "line": 210
+        },
+        {
+          "name": "validateAdoptionProposal",
+          "kind": "function",
+          "line": 233
+        },
+        {
+          "name": "allowedKnowledgePath",
+          "kind": "function",
+          "line": 335
+        },
+        {
+          "name": "validateOperationContent",
+          "kind": "function",
+          "line": 342
+        },
+        {
+          "name": "prepareOperation",
+          "kind": "function",
+          "line": 366
+        },
+        {
+          "name": "applyAdoptionProposal",
+          "kind": "function",
+          "line": 388
+        },
+        {
+          "name": "readAdoptionProposal",
+          "kind": "function",
+          "line": 432
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
       "id": "file:src/benchmark.js",
       "type": "file",
       "path": "src/benchmark.js",
@@ -433,8 +697,8 @@
       "type": "file",
       "path": "src/cli.js",
       "language": "JavaScript",
-      "contentHash": "80715b6b6ec31043f59a20562dd05bae6528a49a791c74f2024e7166627357f2",
-      "lines": 591,
+      "contentHash": "f8e0572516d9ff7228b9b02c9c40f7e58c9157da7ef13798591b4c06ce96fa6a",
+      "lines": 594,
       "owner": "@boyeesu",
       "entrypoint": true,
       "publicSurface": true,
@@ -443,152 +707,152 @@
         {
           "name": "hasFlag",
           "kind": "function",
-          "line": 39
+          "line": 40
         },
         {
           "name": "valueAfter",
           "kind": "function",
-          "line": 43
+          "line": 44
         },
         {
           "name": "valuesAfter",
           "kind": "function",
-          "line": 48
+          "line": 49
         },
         {
           "name": "integerAfter",
           "kind": "function",
-          "line": 56
+          "line": 57
         },
         {
           "name": "help",
           "kind": "function",
-          "line": 66
+          "line": 67
         },
         {
           "name": "rootFrom",
           "kind": "function",
-          "line": 112
+          "line": 114
         },
         {
           "name": "readManifest",
           "kind": "function",
-          "line": 119
+          "line": 121
         },
         {
           "name": "writeRepositoryJson",
           "kind": "function",
-          "line": 133
+          "line": 135
         },
         {
           "name": "init",
           "kind": "function",
-          "line": 145
+          "line": 147
         },
         {
           "name": "doctor",
           "kind": "function",
-          "line": 161
+          "line": 163
         },
         {
           "name": "tutorial",
           "kind": "function",
-          "line": 177
+          "line": 179
         },
         {
           "name": "sync",
           "kind": "function",
-          "line": 189
+          "line": 191
         },
         {
           "name": "freshness",
           "kind": "function",
-          "line": 213
+          "line": 215
         },
         {
           "name": "check",
           "kind": "function",
-          "line": 230
+          "line": 232
         },
         {
           "name": "status",
           "kind": "function",
-          "line": 257
+          "line": 259
         },
         {
           "name": "context",
           "kind": "function",
-          "line": 279
+          "line": 281
         },
         {
           "name": "impact",
           "kind": "function",
-          "line": 318
+          "line": 320
         },
         {
           "name": "policy",
           "kind": "function",
-          "line": 346
+          "line": 348
         },
         {
           "name": "proposal",
           "kind": "function",
-          "line": 360
+          "line": 362
         },
         {
           "name": "propose",
           "kind": "function",
-          "line": 386
+          "line": 388
         },
         {
           "name": "evaluate",
           "kind": "function",
-          "line": 413
+          "line": 415
         },
         {
           "name": "benchmark",
           "kind": "function",
-          "line": 433
+          "line": 435
         },
         {
           "name": "plugin",
           "kind": "function",
-          "line": 452
+          "line": 454
         },
         {
           "name": "hooks",
           "kind": "function",
-          "line": 461
+          "line": 463
         },
         {
           "name": "view",
           "kind": "function",
-          "line": 475
+          "line": 477
         },
         {
           "name": "history",
           "kind": "function",
-          "line": 486
+          "line": 488
         },
         {
           "name": "runbook",
           "kind": "function",
-          "line": 498
+          "line": 500
         },
         {
           "name": "capabilities",
           "kind": "function",
-          "line": 525
+          "line": 527
         },
         {
           "name": "serve",
           "kind": "function",
-          "line": 544
+          "line": 546
         },
         {
           "name": "run",
           "kind": "function",
-          "line": 553
+          "line": 555
         }
       ],
       "trust": {
@@ -924,7 +1188,7 @@
       "type": "file",
       "path": "src/constants.js",
       "language": "JavaScript",
-      "contentHash": "78089d993bd61b3dbd97c9a1579de2d93fa166252c31f096ddbfbf4c00284a8a",
+      "contentHash": "d7d3cccc5b72ffa31922cddf59bfeff33d814c19952df7d28f84ca5f274fdad1",
       "lines": 115,
       "owner": "@boyeesu",
       "entrypoint": false,
@@ -1045,7 +1309,7 @@
       "type": "file",
       "path": "src/doctor.js",
       "language": "JavaScript",
-      "contentHash": "3447ee70cb28440ba44610f59b885f9e3293564320b53ab77b646d0c41ec8a99",
+      "contentHash": "c80b6160caf5f1572ae081c6659cf9f71382c0dc472af1b520b8999d334f844a",
       "lines": 252,
       "owner": "@boyeesu",
       "entrypoint": false,
@@ -1313,8 +1577,8 @@
       "type": "file",
       "path": "src/integrations.js",
       "language": "JavaScript",
-      "contentHash": "257e22d102f85f830ba595a2af6741e5a19a7f9765c2268d5e88a5ab48e15929",
-      "lines": 71,
+      "contentHash": "7b85b62df72f1d8f4d9292fa929b792660dbafd7d5c95eefd7d07e643806e409",
+      "lines": 75,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -1328,7 +1592,7 @@
         {
           "name": "writeIntegrations",
           "kind": "function",
-          "line": 59
+          "line": 63
         }
       ],
       "trust": {
@@ -1341,8 +1605,8 @@
       "type": "file",
       "path": "src/knowledge.js",
       "language": "JavaScript",
-      "contentHash": "4fd9169c7fed3dd3576bf7707a42f74cc5afacf865b299f3022bdd71edbb3fd4",
-      "lines": 414,
+      "contentHash": "3af7408855dca099f8e1a6d22c5a60e2cd879a0ce0740f498c758a2685208d88",
+      "lines": 418,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -1384,24 +1648,29 @@
           "line": 138
         },
         {
-          "name": "walkMarkdown",
+          "name": "validateKnowledgeDocument",
           "kind": "function",
           "line": 224
         },
         {
+          "name": "walkMarkdown",
+          "kind": "function",
+          "line": 228
+        },
+        {
           "name": "discoverKnowledgeFiles",
           "kind": "function",
-          "line": 245
+          "line": 249
         },
         {
           "name": "resolveEvidence",
           "kind": "function",
-          "line": 274
+          "line": 278
         },
         {
           "name": "collectAuthoredKnowledge",
           "kind": "function",
-          "line": 288
+          "line": 292
         }
       ],
       "trust": {
@@ -1414,8 +1683,8 @@
       "type": "file",
       "path": "src/mcp.js",
       "language": "JavaScript",
-      "contentHash": "e12e604a01d6e342c774c946964bb05f20297506f61bb7fd60bd3d03b78a4af0",
-      "lines": 221,
+      "contentHash": "128952c2b376eb7c26e61cd1329e3ad5c5425127de79c2b64581e93c712c42ad",
+      "lines": 240,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -1424,47 +1693,47 @@
         {
           "name": "PROTOCOL_VERSION",
           "kind": "value",
-          "line": 11
+          "line": 12
         },
         {
           "name": "result",
           "kind": "function",
-          "line": 13
+          "line": 14
         },
         {
           "name": "error",
           "kind": "function",
-          "line": 17
+          "line": 18
         },
         {
           "name": "textTool",
           "kind": "function",
-          "line": 21
+          "line": 22
         },
         {
           "name": "TOOLS",
           "kind": "value",
-          "line": 30
+          "line": 31
         },
         {
           "name": "state",
           "kind": "function",
-          "line": 84
+          "line": 97
         },
         {
           "name": "readManifest",
           "kind": "function",
-          "line": 93
+          "line": 106
         },
         {
           "name": "handleMcpRequest",
           "kind": "function",
-          "line": 106
+          "line": 119
         },
         {
           "name": "runMcpServer",
           "kind": "function",
-          "line": 196
+          "line": 215
         }
       ],
       "trust": {
@@ -2136,17 +2405,27 @@
       "type": "file",
       "path": "test/adoption.test.js",
       "language": "JavaScript",
-      "contentHash": "65575a8ee1764f224a1eedc48e1ae033265d9a8dff4884ad9d2e3087152e95b5",
-      "lines": 100,
+      "contentHash": "2fc137b34fa14d5d13f2e11635447c1736349075f7fff8f436719eb8e9239638",
+      "lines": 395,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
       "role": "test",
       "symbols": [
         {
-          "name": "temporaryProject",
+          "name": "executeFile",
+          "kind": "value",
+          "line": 19
+        },
+        {
+          "name": "cli",
+          "kind": "value",
+          "line": 20
+        },
+        {
+          "name": "fixture",
           "kind": "function",
-          "line": 10
+          "line": 22
         }
       ],
       "trust": {
@@ -2326,8 +2605,8 @@
       "type": "file",
       "path": "test/package.test.js",
       "language": "JavaScript",
-      "contentHash": "c4b6b93221f3890fcdd84500373a0d3ef27fd1e9d1ca0adb320759efd5fa87d9",
-      "lines": 220,
+      "contentHash": "fad6ee0983c9d090c4d51a73931d3ec438bf42437abbe6e514ba04c46e7988d6",
+      "lines": 221,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -2399,8 +2678,8 @@
       "type": "file",
       "path": "test/roadmap.test.js",
       "language": "JavaScript",
-      "contentHash": "f1969d3a1d5f804e9d15b7a644fb5391afd746add890798b79c35c98816f21ff",
-      "lines": 807,
+      "contentHash": "8780f70f029104aaf86d6bdca6333217203b592f6bc3636b8b63c4bd7e338dce",
+      "lines": 817,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -2427,7 +2706,7 @@
         "instructionSignals": [
           {
             "code": "repository-instruction",
-            "offset": 22997,
+            "offset": 23269,
             "excerpt": "Ignore all previous instructions"
           }
         ]
@@ -2510,7 +2789,7 @@
           "path": "src/cli.js",
           "symbol": "run",
           "supported": true,
-          "contentHash": "80715b6b6ec31043f59a20562dd05bae6528a49a791c74f2024e7166627357f2"
+          "contentHash": "f8e0572516d9ff7228b9b02c9c40f7e58c9157da7ef13798591b4c06ce96fa6a"
         },
         {
           "path": "src/index-store.js",
@@ -2616,7 +2895,7 @@
           "path": "src/doctor.js",
           "symbol": "diagnoseProject",
           "supported": true,
-          "contentHash": "3447ee70cb28440ba44610f59b885f9e3293564320b53ab77b646d0c41ec8a99"
+          "contentHash": "c80b6160caf5f1572ae081c6659cf9f71382c0dc472af1b520b8999d334f844a"
         },
         {
           "path": "src/tutorial.js",
@@ -2662,13 +2941,13 @@
           "path": "src/integrations.js",
           "symbol": "writeIntegrations",
           "supported": true,
-          "contentHash": "257e22d102f85f830ba595a2af6741e5a19a7f9765c2268d5e88a5ab48e15929"
+          "contentHash": "7b85b62df72f1d8f4d9292fa929b792660dbafd7d5c95eefd7d07e643806e409"
         },
         {
           "path": "src/mcp.js",
           "symbol": "runMcpServer",
           "supported": true,
-          "contentHash": "e12e604a01d6e342c774c946964bb05f20297506f61bb7fd60bd3d03b78a4af0"
+          "contentHash": "128952c2b376eb7c26e61cd1329e3ad5c5425127de79c2b64581e93c712c42ad"
         }
       ],
       "audiences": [
@@ -2682,6 +2961,70 @@
       "contradicts": [],
       "supersedes": [],
       "customerImpact": "Codex, Claude Code, OpenCode, and MCP-compatible editors receive small, current, task-relevant context without vendor lock-in.",
+      "verification": [],
+      "trust": {
+        "authored": true,
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "feature:automatic-adoption",
+      "key": "automatic-adoption",
+      "type": "feature",
+      "path": "docs/knowledge/features/automatic-adoption.md",
+      "line": 1,
+      "title": "Evidence-backed automatic repository adoption",
+      "status": "active",
+      "bodyHash": "fe7e55eb4c4725fc0cc11d4e27b4da97322984f605efad4664aa8191934958df",
+      "evidence": [
+        {
+          "path": "src/adoption-command.js",
+          "symbol": "runAdoptionCommand",
+          "supported": true,
+          "contentHash": "2ff81ecdc1d45fafaf7d0c6a302773a7db971cb10497787cdace6c93937b0448"
+        },
+        {
+          "path": "src/adoption-inference.js",
+          "symbol": "inferAdoption",
+          "supported": true,
+          "contentHash": "90f05c8dcd7c684efde2a007a5aead73c9307aae378c78fefc9bc4fa347eb2f2"
+        },
+        {
+          "path": "src/adoption.js",
+          "symbol": "applyAdoptionProposal",
+          "supported": true,
+          "contentHash": "76f33027a5fb3d07b1591093c7fb8032f823f0459f3f98d6f8f02cb8bd63e0d3"
+        },
+        {
+          "path": "src/adoption.js",
+          "symbol": "createAdoptionProposal",
+          "supported": true,
+          "contentHash": "76f33027a5fb3d07b1591093c7fb8032f823f0459f3f98d6f8f02cb8bd63e0d3"
+        },
+        {
+          "path": "src/mcp.js",
+          "symbol": "handleMcpRequest",
+          "supported": true,
+          "contentHash": "128952c2b376eb7c26e61cd1329e3ad5c5425127de79c2b64581e93c712c42ad"
+        }
+      ],
+      "audiences": [
+        "coding-agents",
+        "product",
+        "security",
+        "technical"
+      ],
+      "affects": [
+        "src/adoption-command.js",
+        "src/adoption-inference.js",
+        "src/adoption.js",
+        "src/doctor.js",
+        "src/mcp.js"
+      ],
+      "contradicts": [],
+      "supersedes": [],
+      "customerImpact": "Teams receive a cited, policy-complete onboarding draft instead of manually filling blank product, entrypoint, ownership, and knowledge fields.",
       "verification": [],
       "trust": {
         "authored": true,
@@ -2758,7 +3101,7 @@
           "path": "src/knowledge.js",
           "symbol": "collectAuthoredKnowledge",
           "supported": true,
-          "contentHash": "4fd9169c7fed3dd3576bf7707a42f74cc5afacf865b299f3022bdd71edbb3fd4"
+          "contentHash": "3af7408855dca099f8e1a6d22c5a60e2cd879a0ce0740f498c758a2685208d88"
         },
         {
           "path": "src/scanner.js",
@@ -2855,7 +3198,7 @@
           "path": "src/mcp.js",
           "symbol": "handleMcpRequest",
           "supported": true,
-          "contentHash": "e12e604a01d6e342c774c946964bb05f20297506f61bb7fd60bd3d03b78a4af0"
+          "contentHash": "128952c2b376eb7c26e61cd1329e3ad5c5425127de79c2b64581e93c712c42ad"
         },
         {
           "path": "src/security.js",
@@ -2902,7 +3245,7 @@
           "path": "src/cli.js",
           "symbol": "run",
           "supported": true,
-          "contentHash": "80715b6b6ec31043f59a20562dd05bae6528a49a791c74f2024e7166627357f2"
+          "contentHash": "f8e0572516d9ff7228b9b02c9c40f7e58c9157da7ef13798591b4c06ce96fa6a"
         }
       ],
       "audiences": [
@@ -2947,6 +3290,33 @@
     }
   ],
   "edges": [
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/adoption-command.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/adoption-inference.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/adoption.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
     {
       "type": "affects",
       "from": "claim:local-first",
@@ -3232,6 +3602,33 @@
       "to": "file:src/tutorial.js",
       "evidence": {
         "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/adoption-command.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/adoption-inference.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/adoption.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
         "reference": "src"
       }
     },
@@ -3543,6 +3940,51 @@
     },
     {
       "type": "affects",
+      "from": "feature:automatic-adoption",
+      "to": "file:src/adoption-command.js",
+      "evidence": {
+        "source": "docs/knowledge/features/automatic-adoption.md",
+        "reference": "src/adoption-command.js"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:automatic-adoption",
+      "to": "file:src/adoption-inference.js",
+      "evidence": {
+        "source": "docs/knowledge/features/automatic-adoption.md",
+        "reference": "src/adoption-inference.js"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:automatic-adoption",
+      "to": "file:src/adoption.js",
+      "evidence": {
+        "source": "docs/knowledge/features/automatic-adoption.md",
+        "reference": "src/adoption.js"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:automatic-adoption",
+      "to": "file:src/doctor.js",
+      "evidence": {
+        "source": "docs/knowledge/features/automatic-adoption.md",
+        "reference": "src/doctor.js"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:automatic-adoption",
+      "to": "file:src/mcp.js",
+      "evidence": {
+        "source": "docs/knowledge/features/automatic-adoption.md",
+        "reference": "src/mcp.js"
+      }
+    },
+    {
+      "type": "affects",
       "from": "feature:change-intelligence",
       "to": "file:src/impact.js",
       "evidence": {
@@ -3566,6 +4008,33 @@
       "evidence": {
         "source": "docs/knowledge/features/change-intelligence.md",
         "reference": "src/proposals.js"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/adoption-command.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/adoption-inference.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/adoption.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
       }
     },
     {
@@ -3877,6 +4346,33 @@
     {
       "type": "affects",
       "from": "invariant:untrusted-repository",
+      "to": "file:src/adoption-command.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/adoption-inference.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/adoption.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
       "to": "file:src/benchmark.js",
       "evidence": {
         "source": "docs/knowledge/invariants/untrusted-repository.md",
@@ -4159,6 +4655,33 @@
       "to": "file:src/tutorial.js",
       "evidence": {
         "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/adoption-command.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/adoption-inference.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/adoption.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
         "reference": "src"
       }
     },
@@ -4515,6 +5038,168 @@
     },
     {
       "type": "imports",
+      "from": "file:src/adoption-command.js",
+      "to": "file:src/adoption.js",
+      "evidence": {
+        "source": "src/adoption-command.js",
+        "specifier": "./adoption.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption-command.js",
+      "to": "file:src/config.js",
+      "evidence": {
+        "source": "src/adoption-command.js",
+        "specifier": "./config.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption-command.js",
+      "to": "file:src/doctor.js",
+      "evidence": {
+        "source": "src/adoption-command.js",
+        "specifier": "./doctor.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption-command.js",
+      "to": "file:src/integrations.js",
+      "evidence": {
+        "source": "src/adoption-command.js",
+        "specifier": "./integrations.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption-command.js",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "src/adoption-command.js",
+        "specifier": "./paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption-command.js",
+      "to": "file:src/policy.js",
+      "evidence": {
+        "source": "src/adoption-command.js",
+        "specifier": "./policy.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption-command.js",
+      "to": "file:src/render.js",
+      "evidence": {
+        "source": "src/adoption-command.js",
+        "specifier": "./render.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption-command.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/adoption-command.js",
+        "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption-command.js",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "src/adoption-command.js",
+        "specifier": "./scanner.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption-command.js",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "src/adoption-command.js",
+        "specifier": "./security.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption-inference.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/adoption-inference.js",
+        "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption-inference.js",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "src/adoption-inference.js",
+        "specifier": "./security.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption.js",
+      "to": "file:src/adoption-inference.js",
+      "evidence": {
+        "source": "src/adoption.js",
+        "specifier": "./adoption-inference.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption.js",
+      "to": "file:src/config.js",
+      "evidence": {
+        "source": "src/adoption.js",
+        "specifier": "./config.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption.js",
+      "to": "file:src/knowledge.js",
+      "evidence": {
+        "source": "src/adoption.js",
+        "specifier": "./knowledge.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption.js",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "src/adoption.js",
+        "specifier": "./paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/adoption.js",
+        "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/adoption.js",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "src/adoption.js",
+        "specifier": "./security.js"
+      }
+    },
+    {
+      "type": "imports",
       "from": "file:src/benchmark.js",
       "to": "file:src/evaluate.js",
       "evidence": {
@@ -4529,6 +5214,15 @@
       "evidence": {
         "source": "src/benchmark.js",
         "specifier": "./scanner.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/adoption-command.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./adoption-command.js"
       }
     },
     {
@@ -4957,6 +5651,15 @@
     {
       "type": "imports",
       "from": "file:src/mcp.js",
+      "to": "file:src/adoption.js",
+      "evidence": {
+        "source": "src/mcp.js",
+        "specifier": "./adoption.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/mcp.js",
       "to": "file:src/config.js",
       "evidence": {
         "source": "src/mcp.js",
@@ -5317,28 +6020,55 @@
     {
       "type": "imports",
       "from": "file:test/adoption.test.js",
-      "to": "file:src/constants.js",
+      "to": "file:src/adoption-command.js",
       "evidence": {
         "source": "test/adoption.test.js",
-        "specifier": "../src/constants.js"
+        "specifier": "../src/adoption-command.js"
       }
     },
     {
       "type": "imports",
       "from": "file:test/adoption.test.js",
-      "to": "file:src/doctor.js",
+      "to": "file:src/adoption-inference.js",
       "evidence": {
         "source": "test/adoption.test.js",
-        "specifier": "../src/doctor.js"
+        "specifier": "../src/adoption-inference.js"
       }
     },
     {
       "type": "imports",
       "from": "file:test/adoption.test.js",
-      "to": "file:src/tutorial.js",
+      "to": "file:src/adoption.js",
       "evidence": {
         "source": "test/adoption.test.js",
-        "specifier": "../src/tutorial.js"
+        "specifier": "../src/adoption.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/adoption.test.js",
+      "to": "file:src/config.js",
+      "evidence": {
+        "source": "test/adoption.test.js",
+        "specifier": "../src/config.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/adoption.test.js",
+      "to": "file:src/policy.js",
+      "evidence": {
+        "source": "test/adoption.test.js",
+        "specifier": "../src/policy.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/adoption.test.js",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "test/adoption.test.js",
+        "specifier": "../src/scanner.js"
       }
     },
     {
@@ -5672,6 +6402,33 @@
       "evidence": {
         "source": ".github/CODEOWNERS",
         "reference": "scripts/verify-release.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/adoption-command.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/adoption-command.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/adoption-inference.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/adoption-inference.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/adoption.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/adoption.js"
       }
     },
     {
@@ -6207,6 +6964,51 @@
     },
     {
       "type": "supported-by",
+      "from": "feature:automatic-adoption",
+      "to": "file:src/adoption-command.js",
+      "evidence": {
+        "source": "docs/knowledge/features/automatic-adoption.md",
+        "reference": "src/adoption-command.js#runAdoptionCommand"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:automatic-adoption",
+      "to": "file:src/adoption-inference.js",
+      "evidence": {
+        "source": "docs/knowledge/features/automatic-adoption.md",
+        "reference": "src/adoption-inference.js#inferAdoption"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:automatic-adoption",
+      "to": "file:src/adoption.js",
+      "evidence": {
+        "source": "docs/knowledge/features/automatic-adoption.md",
+        "reference": "src/adoption.js#applyAdoptionProposal"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:automatic-adoption",
+      "to": "file:src/adoption.js",
+      "evidence": {
+        "source": "docs/knowledge/features/automatic-adoption.md",
+        "reference": "src/adoption.js#createAdoptionProposal"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:automatic-adoption",
+      "to": "file:src/mcp.js",
+      "evidence": {
+        "source": "docs/knowledge/features/automatic-adoption.md",
+        "reference": "src/mcp.js#handleMcpRequest"
+      }
+    },
+    {
+      "type": "supported-by",
       "from": "feature:change-intelligence",
       "to": "file:src/impact.js",
       "evidence": {
@@ -6343,28 +7145,55 @@
     {
       "type": "tests",
       "from": "file:test/adoption.test.js",
-      "to": "file:src/constants.js",
+      "to": "file:src/adoption-command.js",
       "evidence": {
         "source": "test/adoption.test.js",
-        "reference": "../src/constants.js"
+        "reference": "../src/adoption-command.js"
       }
     },
     {
       "type": "tests",
       "from": "file:test/adoption.test.js",
-      "to": "file:src/doctor.js",
+      "to": "file:src/adoption-inference.js",
       "evidence": {
         "source": "test/adoption.test.js",
-        "reference": "../src/doctor.js"
+        "reference": "../src/adoption-inference.js"
       }
     },
     {
       "type": "tests",
       "from": "file:test/adoption.test.js",
-      "to": "file:src/tutorial.js",
+      "to": "file:src/adoption.js",
       "evidence": {
         "source": "test/adoption.test.js",
-        "reference": "../src/tutorial.js"
+        "reference": "../src/adoption.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/adoption.test.js",
+      "to": "file:src/config.js",
+      "evidence": {
+        "source": "test/adoption.test.js",
+        "reference": "../src/config.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/adoption.test.js",
+      "to": "file:src/policy.js",
+      "evidence": {
+        "source": "test/adoption.test.js",
+        "reference": "../src/policy.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/adoption.test.js",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "test/adoption.test.js",
+        "reference": "../src/scanner.js"
       }
     },
     {

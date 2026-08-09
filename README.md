@@ -60,10 +60,28 @@ npm install --global @danielesuga/prodocs
 
 cd /path/to/your/repository
 prodocs init
-prodocs sync
+prodocs adopt
+# Review the cited proposal, then run the exact apply command it prints.
 prodocs doctor
 prodocs status
 ```
+
+`prodocs adopt` does the onboarding research: it infers structured product
+identity, framework entrypoints, likely GitHub ownership, and starter product
+knowledge with confidence and evidence citations. It writes a content-bound
+proposal under `.prodocs`; no inferred intent is applied until the exact
+approval hash is supplied:
+
+```bash
+prodocs adopt --json
+prodocs adopt \
+  --apply .prodocs/adoption-proposal.json \
+  --approve <approvalHash>
+```
+
+Application also creates any missing agent recipes, refreshes generated views,
+and returns doctor and policy results. Agents can request the same proposal
+without writes through the read-only `prodocs_adopt` MCP tool.
 
 Try the product without modifying an existing repository:
 
@@ -102,9 +120,9 @@ JSON remains the interoperability and debugging format.
 
 ## Authored knowledge
 
-Human intent lives in ordinary Markdown under `docs/knowledge`. ProDocs parses a
-strict, safe YAML front matter contract and never rewrites these files during
-`sync`.
+Reviewed intent lives in ordinary Markdown under `docs/knowledge`. ProDocs can
+draft the initial cited document through `adopt`; thereafter it parses a strict,
+safe YAML front matter contract and never rewrites these files during `sync`.
 
 ```markdown
 ---
@@ -200,6 +218,7 @@ prodocs mcp
 
 It implements the current MCP `2025-11-25` stdio protocol with read-only tools:
 
+- `prodocs_adopt`;
 - `prodocs_context`;
 - `prodocs_impact`;
 - `prodocs_policy`;
@@ -278,6 +297,7 @@ least 24 characters.
 | Command | Purpose |
 | --- | --- |
 | `prodocs init` | Create configuration and agent/MCP recipes |
+| `prodocs adopt` | Infer and propose cited identity, entrypoints, ownership, and starter knowledge |
 | `prodocs doctor` | Require warning-free identity, evidence, freshness, integrations, and knowledge readiness |
 | `prodocs tutorial` | Create a safe, complete getting-started project |
 | `prodocs sync` | Incrementally index evidence and render all views |

@@ -92,6 +92,7 @@ test("published package installs and completes the documented workflow", async (
   );
   for (const requiredPath of [
     "bin/prodocs.js",
+    "schemas/adoption-proposal.schema.json",
     "docs/COLLECTORS.md",
     "docs/COMPATIBILITY.md",
     "examples/getting-started/README.md",
