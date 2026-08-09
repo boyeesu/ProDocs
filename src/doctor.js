@@ -100,6 +100,67 @@ export async function diagnoseProject(root) {
     return summarize(checks);
   }
 
+  const sourceNodes = graph.nodes.filter((node) => node.type === "file");
+  const hasIdentity =
+    config.documentation.productName.trim() !== "" &&
+    config.documentation.oneLineDescription.trim() !== "";
+  checks.push(
+    check(
+      "documentation.identity",
+      hasIdentity ? "pass" : "warning",
+      hasIdentity
+        ? "Product name and description are configured."
+        : "Product name or description is missing.",
+      hasIdentity
+        ? null
+        : "Set documentation.productName and documentation.oneLineDescription."
+    )
+  );
+
+  const entrypointCount = sourceNodes.filter((node) => node.entrypoint).length;
+  checks.push(
+    check(
+      "evidence.entrypoints",
+      entrypointCount > 0 ? "pass" : "warning",
+      `${entrypointCount} source entrypoints identified.`,
+      entrypointCount > 0
+        ? null
+        : "Add the product's primary files to entrypoints in prodocs.config.json."
+    )
+  );
+
+  const ownedCount = sourceNodes.filter((node) => node.owner).length;
+  const ownershipReady = sourceNodes.length <= 1 || ownedCount > 0;
+  checks.push(
+    check(
+      "evidence.ownership",
+      ownershipReady ? "pass" : "warning",
+      `${ownedCount}/${sourceNodes.length} source files have ownership evidence.`,
+      ownershipReady
+        ? null
+        : "Add CODEOWNERS or ownership mappings for release accountability."
+    )
+  );
+
+  const resolution = graph.runtime.resolution;
+  const firstUnresolved = resolution.unresolved[0];
+  const unresolvedDetail = firstUnresolved
+    ? ` First: ${firstUnresolved.source} -> ${firstUnresolved.specifier}.`
+    : "";
+  const relationshipReady =
+    sourceNodes.length <= 1 ||
+    (resolution.resolved > 0 && resolution.unresolvedLocal === 0);
+  checks.push(
+    check(
+      "evidence.relationships",
+      relationshipReady ? "pass" : "warning",
+      `${resolution.resolved} local imports resolved (${resolution.aliases} through path aliases); ${resolution.unresolvedLocal} unresolved.${unresolvedDetail}`,
+      relationshipReady
+        ? null
+        : "Fix unresolved local imports or configure compilerOptions.paths in tsconfig.json/jsconfig.json."
+    )
+  );
+
   try {
     const outputPath = await resolveOutputPath(root, config.output);
     const manifestPath = path.join(outputPath, "manifest.json");
@@ -144,6 +205,18 @@ export async function diagnoseProject(root) {
     )
   );
 
+  const hasKnowledge = graph.stats.knowledge.total > 0;
+  checks.push(
+    check(
+      "knowledge.coverage",
+      hasKnowledge ? "pass" : "warning",
+      `${graph.stats.knowledge.total} authored knowledge items indexed.`,
+      hasKnowledge
+        ? null
+        : "Add evidence-backed product, architecture, operations, or decision knowledge."
+    )
+  );
+
   checks.push(
     check(
       "knowledge.health",
@@ -171,7 +244,7 @@ function summarize(checks) {
   return {
     schemaVersion: 1,
     kind: "prodocs.diagnostic-report",
-    ready: counts.error === 0,
+    ready: counts.error === 0 && counts.warning === 0,
     counts,
     checks
   };

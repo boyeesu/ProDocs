@@ -72,6 +72,7 @@ export async function createTutorial(root, relativeOutput = "prodocs-tutorial") 
   config.documentation.productName = "Delivery Example";
   config.documentation.oneLineDescription =
     "A tiny evidence-backed delivery retry example.";
+  config.entrypoints = ["src/delivery.js"];
   const files = {
     ...FILES,
     "prodocs.config.json": `${JSON.stringify(config, null, 2)}\n`

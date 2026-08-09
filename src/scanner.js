@@ -13,6 +13,7 @@ import {
 } from "./collectors/index.js";
 import { openIndexStore } from "./index-store.js";
 import { collectAuthoredKnowledge } from "./knowledge.js";
+import { loadModuleResolution, resolveImport } from "./module-resolution.js";
 import { loadDeclarativePlugin } from "./plugins.js";
 import { resolveSourcePath } from "./paths.js";
 import { readRegularFile } from "./safe-fs.js";
@@ -190,40 +191,6 @@ async function discoverFiles(root, config, languageMap) {
   return [...new Set(files.map((file) => path.resolve(file)))].sort();
 }
 
-function candidateImportPaths(fromFile, specifier, language) {
-  if (language === "Python") {
-    if (!specifier.startsWith(".")) return [];
-    const dotCount = specifier.match(/^\.+/)?.[0].length ?? 0;
-    let base = path.dirname(fromFile);
-    for (let index = 1; index < dotCount; index += 1) base = path.dirname(base);
-    const modulePath = specifier.slice(dotCount).replaceAll(".", path.sep);
-    const stem = path.join(base, modulePath);
-    return [`${stem}.py`, path.join(stem, "__init__.py")];
-  }
-
-  if (!specifier.startsWith(".")) return [];
-  const stem = path.resolve(path.dirname(fromFile), specifier);
-  const extensions = [
-    ".js",
-    ".jsx",
-    ".mjs",
-    ".cjs",
-    ".ts",
-    ".tsx",
-    ".mts",
-    ".cts",
-    ".py",
-    ".go",
-    ".rs"
-  ];
-  return [
-    stem,
-    ...extensions.map((extension) => `${stem}${extension}`),
-    ...extensions.map((extension) => path.join(stem, `index${extension}`)),
-    path.join(stem, "mod.rs")
-  ];
-}
-
 function inferEntrypoint(relativePath) {
   const basename = path.basename(relativePath);
   return [
@@ -350,6 +317,7 @@ export async function scanProject(
   }
   const absoluteFiles = await discoverFiles(canonicalRoot, config, languageMap);
   const knownFiles = new Set(absoluteFiles.map((file) => path.resolve(file)));
+  const moduleResolution = await loadModuleResolution(canonicalRoot);
   const codeowners = await readCodeowners(canonicalRoot);
   const collectorRegistry = createCollectorRegistry([
     javascriptTypeScriptCollector,
@@ -443,13 +411,35 @@ export async function scanProject(
     nodes.map((node) => [path.resolve(node._absolutePath), node])
   );
   const edges = [];
+  const importResolution = {
+    resolved: 0,
+    aliases: 0,
+    external: 0,
+    unresolvedLocal: 0,
+    unresolved: []
+  };
   for (const node of nodes) {
     for (const specifier of node.unresolvedImports) {
-      const targetPath = candidateImportPaths(
-        node._absolutePath,
+      const resolvedImport = resolveImport({
+        root: canonicalRoot,
+        fromFile: node._absolutePath,
         specifier,
-        node.language
-      ).find((candidate) => knownFiles.has(path.resolve(candidate)));
+        language: node.language,
+        resolution: moduleResolution,
+        knownFiles
+      });
+      const targetPath = resolvedImport.targetPath;
+      if (["external", "asset"].includes(resolvedImport.kind)) {
+        importResolution.external += 1;
+      } else if (resolvedImport.kind.startsWith("unresolved-")) {
+        importResolution.unresolvedLocal += 1;
+        if (importResolution.unresolved.length < 20) {
+          importResolution.unresolved.push({ source: node.path, specifier });
+        }
+      } else {
+        importResolution.resolved += 1;
+        if (resolvedImport.kind === "alias") importResolution.aliases += 1;
+      }
       if (!targetPath) continue;
       const target = nodeByAbsolutePath.get(path.resolve(targetPath));
       if (!target || target.id === node.id) continue;
@@ -542,7 +532,7 @@ export async function scanProject(
     )
   );
   const inputHash = sha256(
-    `${sourceHash}\n${authored.knowledgeHash}\n${stableJson(config)}`
+    `${sourceHash}\n${authored.knowledgeHash}\n${stableJson(config)}\n${moduleResolution.source ?? ""}:${moduleResolution.hash}`
   );
 
   const graph = {
@@ -576,7 +566,8 @@ export async function scanProject(
         backend: index.backend,
         cacheHits,
         cacheMisses
-      }
+      },
+      resolution: importResolution
     },
     enumerable: false
   });

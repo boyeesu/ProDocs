@@ -1,5 +1,33 @@
 # Changelog
 
+All notable changes to ProDocs are documented here. The project follows
+[Semantic Versioning](https://semver.org/) and
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+## [Unreleased]
+
+## [1.1.2] - 2026-08-09
+
+### Added
+
+- resolve TypeScript and JavaScript path aliases from bounded, repository-local
+  `tsconfig.json` and `jsconfig.json` files, including JSONC syntax;
+- report identity, entrypoint, ownership, relationship, and authored-knowledge
+  readiness with direct remediation guidance.
+
+### Changed
+
+- production readiness now requires all warnings to be resolved rather than
+  treating incomplete documentation as ready;
+- module-resolution configuration participates in freshness hashing.
+
+### Fixed
+
+- include aliased dependencies in code graphs and task context instead of
+  returning isolated files for common `@/...` imports;
+- classify stylesheet and other non-code imports as assets instead of broken
+  local source relationships.
+
 ## [1.1.1] - 2026-08-09
 
 ### Fixed
@@ -7,12 +35,6 @@
 - publish under the collision-safe npm name `@danielesuga/prodocs` while
   retaining the `prodocs` command;
 - document the scoped global-install and `npx` commands.
-
-All notable changes to ProDocs are documented here. The project follows
-[Semantic Versioning](https://semver.org/) and
-[Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
-
-## [Unreleased]
 
 ## [1.1.0] - 2026-08-09
 
@@ -140,7 +162,8 @@ All notable changes to ProDocs are documented here. The project follows
 - Project-root containment for configured sources and generated output.
 - Versioned JSON Schemas for configuration and knowledge graph artifacts.
 
-[Unreleased]: https://github.com/boyeesu/prodocs/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/boyeesu/prodocs/compare/v1.1.2...HEAD
+[1.1.2]: https://github.com/boyeesu/prodocs/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/boyeesu/prodocs/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/boyeesu/prodocs/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/boyeesu/prodocs/compare/v0.2.0...v1.0.0

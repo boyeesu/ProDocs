@@ -1,17 +1,17 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-09T14:07:41.484Z",
-  "sourceHash": "5bf468818e9705d5befe2746cb0128cebf8f46d4b24c1503abef9fcc7a1075b9",
-  "knowledgeHash": "5dbba2bd8dca744e6931eb3d10ec98e69d5cc46498dea74a83de2419d80e4053",
-  "inputHash": "c48497c0449cb9a38da206a8435a8decb187e6c1e0f099809dcc536e2b1c86dc",
+  "generatedAt": "2026-08-09T14:38:14.833Z",
+  "sourceHash": "54423dcde74ead9e3564598954fbf186a592fdd0789b3e1fa65e87034501bce9",
+  "knowledgeHash": "092b8734f7923cebd3f960a64524283eded0e179cc7aa91b7d01cc5464b63796",
+  "inputHash": "0b34377df947b7865036f61e214577a8e1fa1979b66a6975802b93932efa3ada",
   "root": ".",
   "stats": {
-    "files": 53,
-    "lines": 8970,
-    "symbols": 280,
-    "edges": 392,
+    "files": 56,
+    "lines": 9453,
+    "symbols": 292,
+    "edges": 407,
     "languages": {
-      "JavaScript": 52,
+      "JavaScript": 55,
       "TypeScript": 1
     },
     "knowledge": {
@@ -23,7 +23,7 @@
     },
     "index": {
       "backend": "sqlite",
-      "entries": 53
+      "entries": 56
     }
   },
   "nodes": [
@@ -79,6 +79,29 @@
       "publicSurface": false,
       "role": "test",
       "symbols": [],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:fixtures/collectors/factory.js",
+      "type": "file",
+      "path": "fixtures/collectors/factory.js",
+      "language": "JavaScript",
+      "contentHash": "b54aac3d6bf4e44b392dc0e57e9a97277ab529c4ee94633ef80db490a94c8786",
+      "lines": 4,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "createElement",
+          "kind": "function",
+          "line": 1
+        }
+      ],
       "trust": {
         "repositoryContent": "untrusted",
         "instructionSignals": []
@@ -901,7 +924,7 @@
       "type": "file",
       "path": "src/constants.js",
       "language": "JavaScript",
-      "contentHash": "94f163b802dacdff391ae6fa6276a136721061e2595f6484bb1dc518924f2702",
+      "contentHash": "78089d993bd61b3dbd97c9a1579de2d93fa166252c31f096ddbfbf4c00284a8a",
       "lines": 115,
       "owner": "@boyeesu",
       "entrypoint": false,
@@ -1022,8 +1045,8 @@
       "type": "file",
       "path": "src/doctor.js",
       "language": "JavaScript",
-      "contentHash": "33849be34f9704f7fc30f04ae1b1ca707547dd2a1194410cffc6167d01de97b1",
-      "lines": 179,
+      "contentHash": "3447ee70cb28440ba44610f59b885f9e3293564320b53ab77b646d0c41ec8a99",
+      "lines": 252,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -1062,7 +1085,7 @@
         {
           "name": "summarize",
           "kind": "function",
-          "line": 165
+          "line": 238
         }
       ],
       "trust": {
@@ -1450,6 +1473,79 @@
       }
     },
     {
+      "id": "file:src/module-resolution.js",
+      "type": "file",
+      "path": "src/module-resolution.js",
+      "language": "JavaScript",
+      "contentHash": "847eda09f6539d69703354a41cd7ed4d2777330708bfdacc6d5927b744daeaf6",
+      "lines": 244,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "CONFIG_NAMES",
+          "kind": "value",
+          "line": 7
+        },
+        {
+          "name": "EXTENSIONS",
+          "kind": "value",
+          "line": 8
+        },
+        {
+          "name": "stripJsonComments",
+          "kind": "function",
+          "line": 22
+        },
+        {
+          "name": "stripTrailingCommas",
+          "kind": "function",
+          "line": 59
+        },
+        {
+          "name": "parseConfig",
+          "kind": "function",
+          "line": 87
+        },
+        {
+          "name": "wildcardCount",
+          "kind": "function",
+          "line": 95
+        },
+        {
+          "name": "validateMappings",
+          "kind": "function",
+          "line": 99
+        },
+        {
+          "name": "loadModuleResolution",
+          "kind": "function",
+          "line": 130
+        },
+        {
+          "name": "candidates",
+          "kind": "function",
+          "line": 162
+        },
+        {
+          "name": "aliasStems",
+          "kind": "function",
+          "line": 171
+        },
+        {
+          "name": "resolveImport",
+          "kind": "function",
+          "line": 195
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
       "id": "file:src/paths.js",
       "type": "file",
       "path": "src/paths.js",
@@ -1818,8 +1914,8 @@
       "type": "file",
       "path": "src/scanner.js",
       "language": "JavaScript",
-      "contentHash": "ea6bea86e30aa22bf155369a3a963c10777bc48a270e8d8f07119ea6ef031187",
-      "lines": 585,
+      "contentHash": "9b5d3cdd52d93b0bd2593ed04629513a4ef9b8c601809926eb4de001c2403c43",
+      "lines": 576,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -1828,72 +1924,67 @@
         {
           "name": "normalizeSource",
           "kind": "function",
-          "line": 26
+          "line": 27
         },
         {
           "name": "isExcluded",
           "kind": "function",
-          "line": 30
+          "line": 31
         },
         {
           "name": "matchesGlob",
           "kind": "function",
-          "line": 41
+          "line": 42
         },
         {
           "name": "isIncluded",
           "kind": "function",
-          "line": 110
+          "line": 111
         },
         {
           "name": "walk",
           "kind": "function",
-          "line": 115
+          "line": 116
         },
         {
           "name": "discoverFiles",
           "kind": "function",
-          "line": 158
-        },
-        {
-          "name": "candidateImportPaths",
-          "kind": "function",
-          "line": 193
+          "line": 159
         },
         {
           "name": "inferEntrypoint",
           "kind": "function",
-          "line": 227
+          "line": 194
         },
         {
           "name": "languageForPath",
           "kind": "function",
-          "line": 247
+          "line": 214
         },
         {
           "name": "codeownersMatch",
           "kind": "function",
-          "line": 255
+          "line": 222
         },
         {
           "name": "readCodeowners",
           "kind": "function",
-          "line": 268
+          "line": 235
         },
         {
           "name": "ownerFor",
           "kind": "function",
-          "line": 302
+          "line": 269
         },
         {
           "name": "roleFor",
           "kind": "function",
-          "line": 317
+          "line": 284
         },
         {
           "name": "scanProject",
           "kind": "function",
-          "line": 335
+          "line": 302
         }
       ],
       "trust": {
@@ -2017,8 +2108,8 @@
       "type": "file",
       "path": "src/tutorial.js",
       "language": "JavaScript",
-      "contentHash": "65afe4dd6a113e1ebb1a9999aba81b93780f8005a890f0a4ea925b4b70c90ece",
-      "lines": 89,
+      "contentHash": "6e13376214662dc7e2d8fdb8b5f0c1b7b19b3b26dcfa2f579a240d7daa51c613",
+      "lines": 90,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -2208,12 +2299,35 @@
       }
     },
     {
+      "id": "file:test/module-resolution.test.js",
+      "type": "file",
+      "path": "test/module-resolution.test.js",
+      "language": "JavaScript",
+      "contentHash": "7ee9727681cce00d7818aac0e594f8d42f2b261d500a94c3f9c5dc01eae59593",
+      "lines": 102,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "test",
+      "symbols": [
+        {
+          "name": "temporaryRoot",
+          "kind": "function",
+          "line": 11
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
       "id": "file:test/package.test.js",
       "type": "file",
       "path": "test/package.test.js",
       "language": "JavaScript",
-      "contentHash": "84a743550108e8f11a6747434e8fc6fa0ee22caf81bfec96b392aaef104fb2c6",
-      "lines": 214,
+      "contentHash": "c4b6b93221f3890fcdd84500373a0d3ef27fd1e9d1ca0adb320759efd5fa87d9",
+      "lines": 220,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -2341,8 +2455,8 @@
       "type": "file",
       "path": "test/scanner.test.js",
       "language": "JavaScript",
-      "contentHash": "52f7d30415385aa3c98fccc53c6202fa6ec54cfd726189e22e6dc11c192043bd",
-      "lines": 235,
+      "contentHash": "b199d4e41a2a7f7eb3bc20abe09fa03241d265e000d76c98ab8f18b239e95c21",
+      "lines": 297,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -2455,7 +2569,7 @@
           "path": "src/scanner.js",
           "symbol": "scanProject",
           "supported": true,
-          "contentHash": "ea6bea86e30aa22bf155369a3a963c10777bc48a270e8d8f07119ea6ef031187"
+          "contentHash": "9b5d3cdd52d93b0bd2593ed04629513a4ef9b8c601809926eb4de001c2403c43"
         }
       ],
       "audiences": [
@@ -2502,13 +2616,13 @@
           "path": "src/doctor.js",
           "symbol": "diagnoseProject",
           "supported": true,
-          "contentHash": "33849be34f9704f7fc30f04ae1b1ca707547dd2a1194410cffc6167d01de97b1"
+          "contentHash": "3447ee70cb28440ba44610f59b885f9e3293564320b53ab77b646d0c41ec8a99"
         },
         {
           "path": "src/tutorial.js",
           "symbol": "createTutorial",
           "supported": true,
-          "contentHash": "65afe4dd6a113e1ebb1a9999aba81b93780f8005a890f0a4ea925b4b70c90ece"
+          "contentHash": "6e13376214662dc7e2d8fdb8b5f0c1b7b19b3b26dcfa2f579a240d7daa51c613"
         }
       ],
       "audiences": [
@@ -2650,7 +2764,7 @@
           "path": "src/scanner.js",
           "symbol": "scanProject",
           "supported": true,
-          "contentHash": "ea6bea86e30aa22bf155369a3a963c10777bc48a270e8d8f07119ea6ef031187"
+          "contentHash": "9b5d3cdd52d93b0bd2593ed04629513a4ef9b8c601809926eb4de001c2403c43"
         }
       ],
       "audiences": [
@@ -3007,6 +3121,15 @@
     {
       "type": "affects",
       "from": "claim:local-first",
+      "to": "file:src/module-resolution.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
       "to": "file:src/paths.js",
       "evidence": {
         "source": "docs/knowledge/claims/local-first.md",
@@ -3278,6 +3401,15 @@
       "type": "affects",
       "from": "decision:deterministic-core",
       "to": "file:src/mcp.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/module-resolution.js",
       "evidence": {
         "source": "docs/knowledge/decisions/deterministic-core.md",
         "reference": "src"
@@ -3610,6 +3742,15 @@
     {
       "type": "affects",
       "from": "feature:evidence-kernel",
+      "to": "file:src/module-resolution.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
       "to": "file:src/paths.js",
       "evidence": {
         "source": "docs/knowledge/features/evidence-kernel.md",
@@ -3907,6 +4048,15 @@
     {
       "type": "affects",
       "from": "invariant:untrusted-repository",
+      "to": "file:src/module-resolution.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
       "to": "file:src/paths.js",
       "evidence": {
         "source": "docs/knowledge/invariants/untrusted-repository.md",
@@ -4186,6 +4336,15 @@
     {
       "type": "affects",
       "from": "runbook:production-verification",
+      "to": "file:src/module-resolution.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
       "to": "file:src/paths.js",
       "evidence": {
         "source": "docs/knowledge/runbooks/production-verification.md",
@@ -4307,6 +4466,15 @@
       "evidence": {
         "source": "examples/getting-started/test/delivery.test.js",
         "specifier": "../src/delivery.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:fixtures/collectors/typescript-component.tsx",
+      "to": "file:fixtures/collectors/factory.js",
+      "evidence": {
+        "source": "fixtures/collectors/typescript-component.tsx",
+        "specifier": "./factory.js"
       }
     },
     {
@@ -4851,6 +5019,33 @@
     },
     {
       "type": "imports",
+      "from": "file:src/module-resolution.js",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "src/module-resolution.js",
+        "specifier": "./paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/module-resolution.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/module-resolution.js",
+        "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/module-resolution.js",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "src/module-resolution.js",
+        "specifier": "./security.js"
+      }
+    },
+    {
+      "type": "imports",
       "from": "file:src/plugins.js",
       "to": "file:src/collectors/contract.js",
       "evidence": {
@@ -4973,6 +5168,15 @@
       "evidence": {
         "source": "src/scanner.js",
         "specifier": "./knowledge.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/scanner.js",
+      "to": "file:src/module-resolution.js",
+      "evidence": {
+        "source": "src/scanner.js",
+        "specifier": "./module-resolution.js"
       }
     },
     {
@@ -5180,6 +5384,15 @@
       "evidence": {
         "source": "test/context.test.js",
         "specifier": "../src/context.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/module-resolution.test.js",
+      "to": "file:src/module-resolution.js",
+      "evidence": {
+        "source": "test/module-resolution.test.js",
+        "specifier": "../src/module-resolution.js"
       }
     },
     {
@@ -5396,6 +5609,15 @@
       "evidence": {
         "source": ".github/CODEOWNERS",
         "reference": "examples/getting-started/test/delivery.test.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:fixtures/collectors/factory.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "fixtures/collectors/factory.js"
       }
     },
     {
@@ -5626,6 +5848,15 @@
     {
       "type": "owns",
       "from": "owner:@boyeesu",
+      "to": "file:src/module-resolution.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/module-resolution.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
       "to": "file:src/paths.js",
       "evidence": {
         "source": ".github/CODEOWNERS",
@@ -5783,6 +6014,15 @@
       "evidence": {
         "source": ".github/CODEOWNERS",
         "reference": "test/context.test.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:test/module-resolution.test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "test/module-resolution.test.js"
       }
     },
     {
@@ -6170,6 +6410,15 @@
       "evidence": {
         "source": "test/context.test.js",
         "reference": "../src/context.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/module-resolution.test.js",
+      "to": "file:src/module-resolution.js",
+      "evidence": {
+        "source": "test/module-resolution.test.js",
+        "reference": "../src/module-resolution.js"
       }
     },
     {

@@ -44,6 +44,68 @@ test("scanProject indexes symbols, entrypoints, and local imports", async (t) =>
   });
 });
 
+test("scanProject resolves JSONC TypeScript path aliases", async (t) => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), "prodocs-alias-test-"));
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+  await fs.mkdir(path.join(root, "src", "lib"), { recursive: true });
+  await fs.writeFile(
+    path.join(root, "src", "main.ts"),
+    'import { greet } from "@/lib/greet";\nexport const result = greet();\n'
+  );
+  await fs.writeFile(
+    path.join(root, "src", "lib", "greet.ts"),
+    'export function greet() { return "hello"; }\n'
+  );
+  await fs.writeFile(
+    path.join(root, "tsconfig.json"),
+    `{
+      // TypeScript permits comments and trailing commas.
+      "compilerOptions": {
+        "baseUrl": ".",
+        "paths": { "@/*": ["src/*",], },
+      },
+    }\n`
+  );
+
+  const graph = await scanProject(root, DEFAULT_CONFIG);
+
+  assert.equal(graph.stats.edges, 1);
+  assert.equal(graph.runtime.resolution.resolved, 1);
+  assert.equal(graph.runtime.resolution.aliases, 1);
+  assert.equal(graph.runtime.resolution.unresolvedLocal, 0);
+  assert.deepEqual(graph.runtime.resolution.unresolved, []);
+  assert.deepEqual(graph.edges[0], {
+    type: "imports",
+    from: "file:src/main.ts",
+    to: "file:src/lib/greet.ts",
+    evidence: { source: "src/main.ts", specifier: "@/lib/greet" }
+  });
+});
+
+test("module resolution configuration participates in the input hash", async (t) => {
+  const root = await fixture();
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+  const first = await scanProject(root, DEFAULT_CONFIG);
+  await fs.writeFile(
+    path.join(root, "tsconfig.json"),
+    '{"compilerOptions":{"paths":{"@/*":["src/*"]}}}\n'
+  );
+  const configured = await scanProject(root, DEFAULT_CONFIG);
+
+  assert.equal(configured.sourceHash, first.sourceHash);
+  assert.notEqual(configured.inputHash, first.inputHash);
+});
+
+test("stylesheet imports are assets rather than unresolved source", async (t) => {
+  const root = await fixture();
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+  await fs.appendFile(path.join(root, "src", "main.js"), 'import "./app.css";\n');
+  const graph = await scanProject(root, DEFAULT_CONFIG);
+
+  assert.equal(graph.runtime.resolution.unresolvedLocal, 0);
+  assert.equal(graph.runtime.resolution.external, 1);
+});
+
 test("source hash is deterministic and changes with evidence", async (t) => {
   const root = await fixture();
   t.after(() => fs.rm(root, { recursive: true, force: true }));
