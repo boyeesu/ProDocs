@@ -40,7 +40,8 @@ test("release workflows use attestations and tokenless npm publishing", async ()
   assert.match(publish, /environment: npm/);
   assert.match(
     publish,
-    /npm publish release\/\*\.tgz --access public --provenance/,
+    /npm publish \.\/release\/\*\.tgz --access public --provenance/,
   );
+  assert.match(publish, /sha256sum --check release\/SHA256SUMS --ignore-missing/);
   assert.doesNotMatch(publish, /NPM_TOKEN|NODE_AUTH_TOKEN/);
 });

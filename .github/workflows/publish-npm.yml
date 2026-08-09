@@ -56,4 +56,4 @@ jobs:
             --dir release
           sha256sum --check release/SHA256SUMS --ignore-missing
           gh attestation verify release/*.tgz --repo "$GITHUB_REPOSITORY"
-      - run: npm publish release/*.tgz --access public --provenance
+      - run: npm publish ./release/*.tgz --access public --provenance
