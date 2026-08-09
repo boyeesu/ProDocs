@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "name": "Codex change-impact task",
+      "agent": "codex",
+      "paths": ["src/impact.js"],
+      "task": "Change impact traversal without widening repository context",
+      "expectedPaths": ["src/impact.js"],
+      "unwantedPaths": ["src/server.js"],
+      "maxFiles": 12,
+      "maxTokens": 12000
+    },
+    {
+      "name": "Claude Code proposal-safety task",
+      "agent": "claude-code",
+      "paths": ["src/proposals.js"],
+      "task": "Review approval and path-containment behavior",
+      "expectedPaths": ["src/proposals.js", "src/security.js"],
+      "unwantedPaths": ["src/collectors/artifacts.js"],
+      "maxFiles": 12,
+      "maxTokens": 12000
+    },
+    {
+      "name": "OpenCode bounded-context task",
+      "agent": "opencode",
+      "paths": ["src/context.js"],
+      "task": "Modify deterministic context budgets",
+      "expectedPaths": ["src/context.js"],
+      "unwantedPaths": ["src/runbooks.js"],
+      "maxFiles": 12,
+      "maxTokens": 12000
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+name: Adopter feedback
+description: Report a real ProDocs onboarding or agent-task outcome without sharing private source.
+title: "[adopter] "
+labels:
+  - adoption
+body:
+  - type: markdown
+    attributes:
+      value: Do not paste proprietary code, secrets, or private repository content.
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Interface used
+      options:
+        - CLI only
+        - Codex
+        - Claude Code
+        - OpenCode
+        - MCP client
+        - Human-generated views
+    validations:
+      required: true
+  - type: input
+    id: scale
+    attributes:
+      label: Repository scale
+      description: Approximate language mix and file count; no repository name is required.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Task and outcome
+      description: What did you try, and did ProDocs help complete it correctly?
+    validations:
+      required: true
+  - type: textarea
+    id: metrics
+    attributes:
+      label: Local benchmark summary
+      description: Paste non-sensitive aggregate output from `prodocs benchmark` if available.
+  - type: textarea
+    id: friction
+    attributes:
+      label: Friction or missing capability
+    validations:
+      required: true

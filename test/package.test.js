@@ -94,6 +94,7 @@ test("published package installs and completes the documented workflow", async (
     "bin/prodocs.js",
     "docs/COLLECTORS.md",
     "docs/COMPATIBILITY.md",
+    "examples/getting-started/README.md",
     "schemas/collector-result.schema.json",
     "schemas/impact.schema.json",
     "schemas/proposal.schema.json",
@@ -185,6 +186,12 @@ test("published package installs and completes the documented workflow", async (
     assert.equal(result.code, 0, result.stderr);
   }
 
+  const doctor = await execute(process.execPath, [installedCli, "doctor", "--json"], {
+    cwd: project
+  });
+  assert.equal(doctor.code, 0, doctor.stderr);
+  assert.equal(JSON.parse(doctor.stdout).ready, true);
+
   const status = await execute(
     process.execPath,
     [installedCli, "status", "--json"],
@@ -195,4 +202,11 @@ test("published package installs and completes the documented workflow", async (
   assert.equal(output.fresh, true);
   assert.equal(output.stats.files, 1);
   assert.equal(output.stats.symbols, 1);
+
+  const tutorial = await execute(
+    process.execPath,
+    [installedCli, "tutorial", "--output", "tutorial-project", "--json"],
+    { cwd: project }
+  );
+  assert.equal(tutorial.code, 0, tutorial.stderr);
 });

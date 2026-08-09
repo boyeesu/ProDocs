@@ -6,6 +6,34 @@ All notable changes to ProDocs are documented here. The project follows
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-08-09
+
+### Added
+
+- Added `prodocs doctor` for local production-readiness diagnostics.
+- Added `prodocs tutorial` and a packaged getting-started project.
+- Added local cold/warm indexing benchmarks and per-agent Codex, Claude Code,
+  and OpenCode retrieval evaluation.
+- Added an adopter-feedback protocol, troubleshooting guide, and supply-chain
+  ownership/risk assessment.
+- Added complexity ratchets and targeted weekly mutation testing for security
+  boundaries.
+
+### Changed
+
+- Added exact, audited development tooling with a patched transitive override.
+- Extended production verification with complexity and multi-agent context
+  quality gates.
+- Fixed npm release-artifact checksum verification to validate paths from the
+  workspace root.
+
+### Security
+
+- Added mutation coverage for repository containment, approval hashes, and
+  secret/instruction handling.
+- Documented elevated dependency ownership and parser/runtime risks with
+  compensating controls and migration criteria.
+
 ## [1.0.0] - 2026-08-02
 
 ### Added
@@ -104,7 +132,8 @@ All notable changes to ProDocs are documented here. The project follows
 - Project-root containment for configured sources and generated output.
 - Versioned JSON Schemas for configuration and knowledge graph artifacts.
 
-[Unreleased]: https://github.com/boyeesu/prodocs/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/boyeesu/prodocs/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/boyeesu/prodocs/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/boyeesu/prodocs/compare/v0.2.0...v1.0.0
 [0.2.0]: https://github.com/boyeesu/prodocs/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/boyeesu/prodocs/releases/tag/v0.1.0

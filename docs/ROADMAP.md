@@ -122,3 +122,35 @@ These are release-to-release quality investments, not missing roadmap phases:
 - measure incremental performance on larger monorepos;
 - respond to security research and protocol revisions without weakening
   local-first operation.
+
+## Release 1.1 — adoption and assurance
+
+Status: **complete in the 1.1 release candidate**.
+
+- one-command npm installation and an immutable 1.0 GitHub release;
+- `prodocs doctor` readiness diagnostics;
+- `prodocs tutorial` plus a checked-in getting-started repository;
+- local-only product benchmarks with per-agent evaluation for Codex, Claude
+  Code, and OpenCode;
+- adopter-feedback contract and consent-preserving validation protocol;
+- ratcheting file/function complexity checks;
+- targeted mutation testing for path, approval, and security boundaries;
+- weekly mutation workflow and retained machine-readable reports;
+- direct-dependency ownership and supply-chain risk assessment;
+- troubleshooting guidance and repaired npm artifact verification.
+
+Exit evidence:
+
+- the example project completes sync, doctor, context, policy, and tests;
+- benchmark fixtures pass for all three named agent interfaces;
+- production verification includes complexity and zero-vulnerability gates;
+- mutation survivors are either killed by tests or recorded as explicit
+  follow-up evidence;
+- npm publication verifies the exact attested GitHub artifact.
+
+## Next discovery horizon
+
+New roadmap items require adopter evidence rather than speculative scope. The
+candidate themes are deeper language semantics, additional renderer/provider
+adapters, and larger monorepo performance, but each must begin with a
+reproducible adopter fixture and a measurable success threshold.

@@ -60,6 +60,10 @@ gh attestation verify prodocs-<version>.tgz --repo boyeesu/ProDocs
 shasum -a 256 -c SHA256SUMS
 ```
 
+The checksum file records paths relative to the release build workspace. When
+downloading into a local directory, preserve the `release/` directory or
+rewrite only that known prefix before verification.
+
 Then dispatch `Publish npm` from protected `main` for the same tag. The `npm`
 environment approval is the final human gate. npm receives provenance through
 trusted publishing.

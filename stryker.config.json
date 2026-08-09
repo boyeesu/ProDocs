@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "mutate": [
+    "src/paths.js",
+    "src/security.js",
+    "src/proposals.js"
+  ],
+  "testRunner": "command",
+  "commandRunner": {
+    "command": "node --test test/paths.test.js test/roadmap.test.js"
+  },
+  "coverageAnalysis": "off",
+  "incremental": true,
+  "incrementalFile": ".prodocs/stryker-incremental.json",
+  "reporters": [
+    "clear-text",
+    "json"
+  ],
+  "jsonReporter": {
+    "fileName": ".prodocs/mutation-report.json"
+  },
+  "thresholds": {
+    "high": 70,
+    "low": 50,
+    "break": 50
+  },
+  "timeoutMS": 20000
+}

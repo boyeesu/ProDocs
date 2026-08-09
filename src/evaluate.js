@@ -59,6 +59,7 @@ export function evaluateContextSuite(graph, manifest, suite, defaults = {}) {
         (item.maxTokens ?? defaults.maxTokens);
     return {
       name: item.name,
+      agent: item.agent ?? "generic",
       passed,
       recall,
       precision,
@@ -81,6 +82,27 @@ export function evaluateContextSuite(graph, manifest, suite, defaults = {}) {
         cases.reduce((total, item) => total + item.precision, 0) / cases.length,
       totalTokens: cases.reduce((total, item) => total + item.tokens, 0)
     },
+    byAgent: Object.fromEntries(
+      [...new Set(cases.map((item) => item.agent))]
+        .sort()
+        .map((agent) => {
+          const selected = cases.filter((item) => item.agent === agent);
+          return [
+            agent,
+            {
+              cases: selected.length,
+              passed: selected.filter((item) => item.passed).length,
+              meanRecall:
+                selected.reduce((total, item) => total + item.recall, 0) /
+                selected.length,
+              meanPrecision:
+                selected.reduce((total, item) => total + item.precision, 0) /
+                selected.length,
+              totalTokens: selected.reduce((total, item) => total + item.tokens, 0)
+            }
+          ];
+        })
+    ),
     cases
   };
 }

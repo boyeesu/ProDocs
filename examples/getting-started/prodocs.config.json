@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/boyeesu/prodocs/main/schemas/prodocs-config.schema.json",
+  "schemaVersion": 1,
+  "source": ["."],
+  "output": "docs/prodocs",
+  "include": ["**/*.js", "**/*.ts"],
+  "exclude": [".git", ".prodocs", "node_modules", "docs/prodocs"],
+  "entrypoints": ["src/delivery.js"],
+  "ownership": {"src/**": "@example-maintainer"},
+  "limits": {
+    "maxFiles": 1000,
+    "maxFileSizeBytes": 1048576,
+    "maxTotalBytes": 10485760,
+    "maxContextFiles": 20,
+    "maxContextTokens": 8000,
+    "maxProviderBytes": 262144
+  },
+  "knowledge": {"paths": ["docs/knowledge"], "requireEvidence": true},
+  "index": {"enabled": true, "path": ".prodocs/index.sqlite"},
+  "plugins": {"paths": []},
+  "policies": {
+    "publicSurfaceRequiresOwner": true,
+    "publicSurfaceRequiresClaim": true,
+    "claimRequiresEvidence": true,
+    "runbookRequiresVerification": true
+  },
+  "documentation": {
+    "productName": "Delivery Example",
+    "oneLineDescription": "A tiny evidence-backed delivery retry example.",
+    "audiences": ["product", "technical", "support", "security", "operations", "coding-agents"]
+  }
+}

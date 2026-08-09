@@ -2,6 +2,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { loadConfig, writeDefaultConfig } from "./config.js";
 import { buildContextPacket } from "./context.js";
+import { benchmarkProject } from "./benchmark.js";
+import { diagnoseProject } from "./doctor.js";
 import {
   evaluateContextSuite,
   readEvaluationSuite
@@ -27,6 +29,7 @@ import { runbookPlan, verifyRunbook } from "./runbooks.js";
 import { readRegularFile, atomicWriteFile } from "./safe-fs.js";
 import { scanProject } from "./scanner.js";
 import { listenForCollaboration } from "./server.js";
+import { createTutorial } from "./tutorial.js";
 import {
   normalizeRepositoryPath
 } from "./security.js";
@@ -65,6 +68,8 @@ function help() {
 
 Core:
   prodocs init                         Create config and agent/MCP recipes
+  prodocs doctor                       Diagnose production readiness and setup
+  prodocs tutorial                     Create a safe getting-started project
   prodocs sync                         Incrementally index and refresh all views
   prodocs check                        Fail when generated knowledge is stale
   prodocs status [--json]              Show evidence and knowledge health
@@ -80,6 +85,7 @@ Change intelligence:
 Agents and extensions:
   prodocs mcp                           Run the local stdio MCP server
   prodocs evaluate --suite <file>       Measure context quality and token use
+  prodocs benchmark --suite <file>      Measure indexing and agent context locally
   prodocs plugin verify <file>          Run collector conformance fixtures
   prodocs hooks install                 Install the reviewed local pre-push gate
   prodocs capabilities                  List stable interfaces and adapters
@@ -150,6 +156,34 @@ async function init(root, _args, json) {
     );
   }
   console.log("\nNext: add authored knowledge, then run `prodocs sync`.");
+}
+
+async function doctor(root, _args, json) {
+  const result = await diagnoseProject(root);
+  if (json) console.log(JSON.stringify(result, null, 2));
+  else {
+    for (const item of result.checks) {
+      const marker = item.status === "pass" ? "PASS" : item.status.toUpperCase();
+      console.log(`${marker.padEnd(7)} ${item.id}: ${item.message}`);
+      if (item.remediation && item.status !== "pass") {
+        console.log(`        ${item.remediation}`);
+      }
+    }
+    console.log(`\n${result.ready ? "Ready" : "Not ready"}: ${result.counts.error} error(s), ${result.counts.warning} warning(s).`);
+  }
+  if (!result.ready) process.exitCode = 1;
+}
+
+async function tutorial(root, args, json) {
+  const result = await createTutorial(
+    root,
+    valueAfter(args, "--output", "prodocs-tutorial")
+  );
+  console.log(
+    json
+      ? JSON.stringify(result, null, 2)
+      : `Created ${result.output} with ${result.files.length} tutorial files.\nNext: cd ${result.output} && prodocs sync && prodocs doctor`
+  );
 }
 
 async function sync(root, _args, json) {
@@ -396,6 +430,25 @@ async function evaluate(root, args, json) {
   if (!result.passed) process.exitCode = 1;
 }
 
+async function benchmark(root, args, json) {
+  const suitePath = valueAfter(args, "--suite");
+  if (!suitePath) throw new Error("`benchmark` requires --suite <file>.");
+  const config = await loadConfig(root);
+  const [manifest, suite] = await Promise.all([
+    readManifest(root, config),
+    readEvaluationSuite(path.resolve(root, suitePath))
+  ]);
+  const result = await benchmarkProject(root, config, manifest, suite);
+  const outputPath = valueAfter(args, "--output");
+  if (outputPath) await writeRepositoryJson(root, outputPath, result);
+  console.log(
+    json || !outputPath
+      ? JSON.stringify(result, null, 2)
+      : `Wrote ${outputPath}; warm index ${result.indexing.warmMilliseconds}ms, context recall ${result.context.summary.meanRecall.toFixed(3)}.`
+  );
+  if (!result.context.passed) process.exitCode = 1;
+}
+
 async function plugin(root, args, json) {
   if (args[1] !== "verify" || !args[2]) {
     throw new Error("Use `prodocs plugin verify <plugin.json>`.");
@@ -477,7 +530,7 @@ function capabilities(json) {
     commands: [
       "init", "sync", "check", "status", "context", "impact", "policy",
       "propose", "proposal", "mcp", "evaluate", "plugin", "hooks", "view", "history",
-      "runbook", "serve"
+      "runbook", "serve", "doctor", "tutorial", "benchmark"
     ],
     collectors: [
       "JavaScript/TypeScript AST", "multi-language patterns", "OpenAPI",
@@ -509,6 +562,8 @@ export async function run(args) {
   const json = hasFlag(args, "--json");
   const commands = {
     init,
+    doctor,
+    tutorial,
     sync,
     check,
     status,
@@ -518,6 +573,7 @@ export async function run(args) {
     proposal,
     propose,
     evaluate,
+    benchmark,
     plugin,
     hooks,
     view,

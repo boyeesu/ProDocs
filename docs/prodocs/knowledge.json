@@ -1,29 +1,29 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-02T08:28:10.570Z",
-  "sourceHash": "a361a353b5bb4993d8aa8478e290e451da484f9ebcfa30446656676c11955794",
-  "knowledgeHash": "17bf50522d8c0a3aec84691bad3375a7861cdfcf1f546569313928942c2f74dd",
-  "inputHash": "dd472db6f494b256b04f084d65882654ae5108ebcce55289b442cda23a1fbb29",
+  "generatedAt": "2026-08-09T13:39:33.774Z",
+  "sourceHash": "b4624d9231eddebf6675482bf11a16afa3f676bff31d7ef7dbee835a9901c418",
+  "knowledgeHash": "5dbba2bd8dca744e6931eb3d10ec98e69d5cc46498dea74a83de2419d80e4053",
+  "inputHash": "974c726e1551290eaae35577acb56ee8a204b837db169479d98b3c8677d74329",
   "root": ".",
   "stats": {
-    "files": 46,
-    "lines": 8318,
-    "symbols": 256,
-    "edges": 346,
+    "files": 53,
+    "lines": 8968,
+    "symbols": 280,
+    "edges": 392,
     "languages": {
-      "JavaScript": 45,
+      "JavaScript": 52,
       "TypeScript": 1
     },
     "knowledge": {
-      "total": 8,
-      "supported": 8,
+      "total": 9,
+      "supported": 9,
       "unsupported": 0,
       "contradictions": 0,
       "instructionSignals": 0
     },
     "index": {
       "backend": "sqlite",
-      "entries": 46
+      "entries": 53
     }
   },
   "nodes": [
@@ -38,6 +38,46 @@
       "entrypoint": false,
       "publicSurface": false,
       "role": "source",
+      "symbols": [],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:examples/getting-started/src/delivery.js",
+      "type": "file",
+      "path": "examples/getting-started/src/delivery.js",
+      "language": "JavaScript",
+      "contentHash": "42ab6f4afbb90bc3bb069ea0c8ff925417e2696564b7f81758334c13df6c5263",
+      "lines": 4,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "retryDelivery",
+          "kind": "function",
+          "line": 1
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:examples/getting-started/test/delivery.test.js",
+      "type": "file",
+      "path": "examples/getting-started/test/delivery.test.js",
+      "language": "JavaScript",
+      "contentHash": "6b3aa12e5e30c8472262336af84df84c935736391cb5d6210a345ba3989f1b86",
+      "lines": 9,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "test",
       "symbols": [],
       "trust": {
         "repositoryContent": "untrusted",
@@ -95,6 +135,64 @@
           "name": "createComponent",
           "kind": "value",
           "line": 26
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:scripts/complexity.js",
+      "type": "file",
+      "path": "scripts/complexity.js",
+      "language": "JavaScript",
+      "contentHash": "fadabd6e870577891678b9f3d0021fc6e28971218baa0cb81c157f89942d30f3",
+      "lines": 88,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "FILE_LIMIT",
+          "kind": "value",
+          "line": 5
+        },
+        {
+          "name": "FUNCTION_LIMIT",
+          "kind": "value",
+          "line": 6
+        },
+        {
+          "name": "files",
+          "kind": "function",
+          "line": 8
+        },
+        {
+          "name": "increment",
+          "kind": "function",
+          "line": 19
+        },
+        {
+          "name": "analyze",
+          "kind": "function",
+          "line": 34
+        },
+        {
+          "name": "visit",
+          "kind": "function",
+          "line": 44
+        },
+        {
+          "name": "results",
+          "kind": "value",
+          "line": 70
+        },
+        {
+          "name": "violations",
+          "kind": "value",
+          "line": 71
         }
       ],
       "trust": {
@@ -280,12 +378,40 @@
       }
     },
     {
+      "id": "file:src/benchmark.js",
+      "type": "file",
+      "path": "src/benchmark.js",
+      "language": "JavaScript",
+      "contentHash": "b88b8a51b04ab9b8e9698915d379347d7d52409c16f91bb43117a4928871064d",
+      "lines": 40,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "timed",
+          "kind": "function",
+          "line": 5
+        },
+        {
+          "name": "benchmarkProject",
+          "kind": "function",
+          "line": 11
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
       "id": "file:src/cli.js",
       "type": "file",
       "path": "src/cli.js",
       "language": "JavaScript",
-      "contentHash": "99dce6d610f37ee3f38f6b8e1682f290170dc25b92e13f516b4a642e594e6c72",
-      "lines": 535,
+      "contentHash": "80715b6b6ec31043f59a20562dd05bae6528a49a791c74f2024e7166627357f2",
+      "lines": 591,
       "owner": "@boyeesu",
       "entrypoint": true,
       "publicSurface": true,
@@ -294,137 +420,152 @@
         {
           "name": "hasFlag",
           "kind": "function",
-          "line": 36
+          "line": 39
         },
         {
           "name": "valueAfter",
           "kind": "function",
-          "line": 40
+          "line": 43
         },
         {
           "name": "valuesAfter",
           "kind": "function",
-          "line": 45
+          "line": 48
         },
         {
           "name": "integerAfter",
           "kind": "function",
-          "line": 53
+          "line": 56
         },
         {
           "name": "help",
           "kind": "function",
-          "line": 63
+          "line": 66
         },
         {
           "name": "rootFrom",
           "kind": "function",
-          "line": 106
+          "line": 112
         },
         {
           "name": "readManifest",
           "kind": "function",
-          "line": 113
+          "line": 119
         },
         {
           "name": "writeRepositoryJson",
           "kind": "function",
-          "line": 127
+          "line": 133
         },
         {
           "name": "init",
           "kind": "function",
-          "line": 139
+          "line": 145
+        },
+        {
+          "name": "doctor",
+          "kind": "function",
+          "line": 161
+        },
+        {
+          "name": "tutorial",
+          "kind": "function",
+          "line": 177
         },
         {
           "name": "sync",
           "kind": "function",
-          "line": 155
+          "line": 189
         },
         {
           "name": "freshness",
           "kind": "function",
-          "line": 179
+          "line": 213
         },
         {
           "name": "check",
           "kind": "function",
-          "line": 196
+          "line": 230
         },
         {
           "name": "status",
           "kind": "function",
-          "line": 223
+          "line": 257
         },
         {
           "name": "context",
           "kind": "function",
-          "line": 245
+          "line": 279
         },
         {
           "name": "impact",
           "kind": "function",
-          "line": 284
+          "line": 318
         },
         {
           "name": "policy",
           "kind": "function",
-          "line": 312
+          "line": 346
         },
         {
           "name": "proposal",
           "kind": "function",
-          "line": 326
+          "line": 360
         },
         {
           "name": "propose",
           "kind": "function",
-          "line": 352
+          "line": 386
         },
         {
           "name": "evaluate",
           "kind": "function",
-          "line": 379
+          "line": 413
         },
         {
-          "name": "plugin",
-          "kind": "function",
-          "line": 399
-        },
-        {
-          "name": "hooks",
-          "kind": "function",
-          "line": 408
-        },
-        {
-          "name": "view",
-          "kind": "function",
-          "line": 422
-        },
-        {
-          "name": "history",
+          "name": "benchmark",
           "kind": "function",
           "line": 433
         },
         {
+          "name": "plugin",
+          "kind": "function",
+          "line": 452
+        },
+        {
+          "name": "hooks",
+          "kind": "function",
+          "line": 461
+        },
+        {
+          "name": "view",
+          "kind": "function",
+          "line": 475
+        },
+        {
+          "name": "history",
+          "kind": "function",
+          "line": 486
+        },
+        {
           "name": "runbook",
           "kind": "function",
-          "line": 445
+          "line": 498
         },
         {
           "name": "capabilities",
           "kind": "function",
-          "line": 472
+          "line": 525
         },
         {
           "name": "serve",
           "kind": "function",
-          "line": 491
+          "line": 544
         },
         {
           "name": "run",
           "kind": "function",
-          "line": 500
+          "line": 553
         }
       ],
       "trust": {
@@ -760,7 +901,7 @@
       "type": "file",
       "path": "src/constants.js",
       "language": "JavaScript",
-      "contentHash": "1a78d3fbbcf34f5eb679013feb35eb293e3ca7e039654efb684cd4d1a76cfae6",
+      "contentHash": "8e07bba642b4b4d8b21fae3cf81d2ee8c529699071ef2be9488a08bb7ac68922",
       "lines": 115,
       "owner": "@boyeesu",
       "entrypoint": false,
@@ -877,12 +1018,65 @@
       }
     },
     {
+      "id": "file:src/doctor.js",
+      "type": "file",
+      "path": "src/doctor.js",
+      "language": "JavaScript",
+      "contentHash": "33849be34f9704f7fc30f04ae1b1ca707547dd2a1194410cffc6167d01de97b1",
+      "lines": 179,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "executeFile",
+          "kind": "value",
+          "line": 10
+        },
+        {
+          "name": "INTEGRATIONS",
+          "kind": "value",
+          "line": 11
+        },
+        {
+          "name": "check",
+          "kind": "function",
+          "line": 20
+        },
+        {
+          "name": "exists",
+          "kind": "function",
+          "line": 24
+        },
+        {
+          "name": "gitRepository",
+          "kind": "function",
+          "line": 34
+        },
+        {
+          "name": "diagnoseProject",
+          "kind": "function",
+          "line": 47
+        },
+        {
+          "name": "summarize",
+          "kind": "function",
+          "line": 165
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
       "id": "file:src/evaluate.js",
       "type": "file",
       "path": "src/evaluate.js",
       "language": "JavaScript",
-      "contentHash": "0481b1d3489c27ca8b82f2bd00f52e89827e98fe11de2c071507d0fab4f2831d",
-      "lines": 87,
+      "contentHash": "99f2bf836ee2e857cc6f92c1c7226a306250348054362db47d263658e85497df",
+      "lines": 109,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -1819,12 +2013,63 @@
       }
     },
     {
+      "id": "file:src/tutorial.js",
+      "type": "file",
+      "path": "src/tutorial.js",
+      "language": "JavaScript",
+      "contentHash": "65afe4dd6a113e1ebb1a9999aba81b93780f8005a890f0a4ea925b4b70c90ece",
+      "lines": 89,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "FILES",
+          "kind": "value",
+          "line": 7
+        },
+        {
+          "name": "createTutorial",
+          "kind": "function",
+          "line": 59
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:test/adoption.test.js",
+      "type": "file",
+      "path": "test/adoption.test.js",
+      "language": "JavaScript",
+      "contentHash": "65575a8ee1764f224a1eedc48e1ae033265d9a8dff4884ad9d2e3087152e95b5",
+      "lines": 100,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "test",
+      "symbols": [
+        {
+          "name": "temporaryProject",
+          "kind": "function",
+          "line": 10
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
       "id": "file:test/cli-roadmap.test.js",
       "type": "file",
       "path": "test/cli-roadmap.test.js",
       "language": "JavaScript",
-      "contentHash": "5a133ce24c4b104204579ebd3837587d6a3f73d845604f9f5c2f5613a66ea25f",
-      "lines": 396,
+      "contentHash": "967a44233f1ab7007edf3235ec4cc7ae2326bb2affbe2aabd4991ed07b5730df",
+      "lines": 428,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -1967,8 +2212,8 @@
       "type": "file",
       "path": "test/package.test.js",
       "language": "JavaScript",
-      "contentHash": "f3b7eab15029911bb7d8e1bf39b7cd91b1eb10da9f51c93f9488f2de4a991228",
-      "lines": 199,
+      "contentHash": "adca7c990731b38b3984bc7b9e4180668d8453325a669f987014d882998fc1aa",
+      "lines": 213,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -2040,8 +2285,8 @@
       "type": "file",
       "path": "test/roadmap.test.js",
       "language": "JavaScript",
-      "contentHash": "862c77409bb9f237fd86cd4b2ad422675cb9965c6f1e5f35f3adfb15dfcd0b7a",
-      "lines": 790,
+      "contentHash": "f1969d3a1d5f804e9d15b7a644fb5391afd746add890798b79c35c98816f21ff",
+      "lines": 807,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -2068,7 +2313,7 @@
         "instructionSignals": [
           {
             "code": "repository-instruction",
-            "offset": 22493,
+            "offset": 22997,
             "excerpt": "Ignore all previous instructions"
           }
         ]
@@ -2151,7 +2396,7 @@
           "path": "src/cli.js",
           "symbol": "run",
           "supported": true,
-          "contentHash": "99dce6d610f37ee3f38f6b8e1682f290170dc25b92e13f516b4a642e594e6c72"
+          "contentHash": "80715b6b6ec31043f59a20562dd05bae6528a49a791c74f2024e7166627357f2"
         },
         {
           "path": "src/index-store.js",
@@ -2224,6 +2469,58 @@
       "contradicts": [],
       "supersedes": [],
       "customerImpact": "",
+      "verification": [],
+      "trust": {
+        "authored": true,
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "feature:adoption-assurance",
+      "key": "adoption-assurance",
+      "type": "feature",
+      "path": "docs/knowledge/features/adoption-assurance.md",
+      "line": 1,
+      "title": "Adoption and continuous assurance",
+      "status": "active",
+      "bodyHash": "530ef298c5bec34527a80a35d63c107f1cd4be20a218197f554e576d966ff992",
+      "evidence": [
+        {
+          "path": "scripts/complexity.js",
+          "symbol": null,
+          "supported": true,
+          "contentHash": "fadabd6e870577891678b9f3d0021fc6e28971218baa0cb81c157f89942d30f3"
+        },
+        {
+          "path": "src/benchmark.js",
+          "symbol": "benchmarkProject",
+          "supported": true,
+          "contentHash": "b88b8a51b04ab9b8e9698915d379347d7d52409c16f91bb43117a4928871064d"
+        },
+        {
+          "path": "src/doctor.js",
+          "symbol": "diagnoseProject",
+          "supported": true,
+          "contentHash": "33849be34f9704f7fc30f04ae1b1ca707547dd2a1194410cffc6167d01de97b1"
+        },
+        {
+          "path": "src/tutorial.js",
+          "symbol": "createTutorial",
+          "supported": true,
+          "contentHash": "65afe4dd6a113e1ebb1a9999aba81b93780f8005a890f0a4ea925b4b70c90ece"
+        }
+      ],
+      "audiences": [
+        "operations",
+        "product",
+        "security",
+        "technical"
+      ],
+      "affects": [],
+      "contradicts": [],
+      "supersedes": [],
+      "customerImpact": "Teams can validate setup, learn safely, measure local outcomes, and continuously test critical safety boundaries.",
       "verification": [],
       "trust": {
         "authored": true,
@@ -2491,7 +2788,7 @@
           "path": "src/cli.js",
           "symbol": "run",
           "supported": true,
-          "contentHash": "99dce6d610f37ee3f38f6b8e1682f290170dc25b92e13f516b4a642e594e6c72"
+          "contentHash": "80715b6b6ec31043f59a20562dd05bae6528a49a791c74f2024e7166627357f2"
         }
       ],
       "audiences": [
@@ -2539,6 +2836,15 @@
     {
       "type": "affects",
       "from": "claim:local-first",
+      "to": "file:src/benchmark.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
       "to": "file:src/cli.js",
       "evidence": {
         "source": "docs/knowledge/claims/local-first.md",
@@ -2612,6 +2918,15 @@
       "type": "affects",
       "from": "claim:local-first",
       "to": "file:src/context.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/doctor.js",
       "evidence": {
         "source": "docs/knowledge/claims/local-first.md",
         "reference": "src"
@@ -2790,6 +3105,24 @@
     },
     {
       "type": "affects",
+      "from": "claim:local-first",
+      "to": "file:src/tutorial.js",
+      "evidence": {
+        "source": "docs/knowledge/claims/local-first.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/benchmark.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
       "from": "decision:deterministic-core",
       "to": "file:src/cli.js",
       "evidence": {
@@ -2864,6 +3197,15 @@
       "type": "affects",
       "from": "decision:deterministic-core",
       "to": "file:src/context.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/doctor.js",
       "evidence": {
         "source": "docs/knowledge/decisions/deterministic-core.md",
         "reference": "src"
@@ -3035,6 +3377,15 @@
       "type": "affects",
       "from": "decision:deterministic-core",
       "to": "file:src/server.js",
+      "evidence": {
+        "source": "docs/knowledge/decisions/deterministic-core.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "decision:deterministic-core",
+      "to": "file:src/tutorial.js",
       "evidence": {
         "source": "docs/knowledge/decisions/deterministic-core.md",
         "reference": "src"
@@ -3088,6 +3439,15 @@
     {
       "type": "affects",
       "from": "feature:evidence-kernel",
+      "to": "file:src/benchmark.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
       "to": "file:src/cli.js",
       "evidence": {
         "source": "docs/knowledge/features/evidence-kernel.md",
@@ -3161,6 +3521,15 @@
       "type": "affects",
       "from": "feature:evidence-kernel",
       "to": "file:src/context.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/doctor.js",
       "evidence": {
         "source": "docs/knowledge/features/evidence-kernel.md",
         "reference": "src"
@@ -3332,6 +3701,15 @@
       "type": "affects",
       "from": "feature:evidence-kernel",
       "to": "file:src/server.js",
+      "evidence": {
+        "source": "docs/knowledge/features/evidence-kernel.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "feature:evidence-kernel",
+      "to": "file:src/tutorial.js",
       "evidence": {
         "source": "docs/knowledge/features/evidence-kernel.md",
         "reference": "src"
@@ -3358,6 +3736,15 @@
     {
       "type": "affects",
       "from": "invariant:untrusted-repository",
+      "to": "file:src/benchmark.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
       "to": "file:src/cli.js",
       "evidence": {
         "source": "docs/knowledge/invariants/untrusted-repository.md",
@@ -3431,6 +3818,15 @@
       "type": "affects",
       "from": "invariant:untrusted-repository",
       "to": "file:src/context.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/doctor.js",
       "evidence": {
         "source": "docs/knowledge/invariants/untrusted-repository.md",
         "reference": "src"
@@ -3609,6 +4005,24 @@
     },
     {
       "type": "affects",
+      "from": "invariant:untrusted-repository",
+      "to": "file:src/tutorial.js",
+      "evidence": {
+        "source": "docs/knowledge/invariants/untrusted-repository.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/benchmark.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
       "from": "runbook:production-verification",
       "to": "file:src/cli.js",
       "evidence": {
@@ -3683,6 +4097,15 @@
       "type": "affects",
       "from": "runbook:production-verification",
       "to": "file:src/context.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/doctor.js",
       "evidence": {
         "source": "docs/knowledge/runbooks/production-verification.md",
         "reference": "src"
@@ -3854,6 +4277,15 @@
       "type": "affects",
       "from": "runbook:production-verification",
       "to": "file:src/server.js",
+      "evidence": {
+        "source": "docs/knowledge/runbooks/production-verification.md",
+        "reference": "src"
+      }
+    },
+    {
+      "type": "affects",
+      "from": "runbook:production-verification",
+      "to": "file:src/tutorial.js",
       "evidence": {
         "source": "docs/knowledge/runbooks/production-verification.md",
         "reference": "src"
@@ -3866,6 +4298,15 @@
       "evidence": {
         "source": "bin/prodocs.js",
         "specifier": "../src/cli.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:examples/getting-started/test/delivery.test.js",
+      "to": "file:examples/getting-started/src/delivery.js",
+      "evidence": {
+        "source": "examples/getting-started/test/delivery.test.js",
+        "specifier": "../src/delivery.js"
       }
     },
     {
@@ -3906,6 +4347,33 @@
     },
     {
       "type": "imports",
+      "from": "file:src/benchmark.js",
+      "to": "file:src/evaluate.js",
+      "evidence": {
+        "source": "src/benchmark.js",
+        "specifier": "./evaluate.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/benchmark.js",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "src/benchmark.js",
+        "specifier": "./scanner.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/benchmark.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./benchmark.js"
+      }
+    },
+    {
+      "type": "imports",
       "from": "file:src/cli.js",
       "to": "file:src/config.js",
       "evidence": {
@@ -3929,6 +4397,15 @@
       "evidence": {
         "source": "src/cli.js",
         "specifier": "./context.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/doctor.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./doctor.js"
       }
     },
     {
@@ -4086,6 +4563,15 @@
     },
     {
       "type": "imports",
+      "from": "file:src/cli.js",
+      "to": "file:src/tutorial.js",
+      "evidence": {
+        "source": "src/cli.js",
+        "specifier": "./tutorial.js"
+      }
+    },
+    {
+      "type": "imports",
       "from": "file:src/collectors/artifacts.js",
       "to": "file:src/collectors/contract.js",
       "evidence": {
@@ -4163,6 +4649,42 @@
       "evidence": {
         "source": "src/config.js",
         "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/doctor.js",
+      "to": "file:src/config.js",
+      "evidence": {
+        "source": "src/doctor.js",
+        "specifier": "./config.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/doctor.js",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "src/doctor.js",
+        "specifier": "./paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/doctor.js",
+      "to": "file:src/safe-fs.js",
+      "evidence": {
+        "source": "src/doctor.js",
+        "specifier": "./safe-fs.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/doctor.js",
+      "to": "file:src/scanner.js",
+      "evidence": {
+        "source": "src/doctor.js",
+        "specifier": "./scanner.js"
       }
     },
     {
@@ -4563,6 +5085,60 @@
     },
     {
       "type": "imports",
+      "from": "file:src/tutorial.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "src/tutorial.js",
+        "specifier": "./constants.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/tutorial.js",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "src/tutorial.js",
+        "specifier": "./paths.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:src/tutorial.js",
+      "to": "file:src/security.js",
+      "evidence": {
+        "source": "src/tutorial.js",
+        "specifier": "./security.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/adoption.test.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "test/adoption.test.js",
+        "specifier": "../src/constants.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/adoption.test.js",
+      "to": "file:src/doctor.js",
+      "evidence": {
+        "source": "test/adoption.test.js",
+        "specifier": "../src/doctor.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/adoption.test.js",
+      "to": "file:src/tutorial.js",
+      "evidence": {
+        "source": "test/adoption.test.js",
+        "specifier": "../src/tutorial.js"
+      }
+    },
+    {
+      "type": "imports",
       "from": "file:test/cli-roadmap.test.js",
       "to": "file:src/constants.js",
       "evidence": {
@@ -4807,10 +5383,37 @@
     {
       "type": "owns",
       "from": "owner:@boyeesu",
+      "to": "file:examples/getting-started/src/delivery.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "examples/getting-started/src/delivery.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:examples/getting-started/test/delivery.test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "examples/getting-started/test/delivery.test.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
       "to": "file:fixtures/collectors/typescript-component.tsx",
       "evidence": {
         "source": ".github/CODEOWNERS",
         "reference": "fixtures/collectors/typescript-component.tsx"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:scripts/complexity.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "scripts/complexity.js"
       }
     },
     {
@@ -4847,6 +5450,15 @@
       "evidence": {
         "source": ".github/CODEOWNERS",
         "reference": "scripts/verify-release.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/benchmark.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/benchmark.js"
       }
     },
     {
@@ -4928,6 +5540,15 @@
       "evidence": {
         "source": ".github/CODEOWNERS",
         "reference": "src/context.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:src/doctor.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/doctor.js"
       }
     },
     {
@@ -5104,6 +5725,24 @@
     {
       "type": "owns",
       "from": "owner:@boyeesu",
+      "to": "file:src/tutorial.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "src/tutorial.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:test/adoption.test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "test/adoption.test.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
       "to": "file:test/cli-roadmap.test.js",
       "evidence": {
         "source": ".github/CODEOWNERS",
@@ -5265,6 +5904,42 @@
     },
     {
       "type": "supported-by",
+      "from": "feature:adoption-assurance",
+      "to": "file:scripts/complexity.js",
+      "evidence": {
+        "source": "docs/knowledge/features/adoption-assurance.md",
+        "reference": "scripts/complexity.js"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:adoption-assurance",
+      "to": "file:src/benchmark.js",
+      "evidence": {
+        "source": "docs/knowledge/features/adoption-assurance.md",
+        "reference": "src/benchmark.js#benchmarkProject"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:adoption-assurance",
+      "to": "file:src/doctor.js",
+      "evidence": {
+        "source": "docs/knowledge/features/adoption-assurance.md",
+        "reference": "src/doctor.js#diagnoseProject"
+      }
+    },
+    {
+      "type": "supported-by",
+      "from": "feature:adoption-assurance",
+      "to": "file:src/tutorial.js",
+      "evidence": {
+        "source": "docs/knowledge/features/adoption-assurance.md",
+        "reference": "src/tutorial.js#createTutorial"
+      }
+    },
+    {
+      "type": "supported-by",
       "from": "feature:agent-interface",
       "to": "file:src/context.js",
       "evidence": {
@@ -5414,6 +6089,42 @@
       "evidence": {
         "source": "docs/knowledge/runbooks/production-verification.md",
         "reference": "src/cli.js#run"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:examples/getting-started/test/delivery.test.js",
+      "to": "file:examples/getting-started/src/delivery.js",
+      "evidence": {
+        "source": "examples/getting-started/test/delivery.test.js",
+        "reference": "../src/delivery.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/adoption.test.js",
+      "to": "file:src/constants.js",
+      "evidence": {
+        "source": "test/adoption.test.js",
+        "reference": "../src/constants.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/adoption.test.js",
+      "to": "file:src/doctor.js",
+      "evidence": {
+        "source": "test/adoption.test.js",
+        "reference": "../src/doctor.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/adoption.test.js",
+      "to": "file:src/tutorial.js",
+      "evidence": {
+        "source": "test/adoption.test.js",
+        "reference": "../src/tutorial.js"
       }
     },
     {

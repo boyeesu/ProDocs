@@ -6,6 +6,7 @@
 
 ## Product capabilities
 
+- **Adoption and continuous assurance** (`feature:adoption-assurance`, supported) — [source](../knowledge/features/adoption-assurance.md)
 - **Agent-neutral context and MCP interface** (`feature:agent-interface`, supported) — [source](../knowledge/features/agent-interface.md)
 - **Change intelligence** (`feature:change-intelligence`, supported) — [source](../knowledge/features/change-intelligence.md)
 - **Evidence-backed knowledge kernel** (`feature:evidence-kernel`, supported) — [source](../knowledge/features/evidence-kernel.md)
@@ -15,5 +16,5 @@
 
 - **Core workflows remain local-first** (`claim:local-first`, supported) — [source](../knowledge/claims/local-first.md)
 
-Evidence snapshot: `a361a353b5bb`; knowledge snapshot:
-`17bf50522d8c`.
+Evidence snapshot: `b4624d9231ed`; knowledge snapshot:
+`5dbba2bd8dca`.
