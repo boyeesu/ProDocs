@@ -53,7 +53,7 @@ not prose claims.
 | [`test/collectors.test.js`](../../test/collectors.test.js) | JavaScript | 336 | @boyeesu | fixtures (value, L12) |
 | [`test/config.test.js`](../../test/config.test.js) | JavaScript | 151 | @boyeesu | — |
 | [`test/context.test.js`](../../test/context.test.js) | JavaScript | 174 | @boyeesu | hashes (value, L11)<br>node (function, L19)<br>edge (function, L39)<br>graph (function, L51) |
-| [`test/package.test.js`](../../test/package.test.js) | JavaScript | 213 | @boyeesu | npmCli (value, L8)<br>execute (function, L20)<br>executeNpm (function, L49) |
+| [`test/package.test.js`](../../test/package.test.js) | JavaScript | 214 | @boyeesu | npmCli (value, L8)<br>execute (function, L20)<br>executeNpm (function, L49) |
 | [`test/paths.test.js`](../../test/paths.test.js) | JavaScript | 44 | @boyeesu | — |
 | [`test/render.test.js`](../../test/render.test.js) | JavaScript | 64 | @boyeesu | graph (function, L9) |
 | [`test/roadmap.test.js`](../../test/roadmap.test.js) | JavaScript | 807 | @boyeesu | executeFile (value, L45)<br>project (function, L47)<br>config (function, L57) |

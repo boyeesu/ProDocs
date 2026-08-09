@@ -6,7 +6,7 @@ consent-based so repository content never becomes analytics data.
 ## First session
 
 ```sh
-npm install --global prodocs
+npm install --global @danielesuga/prodocs
 prodocs tutorial --output prodocs-tutorial
 cd prodocs-tutorial
 prodocs sync
