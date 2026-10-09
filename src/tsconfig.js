@@ -264,7 +264,7 @@ export function resolveAlias(specifier, context) {
   const base = context.baseDirectory ?? context.pathsDirectory;
   const candidates = best
     ? best.targets.map((target) =>
-        resolveConfigPath(base, target.replace("*", () => captured))
+        resolveConfigPath(base, target.replaceAll("*", () => captured))
       )
     : [];
   if (context.baseDirectory !== null) {
