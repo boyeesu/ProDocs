@@ -321,6 +321,29 @@ least 24 characters.
 
 Run `prodocs --help` for every option.
 
+## TypeScript source resolution
+
+ProDocs resolves runtime specifiers such as `./config/env.js` to `env.ts` or
+`env.tsx` when no indexed `.js` file matches. It also substitutes `.mjs` with
+`.mts`, `.cjs` with `.cts`, and corresponding declaration files. An explicitly
+named runtime file retains precedence; extensionless TypeScript imports prefer
+TypeScript sources. No import rewriting or extra ProDocs configuration is needed.
+
+For aliases, ProDocs reads the nearest ancestor `tsconfig.json` or `jsconfig.json`, including when
+`source` selects only a subdirectory or individual files. It supports JSON
+comments, trailing commas, `compilerOptions.paths`, `baseUrl`, and relative
+`extends` chains within the repository. Exact aliases win over wildcard aliases;
+otherwise the longest matching prefix wins, with target arrays tried in order.
+An empty nested config creates its own scope instead of inheriting parent
+aliases implicitly. Effective alias changes invalidate `prodocs check`.
+
+This is source-tree resolution, not a full TypeScript compiler resolver.
+Package-name/absolute `extends`, project references (including separate
+`tsconfig.app.json` files unless extended), package `exports`/`imports`, and
+mode-specific `moduleResolution` rules are not interpreted. Only indexed,
+non-excluded files can become relationship targets; malformed or unsafe local
+configs stop the scan rather than silently publishing incomplete evidence.
+
 ## Security model
 
 Repository content is untrusted input:

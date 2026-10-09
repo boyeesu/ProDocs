@@ -40,8 +40,8 @@ not prose claims.
 | [`src/integrations.js`](../../src/integrations.js) | JavaScript | 75 | @boyeesu | INTEGRATIONS (value, L5)<br>writeIntegrations (function, L63) |
 | [`src/knowledge.js`](../../src/knowledge.js) | JavaScript | 418 | @boyeesu | KNOWLEDGE_KINDS (value, L15)<br>IDENTIFIER (value, L22)<br>strings (function, L24)<br>parseFrontMatter (function, L46)<br>normalizeEvidenceReference (function, L77)<br>verification (function, L86)<br>normalizeKnowledgeDocument (function, L138)<br>validateKnowledgeDocument (function, L224) |
 | [`src/mcp.js`](../../src/mcp.js) | JavaScript | 240 | @boyeesu | PROTOCOL_VERSION (value, L12)<br>result (function, L14)<br>error (function, L18)<br>textTool (function, L22)<br>TOOLS (value, L31)<br>state (function, L97)<br>readManifest (function, L106)<br>handleMcpRequest (function, L119) |
-| [`src/module-resolution.js`](../../src/module-resolution.js) | JavaScript | 244 | @boyeesu | CONFIG_NAMES (value, L7)<br>EXTENSIONS (value, L8)<br>stripJsonComments (function, L22)<br>stripTrailingCommas (function, L59)<br>parseConfig (function, L87)<br>wildcardCount (function, L95)<br>validateMappings (function, L99)<br>loadModuleResolution (function, L130) |
-| [`src/paths.js`](../../src/paths.js) | JavaScript | 77 | @boyeesu | isInside (function, L4)<br>requireRelativePath (function, L14)<br>resolveSourcePath (function, L23)<br>resolveOutputPath (function, L51) |
+| [`src/module-resolution.js`](../../src/module-resolution.js) | JavaScript | 106 | @boyeesu | EXTENSIONS (value, L10)<br>TYPESCRIPT_EXTENSIONS (value, L13)<br>RUNTIME_EXTENSION_SOURCES (value, L17)<br>loadModuleResolution (function, L24)<br>candidates (function, L41)<br>resolvePythonImport (function, L54)<br>resolveImport (function, L67) |
+| [`src/paths.js`](../../src/paths.js) | JavaScript | 89 | @boyeesu | isExcluded (function, L4)<br>isInside (function, L16)<br>requireRelativePath (function, L26)<br>resolveSourcePath (function, L35)<br>resolveOutputPath (function, L63) |
 | [`src/plugins.js`](../../src/plugins.js) | JavaScript | 182 | @boyeesu | IDENTIFIER (value, L5)<br>stringArray (function, L7)<br>rules (function, L25)<br>nameAfterPrefix (function, L57)<br>defineDeclarativePlugin (function, L62)<br>loadDeclarativePlugin (function, L136)<br>verifyDeclarativePlugin (function, L149) |
 | [`src/policy.js`](../../src/policy.js) | JavaScript | 90 | @boyeesu | violation (function, L1)<br>evaluatePolicies (function, L11) |
 | [`src/proposals.js`](../../src/proposals.js) | JavaScript | 145 | @boyeesu | proposalHash (function, L12)<br>validateProposal (function, L18)<br>allowedKnowledgePath (function, L66)<br>applyProposal (function, L73)<br>readProposal (function, L139) |
@@ -49,13 +49,15 @@ not prose claims.
 | [`src/render.js`](../../src/render.js) | JavaScript | 378 | @boyeesu | GENERATED_NOTICE (value, L6)<br>escapeCell (function, L9)<br>escapeHeading (function, L24)<br>sourceLink (function, L31)<br>languageSummary (function, L42)<br>renderSystemOverview (function, L49)<br>renderCodeMap (function, L118)<br>knowledgeNodes (function, L143) |
 | [`src/runbooks.js`](../../src/runbooks.js) | JavaScript | 119 | @boyeesu | publicStep (function, L7)<br>runbookPlan (function, L17)<br>execute (function, L37)<br>verifyRunbook (function, L71) |
 | [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 124 | @boyeesu | NO_FOLLOW (value, L6)<br>readRegularFile (function, L8)<br>createFileExclusive (function, L66)<br>atomicWriteFile (function, L80)<br>atomicWriteBuffer (function, L84)<br>atomicWrite (function, L91) |
-| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 576 | @boyeesu | normalizeSource (function, L27)<br>isExcluded (function, L31)<br>matchesGlob (function, L42)<br>isIncluded (function, L111)<br>walk (function, L116)<br>discoverFiles (function, L159)<br>inferEntrypoint (function, L194)<br>languageForPath (function, L214) |
+| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 565 | @boyeesu | normalizeSource (function, L27)<br>matchesGlob (function, L31)<br>isIncluded (function, L100)<br>walk (function, L105)<br>discoverFiles (function, L148)<br>inferEntrypoint (function, L183)<br>languageForPath (function, L203)<br>codeownersMatch (function, L211) |
 | [`src/security.js`](../../src/security.js) | JavaScript | 102 | @boyeesu | INSTRUCTION_PATTERNS (value, L4)<br>SECRET_PATTERNS (value, L13)<br>sha256 (function, L28)<br>stableJson (function, L32)<br>toPosix (function, L43)<br>normalizeRepositoryPath (function, L47)<br>detectPromptInjection (function, L65)<br>redactSecrets (function, L81) |
 | [`src/server.js`](../../src/server.js) | JavaScript | 161 | @boyeesu | json (function, L13)<br>authorized (function, L27)<br>body (function, L36)<br>readManifest (function, L47)<br>createCollaborationServer (function, L60)<br>listenForCollaboration (function, L138) |
+| [`src/tsconfig-json.js`](../../src/tsconfig-json.js) | JavaScript | 62 | @boyeesu | isObject (function, L1)<br>parseConfig (function, L7) |
+| [`src/tsconfig.js`](../../src/tsconfig.js) | JavaScript | 279 | @boyeesu | MAX_EXTENDS_DEPTH (value, L10)<br>MAX_CONFIG_FILES (value, L11)<br>CONFIG_NAMES (value, L12)<br>EMPTY_OPTIONS (value, L13)<br>isObject (function, L15)<br>validPath (function, L19)<br>resolveConfigPath (function, L23)<br>isAbsoluteConfigPath (function, L27) |
 | [`src/tutorial.js`](../../src/tutorial.js) | JavaScript | 90 | @boyeesu | FILES (value, L7)<br>createTutorial (function, L59) |
 | [`test/adoption.test.js`](../../test/adoption.test.js) | JavaScript | 395 | @boyeesu | executeFile (value, L19)<br>cli (value, L20)<br>fixture (function, L22) |
 | [`test/cli-roadmap.test.js`](../../test/cli-roadmap.test.js) | JavaScript | 428 | @boyeesu | executeFile (value, L11)<br>cli (value, L12)<br>execute (function, L14)<br>fullProject (function, L34) |
-| [`test/cli.test.js`](../../test/cli.test.js) | JavaScript | 106 | @boyeesu | cli (value, L8)<br>execute (function, L10) |
+| [`test/cli.test.js`](../../test/cli.test.js) | JavaScript | 150 | @boyeesu | cli (value, L8)<br>execute (function, L10) |
 | [`test/collectors.test.js`](../../test/collectors.test.js) | JavaScript | 336 | @boyeesu | fixtures (value, L12) |
 | [`test/config.test.js`](../../test/config.test.js) | JavaScript | 151 | @boyeesu | — |
 | [`test/context.test.js`](../../test/context.test.js) | JavaScript | 174 | @boyeesu | hashes (value, L11)<br>node (function, L19)<br>edge (function, L39)<br>graph (function, L51) |
@@ -65,5 +67,6 @@ not prose claims.
 | [`test/render.test.js`](../../test/render.test.js) | JavaScript | 106 | @boyeesu | graph (function, L10) |
 | [`test/roadmap.test.js`](../../test/roadmap.test.js) | JavaScript | 817 | @boyeesu | executeFile (value, L45)<br>project (function, L47)<br>config (function, L57) |
 | [`test/safe-fs.test.js`](../../test/safe-fs.test.js) | JavaScript | 48 | @boyeesu | — |
-| [`test/scanner.test.js`](../../test/scanner.test.js) | JavaScript | 297 | @boyeesu | fixture (function, L9) |
+| [`test/scanner.test.js`](../../test/scanner.test.js) | JavaScript | 595 | @boyeesu | fixture (function, L9) |
+| [`test/tsconfig.test.js`](../../test/tsconfig.test.js) | JavaScript | 389 | @boyeesu | fixture (function, L10)<br>targets (function, L23) |
 | [`test/workflows.test.js`](../../test/workflows.test.js) | JavaScript | 49 | @boyeesu | workflowDirectory (value, L6) |

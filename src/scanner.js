@@ -15,7 +15,7 @@ import { openIndexStore } from "./index-store.js";
 import { collectAuthoredKnowledge } from "./knowledge.js";
 import { loadModuleResolution, resolveImport } from "./module-resolution.js";
 import { loadDeclarativePlugin } from "./plugins.js";
-import { resolveSourcePath } from "./paths.js";
+import { isExcluded, resolveSourcePath } from "./paths.js";
 import { readRegularFile } from "./safe-fs.js";
 import {
   detectPromptInjection,
@@ -26,17 +26,6 @@ import {
 
 function normalizeSource(value) {
   return value.replace(/\r\n?/g, "\n");
-}
-
-function isExcluded(relativePath, excluded) {
-  const segments = toPosix(relativePath).split("/");
-  return excluded.some((rule) => {
-    const normalized = rule.replace(/^\.\//, "").replace(/\/$/, "");
-    return normalized.includes("/")
-      ? toPosix(relativePath) === normalized ||
-          toPosix(relativePath).startsWith(`${normalized}/`)
-      : segments.includes(normalized);
-  });
 }
 
 export function matchesGlob(glob, value) {
@@ -317,7 +306,7 @@ export async function scanProject(
   }
   const absoluteFiles = await discoverFiles(canonicalRoot, config, languageMap);
   const knownFiles = new Set(absoluteFiles.map((file) => path.resolve(file)));
-  const moduleResolution = await loadModuleResolution(canonicalRoot);
+  const moduleResolution = await loadModuleResolution(canonicalRoot, config, absoluteFiles);
   const codeowners = await readCodeowners(canonicalRoot);
   const collectorRegistry = createCollectorRegistry([
     javascriptTypeScriptCollector,
@@ -330,7 +319,7 @@ export async function scanProject(
     readOnly: indexMode !== "write"
   });
   const nodes = [];
-  let totalBytes = 0;
+  let totalBytes = moduleResolution.bytesRead;
   let cacheHits = 0;
   let cacheMisses = 0;
 
