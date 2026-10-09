@@ -73,7 +73,7 @@
     "knowledge-graph"
   ],
   "dependencies": {
-    "@babel/parser": "7.28.5",
+    "@babel/parser": "8.0.6",
     "sql.js": "1.14.1",
     "yaml": "2.9.0"
   },
