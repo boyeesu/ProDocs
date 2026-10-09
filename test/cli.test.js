@@ -103,3 +103,47 @@ test("context emits a validated packet with freshness and relevance", async (t) 
     "dependency"
   );
 });
+
+test("NodeNext and alias edges reach context packets and tsconfig drift makes check stale", async (t) => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), "prodocs-nodenext-"));
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+  await fs.mkdir(path.join(root, "src"));
+  await fs.writeFile(
+    path.join(root, "src", "main.ts"),
+    'import "./env.js";\nimport "@/database.js";\nexport function main() {}\n'
+  );
+  for (const file of ["env", "database", "alternate"]) {
+    await fs.writeFile(
+      path.join(root, "src", `${file}.ts`),
+      `export const ${file} = {};\n`
+    );
+  }
+  const configPath = path.join(root, "tsconfig.json");
+  await fs.writeFile(configPath, JSON.stringify({
+    compilerOptions: {
+      module: "NodeNext",
+      moduleResolution: "NodeNext",
+      paths: { "@/*": ["src/*"] }
+    }
+  }));
+  for (const command of ["init", "sync", "check"]) {
+    const result = await execute([command], root);
+    assert.equal(result.code, 0, result.stderr);
+  }
+  const result = await execute(["context", "--path", "src/main.ts", "--json"], root);
+  assert.equal(result.code, 0, result.stderr);
+  const packet = JSON.parse(result.stdout);
+  assert.equal(packet.freshness.status, "fresh");
+  assert.deepEqual(packet.nodes.map((node) => node.path).sort(), [
+    "src/database.ts", "src/env.ts", "src/main.ts"
+  ]);
+  assert.equal(packet.stats.relationships, 2);
+  await fs.writeFile(configPath, JSON.stringify({
+    compilerOptions: { paths: { "@/*": ["src/alternate.ts"] } }
+  }));
+  const stale = await execute(["check"], root);
+  assert.equal(stale.code, 1);
+  assert.match(stale.stderr, /stale/);
+  assert.equal((await execute(["sync"], root)).code, 0);
+  assert.equal((await execute(["check"], root)).code, 0);
+});

@@ -1,195 +1,67 @@
-import fs from "node:fs/promises";
 import path from "node:path";
+import { DEFAULT_CONFIG } from "./constants.js";
 import { isInside } from "./paths.js";
-import { readRegularFile } from "./safe-fs.js";
-import { sha256 } from "./security.js";
+import {
+  aliasContextForFile,
+  loadAliasContexts,
+  resolveAlias
+} from "./tsconfig.js";
 
-const CONFIG_NAMES = ["tsconfig.json", "jsconfig.json"];
 const EXTENSIONS = [
-  ".js",
-  ".jsx",
-  ".mjs",
-  ".cjs",
-  ".ts",
-  ".tsx",
-  ".mts",
-  ".cts",
-  ".py",
-  ".go",
-  ".rs"
+  ".js", ".jsx", ".mjs", ".cjs", ".ts", ".tsx", ".mts", ".cts", ".py", ".go", ".rs"
 ];
+const TYPESCRIPT_EXTENSIONS = [
+  ".ts", ".tsx", ".d.ts",
+  ...EXTENSIONS.filter((extension) => extension !== ".ts" && extension !== ".tsx")
+];
+const RUNTIME_EXTENSION_SOURCES = {
+  ".js": [".ts", ".tsx", ".d.ts"],
+  ".jsx": [".ts", ".tsx", ".d.ts"],
+  ".mjs": [".mts", ".d.mts"],
+  ".cjs": [".cts", ".d.cts"]
+};
 
-function stripJsonComments(source) {
-  let result = "";
-  let inString = false;
-  let escaped = false;
-  for (let index = 0; index < source.length; index += 1) {
-    const character = source[index];
-    const next = source[index + 1];
-    if (inString) {
-      result += character;
-      if (escaped) escaped = false;
-      else if (character === "\\") escaped = true;
-      else if (character === '"') inString = false;
-      continue;
-    }
-    if (character === '"') {
-      inString = true;
-      result += character;
-    } else if (character === "/" && next === "/") {
-      while (index < source.length && source[index] !== "\n") index += 1;
-      result += "\n";
-    } else if (character === "/" && next === "*") {
-      index += 2;
-      while (
-        index < source.length &&
-        !(source[index] === "*" && source[index + 1] === "/")
-      ) {
-        if (source[index] === "\n") result += "\n";
-        index += 1;
-      }
-      index += 1;
-    } else {
-      result += character;
-    }
-  }
-  return result;
+export async function loadModuleResolution(
+  root,
+  config = DEFAULT_CONFIG,
+  absoluteFiles = []
+) {
+  const loaded = await loadAliasContexts(root, config, absoluteFiles);
+  const rootContext = loaded.contexts.find((context) => context.directory === root);
+  return {
+    source: rootContext?.source ?? null,
+    hash: loaded.fingerprint,
+    contexts: loaded.contexts,
+    bytesRead: loaded.bytesRead
+  };
 }
 
-function stripTrailingCommas(source) {
-  let result = "";
-  let inString = false;
-  let escaped = false;
-  for (let index = 0; index < source.length; index += 1) {
-    const character = source[index];
-    if (inString) {
-      result += character;
-      if (escaped) escaped = false;
-      else if (character === "\\") escaped = true;
-      else if (character === '"') inString = false;
-      continue;
-    }
-    if (character === '"') {
-      inString = true;
-      result += character;
-      continue;
-    }
-    if (character === ",") {
-      let cursor = index + 1;
-      while (/\s/.test(source[cursor] ?? "")) cursor += 1;
-      if (source[cursor] === "}" || source[cursor] === "]") continue;
-    }
-    result += character;
-  }
-  return result;
-}
-
-function parseConfig(contents, name) {
-  try {
-    return JSON.parse(stripTrailingCommas(stripJsonComments(contents)));
-  } catch (error) {
-    throw new Error(`Could not parse ${name}: ${error.message}`);
-  }
-}
-
-function wildcardCount(value) {
-  return [...value].filter((character) => character === "*").length;
-}
-
-function validateMappings(paths) {
-  if (paths === undefined) return [];
-  if (!paths || typeof paths !== "object" || Array.isArray(paths)) {
-    throw new Error("compilerOptions.paths must be an object.");
-  }
-  const entries = Object.entries(paths);
-  if (entries.length > 256) {
-    throw new Error("compilerOptions.paths exceeds the 256-entry safety limit.");
-  }
-  return entries.map(([pattern, targets]) => {
-    if (!pattern || wildcardCount(pattern) > 1) {
-      throw new Error(`Invalid compilerOptions.paths pattern: ${pattern}`);
-    }
-    if (!Array.isArray(targets) || targets.length === 0 || targets.length > 16) {
-      throw new Error(`Path mapping ${pattern} must contain 1 to 16 targets.`);
-    }
-    const validatedTargets = targets.map((target) => {
-      if (
-        typeof target !== "string" ||
-        target.trim() === "" ||
-        path.isAbsolute(target) ||
-        wildcardCount(target) > 1
-      ) {
-        throw new Error(`Invalid target in compilerOptions.paths.${pattern}.`);
-      }
-      return target;
-    });
-    return { pattern, targets: validatedTargets };
-  });
-}
-
-export async function loadModuleResolution(root) {
-  for (const name of CONFIG_NAMES) {
-    const configPath = path.join(root, name);
-    try {
-      const { contents } = await readRegularFile(configPath, {
-        maxBytes: 1024 * 1024
-      });
-      const parsed = parseConfig(contents, name);
-      const compilerOptions = parsed.compilerOptions ?? {};
-      const baseUrl = compilerOptions.baseUrl ?? ".";
-      if (typeof baseUrl !== "string" || path.isAbsolute(baseUrl)) {
-        throw new Error(`${name} compilerOptions.baseUrl must be relative.`);
-      }
-      const absoluteBaseUrl = path.resolve(root, baseUrl);
-      if (!isInside(root, absoluteBaseUrl)) {
-        throw new Error(`${name} compilerOptions.baseUrl escapes the project root.`);
-      }
-      return {
-        source: name,
-        hash: sha256(contents.replace(/\r\n?/g, "\n")),
-        root,
-        baseUrl: absoluteBaseUrl,
-        mappings: validateMappings(compilerOptions.paths)
-      };
-    } catch (error) {
-      if (error.code === "ENOENT") continue;
-      throw new Error(`Could not safely load module resolution: ${error.message}`);
-    }
-  }
-  return { source: null, hash: sha256(""), root, baseUrl: root, mappings: [] };
-}
-
-function candidates(stem) {
+// Literal runtime files keep precedence; substitute TypeScript sources only
+// when absent from the index. Extensionless TS imports prefer TS sources.
+function candidates(stem, language) {
+  const extension = path.extname(stem);
+  const sources = RUNTIME_EXTENSION_SOURCES[extension] ?? [];
+  const extensions = language === "TypeScript" ? TYPESCRIPT_EXTENSIONS : EXTENSIONS;
   return [
     stem,
-    ...EXTENSIONS.map((extension) => `${stem}${extension}`),
-    ...EXTENSIONS.map((extension) => path.join(stem, `index${extension}`)),
+    ...sources.map((source) => `${stem.slice(0, -extension.length)}${source}`),
+    ...extensions.map((suffix) => `${stem}${suffix}`),
+    ...extensions.map((suffix) => path.join(stem, `index${suffix}`)),
     path.join(stem, "mod.rs")
   ];
 }
 
-function aliasStems(specifier, resolution) {
-  const stems = [];
-  for (const mapping of resolution.mappings) {
-    const star = mapping.pattern.indexOf("*");
-    let replacement = "";
-    if (star === -1) {
-      if (specifier !== mapping.pattern) continue;
-    } else {
-      const prefix = mapping.pattern.slice(0, star);
-      const suffix = mapping.pattern.slice(star + 1);
-      if (!specifier.startsWith(prefix) || !specifier.endsWith(suffix)) continue;
-      replacement = specifier.slice(prefix.length, specifier.length - suffix.length);
-    }
-    for (const target of mapping.targets) {
-      const substituted = target.includes("*")
-        ? target.replaceAll("*", replacement)
-        : target;
-      const absolute = path.resolve(resolution.baseUrl, substituted);
-      if (isInside(resolution.root, absolute)) stems.push(absolute);
-    }
-  }
-  return stems;
+function resolvePythonImport(fromFile, specifier, knownFiles) {
+  if (!specifier.startsWith(".")) return { kind: "external", targetPath: null };
+  const dotCount = specifier.match(/^\.+/)?.[0].length ?? 0;
+  let base = path.dirname(fromFile);
+  for (let index = 1; index < dotCount; index += 1) base = path.dirname(base);
+  const modulePath = specifier.slice(dotCount).replaceAll(".", path.sep);
+  const stem = path.join(base, modulePath);
+  const targetPath = [`${stem}.py`, path.join(stem, "__init__.py")].find(
+    (candidate) => knownFiles.has(path.resolve(candidate))
+  );
+  return { kind: targetPath ? "relative" : "unresolved-relative", targetPath };
 }
 
 export function resolveImport({
@@ -200,39 +72,29 @@ export function resolveImport({
   resolution,
   knownFiles
 }) {
-  let stems = [];
-  let kind = "external";
+  if (language === "Python") {
+    return resolvePythonImport(fromFile, specifier, knownFiles);
+  }
   const explicitExtension = path.extname(specifier).toLowerCase();
-  if (
-    explicitExtension &&
-    !EXTENSIONS.includes(explicitExtension)
-  ) {
+  if (explicitExtension && !EXTENSIONS.includes(explicitExtension)) {
     return { kind: "asset", targetPath: null };
   }
-  if (language === "Python") {
-    if (!specifier.startsWith(".")) return { kind, targetPath: null };
-    const dotCount = specifier.match(/^\.+/)?.[0].length ?? 0;
-    let base = path.dirname(fromFile);
-    for (let index = 1; index < dotCount; index += 1) base = path.dirname(base);
-    const modulePath = specifier.slice(dotCount).replaceAll(".", path.sep);
-    const stem = path.join(base, modulePath);
-    const targetPath = [`${stem}.py`, path.join(stem, "__init__.py")].find(
-      (candidate) => knownFiles.has(path.resolve(candidate))
-    );
-    return { kind: targetPath ? "relative" : "unresolved-relative", targetPath };
-  }
+  let stems = [];
+  let kind = "external";
   if (specifier.startsWith(".")) {
     kind = "relative";
     stems = [path.resolve(path.dirname(fromFile), specifier)];
-  } else {
-    stems = aliasStems(specifier, resolution);
-    if (stems.length > 0) kind = "alias";
+  } else if (language === "JavaScript" || language === "TypeScript") {
+    const context = aliasContextForFile(fromFile, resolution.contexts);
+    const alias = resolveAlias(specifier, context);
+    stems = alias.stems;
+    if (alias.matched) kind = "alias";
   }
   for (const stem of stems) {
-    for (const candidate of candidates(stem)) {
+    for (const candidate of candidates(stem, language)) {
       const absolute = path.resolve(candidate);
       if (isInside(root, absolute) && knownFiles.has(absolute)) {
-        return { kind, targetPath: absolute };
+        return { kind: kind === "external" ? "baseUrl" : kind, targetPath: absolute };
       }
     }
   }

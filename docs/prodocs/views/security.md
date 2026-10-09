@@ -15,5 +15,5 @@
 - 1 indexed path(s) contain instruction-like text requiring review.
 - 0 authored item(s) need evidence.
 
-Evidence snapshot: `f2eed986944f`; knowledge snapshot:
-`b70212a7c9b8`.
+Evidence snapshot: `48b913f9a835`; knowledge snapshot:
+`47de53d88af3`.

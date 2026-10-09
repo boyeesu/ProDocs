@@ -1,6 +1,18 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
+export function isExcluded(relativePath, excluded) {
+  const normalizedPath = relativePath.split(path.sep).join("/");
+  const segments = normalizedPath.split("/");
+  return excluded.some((rule) => {
+    const normalized = rule.replace(/^\.\//, "").replace(/\/$/, "");
+    return normalized.includes("/")
+      ? normalizedPath === normalized ||
+          normalizedPath.startsWith(`${normalized}/`)
+      : segments.includes(normalized);
+  });
+}
+
 export function isInside(root, target) {
   const relative = path.relative(root, target);
   return (

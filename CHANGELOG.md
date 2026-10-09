@@ -6,6 +6,20 @@ All notable changes to ProDocs are documented here. The project follows
 
 ## [Unreleased]
 
+## [1.2.2] - 2026-10-09
+
+### Fixed
+
+- resolve NodeNext-style `.js`/`.jsx`, `.mjs`, and `.cjs` imports to corresponding
+  TypeScript sources and declaration files when no indexed runtime file matches;
+- discover nested `tsconfig.json` and `jsconfig.json` scopes, follow local
+  `extends` chains, and resolve `baseUrl` imports without rewriting source;
+- select exact and longest-prefix path aliases with ordered target fallbacks,
+  and prevent parent aliases from leaking into independent package scopes;
+- include effective inherited alias changes in documentation freshness checks;
+- retain source containment, config safety limits, relationship diagnostics,
+  and JavaScript/Python/Rust resolution behavior.
+
 ## [1.2.1] - 2026-08-09
 
 ### Fixed
@@ -201,7 +215,8 @@ All notable changes to ProDocs are documented here. The project follows
 - Project-root containment for configured sources and generated output.
 - Versioned JSON Schemas for configuration and knowledge graph artifacts.
 
-[Unreleased]: https://github.com/boyeesu/prodocs/compare/v1.2.1...HEAD
+[Unreleased]: https://github.com/boyeesu/prodocs/compare/v1.2.2...HEAD
+[1.2.2]: https://github.com/boyeesu/prodocs/compare/v1.2.1...v1.2.2
 [1.2.1]: https://github.com/boyeesu/prodocs/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/boyeesu/prodocs/compare/v1.1.2...v1.2.0
 [1.1.2]: https://github.com/boyeesu/prodocs/compare/v1.1.1...v1.1.2
