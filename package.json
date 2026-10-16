@@ -1,6 +1,6 @@
 {
   "name": "@danielesuga/prodocs",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Evidence-backed documentation and context infrastructure for codebases and coding agents.",
   "type": "module",
   "author": "ProDocs contributors",
@@ -42,7 +42,7 @@
   ],
   "scripts": {
     "start": "node ./bin/prodocs.js",
-    "test": "node --test",
+    "test": "node ./scripts/test.js",
     "test:coverage": "node ./scripts/coverage.js",
     "lint": "node ./scripts/lint.js",
     "docs:sync": "node ./bin/prodocs.js sync",
@@ -73,12 +73,12 @@
     "knowledge-graph"
   ],
   "dependencies": {
-    "@babel/parser": "7.28.5",
-    "sql.js": "1.14.1",
-    "yaml": "2.9.0"
+    "@babel/parser": "7.29.9",
+    "sql.js": "1.15.0",
+    "yaml": "2.9.1"
   },
   "overrides": {
-    "qs": "6.15.3"
+    "qs": "6.16.1"
   },
   "devDependencies": {
     "@stryker-mutator/core": "9.6.1"

@@ -1,4 +1,5 @@
 import { spawnSync } from "node:child_process";
+import { testFiles } from "./test-files.js";
 
 const thresholds = {
   lines: 85,
@@ -8,7 +9,7 @@ const thresholds = {
 
 const result = spawnSync(
   process.execPath,
-  ["--test", "--experimental-test-coverage"],
+  ["--test", "--experimental-test-coverage", ...testFiles()],
   {
     cwd: process.cwd(),
     encoding: "utf8",

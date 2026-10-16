@@ -1,17 +1,17 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-09T17:09:52.492Z",
-  "sourceHash": "48b913f9a835e8e2a40e2af5353e161b5f10b66515afdebb7ee5a85ac1625fe1",
+  "generatedAt": "2026-10-16T10:42:51.902Z",
+  "sourceHash": "745f06f9b59671b950175e2e5c6603ffb1399c9b06a52f94dc08d30b8ccabc5a",
   "knowledgeHash": "47de53d88af3bd27dcc8a4262e47b556114d07ac987c017d3df4a3823e72aef7",
-  "inputHash": "1c5cd12989927a0be74693aa3d82ab9345b5f52136d1cdb3c867926f140943d3",
+  "inputHash": "734b4dd8a0752eba793beca85e5abcfca8d720f15bcb512cc0df74a717fe4d6f",
   "root": ".",
   "stats": {
-    "files": 63,
-    "lines": 11615,
-    "symbols": 360,
-    "edges": 496,
+    "files": 66,
+    "lines": 11684,
+    "symbols": 363,
+    "edges": 506,
     "languages": {
-      "JavaScript": 62,
+      "JavaScript": 65,
       "TypeScript": 1
     },
     "knowledge": {
@@ -23,7 +23,7 @@
     },
     "index": {
       "backend": "sqlite",
-      "entries": 63
+      "entries": 66
     }
   },
   "nodes": [
@@ -228,8 +228,8 @@
       "type": "file",
       "path": "scripts/coverage.js",
       "language": "JavaScript",
-      "contentHash": "a538bdc0f2e163ce97b55f2f803a70d2761b319607c461545bb99f1f4eefe85b",
-      "lines": 53,
+      "contentHash": "7d4c7559f6d6f48391427358ace2f3d0bac46ad3ff2431259b6e3b268252361b",
+      "lines": 54,
       "owner": "@boyeesu",
       "entrypoint": false,
       "publicSurface": false,
@@ -238,27 +238,27 @@
         {
           "name": "thresholds",
           "kind": "value",
-          "line": 3
+          "line": 4
         },
         {
           "name": "result",
           "kind": "value",
-          "line": 9
+          "line": 10
         },
         {
           "name": "summary",
           "kind": "value",
-          "line": 25
+          "line": 26
         },
         {
           "name": "values",
           "kind": "value",
-          "line": 32
+          "line": 33
         },
         {
           "name": "actual",
           "kind": "value",
-          "line": 36
+          "line": 37
         }
       ],
       "trust": {
@@ -287,6 +287,57 @@
           "name": "files",
           "kind": "value",
           "line": 16
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:scripts/test-files.js",
+      "type": "file",
+      "path": "scripts/test-files.js",
+      "language": "JavaScript",
+      "contentHash": "6e50840876ca219d9f7027775c557d5cbc973e9c4ffec4006aa809aafc0674c2",
+      "lines": 19,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "source",
+      "symbols": [
+        {
+          "name": "testFiles",
+          "kind": "function",
+          "line": 6
+        },
+        {
+          "name": "visit",
+          "kind": "function",
+          "line": 7
+        }
+      ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:scripts/test.js",
+      "type": "file",
+      "path": "scripts/test.js",
+      "language": "JavaScript",
+      "contentHash": "da3fe9be39397ac4727c9a7b3105e4e62aae1b43bbeb3520174ec280e3fdbbe4",
+      "lines": 11,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "test",
+      "symbols": [
+        {
+          "name": "result",
+          "kind": "value",
+          "line": 4
         }
       ],
       "trust": {
@@ -1188,7 +1239,7 @@
       "type": "file",
       "path": "src/constants.js",
       "language": "JavaScript",
-      "contentHash": "1ea2a2b4d3019ad996c6b1116dfb2cd36f9275c829cc8a4d8db91ef8e3f44703",
+      "contentHash": "6f3cf225c226f02368e9ccd969aa7f9d20bf34082bf916ed5714600b1a2698f6",
       "lines": 115,
       "owner": "@boyeesu",
       "entrypoint": false,
@@ -2906,6 +2957,23 @@
           "line": 9
         }
       ],
+      "trust": {
+        "repositoryContent": "untrusted",
+        "instructionSignals": []
+      }
+    },
+    {
+      "id": "file:test/test-files.test.js",
+      "type": "file",
+      "path": "test/test-files.test.js",
+      "language": "JavaScript",
+      "contentHash": "1e2d163ba134eeb200202e12e12d123f605f8bc39be596eb5e9cd72a2980e1a1",
+      "lines": 38,
+      "owner": "@boyeesu",
+      "entrypoint": false,
+      "publicSurface": false,
+      "role": "test",
+      "symbols": [],
       "trust": {
         "repositoryContent": "untrusted",
         "instructionSignals": []
@@ -5324,6 +5392,24 @@
     },
     {
       "type": "imports",
+      "from": "file:scripts/coverage.js",
+      "to": "file:scripts/test-files.js",
+      "evidence": {
+        "source": "scripts/coverage.js",
+        "specifier": "./test-files.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:scripts/test.js",
+      "to": "file:scripts/test-files.js",
+      "evidence": {
+        "source": "scripts/test.js",
+        "specifier": "./test-files.js"
+      }
+    },
+    {
+      "type": "imports",
       "from": "file:scripts/validate-repository.js",
       "to": "file:src/constants.js",
       "evidence": {
@@ -6719,6 +6805,24 @@
     },
     {
       "type": "imports",
+      "from": "file:test/test-files.test.js",
+      "to": "file:scripts/test-files.js",
+      "evidence": {
+        "source": "test/test-files.test.js",
+        "specifier": "../scripts/test-files.js"
+      }
+    },
+    {
+      "type": "imports",
+      "from": "file:test/test-files.test.js",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "test/test-files.test.js",
+        "specifier": "../src/paths.js"
+      }
+    },
+    {
+      "type": "imports",
       "from": "file:test/tsconfig.test.js",
       "to": "file:src/constants.js",
       "evidence": {
@@ -6814,6 +6918,24 @@
       "evidence": {
         "source": ".github/CODEOWNERS",
         "reference": "scripts/lint.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:scripts/test-files.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "scripts/test-files.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
+      "to": "file:scripts/test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "scripts/test.js"
       }
     },
     {
@@ -7296,6 +7418,15 @@
     {
       "type": "owns",
       "from": "owner:@boyeesu",
+      "to": "file:test/test-files.test.js",
+      "evidence": {
+        "source": ".github/CODEOWNERS",
+        "reference": "test/test-files.test.js"
+      }
+    },
+    {
+      "type": "owns",
+      "from": "owner:@boyeesu",
       "to": "file:test/tsconfig.test.js",
       "evidence": {
         "source": ".github/CODEOWNERS",
@@ -7610,6 +7741,15 @@
     },
     {
       "type": "tests",
+      "from": "file:scripts/test.js",
+      "to": "file:scripts/test-files.js",
+      "evidence": {
+        "source": "scripts/test.js",
+        "reference": "./test-files.js"
+      }
+    },
+    {
+      "type": "tests",
       "from": "file:test/adoption.test.js",
       "to": "file:src/adoption-command.js",
       "evidence": {
@@ -7912,6 +8052,24 @@
       "evidence": {
         "source": "test/scanner.test.js",
         "reference": "../src/scanner.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/test-files.test.js",
+      "to": "file:scripts/test-files.js",
+      "evidence": {
+        "source": "test/test-files.test.js",
+        "reference": "../scripts/test-files.js"
+      }
+    },
+    {
+      "type": "tests",
+      "from": "file:test/test-files.test.js",
+      "to": "file:src/paths.js",
+      "evidence": {
+        "source": "test/test-files.test.js",
+        "reference": "../src/paths.js"
       }
     },
     {
