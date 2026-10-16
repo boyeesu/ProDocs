@@ -10,7 +10,7 @@ publication.
 
 ## One-time npm setup
 
-1. Claim the `prodocs` package name on npm.
+1. Maintain ownership of the `@danielesuga/prodocs` package on npm.
 2. Configure npm trusted publishing for
    `boyeesu/ProDocs` and workflow `publish-npm.yml`.
 3. Protect the GitHub `npm` environment with a required maintainer approval.
@@ -56,8 +56,8 @@ deleting matching `v*` tags after creation.
 Verify the downloaded package before publishing:
 
 ```sh
-gh attestation verify prodocs-<version>.tgz --repo boyeesu/ProDocs
-shasum -a 256 -c SHA256SUMS
+gh attestation verify release/danielesuga-prodocs-<version>.tgz --repo boyeesu/ProDocs
+shasum -a 256 -c release/SHA256SUMS
 ```
 
 The checksum file records paths relative to the release build workspace. When
