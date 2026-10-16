@@ -38,7 +38,9 @@
     ".venv",
     "venv",
     "__pycache__",
-    "docs/prodocs"
+    "docs/prodocs",
+    "ProDocs-complete-roadmap",
+    "ProDocs-product-launch"
   ],
   "entrypoints": [],
   "ownership": {},

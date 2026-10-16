@@ -13,8 +13,10 @@ not prose claims.
 | [`fixtures/collectors/factory.js`](../../fixtures/collectors/factory.js) | JavaScript | 4 | @boyeesu | createElement (function, L1) |
 | [`fixtures/collectors/typescript-component.tsx`](../../fixtures/collectors/typescript-component.tsx) | TypeScript | 27 | @boyeesu | Identifier (type, L4)<br>ComponentProps (type, L6)<br>ComponentProps.render (method, L8)<br>State (type, L11)<br>Component (class, L16)<br>Component.constructor (constructor, L19)<br>Component.render (method, L21)<br>createComponent (value, L26) |
 | [`scripts/complexity.js`](../../scripts/complexity.js) | JavaScript | 88 | @boyeesu | FILE_LIMIT (value, L5)<br>FUNCTION_LIMIT (value, L6)<br>files (function, L8)<br>increment (function, L19)<br>analyze (function, L34)<br>visit (function, L44)<br>results (value, L70)<br>violations (value, L71) |
-| [`scripts/coverage.js`](../../scripts/coverage.js) | JavaScript | 53 | @boyeesu | thresholds (value, L3)<br>result (value, L9)<br>summary (value, L25)<br>values (value, L32)<br>actual (value, L36) |
+| [`scripts/coverage.js`](../../scripts/coverage.js) | JavaScript | 54 | @boyeesu | thresholds (value, L4)<br>result (value, L10)<br>summary (value, L26)<br>values (value, L33)<br>actual (value, L37) |
 | [`scripts/lint.js`](../../scripts/lint.js) | JavaScript | 25 | @boyeesu | javascriptFiles (function, L5)<br>files (value, L16) |
+| [`scripts/test-files.js`](../../scripts/test-files.js) | JavaScript | 19 | @boyeesu | testFiles (function, L6)<br>visit (function, L7) |
+| [`scripts/test.js`](../../scripts/test.js) | JavaScript | 11 | @boyeesu | result (value, L4) |
 | [`scripts/validate-repository.js`](../../scripts/validate-repository.js) | JavaScript | 72 | @boyeesu | repositoryPath (value, L10)<br>requestedPath (value, L11)<br>root (value, L20)<br>revisionResult (value, L21)<br>startedAt (value, L32)<br>graph (value, L33)<br>elapsedMs (value, L34)<br>selectedPath (value, L35) |
 | [`scripts/verify-release.js`](../../scripts/verify-release.js) | JavaScript | 69 | @boyeesu | fail (function, L4)<br>packageMetadata (value, L9)<br>packageLock (value, L10)<br>changelog (value, L11)<br>requestedTag (value, L12) |
 | [`src/adoption-command.js`](../../src/adoption-command.js) | JavaScript | 82 | @boyeesu | valueAfter (function, L18)<br>writeProposal (function, L23)<br>apply (function, L31)<br>runAdoptionCommand (function, L64) |
@@ -68,5 +70,6 @@ not prose claims.
 | [`test/roadmap.test.js`](../../test/roadmap.test.js) | JavaScript | 817 | @boyeesu | executeFile (value, L45)<br>project (function, L47)<br>config (function, L57) |
 | [`test/safe-fs.test.js`](../../test/safe-fs.test.js) | JavaScript | 48 | @boyeesu | — |
 | [`test/scanner.test.js`](../../test/scanner.test.js) | JavaScript | 595 | @boyeesu | fixture (function, L9) |
+| [`test/test-files.test.js`](../../test/test-files.test.js) | JavaScript | 38 | @boyeesu | — |
 | [`test/tsconfig.test.js`](../../test/tsconfig.test.js) | JavaScript | 389 | @boyeesu | fixture (function, L10)<br>targets (function, L23) |
 | [`test/workflows.test.js`](../../test/workflows.test.js) | JavaScript | 49 | @boyeesu | workflowDirectory (value, L6) |

@@ -6,6 +6,20 @@ All notable changes to ProDocs are documented here. The project follows
 
 ## [Unreleased]
 
+## [1.2.3] - 2026-10-16
+
+### Fixed
+
+- scope test and coverage discovery to the root and getting-started suites,
+  preserving cross-platform execution without running nested project copies;
+- exclude the two historical nested ProDocs checkouts from repository indexing.
+
+### Changed
+
+- update compatible runtime dependencies and immutable GitHub Actions pins;
+- refresh development dependency resolutions and the `qs` override to remove
+  reported dependency vulnerabilities while retaining Node.js 20 compatibility.
+
 ## [1.2.2] - 2026-10-09
 
 ### Fixed

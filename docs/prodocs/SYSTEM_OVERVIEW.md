@@ -8,12 +8,12 @@
 
 | Signal | Value |
 | --- | --- |
-| Source files | 63 |
-| Lines indexed | 11615 |
-| Symbols indexed | 360 |
-| Internal relationships | 496 |
-| Languages | JavaScript (62), TypeScript (1) |
-| Evidence snapshot | `48b913f9a835` |
+| Source files | 66 |
+| Lines indexed | 11684 |
+| Symbols indexed | 363 |
+| Internal relationships | 506 |
+| Languages | JavaScript (65), TypeScript (1) |
+| Evidence snapshot | `745f06f9b596` |
 
 ## Entrypoints
 
@@ -30,9 +30,9 @@
 | [`test/roadmap.test.js`](../../test/roadmap.test.js) | JavaScript | 31 | @boyeesu |
 | [`src/constants.js`](../../src/constants.js) | JavaScript | 27 | @boyeesu |
 | [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 27 | @boyeesu |
+| [`src/paths.js`](../../src/paths.js) | JavaScript | 24 | @boyeesu |
 | [`src/security.js`](../../src/security.js) | JavaScript | 24 | @boyeesu |
 | [`src/mcp.js`](../../src/mcp.js) | JavaScript | 22 | @boyeesu |
-| [`src/paths.js`](../../src/paths.js) | JavaScript | 22 | @boyeesu |
 | [`src/adoption-command.js`](../../src/adoption-command.js) | JavaScript | 21 | @boyeesu |
 | [`src/adoption.js`](../../src/adoption.js) | JavaScript | 19 | @boyeesu |
 
@@ -42,4 +42,4 @@
 - Agents should read `knowledge.json` or run `prodocs context --path <path> --json`.
 - CI should run `prodocs check` to reject stale generated documentation.
 
-Generated at 2026-10-09T17:09:52.492Z.
+Generated at 2026-10-16T10:42:51.902Z.
