@@ -9,6 +9,12 @@ The supported runtime is Node.js 20 or newer. CI verifies the oldest supported
 major, the current active LTS line, the current release line, macOS, and Windows.
 Linux is covered by every Node.js matrix job.
 
+For the 1.2.x maintenance line, retain this runtime contract: Babel stays on
+7.x and Stryker on 9.x. Babel 8 requires Node `^22.18.0 || >=24.11.0`, and
+Stryker 10 requires Node `>=22.0.0`. Those major dependency updates are not
+eligible for a 1.2.x patch; revisit them with an explicitly announced runtime
+migration and updated CI matrix.
+
 When a Node.js major reaches end of life, removing it requires the next
 semantically appropriate release and advance notice in the changelog.
 
