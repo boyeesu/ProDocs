@@ -74,7 +74,7 @@
   ],
   "dependencies": {
     "@babel/parser": "7.29.9",
-    "sql.js": "1.15.0",
+    "sql.js": "1.15.1",
     "yaml": "2.9.1"
   },
   "overrides": {
