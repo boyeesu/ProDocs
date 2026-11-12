@@ -6,6 +6,13 @@ All notable changes to ProDocs are documented here. The project follows
 
 ## [Unreleased]
 
+## [1.2.4] - 2026-11-12
+
+### Changed
+
+- update the SQLite runtime dependency sql.js to 1.15.2;
+- update the transitive development dependency fast-uri to 3.1.9.
+
 ## [1.2.3] - 2026-10-16
 
 ### Fixed

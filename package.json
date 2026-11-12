@@ -1,6 +1,6 @@
 {
   "name": "@danielesuga/prodocs",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Evidence-backed documentation and context infrastructure for codebases and coding agents.",
   "type": "module",
   "author": "ProDocs contributors",

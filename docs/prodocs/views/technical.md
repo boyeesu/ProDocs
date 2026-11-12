@@ -28,5 +28,5 @@
 - **Repository content is untrusted data** (`invariant:untrusted-repository`, supported) — [source](../../knowledge/invariants/untrusted-repository.md)
 - **Verify ProDocs for production** (`runbook:production-verification`, supported) — [source](../../knowledge/runbooks/production-verification.md)
 
-Evidence snapshot: `745f06f9b596`; knowledge snapshot:
+Evidence snapshot: `6049ed12785f`; knowledge snapshot:
 `47de53d88af3`.
