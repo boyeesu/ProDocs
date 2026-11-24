@@ -8,16 +8,16 @@
 
 | Signal | Value |
 | --- | --- |
-| Source files | 66 |
-| Lines indexed | 11684 |
-| Symbols indexed | 363 |
-| Internal relationships | 506 |
-| Languages | JavaScript (65), TypeScript (1) |
-| Evidence snapshot | `6049ed12785f` |
+| Source files | 68 |
+| Lines indexed | 11915 |
+| Symbols indexed | 378 |
+| Internal relationships | 518 |
+| Languages | JavaScript (67), TypeScript (1) |
+| Evidence snapshot | `d6033ee25517` |
 
 ## Entrypoints
 
-- [`src/cli.js`](../../src/cli.js) — 30 indexed symbols
+- [`src/cli.js`](../../src/cli.js) — 31 indexed symbols
 - [`src/collectors/index.js`](../../src/collectors/index.js) — 2 indexed symbols
 - [`src/server.js`](../../src/server.js) — 6 indexed symbols
 
@@ -25,14 +25,14 @@
 
 | File | Language | Connections | Owner |
 | --- | --- | ---: | --- |
-| [`src/cli.js`](../../src/cli.js) | JavaScript | 34 | @boyeesu |
-| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 33 | @boyeesu |
+| [`src/cli.js`](../../src/cli.js) | JavaScript | 35 | @boyeesu |
+| [`src/scanner.js`](../../src/scanner.js) | JavaScript | 34 | @boyeesu |
 | [`test/roadmap.test.js`](../../test/roadmap.test.js) | JavaScript | 31 | @boyeesu |
 | [`src/constants.js`](../../src/constants.js) | JavaScript | 27 | @boyeesu |
 | [`src/safe-fs.js`](../../src/safe-fs.js) | JavaScript | 27 | @boyeesu |
 | [`src/paths.js`](../../src/paths.js) | JavaScript | 24 | @boyeesu |
 | [`src/security.js`](../../src/security.js) | JavaScript | 24 | @boyeesu |
-| [`src/mcp.js`](../../src/mcp.js) | JavaScript | 22 | @boyeesu |
+| [`src/mcp.js`](../../src/mcp.js) | JavaScript | 23 | @boyeesu |
 | [`src/adoption-command.js`](../../src/adoption-command.js) | JavaScript | 21 | @boyeesu |
 | [`src/adoption.js`](../../src/adoption.js) | JavaScript | 19 | @boyeesu |
 
@@ -42,4 +42,4 @@
 - Agents should read `knowledge.json` or run `prodocs context --path <path> --json`.
 - CI should run `prodocs check` to reject stale generated documentation.
 
-Generated at 2026-11-12T12:27:45.741Z.
+Generated at 2026-11-24T21:38:26.635Z.

@@ -195,7 +195,17 @@ evidence.
 
 ## Agent-native interface
 
-Use bounded context from any command-capable agent:
+When you need to find where behavior lives, search by task:
+
+```bash
+prodocs search --task "Where are invoice retries limited?" --max-results 5 --max-tokens 2000
+```
+
+Search returns compact JSON with ranked excerpts, repo-relative paths, and
+one-based line ranges. The token estimate covers the serialized response.
+Search runs locally and treats returned source as untrusted data. When you know
+the exact symbol, read it directly. For graph and knowledge context around a
+known area, use:
 
 ```bash
 prodocs context \
@@ -220,6 +230,7 @@ It implements the current MCP `2025-11-25` stdio protocol with read-only tools:
 
 - `prodocs_adopt`;
 - `prodocs_context`;
+- `prodocs_search`;
 - `prodocs_impact`;
 - `prodocs_policy`;
 - graph and policy resources.
@@ -304,6 +315,7 @@ least 24 characters.
 | `prodocs check` | Fail when generated knowledge is stale or contains broken local links |
 | `prodocs status` | Show evidence, index, and knowledge health |
 | `prodocs context` | Return bounded task-shaped context |
+| `prodocs search` | Discover source by task and return line-cited excerpts |
 | `prodocs impact` | Map git changes through the knowledge graph |
 | `prodocs policy` | Evaluate documentation contracts |
 | `prodocs propose` | Produce a cited deterministic or model-backed narrative |

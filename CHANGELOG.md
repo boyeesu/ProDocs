@@ -6,6 +6,14 @@ All notable changes to ProDocs are documented here. The project follows
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-11-24
+
+### Added
+
+- Add task-based source search to the CLI and MCP. Results include ranked,
+  line-cited excerpts within a response token budget.
+- Add source retrieval evaluations to the release verification workflow.
+
 ## [1.2.4] - 2026-11-12
 
 ### Changed
@@ -236,7 +244,8 @@ All notable changes to ProDocs are documented here. The project follows
 - Project-root containment for configured sources and generated output.
 - Versioned JSON Schemas for configuration and knowledge graph artifacts.
 
-[Unreleased]: https://github.com/boyeesu/prodocs/compare/v1.2.2...HEAD
+[Unreleased]: https://github.com/boyeesu/prodocs/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/boyeesu/prodocs/compare/v1.2.4...v1.3.0
 [1.2.2]: https://github.com/boyeesu/prodocs/compare/v1.2.1...v1.2.2
 [1.2.1]: https://github.com/boyeesu/prodocs/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/boyeesu/prodocs/compare/v1.1.2...v1.2.0

@@ -33,6 +33,7 @@ import { renderAudienceView, writeArtifacts } from "./render.js";
 import { runbookPlan, verifyRunbook } from "./runbooks.js";
 import { readRegularFile, atomicWriteFile } from "./safe-fs.js";
 import { scanProject } from "./scanner.js";
+import { searchSource } from "./source-search.js";
 import { listenForCollaboration } from "./server.js";
 import { createTutorial } from "./tutorial.js";
 import {
@@ -80,6 +81,7 @@ Core:
   prodocs check                        Fail on stale docs or broken generated links
   prodocs status [--json]              Show evidence and knowledge health
   prodocs context --path <path>        Return bounded task-shaped context
+  prodocs search --task <task>          Return ranked, line-cited source excerpts
 
 Change intelligence:
   prodocs impact [<base>...<head>]      Map changes to knowledge, tests, and owners
@@ -325,6 +327,15 @@ async function context(root, args, json) {
   console.log(`Documentation: ${result.freshness.status}`);
 }
 
+async function search(root, args) {
+  const result = await searchSource(root, {
+    task: valueAfter(args, "--task"),
+    maxResults: integerAfter(args, "--max-results", undefined),
+    maxTokens: integerAfter(args, "--max-tokens", undefined)
+  });
+  console.log(JSON.stringify(result));
+}
+
 async function impact(root, args, json) {
   const config = await loadConfig(root);
   const graph = await scanProject(root, config, { indexMode: "read" });
@@ -538,7 +549,7 @@ function capabilities(json) {
     graphSchema: 2,
     contextSchema: 2,
     commands: [
-      "init", "adopt", "sync", "check", "status", "context", "impact", "policy",
+      "init", "adopt", "sync", "check", "status", "context", "search", "impact", "policy",
       "propose", "proposal", "mcp", "evaluate", "plugin", "hooks", "view", "history",
       "runbook", "serve", "doctor", "tutorial", "benchmark"
     ],
@@ -579,6 +590,7 @@ export async function run(args) {
     check,
     status,
     context,
+    search,
     impact,
     policy,
     proposal,

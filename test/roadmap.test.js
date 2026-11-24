@@ -399,6 +399,15 @@ test("MCP exposes deterministic read-only tools and untrusted-content guidance",
       arguments: { paths: ["src/main.js"], maxTokens: 1000 }
     }
   });
+  const searchTool = await handleMcpRequest(root, {
+    jsonrpc: "2.0",
+    id: 13,
+    method: "tools/call",
+    params: { name: "prodocs_search", arguments: { task: "main", maxTokens: 128 } }
+  });
+  assert.ok(listed.result.tools.some((tool) => tool.name === "prodocs_search"));
+  assert.equal(searchTool.result.isError, false);
+  assert.equal(JSON.parse(searchTool.result.content[0].text).results[0].path, "src/main.js");
   const adoptionTool = await handleMcpRequest(root, {
     jsonrpc: "2.0",
     id: 12,

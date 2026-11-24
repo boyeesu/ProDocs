@@ -1,0 +1,17 @@
+[
+  {
+    "task": "When generated Markdown links have a query or fragment, how is percent encoding validated before the link is checked?",
+    "path": "src/generated-links.js",
+    "evidence": "return decodeURIComponent(withoutFragment);"
+  },
+  {
+    "task": "When multiple CODEOWNERS rules match, how does the configured ownership fallback interact with the winning rule?",
+    "path": "src/scanner.js",
+    "evidence": "resolved = rule.owners.join"
+  },
+  {
+    "task": "How does ProDocs read a historical graph from Git and which schema versions are accepted?",
+    "path": "src/history.js",
+    "evidence": "![1, 2].includes(graph.schemaVersion)"
+  }
+]
