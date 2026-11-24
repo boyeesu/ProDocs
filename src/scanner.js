@@ -291,7 +291,7 @@ function roleFor(relativePath, evidence, entrypoint) {
 export async function scanProject(
   root,
   config,
-  { indexMode = "write" } = {}
+  { indexMode = "write", onSource } = {}
 ) {
   const canonicalRoot = await fs.realpath(root);
   const pluginCollectors = [];
@@ -390,6 +390,7 @@ export async function scanProject(
         unresolvedImports: imports,
         _absolutePath: absolutePath
       });
+      onSource?.(source, nodes.at(-1));
     }
     index.removeMissing(nodes.map((node) => node.path));
   } finally {

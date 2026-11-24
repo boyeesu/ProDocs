@@ -425,3 +425,21 @@ test("history and MCP CLI adapters operate without vendor-specific state", async
   assert.equal(responses[0].result.protocolVersion, "2025-11-25");
   assert.equal(responses[1].result.resources.length, 2);
 });
+
+
+test("source search returns deterministic cited excerpts within the response budget", async (t) => {
+  const root = await fullProject();
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+  const args = ["search", "--task", "Where is the main function?", "--max-tokens", "128"];
+  const first = await execute(args, root);
+  assert.equal(first.code, 0, first.stderr);
+  assert.equal((await execute(args, root)).stdout, first.stdout);
+  const result = JSON.parse(first.stdout);
+  assert.equal(result.repositoryContent, "untrusted");
+  assert.equal(result.estimatedTokens, Math.ceil(Buffer.byteLength(first.stdout.trimEnd()) / 4));
+  assert.ok(result.estimatedTokens <= 128);
+  const [match] = result.results;
+  assert.equal(match.path, "src/main.js");
+  assert.equal(match.startLine, 1);
+  assert.match(match.excerpt, /return true/);
+});
