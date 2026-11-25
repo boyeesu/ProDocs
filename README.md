@@ -18,6 +18,7 @@
   <a href="#authored-knowledge">Knowledge</a> ·
   <a href="#change-intelligence">Impact</a> ·
   <a href="#agent-native-interface">Agents</a> ·
+  <a href="#source-search-benchmarks">Benchmarks</a> ·
   <a href="#commands">Commands</a> ·
   <a href="https://github.com/boyeesu/prodocs/blob/main/docs/PRODUCT_VISION.md">Vision</a>
 </p>
@@ -149,6 +150,39 @@ Evidence references may target a file or `file#symbol`. The graph reports:
 - evidence coverage;
 - feature-to-code and feature-to-customer-impact relationships;
 - applicable owners, tests, and runbooks.
+
+## Source search benchmarks
+
+In a three-task Codex pilot, ProDocs source search used **14% fewer total
+model tokens** and took **18% less end-to-end time** than direct shell search.
+All three workflows answered all three questions correctly.
+
+| Workflow | Correct answers | Shell calls | Total model tokens | Uncached input tokens | Total time |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Direct shell search | 3/3 | 9 | 234,765 | 33,065 | 54.7 s |
+| Path-based ProDocs context | 3/3 | 13 | 307,198 | 65,432 | 67.1 s |
+| ProDocs source search | 3/3 | 7 | 201,280 | 68,780 | 44.8 s |
+
+We used Codex CLI with `gpt-5.6-sol` and one run per task per workflow on
+one ProDocs checkout. The three questions covered generated link validation,
+CODEOWNERS precedence, and Git history reads. No starting paths were supplied.
+Direct shell search excluded generated documentation. The path-based workflow
+located a path before calling `prodocs context`, and source search started
+with `prodocs search`. Total model tokens include cached input and output.
+Source search used more uncached input than direct shell search. Billing was
+outside the scope of this pilot.
+
+The separate local retrieval eval found the expected line-cited excerpt in
+the top two results for **all three cases**, within 1,284 estimated response
+tokens per query. Run it from a checkout after installing dependencies:
+
+```bash
+node scripts/evaluate-source-search.js
+```
+
+The [eval fixture](fixtures/evaluation/source-search.json) lists the questions
+and expected excerpts. See the [benchmark notes](docs/BENCHMARKS.md) for the
+separate indexing and context-packet benchmarks.
 
 ## Change intelligence
 
